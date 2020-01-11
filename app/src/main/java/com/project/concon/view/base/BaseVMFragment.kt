@@ -1,4 +1,4 @@
-package com.project.concon.base
+package com.project.concon.view.base
 
 import android.os.Bundle
 import android.view.LayoutInflater

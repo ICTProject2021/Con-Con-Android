@@ -5,7 +5,7 @@ import android.view.View
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.project.concon.R
-import com.project.concon.base.BaseVMFragment
+import com.project.concon.view.base.BaseVMFragment
 import com.project.concon.databinding.FragmentWinnerBinding
 import com.project.concon.view.adapter.RecyclerViewWinnerAdapter
 import com.project.concon.view.decoration.RecyclerViewDecoration

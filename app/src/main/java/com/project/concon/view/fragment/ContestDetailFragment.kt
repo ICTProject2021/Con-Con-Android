@@ -4,7 +4,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.navigation.fragment.navArgs
 import com.project.concon.R
-import com.project.concon.base.BaseVMFragment
+import com.project.concon.view.base.BaseVMFragment
 import com.project.concon.databinding.FragmentContestDetailBinding
 import com.project.concon.model.remote.dto.response.ContestDetail
 import com.project.concon.utils.MessageUtils

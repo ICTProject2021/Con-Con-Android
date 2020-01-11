@@ -3,7 +3,7 @@ package com.project.concon.view.fragment
 import android.os.Bundle
 import android.view.View
 import com.project.concon.R
-import com.project.concon.base.BaseVMFragment
+import com.project.concon.view.base.BaseVMFragment
 import com.project.concon.databinding.FragmentPaymentBinding
 import com.project.concon.utils.BillingManager
 import com.project.concon.utils.MessageUtils

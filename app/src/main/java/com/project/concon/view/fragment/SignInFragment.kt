@@ -4,7 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import com.project.concon.R
-import com.project.concon.base.BaseVMFragment
+import com.project.concon.view.base.BaseVMFragment
 import com.project.concon.databinding.FragmentSignInBinding
 import com.project.concon.utils.MessageUtils
 import com.project.concon.utils.PreferenceUtils

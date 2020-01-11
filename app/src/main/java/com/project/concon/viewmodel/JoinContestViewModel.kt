@@ -3,7 +3,7 @@ package com.project.concon.viewmodel
 import android.content.ContentResolver
 import android.net.Uri
 import androidx.lifecycle.MutableLiveData
-import com.project.concon.base.BaseViewModel
+import com.project.concon.view.base.BaseViewModel
 import com.project.concon.model.remote.dto.response.Participant
 import com.project.concon.model.repository.ContestRepository
 import com.project.concon.utils.getImageBody

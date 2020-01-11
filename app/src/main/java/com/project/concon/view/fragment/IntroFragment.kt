@@ -3,7 +3,7 @@ package com.project.concon.view.fragment
 import android.os.Bundle
 import android.view.View
 import com.project.concon.R
-import com.project.concon.base.BaseFragment
+import com.project.concon.view.base.BaseFragment
 import com.project.concon.databinding.FragmentIntroBinding
 
 class IntroFragment : BaseFragment<FragmentIntroBinding>() {

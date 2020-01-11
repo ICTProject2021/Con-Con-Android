@@ -5,7 +5,7 @@ import android.view.View
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.project.concon.R
-import com.project.concon.base.BaseVMFragment
+import com.project.concon.view.base.BaseVMFragment
 import com.project.concon.databinding.FragmentHomeBinding
 import com.project.concon.utils.MessageUtils
 import com.project.concon.view.adapter.RecyclerViewMainAdapter

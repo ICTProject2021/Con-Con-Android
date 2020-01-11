@@ -34,7 +34,6 @@ class DialogFragmentFail(private val content: String) : DialogFragment() {
     }
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
-        Log.d("Dialog", "onCreateDialog")
         binding = FragmentFailDialogBinding.inflate(requireActivity().layoutInflater)
 
         val dialog = AlertDialog.Builder(requireActivity())

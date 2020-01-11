@@ -1,7 +1,7 @@
 package com.project.concon.viewmodel
 
 import androidx.lifecycle.MutableLiveData
-import com.project.concon.base.BaseViewModel
+import com.project.concon.view.base.BaseViewModel
 import com.project.concon.model.remote.dto.request.ContestRequest
 import com.project.concon.model.repository.ContestRepository
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers

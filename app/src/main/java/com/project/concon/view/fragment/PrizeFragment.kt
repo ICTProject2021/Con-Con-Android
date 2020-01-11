@@ -6,7 +6,7 @@ import android.widget.TextView
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.project.concon.R
-import com.project.concon.base.BaseFragment
+import com.project.concon.view.base.BaseFragment
 import com.project.concon.databinding.FragmentPrizeBinding
 import com.project.concon.viewmodel.CreateContestViewModel
 import com.project.concon.viewmodel.PrizeDialogViewModel

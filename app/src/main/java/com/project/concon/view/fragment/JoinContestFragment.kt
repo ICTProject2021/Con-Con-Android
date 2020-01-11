@@ -12,7 +12,7 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.databinding.ObservableArrayList
 import androidx.navigation.fragment.navArgs
 import com.project.concon.R
-import com.project.concon.base.BaseVMFragment
+import com.project.concon.view.base.BaseVMFragment
 import com.project.concon.databinding.FragmentJoinContestBinding
 import com.project.concon.utils.MessageUtils
 import com.project.concon.view.adapter.RecyclerViewJoinContestAdapter
