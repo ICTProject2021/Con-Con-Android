@@ -1,6 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/nav_graph_intro">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph_intro"
+    app:startDestination="@id/introFragment">
 
+    <fragment
+        android:id="@+id/introFragment"
+        android:name="com.example.a2021ictproject.fragment.IntroFragment"
+        android:label="intro_fragment"
+        tools:layout="@layout/intro_fragment" >
+        <action
+            android:id="@+id/action_introFragment_to_signInFragment"
+            app:destination="@id/signInFragment" />
+        <action
+            android:id="@+id/action_introFragment_to_signUpFragment"
+            app:destination="@id/signUpFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/signInFragment"
+        android:name="com.example.a2021ictproject.fragment.SignInFragment"
+        android:label="SignInFragment" >
+        <action
+            android:id="@+id/action_signInFragment_to_introFragment"
+            app:destination="@id/introFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/signUpFragment"
+        android:name="com.example.a2021ictproject.fragment.SignUpFragment"
+        android:label="sign_up_fragment"
+        tools:layout="@layout/sign_up_fragment" >
+        <action
+            android:id="@+id/action_signUpFragment_to_introFragment"
+            app:destination="@id/introFragment" />
+    </fragment>
 </navigation>
