@@ -1,6 +1,68 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/nav_graph_main">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph_main"
+    app:startDestination="@id/mainFragment">
 
+    <fragment
+        android:id="@+id/mainFragment"
+        android:name="com.example.a2021ictproject.fragment.MainFragment"
+        android:label="main_fragment"
+        tools:layout="@layout/main_fragment" >
+        <action
+            android:id="@+id/action_mainFragment_to_addContestFragment"
+            app:destination="@id/addContestFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_contestDetailFragment"
+            app:destination="@id/contestDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/addContestFragment"
+        android:name="com.example.a2021ictproject.fragment.AddContestFragment"
+        android:label="add_contest_fragment"
+        tools:layout="@layout/add_contest_fragment" >
+        <action
+            android:id="@+id/action_addContestFragment_to_mainFragment"
+            app:destination="@id/mainFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.example.a2021ictproject.fragment.ProfileFragment"
+        android:label="profile_fragment"
+        tools:layout="@layout/profile_fragment" >
+        <action
+            android:id="@+id/action_profileFragment_to_chargeCashFragment"
+            app:destination="@id/chargeCashFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/chargeCashFragment"
+        android:name="com.example.a2021ictproject.fragment.ChargeCashFragment"
+        android:label="charge_cash_fragment"
+        tools:layout="@layout/charge_cash_fragment" >
+        <action
+            android:id="@+id/action_chargeCashFragment_to_profileFragment"
+            app:destination="@id/profileFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/commentFragment"
+        android:name="com.example.a2021ictproject.fragment.CommentFragment"
+        android:label="comment_fragment"
+        tools:layout="@layout/comment_fragment" >
+        <action
+            android:id="@+id/action_commentFragment_to_contestDetailFragment"
+            app:destination="@id/contestDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/contestDetailFragment"
+        android:name="com.example.a2021ictproject.fragment.ContestDetailFragment"
+        android:label="contest_detail_fragment"
+        tools:layout="@layout/contest_detail_fragment" >
+        <action
+            android:id="@+id/action_contestDetailFragment_to_mainFragment"
+            app:destination="@id/mainFragment" />
+        <action
+            android:id="@+id/action_contestDetailFragment_to_commentFragment"
+            app:destination="@id/commentFragment" />
+    </fragment>
 </navigation>
