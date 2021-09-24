@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<MotionScene xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <ConstraintSet android:id="@+id/start">
+        <Constraint android:id="@+id/widget" />
+        <Constraint
+            android:id="@+id/et_layout_id_sign_up"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/layout_margin"
+            android:layout_marginEnd="@dimen/layout_margin"
+            android:visibility="visible"
+            app:layout_constraintBottom_toTopOf="@+id/et_layout_password_sign_up"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent" />
+        <Constraint
+            android:id="@+id/et_layout_password_sign_up"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/layout_margin"
+            android:layout_marginEnd="@dimen/layout_margin"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toTopOf="@+id/et_layout_phone_number_sign_up"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent" />
+        <Constraint
+            android:id="@+id/et_layout_password_check_sign_up"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/layout_margin"
+            android:layout_marginEnd="@dimen/layout_margin"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toTopOf="@+id/et_layout_phone_number_sign_up"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent" />
+        <Constraint
+            android:id="@+id/et_layout_phone_number_sign_up"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/layout_margin"
+            android:layout_marginEnd="@dimen/layout_margin"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toTopOf="@+id/et_layout_nickname_sign_up"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent" />
+        <Constraint
+            android:id="@+id/et_layout_nickname_sign_up"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/layout_margin"
+            android:layout_marginEnd="@dimen/layout_margin"
+            android:visibility="invisible"
+            android:layout_marginBottom="16dp"
+            app:layout_constraintBottom_toTopOf="@+id/btn_sign_up"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+    </ConstraintSet>
+    <Transition app:constraintSetStart="@+id/start"
+        app:constraintSetEnd="@+id/showPasswordLayout"
+        app:motionInterpolator="easeOut"/>
+
+    <!-- Password -->
+    <ConstraintSet android:id="@+id/showPasswordLayout">
+        <Constraint
+            android:id="@+id/et_layout_password_sign_up"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/layout_margin"
+            android:layout_marginEnd="@dimen/layout_margin"
+            android:visibility="visible"
+            app:layout_constraintBottom_toTopOf="@+id/et_layout_phone_number_sign_up"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent" />
+    </ConstraintSet>
+    <Transition
+        app:constraintSetStart="@+id/showPasswordLayout"
+        app:constraintSetEnd="@id/showPasswordCheckLayout"
+        app:motionInterpolator="easeOut"/>
+
+    <!-- Password Check -->
+    <ConstraintSet android:id="@+id/showPasswordCheckLayout">
+        <Constraint
+            android:id="@+id/et_layout_password_check_sign_up"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/layout_margin"
+            android:layout_marginEnd="@dimen/layout_margin"
+            android:visibility="visible"
+            app:layout_constraintBottom_toTopOf="@+id/et_layout_phone_number_sign_up"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent" />
+    </ConstraintSet>
+    <Transition
+        app:constraintSetStart="@+id/showPasswordCheckLayout"
+        app:constraintSetEnd="@id/showPhoneNumberLayout"
+        app:motionInterpolator="easeOut"/>
+
+    <!-- Phone Number -->
+    <ConstraintSet android:id="@+id/showPhoneNumberLayout">
+        <Constraint
+            android:id="@+id/et_layout_phone_number_sign_up"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/layout_margin"
+            android:layout_marginEnd="@dimen/layout_margin"
+            android:visibility="visible"
+            app:layout_constraintBottom_toTopOf="@+id/et_layout_nickname_sign_up"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent" />
+    </ConstraintSet>
+    <Transition
+        app:constraintSetStart="@+id/showPhoneNumberLayout"
+        app:constraintSetEnd="@id/end"
+        app:motionInterpolator="easeOut"/>
+
+    <!-- Nickname -->
+    <ConstraintSet android:id="@+id/end">
+        <Constraint android:id="@id/widget" />
+        <Constraint
+            android:id="@+id/et_layout_nickname_sign_up"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/layout_margin"
+            android:layout_marginEnd="@dimen/layout_margin"
+            android:visibility="visible"
+            android:layout_marginBottom="16dp"
+            app:layout_constraintBottom_toTopOf="@+id/btn_sign_up"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+    </ConstraintSet>
+</MotionScene>
