@@ -48,6 +48,7 @@ class AddContestFragment : Fragment() {
                     setText((text.toString()).replace("원", ""))
                 } else {
                     if (!text.isNullOrBlank())
+                        // Todo (돈 단위별 콤마 작업하기)
                         setText("${text}원")
                 }
             }
