@@ -49,8 +49,8 @@ class SignInFragment : Fragment() {
 
         /* 에러가 없을 시 로그인 후... */
         binding.btnSignIn.setOnClickListener {
-            val id = binding.etIdSignIn.text.toString()
-            val password = binding.etPasswordSignIn.text.toString()
+            val id = binding.etIdSignIn.text.toString().trim()
+            val password = binding.etPasswordSignIn.text.toString().trim()
 
             if (id.isBlank() || password.isBlank()) {
                 Toast.makeText(requireContext(), "빈칸을 입력해주세요.", Toast.LENGTH_LONG).show()

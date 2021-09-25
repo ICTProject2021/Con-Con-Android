@@ -1,6 +1,5 @@
-<!-- 시간 남으면 모션 레이아웃 적용하려 합니다 -->
-
 <?xml version="1.0" encoding="utf-8"?>
+<!-- 시간 남으면 모션 레이아웃 적용하려 합니다 -->
 <MotionScene xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 

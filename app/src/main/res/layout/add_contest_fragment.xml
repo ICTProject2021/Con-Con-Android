@@ -6,16 +6,18 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
         tools:context=".fragment.AddContestFragment">
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btn_confirm_add_contest"
             style="@style/Widget.AppCompat.Button.Main"
-            android:layout_marginStart="@dimen/layout_margin"
-            android:layout_marginEnd="@dimen/layout_margin"
-            android:layout_marginBottom="@dimen/sign_btn_margin_bottom"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/layout_margin"
+            android:layout_marginEnd="@dimen/layout_margin"
+            android:layout_marginBottom="50dp"
             android:text="@string/add_contest"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -47,9 +49,11 @@
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/et_date_add_contest"
                         style="@style/Widget.AppCompat.EditText.BaseEditText"
+                        android:focusableInTouchMode="false"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="@string/chose_contest_date" />
+                        android:hint="@string/chose_contest_date"
+                        tools:ignore="TouchTargetSizeCheck" />
 
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -63,9 +67,11 @@
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/et_cash_add_contest"
                         style="@style/Widget.AppCompat.EditText.BaseEditText"
+                        android:inputType="number"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="우승 상금 등록하기" />
+                        android:hint="우승 상금 등록하기"
+                        tools:ignore="TouchTargetSizeCheck" />
 
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -91,13 +97,15 @@
                         style="@style/Widget.AppCompat.EditText.BaseEditText"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="@string/title" />
+                        android:hint="@string/title"
+                        tools:ignore="TouchTargetSizeCheck" />
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:layout_marginStart="@dimen/layout_margin"
                     android:layout_marginEnd="@dimen/layout_margin"
                     android:layout_width="match_parent"
+                    app:hintEnabled="false"
                     android:layout_height="400dp">
 
                     <com.google.android.material.textfield.TextInputEditText

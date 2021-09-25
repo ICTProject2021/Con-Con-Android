@@ -5,13 +5,14 @@
       <map>
         <entry key="..\:/Github/2021IctProject/app/src/main/res/drawable/background_shadow.xml" value="0.275" />
         <entry key="..\:/Github/2021IctProject/app/src/main/res/drawable/btn_main_selector.xml" value="0.275" />
+        <entry key="..\:/Github/2021IctProject/app/src/main/res/drawable/calendar_today_background.xml" value="0.21666666666666667" />
         <entry key="..\:/Github/2021IctProject/app/src/main/res/drawable/ic_check.xml" value="0.2453125" />
         <entry key="..\:/Github/2021IctProject/app/src/main/res/drawable/ic_close.xml" value="0.275" />
         <entry key="..\:/Github/2021IctProject/app/src/main/res/drawable/ic_close__1_.xml" value="0.275" />
         <entry key="..\:/Github/2021IctProject/app/src/main/res/layout/activity_intro.xml" value="0.25885416666666666" />
         <entry key="..\:/Github/2021IctProject/app/src/main/res/layout/activity_main.xml" value="0.1328125" />
         <entry key="..\:/Github/2021IctProject/app/src/main/res/layout/add_contest_fragment.xml" value="0.24427083333333333" />
-        <entry key="..\:/Github/2021IctProject/app/src/main/res/layout/calendar_dialog_fragment.xml" value="0.22916666666666666" />
+        <entry key="..\:/Github/2021IctProject/app/src/main/res/layout/calendar_dialog_fragment.xml" value="0.4" />
         <entry key="..\:/Github/2021IctProject/app/src/main/res/layout/charge_cash_fragment.xml" value="0.25885416666666666" />
         <entry key="..\:/Github/2021IctProject/app/src/main/res/layout/contest_detail_fragment.xml" value="0.25885416666666666" />
         <entry key="..\:/Github/2021IctProject/app/src/main/res/layout/intro_fragment.xml" value="0.2" />
