@@ -1,6 +1,7 @@
 package com.example.a2021ictproject.network.`object`
 
 import com.example.a2021ictproject.network.dao.AccountService
+import com.example.a2021ictproject.network.dao.ContestService
 import com.google.gson.Gson
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -19,4 +20,5 @@ object RetrofitInstance {
     }
 
     val accountService: AccountService = retrofit.create(AccountService::class.java)
+    val contestService: ContestService = retrofit.create(ContestService::class.java)
 }
