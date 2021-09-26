@@ -10,5 +10,5 @@
     <string name="content">내용</string>
     <string name="title">제목</string>
     <string name="chose_contest_date">대회 날짜 선택</string>
-    <string name="add_contest">대회 등록하기</string>
+    <string name="create_contest">대회 등록하기</string>
 </resources>

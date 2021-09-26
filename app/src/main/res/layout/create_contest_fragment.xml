@@ -8,17 +8,17 @@
         android:layout_height="match_parent"
         android:focusable="true"
         android:focusableInTouchMode="true"
-        tools:context=".fragment.AddContestFragment">
+        tools:context=".fragment.CreateContestFragment">
 
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btn_confirm_add_contest"
+            android:id="@+id/btn_confirm_create_contest"
             style="@style/Widget.AppCompat.Button.Main"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/layout_margin"
             android:layout_marginEnd="@dimen/layout_margin"
             android:layout_marginBottom="50dp"
-            android:text="@string/add_contest"
+            android:text="@string/create_contest"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
@@ -31,7 +31,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/btn_close_add_contest"
+            app:layout_constraintTop_toBottomOf="@+id/btn_close_create_contest"
             tools:ignore="SpeakableTextPresentCheck">
 
             <LinearLayout
@@ -47,7 +47,7 @@
                     android:layout_marginEnd="@dimen/layout_margin">
 
                     <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/et_date_add_contest"
+                        android:id="@+id/et_date_create_contest"
                         style="@style/Widget.AppCompat.EditText.BaseEditText"
                         android:focusableInTouchMode="false"
                         android:layout_width="match_parent"
@@ -65,7 +65,7 @@
                     android:layout_marginEnd="@dimen/layout_margin">
 
                     <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/et_cash_add_contest"
+                        android:id="@+id/et_prize_create_contest"
                         style="@style/Widget.AppCompat.EditText.BaseEditText"
                         android:inputType="number"
                         android:layout_width="match_parent"
@@ -93,7 +93,7 @@
                     android:layout_marginEnd="@dimen/layout_margin">
 
                     <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/et_title_add_contest"
+                        android:id="@+id/et_title_create_contest"
                         style="@style/Widget.AppCompat.EditText.BaseEditText"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -109,7 +109,7 @@
                     android:layout_height="400dp">
 
                     <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/et_content_add_contest"
+                        android:id="@+id/et_content_create_contest"
                         android:gravity="top"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
@@ -123,7 +123,7 @@
         </androidx.core.widget.NestedScrollView>
 
         <ImageButton
-            android:id="@+id/btn_close_add_contest"
+            android:id="@+id/btn_close_create_contest"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
