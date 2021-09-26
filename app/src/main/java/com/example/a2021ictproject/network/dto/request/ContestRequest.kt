@@ -6,6 +6,6 @@ import java.util.*
 data class ContestRequest(
     val title: String,
     val content: String,
-    val dueDate: Timestamp,
+    val dueDate: Long,
     val prize: Int
 )
