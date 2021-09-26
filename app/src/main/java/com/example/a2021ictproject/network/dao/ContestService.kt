@@ -23,7 +23,7 @@ interface ContestService {
 
     /* 대회 생성 */
     @POST("/contest/create")
-    fun postAddContest(@Body contestRequest: ContestRequest): Call<String>
+    fun postCreateContest(@Body contestRequest: ContestRequest): Call<String>
 
     /* 대회 참여 조회 */
     @GET("/participant/{id}")
