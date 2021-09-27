@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="layout_margin">32dp</dimen>
-    <dimen name="sign_btn_margin_bottom">70dp</dimen>
+    <dimen name="sign_btn_margin_bottom">50dp</dimen>
+    <dimen name="back_btn_margin_start">24dp</dimen>
+    <dimen name="back_btn_margin_top">32dp</dimen>
 </resources>
