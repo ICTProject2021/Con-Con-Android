@@ -8,7 +8,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 import java.util.*
 
 object RetrofitInstance {
-    private const val BASE_URL = ""
+    private const val BASE_URL = "http://1234/"
 
     private val gson = Gson().newBuilder().create()
 

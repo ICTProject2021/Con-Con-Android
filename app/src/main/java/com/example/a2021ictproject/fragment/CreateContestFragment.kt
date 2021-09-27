@@ -57,7 +57,20 @@ class CreateContestFragment : Fragment() {
         binding.btnCloseCreateContest.setOnClickListener { navigateToMain() }
 
         binding.btnConfirmCreateContest.setOnClickListener {
-            viewModel.postCreateContest(getCreateContest())
+            /* 에러 메세지 처리 */
+            val errorMsg: String? = when {
+                binding.etDateCreateContest.text.isNullOrBlank() -> "대회 날짜를"
+                binding.etPrizeCreateContest.text.isNullOrBlank() -> "우승 상금을"
+                binding.etTitleCreateContest.text.isNullOrBlank() -> "제목을"
+                binding.etContentCreateContest.text.isNullOrBlank() -> "내용을"
+                else -> null
+            }
+
+            if (errorMsg != null) {
+                Toast.makeText(requireContext(), "$errorMsg 입력해주세요.", Toast.LENGTH_SHORT).show()
+            } else {
+                viewModel.postCreateContest(getCreateContest())
+            }
         }
     }
 
@@ -65,7 +78,7 @@ class CreateContestFragment : Fragment() {
         viewModel.postCreateContestRes.observe(viewLifecycleOwner, {
             when (it?.code) {
                 null -> {
-                    Toast.makeText(requireContext(), "서버 통신에 실패했습니다.", Toast.LENGTH_SHORT)
+                    Toast.makeText(requireContext(), "서버 통신에 실패했습니다.", Toast.LENGTH_SHORT).show()
                 }
 
                 in 200..299 -> {
@@ -73,7 +86,7 @@ class CreateContestFragment : Fragment() {
                 }
 
                 else -> {
-                    Toast.makeText(requireContext(), "대회 등록에 실패했습니다.", Toast.LENGTH_SHORT)
+                    Toast.makeText(requireContext(), "대회 등록에 실패했습니다.", Toast.LENGTH_SHORT).show()
                 }
             }
         })
