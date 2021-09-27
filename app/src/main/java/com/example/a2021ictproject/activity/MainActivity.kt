@@ -2,6 +2,7 @@ package com.example.a2021ictproject.activity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.navigation.Navigation
 import com.example.a2021ictproject.R
 import com.example.a2021ictproject.databinding.ActivityMainBinding
 
