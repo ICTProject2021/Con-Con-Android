@@ -4,7 +4,7 @@ import java.sql.Timestamp
 
 data class ContestDetail(
     val title: String,
-    val context: String,
+    val content: String,
     val duedate: Long,
     val host: String
 )

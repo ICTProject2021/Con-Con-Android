@@ -19,7 +19,7 @@ interface ContestService {
 
     /* 대회 세부 내용 조회 */
     @GET("/contest/{id}")
-    fun getContestDetail(@Path("id") id: String): Call<ContestDetail>
+    fun getContestDetail(@Path("id") id: Int): Call<ContestDetail>
 
     /* 대회 생성 */
     @POST("/contest/create")
