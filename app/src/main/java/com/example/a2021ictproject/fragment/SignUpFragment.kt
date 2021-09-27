@@ -9,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.constraintlayout.motion.widget.MotionLayout
+import androidx.core.widget.addTextChangedListener
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.viewModels
 import androidx.navigation.NavController
@@ -56,68 +57,54 @@ class SignUpFragment : Fragment() {
             val nickname = binding.etNicknameSignUp.text.toString().trim()
 
             if (id.isBlank() || password.isBlank() || phoneNumber.isBlank() || nickname.isBlank()) {
-                Toast.makeText(requireContext(), "정보를 다시 입력해주세요.", Toast.LENGTH_LONG).show()
+                Toast.makeText(requireContext(), "빈칸을 입력해주세요.", Toast.LENGTH_LONG).show()
             } else {
                 viewModel.postSignUp(getSignUp())
             }
         }
 
-        /* TextWatcher - 공백 체크 */
-        binding.etIdSignUp.addTextChangedListener(object : TextWatcherAdapter() {
-            override fun afterTextChanged(s: Editable) {
-                when {
-                    binding.etIdSignUp.text.isNullOrEmpty() ->
-                        binding.etLayoutIdSignUp.error = "아이디를 입력해주세요."
-
-                    else -> {
-                        binding.etLayoutIdSignUp.error = null
-                    }
-                }
+        /* 공백 체크 */
+        binding.etIdSignUp.addTextChangedListener {
+            binding.etLayoutIdSignUp.error = when {
+                it.isNullOrEmpty() -> "아이디를 입력해주세요."
+                else -> null
             }
-        })
+        }
 
-        binding.etPasswordSignUp.addTextChangedListener(object : TextWatcherAdapter() {
-            override fun afterTextChanged(s: Editable) {
-                when {
-                    binding.etPasswordSignUp.text.isNullOrEmpty() ->
-                        binding.etLayoutPasswordSignUp.error = "비밀번호를 입력해주세요."
-
-                    else -> {
-                        binding.etLayoutPasswordSignUp.error = null
-                    }
-                }
+        binding.etPasswordSignUp.addTextChangedListener {
+            binding.etLayoutPasswordSignUp.error = when {
+                it.isNullOrEmpty() -> "비밀번호를 입력해주세요."
+                else -> null
             }
-        })
+        }
 
-        binding.etPhoneNumberSignUp.addTextChangedListener(object : TextWatcherAdapter() {
-            override fun afterTextChanged(s: Editable) {
-                when {
-                    binding.etPhoneNumberSignUp.text.isNullOrEmpty() ->
-                        binding.etLayoutPhoneNumberSignUp.error = "휴대폰 번호를 입력해주세요."
-
-                    else -> {
-                        binding.etLayoutPhoneNumberSignUp.error = null
-                    }
-                }
+        binding.etPhoneNumberSignUp.addTextChangedListener {
+            binding.etLayoutPhoneNumberSignUp.error = when {
+                it.isNullOrEmpty() -> "휴대폰 번호를 입력해주세요."
+                else -> null
             }
-        })
+        }
 
-        binding.etNicknameSignUp.addTextChangedListener(object : TextWatcherAdapter() {
-            override fun afterTextChanged(s: Editable) {
-                when {
-                    binding.etNicknameSignUp.text.isNullOrEmpty() ->
-                        binding.etLayoutNicknameSignUp.error = "닉네임을 입력해주세요."
-
-                    else -> {
-                        binding.etLayoutNicknameSignUp.error = null
-                    }
-                }
+        binding.etNicknameSignUp.addTextChangedListener {
+            binding.etLayoutNicknameSignUp.error = when {
+                it.isNullOrEmpty() -> "닉네임을 입력해주세요."
+                else -> null
             }
-        })
+        }
     }
 
     private fun observe() {
-
+        viewModel.postSignUpRes.observe(viewLifecycleOwner, {
+            when (it?.code) {
+                null ->
+                    Toast.makeText(requireContext(), getString(R.string.fail_server), Toast.LENGTH_SHORT).show()
+                in 200..299 -> {
+                    navigateToMain()
+                }
+                else ->
+                    Toast.makeText(requireContext(), "회원가입에 실패했습니다.Z", Toast.LENGTH_SHORT).show()
+            }
+        })
     }
 
     private fun getSignUp(): SignUpRequest =
