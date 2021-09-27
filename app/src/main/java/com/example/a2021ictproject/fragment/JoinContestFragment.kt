@@ -9,10 +9,10 @@ import android.view.ViewGroup
 import com.example.a2021ictproject.R
 import com.example.a2021ictproject.viewmodel.CommentViewModel
 
-class CommentFragment : Fragment() {
+class JoinContestFragment : Fragment() {
 
     companion object {
-        fun newInstance() = CommentFragment()
+        fun newInstance() = JoinContestFragment()
     }
 
     private lateinit var viewModel: CommentViewModel
@@ -21,7 +21,7 @@ class CommentFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.comment_fragment, container, false)
+        return inflater.inflate(R.layout.join_contest_fragment, container, false)
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
