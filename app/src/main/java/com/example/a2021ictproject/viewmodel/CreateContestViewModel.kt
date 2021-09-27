@@ -27,12 +27,12 @@ class CreateContestViewModel : ViewModel() {
         contestService.postCreateContest(contestRequest).enqueue(
             object : Callback<String> {
                 override fun onResponse(call: Call<String>, response: Response<String>) {
-                    Log.d("createContest", "${response.code()}: ${response.body()}")
+                    Log.d("postCreateContest", "${response.code()}: ${response.body()}")
                     postCreateContestRes.postValue(Res(response.code(), response.body().toString()))
                 }
 
                 override fun onFailure(call: Call<String>, t: Throwable) {
-                    Log.d("createContest", t.message.toString())
+                    Log.d("postCreateContest", t.message.toString())
                     postCreateContestRes.postValue(null)
                 }
             }
