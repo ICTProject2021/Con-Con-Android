@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.viewModels
 import androidx.navigation.NavController
@@ -48,13 +49,22 @@ class ContestDetailFragment : Fragment() {
 
     private fun observe() {
         viewModel.getContestDetailRes.observe(viewLifecycleOwner, {
-            val data: ContestDetail = it!!.result
-            val date = "시작 날짜 ~ ${viewModel.longToDateAsString(data.duedate)}"
+            when (it?.code) {
+                null ->
+                    Toast.makeText(requireContext(), "서버 통신에 실패했습니다.", Toast.LENGTH_SHORT).show()
+                in 200..299 -> {
+                    val data: ContestDetail = it!!.result
+                    val date = "시작 날짜 ~ ${viewModel.longToDateAsString(data.duedate)}"
 
-            binding.tvTitleContestDetail.text = data.title
-            binding.tvContentContestDetail.text = data.content
-            binding.tvDateContestDetail.text = date
-            binding.tvHostContestDetail.text = data.host
+                    binding.tvTitleContestDetail.text = data.title
+                    binding.tvContentContestDetail.text = data.content
+                    binding.tvDateContestDetail.text = date
+                    binding.tvHostContestDetail.text = data.host
+                }
+                else -> {
+                    Toast.makeText(requireContext(), "아무튼 실패했어용~~~", Toast.LENGTH_SHORT).show()
+                }
+            }
         })
     }
 
