@@ -12,4 +12,5 @@
     <string name="chose_contest_date">대회 날짜 선택</string>
     <string name="create_contest">대회 등록하기</string>
     <string name="join_contest">대회 참가하기</string>
+    <string name="fail_server">서버 통신에 실패했습니다.</string>
 </resources>

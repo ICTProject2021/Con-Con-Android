@@ -51,7 +51,7 @@ class ContestDetailFragment : Fragment() {
         viewModel.getContestDetailRes.observe(viewLifecycleOwner, {
             when (it?.code) {
                 null ->
-                    Toast.makeText(requireContext(), "서버 통신에 실패했습니다.", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(requireContext(), getString(R.string.fail_server), Toast.LENGTH_SHORT).show()
                 in 200..299 -> {
                     val data: ContestDetail = it!!.result
                     val date = "시작 날짜 ~ ${viewModel.longToDateAsString(data.duedate)}"

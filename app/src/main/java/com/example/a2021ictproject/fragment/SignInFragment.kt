@@ -9,6 +9,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.widget.addTextChangedListener
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.viewModels
 import androidx.navigation.NavController
@@ -55,22 +56,25 @@ class SignInFragment : Fragment() {
             if (id.isBlank() || password.isBlank()) {
                 Toast.makeText(requireContext(), "빈칸을 입력해주세요.", Toast.LENGTH_LONG).show()
             } else {
-                viewModel.signIn(getSignIn())
+                viewModel.postSignIn(getSignIn())
             }
         }
 
         /* TextWatcher */
-        binding.etIdSignIn.addTextChangedListener(object : TextWatcherAdapter() {
-            override fun afterTextChanged(s: Editable) {
-                binding.etLayoutIdSignIn.error = viewModel.isValidId(binding.etIdSignIn.text.toString())
+        binding.etIdSignIn.addTextChangedListener {
+            binding.etLayoutIdSignIn.error = when {
+                it.isNullOrBlank() -> "아이디를 입력해주세요."
+                else -> null
             }
-        })
+        }
 
-        binding.etPasswordSignIn.addTextChangedListener(object : TextWatcherAdapter() {
-            override fun afterTextChanged(s: Editable) {
-                binding.etLayoutPasswordSignIn.error = viewModel.isValidPassword(binding.etPasswordSignIn.text.toString())
+        binding.etPasswordSignIn.addTextChangedListener {
+            binding.etLayoutPasswordSignIn.error = when {
+                it.isNullOrBlank() -> "비밀번호를 입력해주세요."
+                else -> null
             }
-        })
+        }
+
     }
 
     private fun getSignIn(): SignInRequest =
@@ -80,7 +84,9 @@ class SignInFragment : Fragment() {
         )
 
     private fun observe() {
-
+        viewModel.postSignInRes.observe(viewLifecycleOwner, {
+            
+        })
     }
 
     private fun navigateToIntro() {
