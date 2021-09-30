@@ -7,4 +7,9 @@
     <string name="password_check">비밀번호 확인</string>
     <string name="phone_number">휴대폰 번호</string>
     <string name="nickname">닉네임</string>
+    <string name="content">내용</string>
+    <string name="title">제목</string>
+    <string name="chose_contest_date">대회 날짜 선택</string>
+    <string name="create_contest">대회 등록하기</string>
+    <string name="join_contest">대회 참가하기</string>
 </resources>

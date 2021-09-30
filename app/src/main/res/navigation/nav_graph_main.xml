@@ -11,8 +11,8 @@
         android:label="main_fragment"
         tools:layout="@layout/main_fragment" >
         <action
-            android:id="@+id/action_mainFragment_to_addContestFragment"
-            app:destination="@id/addContestFragment" />
+            android:id="@+id/action_mainFragment_to_createContestFragment"
+            app:destination="@id/createContestFragment" />
         <action
             android:id="@+id/action_mainFragment_to_contestDetailFragment"
             app:destination="@id/contestDetailFragment" />
@@ -22,12 +22,12 @@
 
     </fragment>
     <fragment
-        android:id="@+id/addContestFragment"
-        android:name="com.example.a2021ictproject.fragment.AddContestFragment"
-        android:label="add_contest_fragment"
-        tools:layout="@layout/add_contest_fragment" >
+        android:id="@+id/createContestFragment"
+        android:name="com.example.a2021ictproject.fragment.CreateContestFragment"
+        android:label="create_contest_fragment"
+        tools:layout="@layout/create_contest_fragment">
         <action
-            android:id="@+id/action_addContestFragment_to_mainFragment"
+            android:id="@+id/action_createContestFragment_to_mainFragment"
             app:destination="@id/mainFragment" />
     </fragment>
     <fragment
@@ -52,12 +52,12 @@
             app:destination="@id/profileFragment" />
     </fragment>
     <fragment
-        android:id="@+id/commentFragment"
-        android:name="com.example.a2021ictproject.fragment.CommentFragment"
-        android:label="comment_fragment"
-        tools:layout="@layout/comment_fragment" >
+        android:id="@+id/joinContestFragment"
+        android:name="com.example.a2021ictproject.fragment.JoinContestFragment"
+        android:label="join_contest_fragment"
+        tools:layout="@layout/join_contest_fragment">
         <action
-            android:id="@+id/action_commentFragment_to_contestDetailFragment"
+            android:id="@+id/action_joinContestFragment_to_contestDetailFragment"
             app:destination="@id/contestDetailFragment" />
     </fragment>
     <fragment
@@ -69,7 +69,7 @@
             android:id="@+id/action_contestDetailFragment_to_mainFragment"
             app:destination="@id/mainFragment" />
         <action
-            android:id="@+id/action_contestDetailFragment_to_commentFragment"
-            app:destination="@id/commentFragment" />
+            android:id="@+id/action_contestDetailFragment_to_joinContestFragment"
+            app:destination="@id/joinContestFragment" />
     </fragment>
 </navigation>

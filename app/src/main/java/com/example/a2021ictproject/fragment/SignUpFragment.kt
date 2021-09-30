@@ -50,10 +50,10 @@ class SignUpFragment : Fragment() {
         }
 
         binding.btnSignUp.setOnClickListener {
-            val id = binding.etIdSignUp.text.toString()
-            val password = binding.etPasswordSignUp.text.toString()
-            val phoneNumber = binding.etPhoneNumberSignUp.text.toString()
-            val nickname = binding.etNicknameSignUp.text.toString()
+            val id = binding.etIdSignUp.text.toString().trim()
+            val password = binding.etPasswordSignUp.text.toString().trim()
+            val phoneNumber = binding.etPhoneNumberSignUp.text.toString().trim()
+            val nickname = binding.etNicknameSignUp.text.toString().trim()
 
             if (id.isBlank() || password.isBlank() || phoneNumber.isBlank() || nickname.isBlank()) {
                 Toast.makeText(requireContext(), "정보를 다시 입력해주세요.", Toast.LENGTH_LONG).show()

@@ -1,6 +1,6 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Theme.2021IctProject" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+    <style name="Theme.2021IctProject" parent="Theme.MaterialComponents.Light.NoActionBar">
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/purple_500</item>
         <item name="colorPrimaryVariant">@color/purple_700</item>
@@ -45,6 +45,19 @@
         <item name="android:textSize">15sp</item>
     </style>
 
+    <style name="Widget.AppCompat.EditText.ContentEditText">
+        <item name="hintEnabled">false</item>
+        <!-- line -->
+        <item name="android:state_multiline">true</item>
+        <!-- font padding -->
+        <item name="android:includeFontPadding">true</item>
+        <item name="android:paddingStart">20dp</item>
+        <item name="android:paddingEnd">20dp</item>
+        <!-- font -->
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textSize">15sp</item>
+    </style>
+
     <!-- TextView -->
     <style name="Base.Widget.AppCompat.TextView.Bold">
         <item name="android:textStyle">bold</item>
@@ -69,4 +82,5 @@
         <item name="android:elevation">12dp</item>
         <item name="borderWidth">0dp</item>
     </style>
+
 </resources>

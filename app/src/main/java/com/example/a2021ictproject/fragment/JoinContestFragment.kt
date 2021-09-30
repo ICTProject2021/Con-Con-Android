@@ -7,26 +7,26 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.a2021ictproject.R
-import com.example.a2021ictproject.viewmodel.AddContestViewModel
+import com.example.a2021ictproject.viewmodel.CommentViewModel
 
-class AddContestFragment : Fragment() {
+class JoinContestFragment : Fragment() {
 
     companion object {
-        fun newInstance() = AddContestFragment()
+        fun newInstance() = JoinContestFragment()
     }
 
-    private lateinit var viewModel: AddContestViewModel
+    private lateinit var viewModel: CommentViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.add_contest_fragment, container, false)
+        return inflater.inflate(R.layout.join_contest_fragment, container, false)
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(AddContestViewModel::class.java)
+        viewModel = ViewModelProvider(this).get(CommentViewModel::class.java)
         // TODO: Use the ViewModel
     }
 
