@@ -7,6 +7,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.a2021ictproject.R
+import com.example.a2021ictproject.databinding.MainFragmentBinding
+import com.example.a2021ictproject.databinding.ProfileFragmentBinding
 import com.example.a2021ictproject.viewmodel.ProfileViewModel
 
 class ProfileFragment : Fragment() {
@@ -16,12 +18,14 @@ class ProfileFragment : Fragment() {
     }
 
     private lateinit var viewModel: ProfileViewModel
+    private lateinit var binding: ProfileFragmentBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.profile_fragment, container, false)
+        binding = ProfileFragmentBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
