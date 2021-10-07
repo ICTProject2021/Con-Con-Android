@@ -3,16 +3,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <data>
-        <variable
-            name="MainViewModel"
-            type="com.example.a2021ictproject.viewmodel.MainViewModel" />
-
-        <variable
-            name="id"
-            type="Integer" />
-    </data>
-
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -24,7 +14,6 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
             android:layout_marginTop="20dp"
-            android:text="@{() -> MainViewModel.getTitle(id)}"
             tools:text="대소고 코딩 테스트"
             android:textColor="@color/black"
             android:textSize="18sp"
@@ -37,7 +26,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
-            android:text="@{() -> MainViewModel.getDuedate(id)}"
             tools:text="마감 200일 전"
             android:textColor="@color/black"
             android:textSize="15sp"
@@ -49,7 +37,6 @@
             android:layout_width="34dp"
             android:layout_height="34dp"
             android:layout_marginVertical="18dp"
-            android:src="@{() -> MainViewModel.getProfile()}"
             tools:background="@color/black"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="@id/item_Deadline"
@@ -60,7 +47,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="15dp"
-            android:text="@{() -> MainViewModel.getNickName()}"
             tools:text="가나다123"
             android:textColor="@color/black"
             app:layout_constraintBottom_toBottomOf="@id/item_profile"

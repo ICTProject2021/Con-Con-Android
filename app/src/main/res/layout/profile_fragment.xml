@@ -19,7 +19,7 @@
             android:layout_width="90dp"
             android:layout_height="90dp"
             android:layout_marginTop="50dp"
-            android:src="@{() -> ProfileViewModel.getProfile()}"
+
             tools:background="#c4c4c4"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -117,3 +117,5 @@
 
 
 </layout>
+
+<!--    android:src="@{() -> ProfileViewModel.getProfile()}"-->
