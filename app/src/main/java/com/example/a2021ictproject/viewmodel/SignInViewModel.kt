@@ -19,7 +19,8 @@ class SignInViewModel : ViewModel() {
     val postSignInRes = MutableLiveData<Res<Token>?>()
 
     fun postSignIn(signInRequest: SignInRequest) {
-        accountService.postSignIn(signInRequest).enqueue(
+        accountService.
+        postSignIn(signInRequest).enqueue(
             object : Callback<Token> {
                 override fun onResponse(call: Call<Token>, response: Response<Token>) {
                     Log.d("postSignIn", "${response.code()}: ${response.body()}")
