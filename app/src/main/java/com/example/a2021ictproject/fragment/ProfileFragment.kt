@@ -6,9 +6,12 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.Observer
+import com.bumptech.glide.Glide
 import com.example.a2021ictproject.R
 import com.example.a2021ictproject.databinding.MainFragmentBinding
 import com.example.a2021ictproject.databinding.ProfileFragmentBinding
+import com.example.a2021ictproject.network.dto.response.Profile
 import com.example.a2021ictproject.viewmodel.ProfileViewModel
 
 class ProfileFragment : Fragment() {
@@ -31,6 +34,13 @@ class ProfileFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProvider(this).get(ProfileViewModel::class.java)
+        viewModel.callApi()
+        viewModel.getProfileLiveDataObserver().observe(viewLifecycleOwner, Observer<Profile> {
+            Glide.with(binding.profileImg).load(it.profile).into(binding.profileImg)
+            binding.cash.text = it.cash.toString()
+            binding.profileNickname.text = it.nickname.toString()
+
+        })
         // TODO: Use the ViewModel
     }
 

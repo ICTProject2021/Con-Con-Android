@@ -19,7 +19,6 @@
             android:layout_width="90dp"
             android:layout_height="90dp"
             android:layout_marginTop="50dp"
-
             tools:background="#c4c4c4"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -32,7 +31,6 @@
             android:layout_marginTop="15dp"
             android:textColor="@color/black"
             android:textSize="20sp"
-            android:text="@{() -> ProfileViewModel.getNickName()}"
             app:layout_constraintEnd_toEndOf="@id/profile_img"
             app:layout_constraintStart_toStartOf="@id/profile_img"
             app:layout_constraintTop_toBottomOf="@id/profile_img"
@@ -66,7 +64,6 @@
                 android:textColor="@color/black"
                 android:textSize="25sp"
                 android:textStyle="bold"
-                android:text="@{() -> ProfileViewModel.getCash()}"
                 tools:text="10,000원" />
 
         </LinearLayout>
@@ -117,5 +114,3 @@
 
 
 </layout>
-
-<!--    android:src="@{() -> ProfileViewModel.getProfile()}"-->
