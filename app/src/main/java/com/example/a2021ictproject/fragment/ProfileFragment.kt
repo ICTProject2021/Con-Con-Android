@@ -7,6 +7,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.Observer
+import androidx.navigation.NavController
+import androidx.navigation.Navigation
+import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
 import com.example.a2021ictproject.R
 import com.example.a2021ictproject.databinding.MainFragmentBinding
@@ -15,6 +18,8 @@ import com.example.a2021ictproject.network.dto.response.Profile
 import com.example.a2021ictproject.viewmodel.ProfileViewModel
 
 class ProfileFragment : Fragment() {
+
+    private val navController: NavController by lazy { findNavController() }
 
     companion object {
         fun newInstance() = ProfileFragment()
@@ -38,10 +43,16 @@ class ProfileFragment : Fragment() {
         viewModel.getProfileLiveDataObserver().observe(viewLifecycleOwner, Observer<Profile> {
             Glide.with(binding.profileImg).load(it.profile).into(binding.profileImg)
             binding.cash.text = it.cash.toString()
-            binding.profileNickname.text = it.nickname.toString()
-
+            binding.profileNickname.text = it.nickname
         })
-        // TODO: Use the ViewModel
+
+        binding.withdraw.setOnClickListener {
+            navController.navigate(R.id.action_profileFragment_to_chargeCashFragment)
+        }
+
+        binding.participationContest.setOnClickListener {
+            navController.navigate(R.id.action_profileFragment_to_mainFragment)
+        }
     }
 
 }
