@@ -2,6 +2,7 @@ package com.example.a2021ictproject.activity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import androidx.navigation.NavController
 import androidx.navigation.NavHostController
 import androidx.navigation.Navigation
@@ -11,6 +12,7 @@ import androidx.navigation.ui.NavigationUI
 import androidx.navigation.ui.setupWithNavController
 import com.example.a2021ictproject.R
 import com.example.a2021ictproject.databinding.ActivityMainBinding
+import kotlin.math.log
 
 class MainActivity : AppCompatActivity() {
 
@@ -30,5 +32,25 @@ class MainActivity : AppCompatActivity() {
         val navController = navHostFragment.navController
 
         binding.bottomNavigationView.setupWithNavController(navController)
+
+        binding.fab.setOnClickListener {
+            val currentFragment =
+                NavHostFragment.findNavController(navHostFragment).currentDestination!!.id
+            if (currentFragment == R.id.mainFragment) {
+                navController.navigate(R.id.action_mainFragment_to_createContestFragment)
+                binding.bottomAppBar.visibility = View.GONE
+                binding.fab.visibility = View.GONE
+            } else if (currentFragment == R.id.profileFragment) {
+                navController.navigate(R.id.action_profileFragment_to_createContestFragment)
+                binding.bottomAppBar.visibility = View.GONE
+                binding.fab.visibility = View.GONE
+            }
+
+        }
+    }
+
+    fun visibility() {
+        binding.fab.visibility = View.VISIBLE
+        binding.bottomAppBar.visibility = View.VISIBLE
     }
 }

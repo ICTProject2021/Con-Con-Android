@@ -12,6 +12,7 @@ import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.a2021ictproject.Adapter.MainRecyclerViewAdapter
 import com.example.a2021ictproject.R
+import com.example.a2021ictproject.activity.MainActivity
 import com.example.a2021ictproject.databinding.MainFragmentBinding
 import com.example.a2021ictproject.network.dto.response.Contest
 import com.example.a2021ictproject.viewmodel.MainViewModel
@@ -36,6 +37,11 @@ class MainFragment : Fragment() {
 
         initRecyclerView()
         createData()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        (activity as MainActivity).visibility()
     }
 
     private fun initRecyclerView() {
