@@ -1,15 +1,11 @@
 package com.example.a2021ictproject.application
 
 import android.app.Application
-import com.example.a2021ictproject.data.Pref
+import com.example.a2021ictproject.utils.PreferenceUtils
 
 class App : Application() {
-    companion object {
-        lateinit var pref: Pref
-    }
-
     override fun onCreate() {
-        pref = Pref(applicationContext)
+        PreferenceUtils.init(applicationContext)
         super.onCreate()
     }
 }

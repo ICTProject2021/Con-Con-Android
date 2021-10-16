@@ -11,9 +11,9 @@ import retrofit2.converter.gson.GsonConverterFactory
 import java.util.*
 
 object RetrofitInstance {
-    private const val BASE_URL = "http://1234/"
+    private const val BASE_URL = "http://10.80.161.222:3000/"
 
-    private val gson = Gson().newBuilder().create()
+    private val gson = Gson().newBuilder().setLenient().create()
     private val okHttpClient: OkHttpClient =
         OkHttpClient().newBuilder().addInterceptor(AuthInterceptor()).build()
 
@@ -21,6 +21,7 @@ object RetrofitInstance {
         Retrofit.Builder()
             .baseUrl(BASE_URL)
             .addConverterFactory(GsonConverterFactory.create(gson))
+            .client(okHttpClient)
             .build()
     }
 
