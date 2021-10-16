@@ -83,4 +83,7 @@
         <item name="borderWidth">0dp</item>
     </style>
 
+    <style name="Widget.AppCompat.Button.IdCheck">
+    </style>
+
 </resources>

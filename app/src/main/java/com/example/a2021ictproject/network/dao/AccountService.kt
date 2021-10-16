@@ -1,5 +1,6 @@
 package com.example.a2021ictproject.network.dao
 
+import com.example.a2021ictproject.network.dto.request.IdRequest
 import com.example.a2021ictproject.network.dto.request.SignInRequest
 import com.example.a2021ictproject.network.dto.request.SignUpRequest
 import com.example.a2021ictproject.network.dto.response.Profile
@@ -10,15 +11,17 @@ import retrofit2.http.GET
 import retrofit2.http.POST
 
 interface AccountService {
-    /* 틀린 부분이 있으면 수정해주세요 */
-
     /* 로그인 */
     @POST("/signin")
-    fun postSignIn(@Body signInRequest: SignInRequest): Call<Token>
+    fun postSignIn(@Body signInRequest: SignInRequest): Call<String>
 
     /* 회원가입 */
     @POST("/signup")
-    fun postSignUp(@Body signUpRequest: SignUpRequest): Call<Token>
+    fun postSignUp(@Body signUpRequest: SignUpRequest): Call<String>
+
+    /* 아이디 중복체크 */
+    @POST("check")
+    fun postCheckId(@Body id: IdRequest): Call<String>
 
     /* 프로필 조회 */
     @GET("/profile")

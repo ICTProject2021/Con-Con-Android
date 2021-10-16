@@ -1,8 +1,10 @@
 package com.example.a2021ictproject.fragment
 
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.text.Editable
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -18,6 +20,7 @@ import com.example.a2021ictproject.R
 import com.example.a2021ictproject.activity.MainActivity
 import com.example.a2021ictproject.databinding.SignUpFragmentBinding
 import com.example.a2021ictproject.network.dto.request.SignUpRequest
+import com.example.a2021ictproject.utils.PreferenceUtils
 import com.example.a2021ictproject.viewmodel.SignUpViewModel
 import com.google.android.material.internal.TextWatcherAdapter
 
@@ -36,6 +39,8 @@ class SignUpFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = DataBindingUtil.inflate(inflater, R.layout.sign_up_fragment, container, false)
+        binding.lifecycleOwner = viewLifecycleOwner
+        binding.vm = viewModel
         return binding.root
     }
 
@@ -48,27 +53,6 @@ class SignUpFragment : Fragment() {
         /* onClick */
         binding.fabCloseSignUp.setOnClickListener {
             navigateToIntro()
-        }
-
-        binding.btnSignUp.setOnClickListener {
-            val id = binding.etIdSignUp.text.toString().trim()
-            val password = binding.etPasswordSignUp.text.toString().trim()
-            val phoneNumber = binding.etPhoneNumberSignUp.text.toString().trim()
-            val nickname = binding.etNicknameSignUp.text.toString().trim()
-
-            if (id.isBlank() || password.isBlank() || phoneNumber.isBlank() || nickname.isBlank()) {
-                Toast.makeText(requireContext(), "빈칸을 입력해주세요.", Toast.LENGTH_LONG).show()
-            } else {
-                viewModel.postSignUp(getSignUp())
-            }
-        }
-
-        /* 공백 체크 */
-        binding.etIdSignUp.addTextChangedListener {
-            binding.etLayoutIdSignUp.error = when {
-                it.isNullOrEmpty() -> "아이디를 입력해주세요."
-                else -> null
-            }
         }
 
         binding.etPasswordSignUp.addTextChangedListener {
@@ -93,27 +77,63 @@ class SignUpFragment : Fragment() {
         }
     }
 
-    private fun observe() {
-        viewModel.postSignUpRes.observe(viewLifecycleOwner, {
-            when (it?.code) {
+    private fun observe() = with(viewModel) {
+        id.observe(viewLifecycleOwner) {
+            idErr.value = when(it.isEmpty()) {
+                true -> "아이디를 입력해주세요."
+                false -> ""
+            }
+            signUpBtnEnabled()
+        }
+
+        password.observe(viewLifecycleOwner) {
+            pwErr.value = when(it.isEmpty()) {
+                true -> "비밀번호를 입력해주세요."
+                false -> ""
+            }
+            signUpBtnEnabled()
+        }
+
+        phoneNumber.observe(viewLifecycleOwner) {
+            phoneErr.value = when(it.isEmpty()) {
+                true -> "휴대폰 번호를 입력해주세요."
+                false -> ""
+            }
+            signUpBtnEnabled()
+        }
+
+        nickname.observe(viewLifecycleOwner) {
+            nicknameErr.value = when(it.isEmpty()) {
+                true -> "닉네임을 입력해주세요."
+                false -> ""
+            }
+            signUpBtnEnabled()
+        }
+
+        postCheckIdRes.observe(viewLifecycleOwner) {
+            when (it) {
                 null ->
                     Toast.makeText(requireContext(), getString(R.string.fail_server), Toast.LENGTH_SHORT).show()
-                in 200..299 -> {
+
+                "available" -> idCheck.value = true
+
+                "exist" ->
+                    Toast.makeText(requireContext(), "중복된 아이디입니다.", Toast.LENGTH_SHORT).show()
+            }
+        }
+
+        postSignUpRes.observe(viewLifecycleOwner) {
+            when (it) {
+                null ->
+                    Toast.makeText(requireContext(), getString(R.string.fail_server), Toast.LENGTH_SHORT).show()
+
+                else -> {
+                    PreferenceUtils.token = it
                     navigateToMain()
                 }
-                else ->
-                    Toast.makeText(requireContext(), "회원가입에 실패했습니다.Z", Toast.LENGTH_SHORT).show()
             }
-        })
+        }
     }
-
-    private fun getSignUp(): SignUpRequest =
-        SignUpRequest(
-            binding.etIdSignUp.toString(),
-            binding.etPasswordSignUp.toString(),
-            binding.etPhoneNumberSignUp.toString(),
-            binding.etNicknameSignUp.toString()
-        )
 
     private fun navigateToMain() {
         startActivity(Intent(requireActivity(), MainActivity::class.java))

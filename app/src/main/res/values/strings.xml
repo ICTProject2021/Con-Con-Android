@@ -1,4 +1,7 @@
 <resources>
+    <string name="fail_server">서버 통신에 실패했습니다.</string>
+    <string name="error_input_info">정보를 입력해주세요,</string>
+
     <string name="app_name">2021IctProject</string>
     <string name="sign_in">로그인</string>
     <string name="password">비밀번호</string>
@@ -12,5 +15,7 @@
     <string name="chose_contest_date">대회 날짜 선택</string>
     <string name="create_contest">대회 등록하기</string>
     <string name="join_contest">대회 참가하기</string>
-    <string name="fail_server">서버 통신에 실패했습니다.</string>
+    <string name="duplicate_check">중복체크</string>
+    <string name="fail_sign_up">회원가입에 실패했습니다.</string>
+
 </resources>

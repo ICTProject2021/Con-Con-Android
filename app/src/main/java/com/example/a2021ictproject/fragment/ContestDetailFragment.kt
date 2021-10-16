@@ -27,6 +27,8 @@ class ContestDetailFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = DataBindingUtil.inflate(inflater, R.layout.contest_detail_fragment, container, false)
+        binding.lifecycleOwner = viewLifecycleOwner
+        binding.vm = viewModel
         return binding.root
     }
 
@@ -53,13 +55,13 @@ class ContestDetailFragment : Fragment() {
                 null ->
                     Toast.makeText(requireContext(), getString(R.string.fail_server), Toast.LENGTH_SHORT).show()
                 in 200..299 -> {
-                    val data: ContestDetail = it!!.result
-                    val date = "시작 날짜 ~ ${viewModel.longToDateAsString(data.duedate)}"
-
-                    binding.tvTitleContestDetail.text = data.title
-                    binding.tvContentContestDetail.text = data.content
-                    binding.tvDateContestDetail.text = date
-                    binding.tvHostContestDetail.text = data.host
+//                    val data: ContestDetail = it!!.result
+//                    val date = "시작 날짜 ~ ${viewModel.longToDateAsString(data.duedate)}"
+//
+//                    binding.tvTitleContestDetail.text = data.title
+//                    binding.tvContentContestDetail.text = data.content
+//                    binding.tvDateContestDetail.text = date
+//                    binding.tvHostContestDetail.text = data.host
                 }
                 else -> {
                     Toast.makeText(requireContext(), "아무튼 실패했어용~~~", Toast.LENGTH_SHORT).show()

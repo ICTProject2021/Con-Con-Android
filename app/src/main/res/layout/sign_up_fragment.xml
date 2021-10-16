@@ -3,6 +3,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <data>
+        <variable
+            name="vm"
+            type="com.example.a2021ictproject.viewmodel.SignUpViewModel" />
+    </data>
+
     <androidx.constraintlayout.motion.widget.MotionLayout
         android:id="@+id/motionLayout"
         android:layout_width="match_parent"
@@ -30,7 +36,6 @@
                 style="@style/Widget.MaterialComponents.FloatingActionButton.Main"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:clickable="true"
                 android:src="@drawable/ic_close"
                 app:layout_constraintBottom_toTopOf="@+id/et_layout_id_sign_up"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -39,13 +44,33 @@
                 app:layout_constraintVertical_bias="0.69"
                 tools:ignore="SpeakableTextPresentCheck" />
 
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_id_duplicate_check_sign_up"
+                setVisible="@{vm.id.length != 0 &amp;&amp; !vm.idCheck ? true : false}"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="22dp"
+                android:layout_weight="1"
+                android:background="@android:color/transparent"
+                android:elevation="1dp"
+                android:onClick="@{() -> vm.postCheckId()}"
+                android:text="@{vm.idErr.length() != 0 ? &quot;&quot; : @string/duplicate_check}"
+                android:textColor="@color/black"
+                android:textSize="13sp"
+
+                app:layout_constraintBottom_toBottomOf="@+id/et_layout_id_sign_up"
+                app:layout_constraintEnd_toEndOf="@+id/et_layout_id_sign_up"
+                app:layout_constraintTop_toTopOf="@+id/et_layout_id_sign_up" />
+
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/et_layout_id_sign_up"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.BaseInputLayout"
+                setError="@{vm.idErr}"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/layout_margin"
                 android:layout_marginEnd="@dimen/layout_margin"
+                android:layout_marginBottom="8dp"
                 android:focusable="true"
                 app:layout_constraintBottom_toTopOf="@+id/et_layout_password_sign_up"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -58,6 +83,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/id"
+                    android:includeFontPadding="true"
+                    android:paddingEnd="100dp"
+                    android:text="@={vm.id}"
                     tools:ignore="SpeakableTextPresentCheck" />
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -65,11 +93,12 @@
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/et_layout_nickname_sign_up"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.BaseInputLayout"
+                setError="@{vm.nicknameErr}"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/layout_margin"
                 android:layout_marginEnd="@dimen/layout_margin"
-                android:layout_marginBottom="16dp"
+                android:layout_marginBottom="24dp"
                 app:layout_constraintBottom_toTopOf="@+id/btn_sign_up"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent">
@@ -80,6 +109,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/nickname"
+                    android:text="@={vm.nickname}"
                     tools:ignore="SpeakableTextPresentCheck" />
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -87,10 +117,12 @@
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/et_layout_phone_number_sign_up"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.BaseInputLayout"
+                setError="@{vm.phoneErr}"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/layout_margin"
                 android:layout_marginEnd="@dimen/layout_margin"
+                android:layout_marginBottom="8dp"
                 app:layout_constraintBottom_toTopOf="@+id/et_layout_nickname_sign_up"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
@@ -102,6 +134,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/phone_number"
+                    android:inputType="number"
+                    android:maxLength="11"
+                    android:text="@={vm.phoneNumber}"
                     tools:ignore="SpeakableTextPresentCheck" />
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -109,10 +144,12 @@
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/et_layout_password_sign_up"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.BaseInputLayout"
+                setError="@{vm.pwErr}"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/layout_margin"
                 android:layout_marginEnd="@dimen/layout_margin"
+                android:layout_marginBottom="8dp"
                 app:layout_constraintBottom_toTopOf="@+id/et_layout_phone_number_sign_up"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
@@ -124,6 +161,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/password"
+                    android:inputType="textPassword"
+                    android:text="@={vm.password}"
                     tools:ignore="SpeakableTextPresentCheck" />
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -131,15 +170,29 @@
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/btn_sign_up"
                 style="@style/Widget.AppCompat.Button.Main"
+                android:enabled="@{vm.btnEnabled}"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/layout_margin"
                 android:layout_marginEnd="@dimen/layout_margin"
                 android:layout_marginBottom="@dimen/sign_btn_margin_bottom"
+                android:onClick="@{() -> vm.postSignUp()}"
                 android:text="@string/sign_up"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent" />
+
+            <ImageView
+                android:id="@+id/imageView3"
+                setVisible="@{vm.idCheck}"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="20dp"
+                app:layout_constraintBottom_toBottomOf="@+id/btn_id_duplicate_check_sign_up"
+                app:layout_constraintEnd_toEndOf="@+id/btn_id_duplicate_check_sign_up"
+                app:layout_constraintTop_toTopOf="@+id/btn_id_duplicate_check_sign_up"
+                app:srcCompat="@drawable/ic_check" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.constraintlayout.motion.widget.MotionLayout>

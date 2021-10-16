@@ -16,18 +16,17 @@ class SignInViewModel : ViewModel() {
 
     private val accountService: AccountService by lazy { RetrofitInstance.accountService }
 
-    val postSignInRes = MutableLiveData<Res<Token>?>()
+    val postSignInRes = MutableLiveData<Res<String>?>()
 
     fun postSignIn(signInRequest: SignInRequest) {
-        accountService.
-        postSignIn(signInRequest).enqueue(
-            object : Callback<Token> {
-                override fun onResponse(call: Call<Token>, response: Response<Token>) {
+        accountService.postSignIn(signInRequest).enqueue(
+            object : Callback<String> {
+                override fun onResponse(call: Call<String>, response: Response<String>) {
                     Log.d("postSignIn", "${response.code()}: ${response.body()}")
                     postSignInRes.postValue(Res(response.code(), response.body()!!))
                 }
 
-                override fun onFailure(call: Call<Token>, t: Throwable) {
+                override fun onFailure(call: Call<String>, t: Throwable) {
                     Log.d("postSignIn", t.message.toString())
                     postSignInRes.postValue(null)
                 }
