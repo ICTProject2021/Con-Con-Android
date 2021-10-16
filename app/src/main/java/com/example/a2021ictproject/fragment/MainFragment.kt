@@ -3,6 +3,7 @@ package com.example.a2021ictproject.fragment
 import android.app.Activity
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -17,9 +18,6 @@ import com.example.a2021ictproject.viewmodel.MainViewModel
 
 class MainFragment : Fragment() {
 
-    companion object {
-        fun newInstance() = MainFragment()
-    }
 
     private lateinit var viewModel: MainViewModel
     private lateinit var binding: MainFragmentBinding
@@ -33,12 +31,12 @@ class MainFragment : Fragment() {
         return binding.root
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
         initRecyclerView()
         createData()
     }
-
 
     private fun initRecyclerView() {
         binding.contestRecyclerView.apply {
@@ -49,19 +47,11 @@ class MainFragment : Fragment() {
     }
 
     private fun createData() {
-        viewModel = ViewModelProvider(this).get(MainViewModel::class.java)
+        viewModel = ViewModelProvider(requireActivity()).get(MainViewModel::class.java)
         viewModel.callApi()
-        viewModel.getContestLiveDataObserver().observe(viewLifecycleOwner, Observer<List<Contest>> {
-            try {
-                for (i in 0..it.size) {
-                    val list: ArrayList<Contest> = ArrayList<Contest>()
-                    list.add(it[i])
-                    recyclerViewAdapter.setData(list)
-                    recyclerViewAdapter.notifyDataSetChanged()
-                }
-            } catch (e: NullPointerException) {
-                e.printStackTrace()
-            }
+        viewModel.getContestLiveDataObserver().observe(viewLifecycleOwner, {
+            if (it != null)
+                recyclerViewAdapter.setData(it)
         })
 
     }

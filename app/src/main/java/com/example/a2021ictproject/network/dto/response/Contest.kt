@@ -5,6 +5,6 @@ data class Contest(
     val id: Int,
     val title: String,
     val dueDate: Long,
-    val profile: String,
+    val profilepicture: String,
     val host: String
 )

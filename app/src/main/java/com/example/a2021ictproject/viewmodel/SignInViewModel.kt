@@ -14,16 +14,25 @@ import retrofit2.Response
 
 class SignInViewModel : ViewModel() {
 
+    val id = MutableLiveData("")
+    val pw = MutableLiveData("")
+    val idErr = MutableLiveData("")
+    val pwErr = MutableLiveData("")
+
     private val accountService: AccountService by lazy { RetrofitInstance.accountService }
 
-    val postSignInRes = MutableLiveData<Res<String>?>()
+    val postSignInRes = MutableLiveData<String?>()
 
-    fun postSignIn(signInRequest: SignInRequest) {
-        accountService.postSignIn(signInRequest).enqueue(
+    fun postSignIn() {
+        val req = SignInRequest(id.value!!, pw.value!!)
+
+        accountService.postSignIn(req).enqueue(
             object : Callback<String> {
                 override fun onResponse(call: Call<String>, response: Response<String>) {
-                    Log.d("postSignIn", "${response.code()}: ${response.body()}")
-                    postSignInRes.postValue(Res(response.code(), response.body()!!))
+                    Log.d("postSignIn", "${response.code()}-${response.message()}: ${response.body()}")
+                    Log.d("postCheckId", response.raw().toString())
+
+                    if (response.isSuccessful) postSignInRes.postValue(response.message())
                 }
 
                 override fun onFailure(call: Call<String>, t: Throwable) {

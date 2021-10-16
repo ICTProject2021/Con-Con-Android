@@ -15,10 +15,12 @@ import com.example.a2021ictproject.network.dto.response.Contest
 
 class MainRecyclerViewAdapter() : RecyclerView.Adapter<MainRecyclerViewAdapter.ViewHolder>() {
 
-    private var dataList = ArrayList<Contest>()
+    private var dataList = mutableListOf<Contest>()
 
-    fun setData(data: ArrayList<Contest>) {
-        this.dataList = data
+    fun setData(data: List<Contest>) {
+        this.dataList.clear()
+        this.dataList.addAll(data)
+        notifyDataSetChanged()
     }
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
@@ -32,7 +34,7 @@ class MainRecyclerViewAdapter() : RecyclerView.Adapter<MainRecyclerViewAdapter.V
             dueLine.text = data.dueDate.toString()
             user.text = data.host
             Glide.with(profile)
-                .load(data.profile)
+                .load(data.profilepicture)
                 .into(profile)
         }
 
