@@ -20,7 +20,7 @@ interface AccountService {
     fun postSignUp(@Body signUpRequest: SignUpRequest): Call<String>
 
     /* 아이디 중복체크 */
-    @POST("check")
+    @POST("/check")
     fun postCheckId(@Body id: IdRequest): Call<String>
 
     /* 프로필 조회 */

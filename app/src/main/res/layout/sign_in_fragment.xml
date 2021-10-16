@@ -3,6 +3,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <data>
+        <variable
+            name="vm"
+            type="com.example.a2021ictproject.viewmodel.SignInViewModel" />
+    </data>
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -11,10 +17,12 @@
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/et_layout_id_sign_in"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.BaseInputLayout"
+            setError="@{vm.idErr}"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/layout_margin"
             android:layout_marginEnd="@dimen/layout_margin"
+            android:layout_marginBottom="8dp"
             android:inputType="textPersonName"
             android:minHeight="48dp"
             app:layout_constraintBottom_toTopOf="@+id/et_layout_password_sign_in"
@@ -26,21 +34,23 @@
                 style="@style/Widget.AppCompat.EditText.BaseEditText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/id" />
+                android:hint="@string/id"
+                android:text="@={vm.id}" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/et_layout_password_sign_in"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.BaseInputLayout"
+            setError="@{vm.pwErr}"
+
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/layout_margin"
             android:layout_marginEnd="@dimen/layout_margin"
-            android:layout_marginBottom="16dp"
+            android:layout_marginBottom="24dp"
             app:layout_constraintBottom_toTopOf="@+id/btn_sign_in"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
             tools:ignore="SpeakableTextPresentCheck">
 
@@ -51,12 +61,15 @@
                 android:layout_height="wrap_content"
                 android:hint="@string/password"
                 android:inputType="textPassword"
-                android:minHeight="48dp" />
+                android:minHeight="48dp"
+                android:text="@={vm.pw}" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btn_sign_in"
             style="@style/Widget.AppCompat.Button.Main"
+            android:onClick="@{() -> vm.postSignIn()}"
+            android:enabled="@{vm.id.length() != 0 &amp;&amp; vm.pw.length() != 0 ? true : false}"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/layout_margin"
@@ -67,28 +80,47 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 
-        <ImageView
+        <LinearLayout
             android:id="@+id/imageView"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            app:layout_constraintBottom_toBottomOf="@+id/fab_close_sign_in"
+            android:layout_marginBottom="100dp"
+            android:background="@drawable/sign_background"
+            android:gravity="center"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toTopOf="@+id/et_layout_id_sign_in"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:src="@tools:sample/backgrounds/scenic" />
+            tools:src="@tools:sample/backgrounds/scenic">
+
+            <TextView
+                style="@style/Base.Widget.AppCompat.TextView.Shadow"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="누구나 쉽게 참여하는\n대회 플랫폼"
+                android:textColor="@color/white"
+                android:textSize="25sp"
+                android:textStyle="bold" />
+
+            <ImageView
+                android:layout_width="@dimen/sign_logo_width"
+                android:layout_height="@dimen/sign_logo_height"
+                android:src="@drawable/logo" />
+        </LinearLayout>
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/fab_close_sign_in"
             style="@style/Widget.MaterialComponents.FloatingActionButton.Main"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="70dp"
             android:clickable="true"
             android:src="@drawable/ic_close"
             app:layout_constraintBottom_toTopOf="@+id/et_layout_id_sign_in"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.75"
             tools:ignore="SpeakableTextPresentCheck" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
