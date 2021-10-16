@@ -12,6 +12,7 @@ fun View.setVisible(isVisible: Boolean) {
     } else INVISIBLE
 }
 
+// TextInputLayout 에러 메세지를 변경함
 @BindingAdapter("setError")
 fun TextInputLayout.setError(errorMsg: String?) {
     this.error = errorMsg

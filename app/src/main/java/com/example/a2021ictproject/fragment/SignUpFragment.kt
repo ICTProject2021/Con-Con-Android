@@ -1,28 +1,22 @@
 package com.example.a2021ictproject.fragment
 
 import android.content.Intent
-import android.content.SharedPreferences
 import android.os.Bundle
-import android.text.Editable
-import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.constraintlayout.motion.widget.MotionLayout
-import androidx.core.widget.addTextChangedListener
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
 import com.example.a2021ictproject.R
 import com.example.a2021ictproject.activity.MainActivity
 import com.example.a2021ictproject.databinding.SignUpFragmentBinding
-import com.example.a2021ictproject.network.dto.request.SignUpRequest
 import com.example.a2021ictproject.utils.PreferenceUtils
 import com.example.a2021ictproject.viewmodel.SignUpViewModel
-import com.google.android.material.internal.TextWatcherAdapter
 
 class SignUpFragment : Fragment() {
 
@@ -54,33 +48,12 @@ class SignUpFragment : Fragment() {
         binding.fabCloseSignUp.setOnClickListener {
             navigateToIntro()
         }
-
-        binding.etPasswordSignUp.addTextChangedListener {
-            binding.etLayoutPasswordSignUp.error = when {
-                it.isNullOrEmpty() -> "비밀번호를 입력해주세요."
-                else -> null
-            }
-        }
-
-        binding.etPhoneNumberSignUp.addTextChangedListener {
-            binding.etLayoutPhoneNumberSignUp.error = when {
-                it.isNullOrEmpty() -> "휴대폰 번호를 입력해주세요."
-                else -> null
-            }
-        }
-
-        binding.etNicknameSignUp.addTextChangedListener {
-            binding.etLayoutNicknameSignUp.error = when {
-                it.isNullOrEmpty() -> "닉네임을 입력해주세요."
-                else -> null
-            }
-        }
     }
 
     private fun observe() = with(viewModel) {
         id.observe(viewLifecycleOwner) {
             idErr.value = when(it.isEmpty()) {
-                true -> "아이디를 입력해주세요."
+                true -> getString(R.string.error_input_id)
                 false -> ""
             }
             signUpBtnEnabled()
@@ -88,7 +61,7 @@ class SignUpFragment : Fragment() {
 
         password.observe(viewLifecycleOwner) {
             pwErr.value = when(it.isEmpty()) {
-                true -> "비밀번호를 입력해주세요."
+                true -> getString(R.string.error_input_pw)
                 false -> ""
             }
             signUpBtnEnabled()
