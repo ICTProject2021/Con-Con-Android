@@ -50,8 +50,22 @@ class MainFragment : Fragment() {
         viewModel = ViewModelProvider(requireActivity()).get(MainViewModel::class.java)
         viewModel.callApi()
         viewModel.getContestLiveDataObserver().observe(viewLifecycleOwner, {
-            if (it != null)
+            if (it != null) {
                 recyclerViewAdapter.setData(it)
+            } else {
+                recyclerViewAdapter.setData(
+                    listOf(
+                        Contest(
+                            id = 0,
+                            dueDate = 0,
+                            host = "",
+                            profilepicture = "",
+                            title = "아직 대회가 없어요!"
+                        )
+                    )
+                )
+            }
+
         })
 
     }
