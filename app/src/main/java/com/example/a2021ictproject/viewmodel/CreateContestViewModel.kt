@@ -28,7 +28,7 @@ class CreateContestViewModel : ViewModel() {
             object : Callback<String> {
                 override fun onResponse(call: Call<String>, response: Response<String>) {
                     Log.d("createContest", "${response.code()}: ${response.body()}")
-                    postCreateContestRes.postValue(Res(response.code(), response.body().toString()))
+                    postCreateContestRes.postValue(Res(response.code(), response.body()))
                 }
 
                 override fun onFailure(call: Call<String>, t: Throwable) {

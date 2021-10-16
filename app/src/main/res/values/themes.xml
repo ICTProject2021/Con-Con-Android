@@ -70,6 +70,11 @@
         <item name="android:textColor">@color/black</item>
     </style>
 
+    <style name="Base.Widget.AppCompat.TextView.Small">
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textSize">13sp</item>
+    </style>
+
     <!-- Button -->
     <style name="Widget.AppCompat.Button.Main">
         <item name="android:background">@drawable/btn_main_selector</item>
