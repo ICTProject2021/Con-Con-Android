@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <item android:id="@+id/action_home"
+    <item android:id="@+id/mainFragment_bottom"
         android:title=""
         android:icon="@drawable/ic_home" />
     <item
         android:id="@+id/placeholder"
         android:title="" />
 
-    <item android:id="@+id/action_profile"
+    <item android:id="@+id/profileFragment_bottom"
         android:title=""
         android:icon="@drawable/ic_user"/>
 </menu>

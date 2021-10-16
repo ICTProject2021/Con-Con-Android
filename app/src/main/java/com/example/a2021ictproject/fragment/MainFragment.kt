@@ -52,11 +52,15 @@ class MainFragment : Fragment() {
         viewModel = ViewModelProvider(this).get(MainViewModel::class.java)
         viewModel.callApi()
         viewModel.getContestLiveDataObserver().observe(viewLifecycleOwner, Observer<List<Contest>> {
-            for (i in 0..it.size) {
-                val list: ArrayList<Contest> = ArrayList<Contest>()
-                list.add(it[i])
-                recyclerViewAdapter.setData(list)
-                recyclerViewAdapter.notifyDataSetChanged()
+            try {
+                for (i in 0..it.size) {
+                    val list: ArrayList<Contest> = ArrayList<Contest>()
+                    list.add(it[i])
+                    recyclerViewAdapter.setData(list)
+                    recyclerViewAdapter.notifyDataSetChanged()
+                }
+            } catch (e: NullPointerException) {
+                e.printStackTrace()
             }
         })
 
