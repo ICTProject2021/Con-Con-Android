@@ -4,9 +4,10 @@
     <item android:id="@+id/action_home"
         android:title=""
         android:icon="@drawable/ic_home" />
-    <item android:id="@+id/action_add_contest"
-        android:title=""
-        android:icon="@drawable/ic_add"/>
+    <item
+        android:id="@+id/placeholder"
+        android:title="" />
+
     <item android:id="@+id/action_profile"
         android:title=""
         android:icon="@drawable/ic_user"/>

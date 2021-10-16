@@ -16,6 +16,10 @@
         <action
             android:id="@+id/action_mainFragment_to_contestDetailFragment"
             app:destination="@id/contestDetailFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_profileFragment"
+            app:destination="@id/profileFragment" />
+
     </fragment>
     <fragment
         android:id="@+id/createContestFragment"
@@ -34,6 +38,9 @@
         <action
             android:id="@+id/action_profileFragment_to_chargeCashFragment"
             app:destination="@id/chargeCashFragment" />
+        <action
+            android:id="@+id/action_profileFragment_to_mainFragment"
+            app:destination="@id/mainFragment" />
     </fragment>
     <fragment
         android:id="@+id/chargeCashFragment"
