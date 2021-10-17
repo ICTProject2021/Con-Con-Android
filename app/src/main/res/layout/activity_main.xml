@@ -12,6 +12,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             app:defaultNavHost="true"
+            android:layout_marginBottom="65dp"
             app:navGraph="@navigation/nav_graph_main" />
 
         <com.google.android.material.bottomappbar.BottomAppBar
@@ -40,5 +41,6 @@
             android:contentDescription="@string/app_name"
             android:src="@drawable/ic_add"
             app:layout_anchor="@id/bottomAppBar" />
+
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
