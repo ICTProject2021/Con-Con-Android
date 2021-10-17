@@ -49,7 +49,7 @@ class MainFragment : Fragment() {
         }
         recyclerViewAdapter.setOnItemClickListener(object: MainRecyclerViewAdapter.onItemClickListener{
             override fun onClick(v: View, position: Int) {
-                findNavController().navigate(MainFragmentDirections.actionMainFragmentToCreateContestFragment(position))
+                findNavController().navigate(MainFragmentDirections.actionMainFragmentToContestDetailFragment(position))
             }
         })
     }

@@ -32,9 +32,6 @@
         <action
             android:id="@+id/action_createContestFragment_to_profileFragment"
             app:destination="@id/profileFragment" />
-        <argument
-            android:name="id"
-            app:argType="integer" />
     </fragment>
     <fragment
         android:id="@+id/profileFragment"
@@ -80,5 +77,8 @@
         <action
             android:id="@+id/action_contestDetailFragment_to_joinContestFragment"
             app:destination="@id/joinContestFragment" />
+        <argument
+            android:name="id"
+            app:argType="integer" />
     </fragment>
 </navigation>
