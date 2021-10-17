@@ -13,7 +13,7 @@ import retrofit2.http.POST
 interface AccountService {
     /* 로그인 */
     @POST("/signin")
-    fun postSignIn(@Body signInRequest: SignInRequest): Call<String>
+    fun postSignIn(@Body signInRequest: SignInRequest): Call<Token>
 
     /* 회원가입 */
     @POST("/signup")

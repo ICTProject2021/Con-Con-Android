@@ -67,16 +67,20 @@ class SignInFragment : Fragment() {
         }
 
         postSignInRes.observe(viewLifecycleOwner) {
-            when (it) {
-                null -> Toast.makeText(requireContext(), "서버 통신 실패", Toast.LENGTH_SHORT).show()
+            if (it != null) {
+                when (it.token) {
+                    "fail" -> Toast.makeText(requireContext(), "올바른 아이디, 비밀번호가 아님", Toast.LENGTH_SHORT).show()
 
-                "fail" -> Toast.makeText(requireContext(), "올바른 아이디, 비밀번호가 아님", Toast.LENGTH_SHORT).show()
-
-                else -> {
-                    PreferenceUtils.token = it
-                    navigateToMain()
+                    else -> {
+                        PreferenceUtils.token = it.token
+                        navigateToMain()
+                    }
                 }
+
+                return@observe
             }
+
+            Toast.makeText(requireContext(), "서버 통신 실패", Toast.LENGTH_SHORT).show()
         }
     }
 
