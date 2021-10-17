@@ -1,6 +1,5 @@
 package com.example.a2021ictproject.Adapter
 
-import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,9 +12,20 @@ import com.example.a2021ictproject.network.dto.response.Contest
 
 //val contest: List<Contest>
 
-class MainRecyclerViewAdapter() : RecyclerView.Adapter<MainRecyclerViewAdapter.ViewHolder>() {
+class MainRecyclerViewAdapter() : RecyclerView.Adapter<MainRecyclerViewAdapter.ViewHolder>(){
 
     private var dataList = mutableListOf<Contest>()
+    private lateinit var mListener: onItemClickListener
+
+    interface onItemClickListener {
+        fun onClick(v: View, position: Int)
+    }
+
+    fun setOnItemClickListener(listener: onItemClickListener?) {
+        if (listener != null) {
+            this.mListener = listener
+        }
+    }
 
     fun setData(data: List<Contest>) {
         this.dataList.clear()
@@ -37,7 +47,6 @@ class MainRecyclerViewAdapter() : RecyclerView.Adapter<MainRecyclerViewAdapter.V
                 .load(data.profilepicture)
                 .into(profile)
         }
-
     }
 
     override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): ViewHolder {
@@ -49,6 +58,9 @@ class MainRecyclerViewAdapter() : RecyclerView.Adapter<MainRecyclerViewAdapter.V
 
     override fun onBindViewHolder(viewHolder: ViewHolder, position: Int) {
         viewHolder.bind(dataList[position])
+        viewHolder.itemView.setOnClickListener {
+            mListener.onClick(it, position)
+        }
     }
 
     override fun getItemCount() = dataList.size
