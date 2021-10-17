@@ -61,10 +61,10 @@
             android:id="@+id/cardView"
             android:layout_width="40dp"
             android:layout_height="40dp"
-            android:layout_marginTop="24dp"
+            android:layout_marginBottom="32dp"
             app:cardCornerRadius="50dp"
-            app:layout_constraintStart_toStartOf="@+id/tv_content_contest_detail"
-            app:layout_constraintTop_toBottomOf="@+id/view2">
+            app:layout_constraintBottom_toTopOf="@+id/btn_join_contest_detail"
+            app:layout_constraintStart_toStartOf="@+id/tv_content_contest_detail">
 
             <ImageView
                 android:id="@+id/iv_profile_img_contest_detail"
@@ -132,7 +132,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="5dp"
-                android:text="@{@string/date_format(data.startdate, data.duedate)}" />
+                android:text="@{@string/date_format(vm.toDate(data.startdate), vm.toDate(data.duedate))}" />
         </LinearLayout>
 
         <LinearLayout
@@ -172,7 +172,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="5dp"
-                android:text="" />
+                android:text="@{vm.getAllPriceSum(data.prize)}" />
         </LinearLayout>
 
         <View
@@ -180,13 +180,13 @@
             android:layout_width="0dp"
             android:layout_height="1dp"
             android:layout_marginStart="24dp"
-            android:layout_marginTop="24dp"
             android:layout_marginEnd="24dp"
+            android:layout_marginBottom="16dp"
             android:background="@color/light_grey"
+            app:layout_constraintBottom_toTopOf="@+id/cardView"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_content_contest_detail" />
+            app:layout_constraintStart_toStartOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

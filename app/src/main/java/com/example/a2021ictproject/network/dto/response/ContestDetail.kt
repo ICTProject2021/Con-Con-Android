@@ -4,8 +4,8 @@ data class ContestDetail(
     val id: Int,
     val title: String,
     val content: String,
-    val startdate: Long,
-    val duedate: Long,
+    val startdate: String,
+    val duedate: String,
     val host: String,
-    val prize: Prize
+    val prize: List<Prize>
 )

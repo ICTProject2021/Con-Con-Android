@@ -59,7 +59,7 @@ class MainFragment : Fragment() {
                 recyclerViewAdapter.setData(
                     listOf(
                         Contest(
-                            id = 0,
+                            ID = 0,
                             dueDate = 0,
                             host = "",
                             profilepicture = "",
@@ -70,7 +70,7 @@ class MainFragment : Fragment() {
             }
             recyclerViewAdapter.setOnItemClickListener(object: MainRecyclerViewAdapter.onItemClickListener{
                 override fun onClick(v: View, position: Int) {
-                    findNavController().navigate(MainFragmentDirections.actionMainFragmentToContestDetailFragment(it[position].id))
+                    findNavController().navigate(MainFragmentDirections.actionMainFragmentToContestDetailFragment(it[position].ID))
                     (activity as MainActivity).gone()
                 }
             })

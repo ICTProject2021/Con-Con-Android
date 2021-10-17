@@ -10,6 +10,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.viewModels
 import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import com.example.a2021ictproject.R
 import com.example.a2021ictproject.databinding.ContestDetailFragmentBinding
 import com.example.a2021ictproject.network.dto.response.ContestDetail
@@ -22,6 +23,8 @@ class ContestDetailFragment : Fragment() {
     private lateinit var binding: ContestDetailFragmentBinding
     private val viewModel: ContestDetailViewModel by viewModels()
 
+    private val args by navArgs<ContestDetailFragmentArgs>()
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -29,14 +32,14 @@ class ContestDetailFragment : Fragment() {
         binding = DataBindingUtil.inflate(inflater, R.layout.contest_detail_fragment, container, false)
         binding.lifecycleOwner = viewLifecycleOwner
         binding.vm = viewModel
+        binding.data = ContestDetail(0, "", "", "", "", "", listOf())
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val id: Int? = arguments?.getInt("id")
-        viewModel.getContestDetail(id!!)
+        viewModel.getContestDetail(args.id)
 
         observe()
 
@@ -45,7 +48,7 @@ class ContestDetailFragment : Fragment() {
         }
 
         binding.btnJoinContestDetail.setOnClickListener {
-            navigateToJoinContest(id)
+            navigateToJoinContest(args.id)
         }
     }
 
@@ -55,10 +58,10 @@ class ContestDetailFragment : Fragment() {
                 null ->
                     Toast.makeText(requireContext(), getString(R.string.fail_server), Toast.LENGTH_SHORT).show()
 
-//                else ->
-
+                else -> {
+                    binding.data = it
+                }
             }
-
         }
     }
 
