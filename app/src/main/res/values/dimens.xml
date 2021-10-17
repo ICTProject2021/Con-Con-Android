@@ -6,4 +6,5 @@
     <dimen name="back_btn_margin_top">32dp</dimen>
     <dimen name="sign_logo_width">240dp</dimen>
     <dimen name="sign_logo_height">80dp</dimen>
+    <dimen name="join_contest_profile">70dp</dimen>
 </resources>

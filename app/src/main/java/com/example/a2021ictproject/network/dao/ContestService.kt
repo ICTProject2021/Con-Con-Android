@@ -27,12 +27,12 @@ interface ContestService {
 
     /* 대회 참여 조회 */
     @GET("/participant/{id}")
-    fun getParticipantInfo(@Path("id") id: String): Call<List<Participant>>
+    fun getParticipantInfo(@Path("id") id: Int): Call<List<Participant>>
 
     /* 대회 참여 */
     @POST("/participant/{id}")
     fun postParticipant(
-        @Path("id") id: String,
+        @Path("id") id: Int,
         @Body content: String
     )
 }
