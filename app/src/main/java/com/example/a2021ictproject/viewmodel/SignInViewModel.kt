@@ -33,7 +33,10 @@ class SignInViewModel : ViewModel() {
                     Log.d("postSignIn", "${response.code()}-${response.message()}: ${response.body()}")
                     Log.d("postSignIn", response.raw().toString())
 
-                    if (response.isSuccessful) {
+                    // 무지성으로 401 에러를 로그인
+                    if (response.code() == 401) {
+                        postSignInRes.postValue(Token("fail"))
+                    } else if (response.isSuccessful) {
                         postSignInRes.postValue(response.body())
                     }
                 }

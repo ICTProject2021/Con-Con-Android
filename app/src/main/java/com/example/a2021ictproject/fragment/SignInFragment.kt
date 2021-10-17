@@ -76,11 +76,9 @@ class SignInFragment : Fragment() {
                         navigateToMain()
                     }
                 }
-
-                return@observe
+            } else {
+                Toast.makeText(requireContext(), "서버 통신 실패", Toast.LENGTH_SHORT).show()
             }
-
-            Toast.makeText(requireContext(), "서버 통신 실패", Toast.LENGTH_SHORT).show()
         }
     }
 
