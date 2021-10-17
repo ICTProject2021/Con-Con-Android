@@ -32,12 +32,10 @@ class MainActivity : AppCompatActivity() {
                 NavHostFragment.findNavController(navHostFragment).currentDestination!!.id
             if (currentFragment == R.id.mainFragment) {
                 navController.navigate(R.id.action_mainFragment_to_createContestFragment)
-                binding.bottomAppBar.visibility = View.GONE
-                binding.fab.visibility = View.GONE
+                gone()
             } else if (currentFragment == R.id.profileFragment) {
                 navController.navigate(R.id.action_profileFragment_to_createContestFragment)
-                binding.bottomAppBar.visibility = View.GONE
-                binding.fab.visibility = View.GONE
+                gone()
             }
 
         }
@@ -46,5 +44,10 @@ class MainActivity : AppCompatActivity() {
     fun visibility() {
         binding.fab.visibility = View.VISIBLE
         binding.bottomAppBar.visibility = View.VISIBLE
+    }
+
+    fun gone() {
+        binding.fab.visibility = View.GONE
+        binding.bottomAppBar.visibility = View.GONE
     }
 }

@@ -37,7 +37,6 @@ class MainFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         initRecyclerView()
-        createData()
     }
 
     override fun onResume() {
@@ -51,14 +50,6 @@ class MainFragment : Fragment() {
             recyclerViewAdapter = MainRecyclerViewAdapter()
             adapter = recyclerViewAdapter
         }
-        recyclerViewAdapter.setOnItemClickListener(object: MainRecyclerViewAdapter.onItemClickListener{
-            override fun onClick(v: View, position: Int) {
-                findNavController().navigate(MainFragmentDirections.actionMainFragmentToContestDetailFragment(position))
-            }
-        })
-    }
-
-    private fun createData() {
         viewModel = ViewModelProvider(requireActivity()).get(MainViewModel::class.java)
         viewModel.callApi()
         viewModel.getContestLiveDataObserver().observe(viewLifecycleOwner, {
@@ -77,8 +68,12 @@ class MainFragment : Fragment() {
                     )
                 )
             }
-
+            recyclerViewAdapter.setOnItemClickListener(object: MainRecyclerViewAdapter.onItemClickListener{
+                override fun onClick(v: View, position: Int) {
+                    findNavController().navigate(MainFragmentDirections.actionMainFragmentToContestDetailFragment(it[position].id))
+                    (activity as MainActivity).gone()
+                }
+            })
         })
-
     }
 }
