@@ -12,6 +12,7 @@ import retrofit2.Response
 import java.text.SimpleDateFormat
 
 class ContestDetailViewModel : ViewModel() {
+
     private val contestService by lazy { RetrofitInstance.contestService }
 
     val getContestDetailRes = MutableLiveData<Res<ContestDetail>?>()
@@ -31,6 +32,7 @@ class ContestDetailViewModel : ViewModel() {
 
                 override fun onFailure(call: Call<ContestDetail>, t: Throwable) {
                     Log.d("getContestDetail", t.message.toString())
+
                     getContestDetailRes.postValue(null)
                 }
             }

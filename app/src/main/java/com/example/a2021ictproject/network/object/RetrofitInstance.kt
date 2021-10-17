@@ -2,6 +2,7 @@ package com.example.a2021ictproject.network.`object`
 
 import com.example.a2021ictproject.network.dao.AccountService
 import com.example.a2021ictproject.network.dao.ContestService
+import com.example.a2021ictproject.utils.TokenInterceptor
 import com.google.gson.Gson
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
@@ -14,8 +15,9 @@ object RetrofitInstance {
     private const val BASE_URL = "http://10.80.161.222:3000/"
 
     private val gson = Gson().newBuilder().setLenient().create()
+
     private val okHttpClient: OkHttpClient =
-        OkHttpClient().newBuilder().addInterceptor(AuthInterceptor()).build()
+        OkHttpClient().newBuilder().addInterceptor(TokenInterceptor()).build()
 
     private val retrofit by lazy {
         Retrofit.Builder()

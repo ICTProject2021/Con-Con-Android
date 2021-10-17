@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModel
 import com.example.a2021ictproject.network.`object`.RetrofitInstance
 import com.example.a2021ictproject.network.dto.request.IdRequest
 import com.example.a2021ictproject.network.dto.request.SignUpRequest
+import com.example.a2021ictproject.network.dto.response.Token
 import com.example.a2021ictproject.utils.isNotBlankAll
 import retrofit2.Call
 import retrofit2.Callback
@@ -29,7 +30,7 @@ class SignUpViewModel : ViewModel() {
     private val accountService by lazy { RetrofitInstance.accountService }
 
     val postCheckIdRes = MutableLiveData<String?>()
-    val postSignUpRes = MutableLiveData<String?>()
+    val postSignUpRes = MutableLiveData<Token?>()
 
     fun postCheckId() {
         val idReq = IdRequest(id.value!!)
@@ -67,17 +68,16 @@ class SignUpViewModel : ViewModel() {
         )
 
         accountService.postSignUp(signUpReq).enqueue(
-            object : Callback<String> {
-                override fun onResponse(call: Call<String>, response: Response<String>) {
+            object : Callback<Token> {
+                override fun onResponse(call: Call<Token>, response: Response<Token>) {
                     Log.d("postSignUp", "${response.code()}: ${response.body()}")
                     if (response.isSuccessful)
                         postSignUpRes.postValue(response.body())
                 }
 
-                override fun onFailure(call: Call<String>, t: Throwable) {
+                override fun onFailure(call: Call<Token>, t: Throwable) {
                     Log.d("postSignUp", t.message.toString())
                 }
-
             }
         )
     }

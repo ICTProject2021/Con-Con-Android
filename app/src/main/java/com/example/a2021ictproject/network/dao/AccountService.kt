@@ -17,7 +17,7 @@ interface AccountService {
 
     /* 회원가입 */
     @POST("/signup")
-    fun postSignUp(@Body signUpRequest: SignUpRequest): Call<String>
+    fun postSignUp(@Body signUpRequest: SignUpRequest): Call<Token>
 
     /* 아이디 중복체크 */
     @POST("/check")

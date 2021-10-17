@@ -101,7 +101,7 @@ class SignUpFragment : Fragment() {
                     Toast.makeText(requireContext(), getString(R.string.fail_server), Toast.LENGTH_SHORT).show()
 
                 else -> {
-                    PreferenceUtils.token = it
+                    PreferenceUtils.token = it.token
                     navigateToMain()
                 }
             }

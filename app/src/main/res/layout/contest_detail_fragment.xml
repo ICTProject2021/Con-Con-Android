@@ -7,6 +7,9 @@
         <variable
             name="vm"
             type="com.example.a2021ictproject.viewmodel.ContestDetailViewModel" />
+        <variable
+            name="data"
+            type="com.example.a2021ictproject.network.dto.response.ContestDetail" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -31,9 +34,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/layout_margin"
-            android:layout_marginEnd="@dimen/layout_margin"
             android:layout_marginTop="30dp"
-            android:text="TextView"
+            android:layout_marginEnd="@dimen/layout_margin"
+            android:text="@{data.title}"
+            tools:text="제목"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/btn_back_contest_detail" />
@@ -43,22 +47,24 @@
             style="@style/Base.Widget.AppCompat.TextView.Regular"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
             android:layout_marginStart="@dimen/layout_margin"
+            android:layout_marginTop="24dp"
             android:layout_marginEnd="@dimen/layout_margin"
-            android:text="TextView"
+            android:text="@{data.content}"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="@+id/tv_title_contest_detail"
-            app:layout_constraintTop_toBottomOf="@+id/tv_title_contest_detail" />
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout2"
+            tools:text="내용" />
 
         <androidx.cardview.widget.CardView
             android:id="@+id/cardView"
             android:layout_width="40dp"
             android:layout_height="40dp"
-            android:layout_marginTop="32dp"
+            android:layout_marginTop="24dp"
             app:cardCornerRadius="50dp"
-            app:layout_constraintStart_toStartOf="@+id/tv_date_contest_detail"
-            app:layout_constraintTop_toBottomOf="@+id/tv_date_contest_detail">
+            app:layout_constraintStart_toStartOf="@+id/tv_content_contest_detail"
+            app:layout_constraintTop_toBottomOf="@+id/view2">
 
             <ImageView
                 android:id="@+id/iv_profile_img_contest_detail"
@@ -73,7 +79,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:text="TextView"
+            android:text="@{data.host}"
             app:layout_constraintBottom_toBottomOf="@+id/cardView"
             app:layout_constraintStart_toEndOf="@+id/cardView"
             app:layout_constraintTop_toTopOf="@+id/cardView" />
@@ -91,14 +97,94 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 
-        <TextView
-            android:id="@+id/tv_date_contest_detail"
-            style="@style/Base.Widget.AppCompat.TextView.Regular"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:id="@+id/linearLayout"
+            style="@style/ContestDetailLinear"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="28dp"
-            android:layout_marginStart="@dimen/layout_margin"
-            android:text="TextView"
+            android:layout_marginTop="16dp"
+            app:layout_constraintEnd_toEndOf="@+id/tv_title_contest_detail"
+            app:layout_constraintStart_toStartOf="@+id/tv_title_contest_detail"
+            app:layout_constraintTop_toBottomOf="@+id/tv_title_contest_detail">
+
+            <TextView
+                android:id="@+id/textView"
+                style="@style/Base.Widget.AppCompat.TextView.RegularBold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="대회 날짜" />
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="10dp"
+                android:layout_height="10dp"
+                android:layout_margin="10dp"
+                app:cardCornerRadius="50dp">
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/main_gradient" />
+            </androidx.cardview.widget.CardView>
+
+            <TextView
+                android:id="@+id/textView2"
+                style="@style/Base.Widget.AppCompat.TextView.Regular"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:text="@{@string/date_format(data.startdate, data.duedate)}" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linearLayout2"
+            style="@style/ContestDetailLinear"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="@+id/tv_title_contest_detail"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/tv_title_contest_detail"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout">
+
+            <TextView
+                android:id="@+id/textView4"
+                style="@style/Base.Widget.AppCompat.TextView.RegularBold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="우승 상금" />
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="10dp"
+                android:layout_height="10dp"
+                android:layout_margin="10dp"
+                app:cardCornerRadius="50dp">
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/main_gradient" />
+            </androidx.cardview.widget.CardView>
+
+            <TextView
+                android:id="@+id/textView3"
+                style="@style/Base.Widget.AppCompat.TextView.Regular"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:text="" />
+        </LinearLayout>
+
+        <View
+            android:id="@+id/view2"
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="24dp"
+            android:background="@color/light_grey"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_content_contest_detail" />
 

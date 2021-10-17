@@ -8,6 +8,7 @@ import com.example.a2021ictproject.network.dao.AccountService
 import com.example.a2021ictproject.network.dto.request.SignInRequest
 import com.example.a2021ictproject.network.dto.response.Res
 import com.example.a2021ictproject.network.dto.response.Token
+import com.example.a2021ictproject.utils.PreferenceUtils
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -30,9 +31,11 @@ class SignInViewModel : ViewModel() {
             object : Callback<String> {
                 override fun onResponse(call: Call<String>, response: Response<String>) {
                     Log.d("postSignIn", "${response.code()}-${response.message()}: ${response.body()}")
-                    Log.d("postCheckId", response.raw().toString())
+                    Log.d("postSignIn", response.raw().toString())
 
-                    if (response.isSuccessful) postSignInRes.postValue(response.message())
+                    if (response.isSuccessful) {
+                        postSignInRes.postValue(response.body())
+                    }
                 }
 
                 override fun onFailure(call: Call<String>, t: Throwable) {

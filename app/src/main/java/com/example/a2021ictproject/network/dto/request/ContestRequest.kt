@@ -3,9 +3,12 @@
  * */
 package com.example.a2021ictproject.network.dto.request
 
+import com.example.a2021ictproject.network.dto.response.Prize
+
 data class ContestRequest(
     val title: String,
     val content: String,
+    val startdate: Long,
     val dueDate: Long,
-    val prize: Int
+    val prize: Prize
 )

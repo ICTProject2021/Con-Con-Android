@@ -69,7 +69,7 @@ class CreateContestFragment : Fragment() {
             if (errorMsg != null) {
                 Toast.makeText(requireContext(), "$errorMsg 입력해주세요.", Toast.LENGTH_SHORT).show()
             } else {
-                viewModel.postCreateContest(getCreateContest())
+//                viewModel.postCreateContest(getCreateContest())
             }
         }
     }
@@ -107,13 +107,13 @@ class CreateContestFragment : Fragment() {
         dateRangePicker.show(requireActivity().supportFragmentManager, "Calendar")
     }
 
-    private fun getCreateContest(): ContestRequest =
-        ContestRequest(
-            binding.etTitleCreateContest.text.toString(),
-            binding.etContentCreateContest.text.toString(),
-            dueTime,
-            Integer.parseInt(binding.etPrizeCreateContest.text.toString().replace("원", ""))
-        )
+//    private fun getCreateContest(): ContestRequest =
+//        ContestRequest(
+//            binding.etTitleCreateContest.text.toString(),
+//            binding.etContentCreateContest.text.toString(),
+//            dueTime,
+//            Integer.parseInt(binding.etPrizeCreateContest.text.toString().replace("원", ""))
+//        )
 
 
     private fun navigateToMain() {

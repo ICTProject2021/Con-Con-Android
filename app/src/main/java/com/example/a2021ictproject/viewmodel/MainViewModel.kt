@@ -29,8 +29,6 @@ class MainViewModel : ViewModel() {
 
                 if (response.isSuccessful){
                     contestList.postValue(response.body())
-                } else {
-                    contestList.postValue(null)
                 }
             }
 

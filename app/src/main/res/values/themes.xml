@@ -65,6 +65,12 @@
         <item name="android:textColor">@color/black</item>
     </style>
 
+    <style name="Base.Widget.AppCompat.TextView.RegularBold">
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">17sp</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
     <style name="Base.Widget.AppCompat.TextView.Regular">
         <item name="android:textSize">15sp</item>
         <item name="android:textColor">@color/black</item>
@@ -87,6 +93,16 @@
         <item name="android:backgroundTint">@color/white</item>
         <item name="android:elevation">12dp</item>
         <item name="borderWidth">0dp</item>
+    </style>
+
+    <!--    -->
+    <style name="ContestDetailLinear">
+        <item name="android:paddingStart">20dp</item>
+        <item name="android:paddingEnd">20dp</item>
+        <item name="android:paddingTop">10dp</item>
+        <item name="android:paddingBottom">10dp</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:background">@drawable/gradient_outline</item>
     </style>
 
 </resources>

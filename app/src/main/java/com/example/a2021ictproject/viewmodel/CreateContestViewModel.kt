@@ -14,6 +14,11 @@ import java.text.SimpleDateFormat
 
 class CreateContestViewModel : ViewModel() {
 
+    val title = MutableLiveData<String>()
+    val content = MutableLiveData<String>()
+    val date = MutableLiveData<String>()
+    val prize = MutableLiveData<String>()
+
     private val contestService by lazy { RetrofitInstance.contestService }
 
     val postCreateContestRes = MutableLiveData<Res<String>?>()
