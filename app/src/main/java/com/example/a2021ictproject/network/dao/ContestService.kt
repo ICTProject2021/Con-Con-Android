@@ -4,11 +4,10 @@ import com.example.a2021ictproject.network.dto.request.ContestRequest
 import com.example.a2021ictproject.network.dto.response.Contest
 import com.example.a2021ictproject.network.dto.response.ContestDetail
 import com.example.a2021ictproject.network.dto.response.Participant
+import okhttp3.MultipartBody
+import okhttp3.RequestBody
 import retrofit2.Call
-import retrofit2.http.Body
-import retrofit2.http.GET
-import retrofit2.http.POST
-import retrofit2.http.Path
+import retrofit2.http.*
 
 interface ContestService {
     /* 틀린 부분이 있으면 수정해주세요 */
@@ -30,9 +29,11 @@ interface ContestService {
     fun getParticipantInfo(@Path("id") id: Int): Call<List<Participant>>
 
     /* 대회 참여 */
+    @Multipart
     @POST("/participant/{id}")
     fun postParticipant(
         @Path("id") id: Int,
-        @Body content: String
-    )
+        @Part content: RequestBody,
+        @Part attachment: MultipartBody.Part
+    ): Call<String>
 }
