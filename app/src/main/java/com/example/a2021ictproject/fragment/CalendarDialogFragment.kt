@@ -4,13 +4,9 @@
  * */
 package com.example.a2021ictproject.fragment
 
-import android.graphics.Color
-import android.graphics.drawable.Drawable
 import android.icu.util.Calendar
-import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
 import android.text.style.ForegroundColorSpan
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -18,11 +14,8 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.DialogFragment
 import com.example.a2021ictproject.R
 import com.example.a2021ictproject.databinding.CalendarDialogFragmentBinding
-import com.example.a2021ictproject.viewmodel.CalendarDialogViewModel
 import com.prolificinteractive.materialcalendarview.*
-import java.time.Year
 import java.util.*
-import kotlin.math.min
 
 class CalendarDialogFragment : DialogFragment() {
 
@@ -100,7 +93,7 @@ class CalendarDialogFragment : DialogFragment() {
             (day!!.month == today.month && day.year == today.year && day.day == today.day)
 
         override fun decorate(view: DayViewFacade?) {
-            val drawable = requireContext().getDrawable(R.drawable.calendar_today_background)
+            val drawable = requireContext().getDrawable(R.drawable.background_calendar_today)
             view?.setBackgroundDrawable(drawable!!)
             view?.addSpan(object : ForegroundColorSpan(R.color.calendar_main_color) {})
         }

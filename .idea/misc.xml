@@ -3,6 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Github/2021IctProject/app/src/main/res/drawable/background_btn_gradient.xml" value="0.1375" />
         <entry key="..\:/Github/2021IctProject/app/src/main/res/drawable/background_shadow.xml" value="0.275" />
         <entry key="..\:/Github/2021IctProject/app/src/main/res/drawable/btn_main_selector.xml" value="0.275" />
         <entry key="..\:/Github/2021IctProject/app/src/main/res/drawable/btn_profile_background.xml" value="0.20625" />
