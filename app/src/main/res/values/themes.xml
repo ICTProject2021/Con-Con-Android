@@ -30,6 +30,10 @@
         <item name="boxCornerRadiusBottomEnd">30dp</item>
     </style>
 
+    <style name="Widget.MaterialComponents.TextInputLayout.FilledBox.a">
+
+    </style>
+
     <!-- EditText -->
     <style name="Widget.AppCompat.EditText.BaseEditText">
         <item name="hintEnabled">false</item>
@@ -80,6 +84,11 @@
         <item name="android:shadowDy">9.0</item>
         <item name="android:shadowRadius">8.0</item>
         <item name="android:shadowColor">#5E000000</item>
+    </style>
+
+    <style name="Base.Widget.AppCompat.TextView.Small">
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textSize">13sp</item>
     </style>
 
     <!-- Button -->

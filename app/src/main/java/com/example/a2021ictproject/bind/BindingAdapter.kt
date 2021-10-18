@@ -4,7 +4,11 @@ import android.view.View
 import android.view.View.*
 import android.widget.ImageView
 import androidx.databinding.BindingAdapter
+import androidx.databinding.ObservableArrayList
+import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.example.a2021ictproject.adapter.JoinContestRecyclerViewAdapter
+import com.example.a2021ictproject.network.dto.response.Participant
 import com.google.android.material.textfield.TextInputLayout
 
 @BindingAdapter("setVisible")
@@ -23,5 +27,11 @@ fun TextInputLayout.setError(errorMsg: String?) {
 @BindingAdapter("loadUrl")
 fun ImageView.setImage(url: String) {
     Glide.with(context).load(url).into(this)
+}
+
+@BindingAdapter("submitList")
+fun RecyclerView.submitList(list: List<Participant>) {
+    val adapter = JoinContestRecyclerViewAdapter()
+    adapter.setList(list)
 }
 

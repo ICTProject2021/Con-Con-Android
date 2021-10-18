@@ -1,4 +1,4 @@
-package com.example.a2021ictproject.Adapter
+package com.example.a2021ictproject.adapter
 
 import android.view.LayoutInflater
 import android.view.View

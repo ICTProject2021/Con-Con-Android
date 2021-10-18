@@ -8,10 +8,13 @@
         <entry key="..\:/Github/2021IctProject/app/src/main/res/drawable/calendar_today_background.xml" value="0.21666666666666667" />
         <entry key="..\:/Github/2021IctProject/app/src/main/res/drawable/cash_layout_background.xml" value="0.12239583333333333" />
         <entry key="..\:/Github/2021IctProject/app/src/main/res/drawable/gradient_outline.xml" value="0.16666666666666666" />
-        <entry key="..\:/Github/2021IctProject/app/src/main/res/drawable/ic_back.xml" value="0.246875" />
+        <entry key="..\:/Github/2021IctProject/app/src/main/res/drawable/ic_back.xml" value="0.275" />
         <entry key="..\:/Github/2021IctProject/app/src/main/res/drawable/ic_check.xml" value="0.2453125" />
         <entry key="..\:/Github/2021IctProject/app/src/main/res/drawable/ic_close.xml" value="0.275" />
         <entry key="..\:/Github/2021IctProject/app/src/main/res/drawable/ic_close__1_.xml" value="0.275" />
+        <entry key="..\:/Github/2021IctProject/app/src/main/res/drawable/ic_heart.xml" value="0.275" />
+        <entry key="..\:/Github/2021IctProject/app/src/main/res/drawable/ic_photo.xml" value="0.163671875" />
+        <entry key="..\:/Github/2021IctProject/app/src/main/res/drawable/ic_send.xml" value="0.163671875" />
         <entry key="..\:/Github/2021IctProject/app/src/main/res/drawable/main_gradient.xml" value="0.16354166666666667" />
         <entry key="..\:/Github/2021IctProject/app/src/main/res/drawable/sign_background.xml" value="0.17864583333333334" />
         <entry key="..\:/Github/2021IctProject/app/src/main/res/layout/activity_intro.xml" value="0.25885416666666666" />
@@ -22,11 +25,13 @@
         <entry key="..\:/Github/2021IctProject/app/src/main/res/layout/contest_detail_fragment.xml" value="0.28085519922254615" />
         <entry key="..\:/Github/2021IctProject/app/src/main/res/layout/create_contest_fragment.xml" value="0.48299319727891155" />
         <entry key="..\:/Github/2021IctProject/app/src/main/res/layout/intro_fragment.xml" value="0.2" />
-        <entry key="..\:/Github/2021IctProject/app/src/main/res/layout/join_contest_fragment.xml" value="0.23072916666666668" />
+        <entry key="..\:/Github/2021IctProject/app/src/main/res/layout/join_contest_fragment.xml" value="0.2" />
         <entry key="..\:/Github/2021IctProject/app/src/main/res/layout/main_fragment.xml" value="0.25885416666666666" />
         <entry key="..\:/Github/2021IctProject/app/src/main/res/layout/profile_fragment.xml" value="0.24427083333333333" />
-        <entry key="..\:/Github/2021IctProject/app/src/main/res/layout/sign_in_fragment.xml" value="0.264" />
-        <entry key="..\:/Github/2021IctProject/app/src/main/res/layout/sign_up_fragment.xml" value="0.32967032967032966" />
+        <entry key="..\:/Github/2021IctProject/app/src/main/res/layout/rv_item_join_contest.xml" value="0.4" />
+        <entry key="..\:/Github/2021IctProject/app/src/main/res/layout/rv_item_join_contest_image.xml" value="0.14583333333333334" />
+        <entry key="..\:/Github/2021IctProject/app/src/main/res/layout/sign_in_fragment.xml" value="0.32927888792354476" />
+        <entry key="..\:/Github/2021IctProject/app/src/main/res/layout/sign_up_fragment.xml" value="0.176" />
         <entry key="..\:/Github/2021IctProject/app/src/main/res/menu/bottom_navigation.xml" value="0.25885416666666666" />
         <entry key="..\:/Users/Minhyuk/Documents/GitHub/2021IctProject/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.3675925925925926" />
         <entry key="..\:/Users/Minhyuk/Documents/GitHub/2021IctProject/app/src/main/res/drawable/btn_main_selector.xml" value="0.21145833333333333" />

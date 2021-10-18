@@ -48,7 +48,7 @@ class ContestDetailFragment : Fragment() {
         }
 
         binding.btnJoinContestDetail.setOnClickListener {
-            navigateToJoinContest(args.id)
+            navigateToJoinContest()
         }
     }
 
@@ -69,10 +69,7 @@ class ContestDetailFragment : Fragment() {
         navController.navigate(R.id.action_contestDetailFragment_to_mainFragment)
     }
 
-    private fun navigateToJoinContest(id: Int) {
-        val bundle = Bundle()
-        bundle.putInt("id", id)
-
-        navController.navigate(R.id.action_contestDetailFragment_to_joinContestFragment, bundle)
+    private fun navigateToJoinContest() {
+        navController.navigate(ContestDetailFragmentDirections.actionContestDetailFragmentToJoinContestFragment(args.id))
     }
 }
