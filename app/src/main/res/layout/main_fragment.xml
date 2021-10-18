@@ -14,10 +14,36 @@
             android:id="@+id/titleImg"
             android:layout_width="match_parent"
             android:layout_height="200dp"
-            android:background="#c4c4c4"
+            android:background="@drawable/main_gradient"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"/>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintStart_toStartOf="@id/titleImg"
+            app:layout_constraintTop_toTopOf="@id/titleImg"
+            app:layout_constraintEnd_toEndOf="@id/titleImg"
+            app:layout_constraintBottom_toBottomOf="@id/titleImg">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="대회 목록"
+                android:textStyle="bold"
+                android:textSize="25sp"
+                android:textColor="@color/white"
+                style="@style/Base.Widget.AppCompat.TextView.Shadow"/>
+
+<!--            <ImageView-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"/>-->
+
+        </LinearLayout>
+
+
 
 
         <androidx.core.widget.NestedScrollView

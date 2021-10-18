@@ -6,7 +6,8 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/item_main_background">
+        android:background="@drawable/item_main_background"
+        android:elevation="5dp">
 
         <TextView
             android:id="@+id/item_contest_title"

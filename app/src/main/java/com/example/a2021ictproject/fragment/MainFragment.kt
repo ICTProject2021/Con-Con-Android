@@ -15,6 +15,7 @@ import com.example.a2021ictproject.Adapter.MainRecyclerViewAdapter
 import com.example.a2021ictproject.R
 import com.example.a2021ictproject.activity.MainActivity
 import com.example.a2021ictproject.databinding.MainFragmentBinding
+import com.example.a2021ictproject.decoration.RecyclerViewDecoration
 import com.example.a2021ictproject.network.dto.response.Contest
 import com.example.a2021ictproject.viewmodel.MainViewModel
 
@@ -45,10 +46,12 @@ class MainFragment : Fragment() {
     }
 
     private fun initRecyclerView() {
+        val decoration: RecyclerViewDecoration = RecyclerViewDecoration(40)
         binding.contestRecyclerView.apply {
             layoutManager = LinearLayoutManager(context)
             recyclerViewAdapter = MainRecyclerViewAdapter()
             adapter = recyclerViewAdapter
+            addItemDecoration(decoration)
         }
         viewModel = ViewModelProvider(requireActivity()).get(MainViewModel::class.java)
         viewModel.callApi()
