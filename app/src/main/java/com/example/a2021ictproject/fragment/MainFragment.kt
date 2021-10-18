@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.a2021ictproject.adapter.MainRecyclerViewAdapter
@@ -14,6 +15,7 @@ import com.example.a2021ictproject.databinding.MainFragmentBinding
 import com.example.a2021ictproject.decoration.RecyclerViewDecoration
 import com.example.a2021ictproject.network.dto.response.Contest
 import com.example.a2021ictproject.viewmodel.MainViewModel
+import com.example.a2021ictproject.viewmodel.ProfileViewModel
 
 class MainFragment : Fragment() {
 
@@ -56,20 +58,23 @@ class MainFragment : Fragment() {
                 recyclerViewAdapter.setData(it)
             } else {
                 recyclerViewAdapter.setData(
-                    listOf(
-                        Contest(
-                            ID = 0,
-                            dueDate = 0,
-                            host = "",
-                            profilepicture = "",
-                            title = "아직 대회가 없어요!"
-                        )
-                    )
+                    listOf()
+//                    listOf(
+//                        Contest(
+//                            ID = 0,
+//                            dueDate = 0,
+//                            host = "",
+//                            profile = "",
+//                            title = "아직 대회가 없어요!"
+//                        )
+//                    )
                 )
             }
             recyclerViewAdapter.setOnItemClickListener(object: MainRecyclerViewAdapter.onItemClickListener{
                 override fun onClick(v: View, position: Int) {
-                    findNavController().navigate(MainFragmentDirections.actionMainFragmentToContestDetailFragment(it[position].ID))
+                    findNavController().navigate(MainFragmentDirections.actionMainFragmentToContestDetailFragment(
+                        it[position].ID!!
+                    ))
                     (activity as MainActivity).gone()
                 }
             })

@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.a2021ictproject.network.`object`.RetrofitInstance
 import com.example.a2021ictproject.network.dto.request.ContestRequest
+import com.example.a2021ictproject.network.dto.response.Msg
 import com.example.a2021ictproject.network.dto.response.Res
 import retrofit2.Call
 import retrofit2.Callback
@@ -21,7 +22,7 @@ class CreateContestViewModel : ViewModel() {
 
     private val contestService by lazy { RetrofitInstance.contestService }
 
-    val postCreateContestRes = MutableLiveData<Res<String>?>()
+    val postCreateContestRes = MutableLiveData<Msg?>()
 
     fun longTimeToDateAsString(time: Long): String {
         val dateFormat = SimpleDateFormat("yyyy-MM-dd")
@@ -30,13 +31,13 @@ class CreateContestViewModel : ViewModel() {
 
     fun postCreateContest(contestRequest: ContestRequest) {
         contestService.postCreateContest(contestRequest).enqueue(
-            object : Callback<String> {
-                override fun onResponse(call: Call<String>, response: Response<String>) {
+            object : Callback<Msg> {
+                override fun onResponse(call: Call<Msg>, response: Response<Msg>) {
                     Log.d("createContest", "${response.code()}: ${response.body()}")
-                    postCreateContestRes.postValue(Res(response.code(), response.body()))
+                    postCreateContestRes.postValue(response.body())
                 }
 
-                override fun onFailure(call: Call<String>, t: Throwable) {
+                override fun onFailure(call: Call<Msg>, t: Throwable) {
                     Log.d("postCreateContest", t.message.toString())
                     postCreateContestRes.postValue(null)
                 }

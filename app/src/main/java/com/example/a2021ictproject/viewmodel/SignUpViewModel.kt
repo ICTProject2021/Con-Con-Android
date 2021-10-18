@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModel
 import com.example.a2021ictproject.network.`object`.RetrofitInstance
 import com.example.a2021ictproject.network.dto.request.IdRequest
 import com.example.a2021ictproject.network.dto.request.SignUpRequest
+import com.example.a2021ictproject.network.dto.response.Msg
 import com.example.a2021ictproject.network.dto.response.Token
 import com.example.a2021ictproject.utils.isNotBlankAll
 import retrofit2.Call
@@ -29,26 +30,25 @@ class SignUpViewModel : ViewModel() {
 
     private val accountService by lazy { RetrofitInstance.accountService }
 
-    val postCheckIdRes = MutableLiveData<String?>()
-    val postSignUpRes = MutableLiveData<Token?>()
+    val postCheckIdRes = MutableLiveData<Msg?>()
+    val postSignUpRes = MutableLiveData<Msg?>()
 
     fun postCheckId() {
         val idReq = IdRequest(id.value!!)
 
         accountService.postCheckId(idReq).enqueue(
-            object : Callback<String> {
-                override fun onResponse(call: Call<String>, response: Response<String>) {
+            object : Callback<Msg> {
+                override fun onResponse(call: Call<Msg>, response: Response<Msg>) {
                     Log.d("postCheckId", "${response.code()}-${response.message()}: ${response.body()}")
 
                     if (response.isSuccessful)
                         postCheckIdRes.postValue(response.body())
                 }
 
-                override fun onFailure(call: Call<String>, t: Throwable) {
+                override fun onFailure(call: Call<Msg>, t: Throwable) {
                     Log.d("postCheckId", t.message.toString())
                     postSignUpRes.postValue(null)
                 }
-
             }
         )
     }
@@ -68,14 +68,16 @@ class SignUpViewModel : ViewModel() {
         )
 
         accountService.postSignUp(signUpReq).enqueue(
-            object : Callback<Token> {
-                override fun onResponse(call: Call<Token>, response: Response<Token>) {
+            object : Callback<Msg> {
+                override fun onResponse(call: Call<Msg>, response: Response<Msg>) {
                     Log.d("postSignUp", "${response.code()}: ${response.body()}")
+                    Log.d("postSignUp", response.raw().toString())
+
                     if (response.isSuccessful)
                         postSignUpRes.postValue(response.body())
                 }
 
-                override fun onFailure(call: Call<Token>, t: Throwable) {
+                override fun onFailure(call: Call<Msg>, t: Throwable) {
                     Log.d("postSignUp", t.message.toString())
                 }
             }

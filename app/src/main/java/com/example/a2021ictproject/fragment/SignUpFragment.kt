@@ -84,7 +84,7 @@ class SignUpFragment : Fragment() {
         }
 
         postCheckIdRes.observe(viewLifecycleOwner) {
-            when (it) {
+            when (it?.msg) {
                 null ->
                     Toast.makeText(requireContext(), getString(R.string.fail_server), Toast.LENGTH_SHORT).show()
 
@@ -101,7 +101,7 @@ class SignUpFragment : Fragment() {
                     Toast.makeText(requireContext(), getString(R.string.fail_server), Toast.LENGTH_SHORT).show()
 
                 else -> {
-                    PreferenceUtils.token = it.token
+                    PreferenceUtils.token = it.msg
                     navigateToMain()
                 }
             }
