@@ -30,6 +30,10 @@
         <item name="boxCornerRadiusBottomEnd">30dp</item>
     </style>
 
+    <style name="Widget.MaterialComponents.TextInputLayout.FilledBox.a">
+
+    </style>
+
     <!-- EditText -->
     <style name="Widget.AppCompat.EditText.BaseEditText">
         <item name="hintEnabled">false</item>
