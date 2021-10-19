@@ -85,7 +85,7 @@
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_marginBottom="100dp"
-            android:background="@drawable/sign_background"
+            android:background="@drawable/background_gradient_sign"
             android:gravity="center"
             android:orientation="vertical"
             app:layout_constraintBottom_toTopOf="@+id/et_layout_id_sign_in"

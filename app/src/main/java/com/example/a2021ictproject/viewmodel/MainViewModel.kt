@@ -17,7 +17,6 @@ class MainViewModel : ViewModel() {
     private val contestService: ContestService by lazy { RetrofitInstance.contestService }
 
     fun getContestLiveDataObserver() : MutableLiveData<List<Contest>> {
-        Log.d("vm", contestList.value.toString())
         return contestList
     }
 
@@ -25,7 +24,7 @@ class MainViewModel : ViewModel() {
         val call : Call<List<Contest>> = contestService.getContest();
         call.enqueue(object : retrofit2.Callback<List<Contest>>{
             override fun onResponse(call: Call<List<Contest>>, response: Response<List<Contest>>) {
-                Log.d("mainViewModel", "${response.code()}-${response.message()}: ${response.body()}")
+                Log.d("getContest", "${response.code()}-${response.message()}: ${response.body()}")
 
                 if (response.isSuccessful){
                     contestList.postValue(response.body())
@@ -33,6 +32,7 @@ class MainViewModel : ViewModel() {
             }
 
             override fun onFailure(call: Call<List<Contest>>, t: Throwable) {
+                Log.d("getContest", t.message.toString())
                 contestList.postValue(null)
             }
         })

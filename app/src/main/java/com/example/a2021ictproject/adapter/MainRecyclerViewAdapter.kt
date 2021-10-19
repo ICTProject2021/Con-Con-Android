@@ -1,5 +1,6 @@
 package com.example.a2021ictproject.adapter
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,10 +10,11 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.a2021ictproject.R
 import com.example.a2021ictproject.network.dto.response.Contest
+import java.text.SimpleDateFormat
+import java.util.*
+import kotlin.math.abs
 
-//val contest: List<Contest>
-
-class MainRecyclerViewAdapter() : RecyclerView.Adapter<MainRecyclerViewAdapter.ViewHolder>(){
+class MainRecyclerViewAdapter : RecyclerView.Adapter<MainRecyclerViewAdapter.ViewHolder>(){
 
     private var dataList = mutableListOf<Contest>()
     private lateinit var mListener: onItemClickListener
@@ -41,11 +43,29 @@ class MainRecyclerViewAdapter() : RecyclerView.Adapter<MainRecyclerViewAdapter.V
 
         fun bind(data: Contest) {
             title.text = data.title
-            dueLine.text = data.dueDate.toString()
+            dueLine.text = data.duedate.toString()
             user.text = data.host
-            Glide.with(profile)
-                .load(data.profilepicture)
-                .into(profile)
+            dueLine.text = getDateText(data.duedate)
+
+            if (data.profile != null) {
+                Glide.with(profile)
+                    .load(data.profile)
+                    .into(profile)
+            }
+        }
+
+        private fun getDateText(dueDate: String?): String {
+            Log.d("getDateText", dueDate.toString())
+            return "마감 " + if (dueDate != null) {
+                val today = Date(System.currentTimeMillis())
+                val lastDate = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.sss'Z'", Locale.getDefault()).parse(dueDate)
+
+                val dif = (lastDate.time - today.time) / (24*60*60*1000)
+
+                dif.toString() + "일 전"
+            } else {
+                ""
+            }
         }
     }
 

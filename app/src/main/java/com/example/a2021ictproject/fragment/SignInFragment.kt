@@ -68,11 +68,11 @@ class SignInFragment : Fragment() {
 
         postSignInRes.observe(viewLifecycleOwner) {
             if (it != null) {
-                when (it.token) {
+                when (it.msg) {
                     "fail" -> Toast.makeText(requireContext(), "올바른 아이디, 비밀번호가 아님", Toast.LENGTH_SHORT).show()
 
                     else -> {
-                        PreferenceUtils.token = it.token
+                        PreferenceUtils.token = it.msg
                         navigateToMain()
                     }
                 }

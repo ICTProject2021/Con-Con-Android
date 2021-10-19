@@ -21,10 +21,6 @@ class ProfileFragment : Fragment() {
 
     private val navController: NavController by lazy { findNavController() }
 
-    companion object {
-        fun newInstance() = ProfileFragment()
-    }
-
     private lateinit var viewModel: ProfileViewModel
     private lateinit var binding: ProfileFragmentBinding
 
@@ -36,13 +32,19 @@ class ProfileFragment : Fragment() {
         return binding.root
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(ProfileViewModel::class.java)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        viewModel = ViewModelProvider(requireActivity()).get(ProfileViewModel::class.java)
         viewModel.callApi()
-        viewModel.getProfileLiveDataObserver().observe(viewLifecycleOwner, Observer<Profile> {
-            Glide.with(binding.profileImg).load(it.profile).into(binding.profileImg)
-            binding.cash.text = it.cash.toString()
+
+        viewModel.getProfileLiveDataObserver().observe(viewLifecycleOwner, {
+            // 프로필 이미지가 없을 때 null로 날아오기 때문에 null 값 체크
+            if (it.profile != null) {
+                Glide.with(binding.profileImg).load(it.profile).into(binding.profileImg)
+            }
+
+            binding.cash.text = it.cash.toString() + "원"
             binding.profileNickname.text = it.nickname
         })
 
@@ -54,5 +56,4 @@ class ProfileFragment : Fragment() {
             navController.navigate(R.id.action_profileFragment_to_mainFragment)
         }
     }
-
 }
