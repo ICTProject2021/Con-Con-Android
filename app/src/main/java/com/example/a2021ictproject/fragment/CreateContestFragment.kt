@@ -13,9 +13,10 @@ import androidx.navigation.fragment.findNavController
 import com.example.a2021ictproject.R
 import com.example.a2021ictproject.databinding.CreateContestFragmentBinding
 import com.example.a2021ictproject.network.dto.request.ContestRequest
+import com.example.a2021ictproject.network.dto.response.Prize
 import com.example.a2021ictproject.viewmodel.CreateContestViewModel
 import com.google.android.material.datepicker.MaterialDatePicker
-import java.sql.Timestamp
+import android.icu.text.SimpleDateFormat
 
 class CreateContestFragment : Fragment() {
 
@@ -24,6 +25,7 @@ class CreateContestFragment : Fragment() {
     private lateinit var binding: CreateContestFragmentBinding
     private val viewModel: CreateContestViewModel by viewModels()
 
+    private var startTime: Long = 0
     private var dueTime: Long = 0
 
     override fun onCreateView(
@@ -69,7 +71,7 @@ class CreateContestFragment : Fragment() {
             if (errorMsg != null) {
                 Toast.makeText(requireContext(), "$errorMsg 입력해주세요.", Toast.LENGTH_SHORT).show()
             } else {
-//                viewModel.postCreateContest(getCreateContest())
+                viewModel.postCreateContest(getCreateContest())
             }
         }
     }
@@ -99,6 +101,7 @@ class CreateContestFragment : Fragment() {
 
         dateRangePicker.isCancelable = false
         dateRangePicker.addOnPositiveButtonClickListener {
+            startTime = it.first
             dueTime = it.second
             val text = "${viewModel.longTimeToDateAsString(it.first)} ~ ${viewModel.longTimeToDateAsString(it.second)}"
             binding.etDateCreateContest.setText(text)
@@ -107,17 +110,26 @@ class CreateContestFragment : Fragment() {
         dateRangePicker.show(requireActivity().supportFragmentManager, "Calendar")
     }
 
-//    private fun getCreateContest(): ContestRequest =
-//        ContestRequest(
-//            binding.etTitleCreateContest.text.toString(),
-//            binding.etContentCreateContest.text.toString(),
-//            dueTime,
-//            Integer.parseInt(binding.etPrizeCreateContest.text.toString().replace("원", ""))
-//        )
+    private fun getCreateContest(): ContestRequest =
+        ContestRequest(
+            binding.etTitleCreateContest.text.toString(),
+            binding.etContentCreateContest.text.toString(),
+            converterLongToTimeStamp(startTime.toString()),
+            converterLongToTimeStamp(dueTime.toString()),
+            Prize(
+                1,
+                Integer.parseInt(binding.etPrizeCreateContest.text.toString().replace("원", ""))
+            )
+        )
 
 
     private fun navigateToMain() {
         navController.navigate(R.id.action_createContestFragment_to_mainFragment)
+    }
+
+    private fun converterLongToTimeStamp(date: String): Long {
+        val sdf = SimpleDateFormat("yyyy-mm-dd")
+        return sdf.parse(date).time
     }
 }
 
