@@ -18,9 +18,11 @@
         <entry key="..\:/Github/2021IctProject/app/src/main/res/layout/activity_main.xml" value="0.264" />
         <entry key="..\:/Github/2021IctProject/app/src/main/res/layout/add_contest_fragment.xml" value="0.24427083333333333" />
         <entry key="..\:/Github/2021IctProject/app/src/main/res/layout/calendar_dialog_fragment.xml" value="0.4" />
-        <entry key="..\:/Github/2021IctProject/app/src/main/res/layout/charge_cash_fragment.xml" value="0.25885416666666666" />
+        <entry key="..\:/Github/2021IctProject/app/src/main/res/layout/charge_cash_finish_fragment.xml" value="0.194140625" />
+        <entry key="..\:/Github/2021IctProject/app/src/main/res/layout/charge_cash_fragment.xml" value="0.2" />
         <entry key="..\:/Github/2021IctProject/app/src/main/res/layout/contest_detail_fragment.xml" value="0.28085519922254615" />
         <entry key="..\:/Github/2021IctProject/app/src/main/res/layout/create_contest_fragment.xml" value="0.48299319727891155" />
+        <entry key="..\:/Github/2021IctProject/app/src/main/res/layout/fragment_charge_cash_finish.xml" value="0.16799999999999998" />
         <entry key="..\:/Github/2021IctProject/app/src/main/res/layout/intro_fragment.xml" value="0.2" />
         <entry key="..\:/Github/2021IctProject/app/src/main/res/layout/join_contest_fragment.xml" value="0.23072916666666668" />
         <entry key="..\:/Github/2021IctProject/app/src/main/res/layout/main_fragment.xml" value="0.25885416666666666" />
@@ -57,7 +59,7 @@
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" project-jdk-name="1.8" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">

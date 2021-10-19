@@ -3,7 +3,7 @@ package com.example.a2021ictproject.utils
 import android.app.AlertDialog
 import android.content.Context
 
-class ShowDialog {
+object MessageUtils {
     fun showDialog(context: Context, title: String, msg: String) {
         val builder: AlertDialog.Builder = AlertDialog.Builder(context)
 
