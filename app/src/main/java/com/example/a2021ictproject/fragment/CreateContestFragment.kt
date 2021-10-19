@@ -1,6 +1,7 @@
 package com.example.a2021ictproject.fragment
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -16,7 +17,9 @@ import com.example.a2021ictproject.network.dto.request.ContestRequest
 import com.example.a2021ictproject.network.dto.response.Prize
 import com.example.a2021ictproject.viewmodel.CreateContestViewModel
 import com.google.android.material.datepicker.MaterialDatePicker
-import android.icu.text.SimpleDateFormat
+import java.sql.Date
+import java.sql.Timestamp
+import java.text.SimpleDateFormat
 
 class CreateContestFragment : Fragment() {
 
@@ -111,11 +114,13 @@ class CreateContestFragment : Fragment() {
         ContestRequest(
             binding.etTitleCreateContest.text.toString(),
             binding.etContentCreateContest.text.toString(),
-            converterLongToTimeStamp(startTime.toString()),
-            converterLongToTimeStamp(dueTime.toString()),
+            longTimeToDateAsString(startTime),
+            longTimeToDateAsString(dueTime),
+            listOf<Prize>(
             Prize(
                 1,
                 Integer.parseInt(binding.etPrizeCreateContest.text.toString().replace("원", ""))
+            )
             )
         )
 
@@ -124,9 +129,12 @@ class CreateContestFragment : Fragment() {
         navController.navigate(R.id.action_createContestFragment_to_mainFragment)
     }
 
-    private fun converterLongToTimeStamp(date: String): Long {
-        val sdf = SimpleDateFormat("yyyy-mm-dd")
-        return sdf.parse(date).time
+    private fun longTimeToDateAsString(time: Long): String {
+        val date: Date = Date(time)
+        val dateFormat = SimpleDateFormat("yyyy-MM-dd HH:mm:ss.sss")
+        Log.d("longTimeToDateAsString", dateFormat.format(date))
+        return dateFormat.format(date)
     }
+
 }
 

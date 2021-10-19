@@ -20,7 +20,7 @@ interface ContestService {
     fun getContestDetail(@Path("id") id: Int): Call<ContestDetail>
 
     /* 대회 생성 */
-    @POST("/contest/create")
+    @POST("/contest")
     fun postCreateContest(@Body contestRequest: ContestRequest): Call<Msg>
 
     /* 대회 참여 조회 */

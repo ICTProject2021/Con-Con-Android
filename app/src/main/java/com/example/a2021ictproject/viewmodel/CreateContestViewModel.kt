@@ -34,6 +34,7 @@ class CreateContestViewModel : ViewModel() {
             object : Callback<Msg> {
                 override fun onResponse(call: Call<Msg>, response: Response<Msg>) {
                     Log.d("createContest", "${response.code()}: ${response.body()}")
+                    Log.d("createContest", response.raw().toString())
                     postCreateContestRes.postValue(response.body())
                 }
 
