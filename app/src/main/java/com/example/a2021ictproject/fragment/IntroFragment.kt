@@ -24,7 +24,7 @@ class IntroFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = DataBindingUtil.inflate(inflater, R.layout.intro_fragment, container, false)
+        binding = IntroFragmentBinding.inflate(inflater, container, false)
         return binding.root
     }
 

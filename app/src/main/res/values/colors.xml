@@ -17,4 +17,6 @@
     
     <color name="main_gradient_start_color">#FFEBA231</color>
     <color name="main_gradient_end_color">#FFEA5514</color>
+
+    <color name="error">#FFF44336</color>
 </resources>

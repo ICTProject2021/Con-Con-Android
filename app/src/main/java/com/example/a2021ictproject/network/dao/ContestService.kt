@@ -1,5 +1,6 @@
 package com.example.a2021ictproject.network.dao
 
+import com.example.a2021ictproject.network.dto.request.CashRequest
 import com.example.a2021ictproject.network.dto.request.ContestRequest
 import com.example.a2021ictproject.network.dto.response.Contest
 import com.example.a2021ictproject.network.dto.response.ContestDetail
@@ -35,4 +36,8 @@ interface ContestService {
         @Part content: RequestBody,
         @Part attachment: MultipartBody.Part
     ): Call<Msg>
+
+    /* 캐시 충전 */
+    @PUT("/charge")
+    fun putCharge(@Body cash: CashRequest): Call<Msg>
 }

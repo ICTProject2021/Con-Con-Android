@@ -30,10 +30,6 @@
         <item name="boxCornerRadiusBottomEnd">30dp</item>
     </style>
 
-    <style name="Widget.MaterialComponents.TextInputLayout.FilledBox.a">
-
-    </style>
-
     <!-- EditText -->
     <style name="Widget.AppCompat.EditText.BaseEditText">
         <item name="hintEnabled">false</item>
@@ -63,9 +59,20 @@
     </style>
 
     <!-- TextView -->
+    <style name="Base.Widget.AppCompat.TextView.Title">
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">30sp</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
     <style name="Base.Widget.AppCompat.TextView.Bold">
         <item name="android:textStyle">bold</item>
         <item name="android:textSize">20sp</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <style name="Base.Widget.AppCompat.TextView.Big">
+        <item name="android:textSize">17sp</item>
         <item name="android:textColor">@color/black</item>
     </style>
 
@@ -102,6 +109,13 @@
         <item name="android:backgroundTint">@color/white</item>
         <item name="android:elevation">12dp</item>
         <item name="borderWidth">0dp</item>
+    </style>
+
+    <style name="Widget.AppCompat.Button.NumberPad">
+        <item name="android:background">@android:color/transparent</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:textSize">20sp</item>
     </style>
 
     <!--    -->

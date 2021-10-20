@@ -21,4 +21,9 @@
     <string name="duplicate_check">중복체크</string>
 
     <string name="date_format">%1$s ~ %2$s</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="server_success">success</string>
+    <string name="server_fail">fail</string>
+    <string name="confirm">확인</string>
 </resources>
