@@ -8,19 +8,19 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.activityViewModels
 import com.example.a2021ictproject.R
-import com.example.a2021ictproject.databinding.FragmentChargeCashFinishBinding
+import com.example.a2021ictproject.databinding.ChargeCashFinishFragmentBinding
 import com.example.a2021ictproject.viewmodel.ChargeCashViewModel
 
 class ChargeCashFinishFragment : Fragment() {
 
     private val viewModel: ChargeCashViewModel by activityViewModels()
-    private lateinit var binding: FragmentChargeCashFinishBinding
+    private lateinit var binding: ChargeCashFinishFragmentBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_charge_cash_finish, container, false)
+        binding = DataBindingUtil.inflate(inflater, R.layout.charge_cash_finish_fragment, container, false)
         return binding.root
     }
 
