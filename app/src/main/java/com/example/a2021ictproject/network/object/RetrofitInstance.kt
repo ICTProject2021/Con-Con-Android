@@ -12,7 +12,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 import java.util.*
 
 object RetrofitInstance {
-    private const val BASE_URL = "http://10.80.161.222:3000/"
+    private const val BASE_URL = "http://18.219.111.210:3000/"
 
     private val gson = Gson().newBuilder().setLenient().create()
 
@@ -29,13 +29,4 @@ object RetrofitInstance {
 
     val accountService: AccountService = retrofit.create(AccountService::class.java)
     val contestService: ContestService = retrofit.create(ContestService::class.java)
-}
-
-class AuthInterceptor: Interceptor {
-    override fun intercept(chain: Interceptor.Chain): Response {
-        val token = "Abc"
-        val req =
-            chain.request().newBuilder().addHeader("authorization", token ?: "").build()
-        return chain.proceed(req)
-    }
 }

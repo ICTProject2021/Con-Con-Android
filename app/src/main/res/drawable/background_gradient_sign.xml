@@ -10,7 +10,7 @@
         android:top="-80dp">
         <shape android:shape="oval">
             <gradient
-                android:angle="130"
+                android:angle="315"
                 android:startColor="@color/main_gradient_start_color"
                 android:endColor="@color/main_gradient_end_color"/>
         </shape>

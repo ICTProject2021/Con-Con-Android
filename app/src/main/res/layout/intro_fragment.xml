@@ -48,13 +48,15 @@
 
         <TextView
             android:id="@+id/textView6"
+            setShader="@{true}"
+            android:textColor="@color/black"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="32dp"
-            android:layout_marginTop="32dp"
+            android:layout_marginTop="40dp"
+            android:text="Con-Con,\n누구나 쉽게 참여하는\n대회 플랫폼"
             android:textSize="30sp"
             android:textStyle="bold"
-            android:text="Con-Con,\n누구나 쉽게 참여하는\n대회 플랫폼"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
