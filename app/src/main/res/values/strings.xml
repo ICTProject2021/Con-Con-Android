@@ -26,4 +26,5 @@
     <string name="server_success">success</string>
     <string name="server_fail">fail</string>
     <string name="confirm">확인</string>
+    <string name="price">상금을 입력하세요.</string>
 </resources>

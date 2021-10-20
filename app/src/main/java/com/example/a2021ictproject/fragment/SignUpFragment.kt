@@ -25,9 +25,6 @@ class SignUpFragment : Fragment() {
     private val viewModel: SignUpViewModel by viewModels()
     private lateinit var binding: SignUpFragmentBinding
 
-    /* 시간 남으면 모션 레이아웃 구현할게용 */
-    private val motionLayout: MotionLayout by lazy { binding.motionLayout }
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -41,8 +38,10 @@ class SignUpFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        motionLayout.transitionToStart()
         observe()
+
+        binding.motionLayoutSignUp.transitionToStart()
+        binding.motionLayoutSignUp.transitionToEnd()
 
         /* onClick */
         binding.fabCloseSignUp.setOnClickListener {

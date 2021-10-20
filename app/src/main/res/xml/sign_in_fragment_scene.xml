@@ -4,35 +4,45 @@
     xmlns:motion="http://schemas.android.com/apk/res-auto">
 
     <Transition
-        motion:constraintSetEnd="@+id/end"
+        android:id="@+id/transition_sign_in"
         motion:constraintSetStart="@id/start"
-        motion:duration="2000"
-        motion:motionInterpolator="overshoot">
-    </Transition>
+        motion:constraintSetEnd="@+id/end"
+        motion:duration="1000"
+        motion:motionInterpolator="overshoot"/>
+
+    <Transition
+        android:id="@+id/transition_back_sign_in"
+        motion:constraintSetStart="@id/end"
+        motion:constraintSetEnd="@+id/start"
+        motion:duration="1000"
+        motion:motionInterpolator="overshoot"/>
 
     <ConstraintSet android:id="@+id/start">
+
         <Constraint
             android:id="@+id/linearLayout"
+            motion:layout_constraintEnd_toEndOf="parent"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:elevation="20dp"
-            motion:layout_constraintEnd_toEndOf="parent"
+            android:elevation="50dp"
             motion:layout_constraintBottom_toBottomOf="parent"
             motion:layout_constraintTop_toTopOf="parent"
             motion:layout_constraintStart_toStartOf="parent"
-            motion:transitionEasing="standard" />
+            motion:transitionEasing="linear"/>
     </ConstraintSet>
 
     <ConstraintSet android:id="@+id/end">
+
         <Constraint
             android:id="@+id/linearLayout"
             motion:layout_constraintEnd_toEndOf="parent"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_marginBottom="90dp"
-            motion:layout_constraintBottom_toTopOf="@+id/et_layout_id_sign_up"
+            android:layout_marginBottom="100dp"
+            motion:layout_constraintBottom_toTopOf="@+id/et_layout_id_sign_in"
             motion:layout_constraintTop_toTopOf="parent"
             motion:layout_constraintStart_toStartOf="parent"
             motion:transitionEasing="linear" />
     </ConstraintSet>
+
 </MotionScene>

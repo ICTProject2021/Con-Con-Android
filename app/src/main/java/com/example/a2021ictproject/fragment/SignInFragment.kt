@@ -46,6 +46,9 @@ class SignInFragment : Fragment() {
 
         observe()
 
+        binding.motionLayoutSignIn.transitionToStart()
+        binding.motionLayoutSignIn.transitionToEnd()
+
         binding.fabCloseSignIn.setOnClickListener {
             navigateToIntro()
         }
