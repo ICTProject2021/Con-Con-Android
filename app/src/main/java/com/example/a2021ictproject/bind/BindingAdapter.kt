@@ -45,7 +45,6 @@ fun RecyclerView.submitList(list: List<Participant>) {
 fun TextView.setShader(b: Boolean) {
     val startColor = ContextCompat.getColor(context, R.color.main_gradient_start_color)
     val endColor = ContextCompat.getColor(context, R.color.main_gradient_end_color)
-    val midColor = ContextCompat.getColor(context, R.color.black)
 
     val shader = LinearGradient(
         0f,
