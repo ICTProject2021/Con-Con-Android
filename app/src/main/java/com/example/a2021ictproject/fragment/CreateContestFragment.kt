@@ -57,6 +57,10 @@ class CreateContestFragment : Fragment() {
                         setText("${text}원")
                 }
             }
+
+            setOnClickListener {
+                navigateToPrize()
+            }
         }
 
         binding.btnCloseCreateContest.setOnClickListener { navigateToMain() }
@@ -127,6 +131,10 @@ class CreateContestFragment : Fragment() {
 
     private fun navigateToMain() {
         navController.navigate(R.id.action_createContestFragment_to_mainFragment)
+    }
+
+    private fun navigateToPrize() {
+        navController.navigate(R.id.action_createContestFragment_to_prizeFragment)
     }
 
     private fun longTimeToDateAsString(time: Long): String {
