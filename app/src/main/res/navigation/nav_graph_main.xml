@@ -32,6 +32,9 @@
         <action
             android:id="@+id/action_createContestFragment_to_profileFragment"
             app:destination="@id/profileFragment" />
+        <action
+            android:id="@+id/action_createContestFragment_to_prizeFragment"
+            app:destination="@id/prizeFragment" />
     </fragment>
     <fragment
         android:id="@+id/profileFragment"
@@ -99,5 +102,14 @@
         <action
             android:id="@+id/action_chargeCashFinishFragment_to_profileFragment"
             app:destination="@id/profileFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/prizeFragment"
+        android:name="com.example.a2021ictproject.fragment.PrizeFragment"
+        android:label="fragment_prize"
+        tools:layout="@layout/fragment_prize" >
+        <action
+            android:id="@+id/action_prizeFragment_to_createContestFragment"
+            app:destination="@id/createContestFragment" />
     </fragment>
 </navigation>
