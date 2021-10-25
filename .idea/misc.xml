@@ -38,7 +38,15 @@
         <entry key="..\:/Github/2021IctProject/app/src/main/res/layout/sign_up_fragment.xml" value="0.176" />
         <entry key="..\:/Github/2021IctProject/app/src/main/res/menu/bottom_navigation.xml" value="0.25885416666666666" />
         <entry key="..\:/Users/Minhyuk/Documents/GitHub/2021IctProject/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.3675925925925926" />
+        <entry key="..\:/Users/Minhyuk/Documents/GitHub/2021IctProject/app/src/main/res/drawable/backgorund_layout_cash.xml" value="0.278125" />
+        <entry key="..\:/Users/Minhyuk/Documents/GitHub/2021IctProject/app/src/main/res/drawable/background_calendar_today.xml" value="0.278125" />
         <entry key="..\:/Users/Minhyuk/Documents/GitHub/2021IctProject/app/src/main/res/drawable/background_dialog.xml" value="0.35833333333333334" />
+        <entry key="..\:/Users/Minhyuk/Documents/GitHub/2021IctProject/app/src/main/res/drawable/background_gradient.xml" value="0.278125" />
+        <entry key="..\:/Users/Minhyuk/Documents/GitHub/2021IctProject/app/src/main/res/drawable/background_gradient_btn.xml" value="0.278125" />
+        <entry key="..\:/Users/Minhyuk/Documents/GitHub/2021IctProject/app/src/main/res/drawable/background_gradient_outline.xml" value="0.278125" />
+        <entry key="..\:/Users/Minhyuk/Documents/GitHub/2021IctProject/app/src/main/res/drawable/background_gradient_outline_prize.xml" value="0.290625" />
+        <entry key="..\:/Users/Minhyuk/Documents/GitHub/2021IctProject/app/src/main/res/drawable/background_gradient_outline_thin.xml" value="0.278125" />
+        <entry key="..\:/Users/Minhyuk/Documents/GitHub/2021IctProject/app/src/main/res/drawable/background_gradient_sign.xml" value="0.278125" />
         <entry key="..\:/Users/Minhyuk/Documents/GitHub/2021IctProject/app/src/main/res/drawable/btn_main_selector.xml" value="0.21145833333333333" />
         <entry key="..\:/Users/Minhyuk/Documents/GitHub/2021IctProject/app/src/main/res/drawable/btn_profile_background.xml" value="0.3537037037037037" />
         <entry key="..\:/Users/Minhyuk/Documents/GitHub/2021IctProject/app/src/main/res/drawable/cash_layout_background.xml" value="0.3574074074074074" />
@@ -57,10 +65,11 @@
         <entry key="..\:/Users/Minhyuk/Documents/GitHub/2021IctProject/app/src/main/res/layout/comment_fragment.xml" value="0.20364583333333333" />
         <entry key="..\:/Users/Minhyuk/Documents/GitHub/2021IctProject/app/src/main/res/layout/contest_detail_fragment.xml" value="0.20364583333333333" />
         <entry key="..\:/Users/Minhyuk/Documents/GitHub/2021IctProject/app/src/main/res/layout/create_contest_fragment.xml" value="0.18" />
-        <entry key="..\:/Users/Minhyuk/Documents/GitHub/2021IctProject/app/src/main/res/layout/fragment_prize.xml" value="0.33" />
+        <entry key="..\:/Users/Minhyuk/Documents/GitHub/2021IctProject/app/src/main/res/layout/fragment_prize.xml" value="0.18" />
         <entry key="..\:/Users/Minhyuk/Documents/GitHub/2021IctProject/app/src/main/res/layout/fragment_prize_dialog.xml" value="0.36822916666666666" />
         <entry key="..\:/Users/Minhyuk/Documents/GitHub/2021IctProject/app/src/main/res/layout/intro_fragment.xml" value="0.36822916666666666" />
         <entry key="..\:/Users/Minhyuk/Documents/GitHub/2021IctProject/app/src/main/res/layout/item_main.xml" value="0.6637824474660075" />
+        <entry key="..\:/Users/Minhyuk/Documents/GitHub/2021IctProject/app/src/main/res/layout/item_prize.xml" value="0.5" />
         <entry key="..\:/Users/Minhyuk/Documents/GitHub/2021IctProject/app/src/main/res/layout/join_contest_fragment.xml" value="0.36822916666666666" />
         <entry key="..\:/Users/Minhyuk/Documents/GitHub/2021IctProject/app/src/main/res/layout/main_fragment.xml" value="0.33" />
         <entry key="..\:/Users/Minhyuk/Documents/GitHub/2021IctProject/app/src/main/res/layout/profile_fragment.xml" value="0.33" />
