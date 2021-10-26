@@ -19,16 +19,11 @@ class PrizeFragment : Fragment() {
 
     private lateinit var binding: FragmentPrizeBinding
     private val viewModel: DialogViewModel by activityViewModels()
-    private var rank: Int = 1
-    private var priceList: MutableList<Int> = mutableListOf()
-    private var rankList: MutableList<Int> = mutableListOf()
-    private var prizeList: MutableList<Prize> = mutableListOf()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
         binding = FragmentPrizeBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -36,25 +31,33 @@ class PrizeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+//        for (i in 0 until viewModel.prizeList.value!!.size - 2) {
+//            val it = viewModel.prizeList.value!![i]
+//            addView(it.rank, it.price)
+//        }
+//        viewModel.prizeList.value?.forEach {
+//            addView(it.rank, it.price)
+//        }
+
         binding.addPrizeButton.setOnClickListener {
             PrizeDialogFragment().show(
                 parentFragmentManager, "PrizeDialog"
             )
         }
 
-        viewModel.prize.observe(viewLifecycleOwner, Observer {
-            Log.d("prize", it.toString())
-            addView(rank, it)
-            priceList.add(it)
-            rankList.add(rank)
-            rank++
-        })
+        viewModel.prizeList.observe(viewLifecycleOwner) {
+            binding.prizeLayout.removeAllViews()
+
+            it.forEach { prize ->
+                addView(prize.rank, prize.price)
+            }
+//            if (it.isNotEmpty()) {
+//                val prize = it[it.size-1]
+//                addView(prize.rank, prize.price)
+//            }
+        }
 
         binding.btnBackPrize.setOnClickListener {
-            for (i in 0 until priceList.size) {
-                prizeList.add(Prize(rankList[i], priceList[i]))
-            }
-            viewModel.setPrizeList(prizeList)
             findNavController().navigate(PrizeFragmentDirections.actionPrizeFragmentToCreateContestFragment())
         }
     }

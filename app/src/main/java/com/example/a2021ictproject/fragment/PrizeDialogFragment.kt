@@ -9,6 +9,7 @@ import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import com.example.a2021ictproject.databinding.FragmentPrizeDialogBinding
+import com.example.a2021ictproject.network.dto.response.Prize
 import com.example.a2021ictproject.viewmodel.DialogViewModel
 
 class PrizeDialogFragment : DialogFragment() {
@@ -33,7 +34,10 @@ class PrizeDialogFragment : DialogFragment() {
                 TODO()
             } else {
                 Log.d("prize", binding.price.text.toString())
-                viewModel.setPrize(Integer.parseInt(binding.price.text.trim().toString()))
+                viewModel.addPrizeList(Prize(
+                    viewModel.getLastRank() + 1,
+                    Integer.parseInt(binding.price.text.trim().toString())
+                ))
                 dismiss()
             }
         }

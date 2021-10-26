@@ -8,8 +8,7 @@ import com.example.a2021ictproject.network.dto.response.Prize
 class DialogViewModel : ViewModel() {
 
     var prize = MutableLiveData<Int>()
-    var prizeList = MutableLiveData<List<Prize>>()
-
+    var prizeList = MutableLiveData<List<Prize>>(listOf())
 
     fun setPrize(prize: Int) {
         this.prize.value = prize
@@ -23,4 +22,20 @@ class DialogViewModel : ViewModel() {
         this.prizeList.value = prizeList
     }
 
+    fun addPrizeList(prize: Prize) {
+        var list = mutableListOf<Prize>()
+        prizeList.value?.forEach { list.add(it) }
+        list.add(prize)
+
+        prizeList.value = list
+    }
+
+    fun getLastRank(): Int {
+        return if (prizeList.value!!.isNotEmpty()) {
+            val lastIdx = prizeList.value!!.size - 1
+            prizeList.value!![lastIdx].rank
+        } else {
+            0
+        }
+    }
 }

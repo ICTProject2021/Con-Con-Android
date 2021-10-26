@@ -62,7 +62,7 @@ class CreateContestFragment : Fragment() {
                 } else {
                     if (!text.isNullOrBlank()) {
 
-                        NumberFormat.getInstance(Locale.getDefault()).format(text.toString().trim())
+//                        NumberFormat.getInstance(Locale.getDefault()).format(text.toString().trim())
                         setText("${text}원")
                     }
                 }
