@@ -21,7 +21,9 @@ import com.example.a2021ictproject.viewmodel.CreateContestViewModel
 import com.example.a2021ictproject.viewmodel.DialogViewModel
 import com.google.android.material.datepicker.MaterialDatePicker
 import java.sql.Date
+import java.text.NumberFormat
 import java.text.SimpleDateFormat
+import java.util.*
 
 class CreateContestFragment : Fragment() {
 
@@ -35,13 +37,13 @@ class CreateContestFragment : Fragment() {
     private var dueTime: Long = 0
     private var prizeList: MutableList<Prize> = mutableListOf()
 
-
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         binding = DataBindingUtil.inflate(inflater, R.layout.create_contest_fragment, container, false)
+        binding.vm = viewModel
+        binding.lifecycleOwner = viewLifecycleOwner
         return binding.root
     }
 
@@ -58,9 +60,11 @@ class CreateContestFragment : Fragment() {
                 if (hasFocus) {
                     setText((text.toString()).replace("원", ""))
                 } else {
-                    if (!text.isNullOrBlank())
-                        // Todo (돈 단위별 콤마 작업하기)
+                    if (!text.isNullOrBlank()) {
+
+                        NumberFormat.getInstance(Locale.getDefault()).format(text.toString().trim())
                         setText("${text}원")
+                    }
                 }
             }
 
