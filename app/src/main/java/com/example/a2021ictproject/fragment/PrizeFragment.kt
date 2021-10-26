@@ -6,13 +6,10 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageButton
-import android.widget.LinearLayout
 import android.widget.TextView
-import androidx.core.view.ViewCompat
 import androidx.fragment.app.activityViewModels
-import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
 import com.example.a2021ictproject.R
 import com.example.a2021ictproject.databinding.FragmentPrizeBinding
 import com.example.a2021ictproject.network.dto.response.Prize
@@ -23,7 +20,9 @@ class PrizeFragment : Fragment() {
     private lateinit var binding: FragmentPrizeBinding
     private val viewModel: DialogViewModel by activityViewModels()
     private var rank: Int = 1
-    private var prize: List<Prize> = listOf()
+    private var priceList: MutableList<Int> = mutableListOf()
+    private var rankList: MutableList<Int> = mutableListOf()
+    private var prizeList: MutableList<Prize> = mutableListOf()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -31,7 +30,6 @@ class PrizeFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         binding = FragmentPrizeBinding.inflate(inflater, container, false)
-
         return binding.root
     }
 
@@ -43,12 +41,22 @@ class PrizeFragment : Fragment() {
                 parentFragmentManager, "PrizeDialog"
             )
         }
-//        val prize = viewModel.getPrize()
+
         viewModel.prize.observe(viewLifecycleOwner, Observer {
             Log.d("prize", it.toString())
             addView(rank, it)
+            priceList.add(it)
+            rankList.add(rank)
             rank++
         })
+
+        binding.btnBackPrize.setOnClickListener {
+            for (i in 0 until priceList.size) {
+                prizeList.add(Prize(rankList[i], priceList[i]))
+            }
+            viewModel.setPrizeList(prizeList)
+            findNavController().navigate(PrizeFragmentDirections.actionPrizeFragmentToCreateContestFragment())
+        }
     }
 
     private fun addView(rank: Int, prize: Int) {

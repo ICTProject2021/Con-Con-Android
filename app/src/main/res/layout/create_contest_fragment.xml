@@ -59,6 +59,7 @@
                         android:focusableInTouchMode="false"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:text="@{vm.date}"
                         android:hint="@string/chose_contest_date"
                         tools:ignore="TouchTargetSizeCheck" />
 

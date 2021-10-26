@@ -1,6 +1,7 @@
 package com.example.a2021ictproject.fragment
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -31,7 +32,8 @@ class PrizeDialogFragment : DialogFragment() {
             if (binding.price.text.isEmpty()) {
                 TODO()
             } else {
-                viewModel.setPrize(Integer.parseInt(binding.price.text.toString()))
+                Log.d("prize", binding.price.text.toString())
+                viewModel.setPrize(Integer.parseInt(binding.price.text.trim().toString()))
                 dismiss()
             }
         }

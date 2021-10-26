@@ -8,7 +8,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Observer
 import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
 import com.example.a2021ictproject.R
@@ -16,9 +18,9 @@ import com.example.a2021ictproject.databinding.CreateContestFragmentBinding
 import com.example.a2021ictproject.network.dto.request.ContestRequest
 import com.example.a2021ictproject.network.dto.response.Prize
 import com.example.a2021ictproject.viewmodel.CreateContestViewModel
+import com.example.a2021ictproject.viewmodel.DialogViewModel
 import com.google.android.material.datepicker.MaterialDatePicker
 import java.sql.Date
-import java.sql.Timestamp
 import java.text.SimpleDateFormat
 
 class CreateContestFragment : Fragment() {
@@ -26,10 +28,14 @@ class CreateContestFragment : Fragment() {
     private val navController: NavController by lazy { findNavController() }
 
     private lateinit var binding: CreateContestFragmentBinding
-    private val viewModel: CreateContestViewModel by viewModels()
+    private val viewModel: CreateContestViewModel by activityViewModels()
+    private val pViewModel: DialogViewModel by activityViewModels()
 
     private var startTime: Long = 0
     private var dueTime: Long = 0
+    private var prizeList: MutableList<Prize> = mutableListOf()
+
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -108,6 +114,7 @@ class CreateContestFragment : Fragment() {
             startTime = it.first
             dueTime = it.second
             val text = "${viewModel.longTimeToDateAsString(it.first)} ~ ${viewModel.longTimeToDateAsString(it.second)}"
+            viewModel.date.value = text
             binding.etDateCreateContest.setText(text)
         }
 
@@ -120,12 +127,7 @@ class CreateContestFragment : Fragment() {
             binding.etContentCreateContest.text.toString(),
             longTimeToDateAsString(startTime),
             longTimeToDateAsString(dueTime),
-            listOf<Prize>(
-            Prize(
-                1,
-                Integer.parseInt(binding.etPrizeCreateContest.text.toString().replace("원", ""))
-            )
-            )
+            pViewModel.prizeList.value!!
         )
 
 
