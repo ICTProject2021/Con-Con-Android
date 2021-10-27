@@ -13,12 +13,14 @@ import androidx.navigation.fragment.findNavController
 import com.example.a2021ictproject.R
 import com.example.a2021ictproject.databinding.FragmentPrizeBinding
 import com.example.a2021ictproject.network.dto.response.Prize
+import com.example.a2021ictproject.viewmodel.CreateContestViewModel
 import com.example.a2021ictproject.viewmodel.DialogViewModel
 
 class PrizeFragment : Fragment() {
 
     private lateinit var binding: FragmentPrizeBinding
     private val viewModel: DialogViewModel by activityViewModels()
+    private val cViewModel: CreateContestViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -58,6 +60,7 @@ class PrizeFragment : Fragment() {
         }
 
         binding.btnBackPrize.setOnClickListener {
+            cViewModel.prize.value = "총 ${totalPrice()} 원 "
             findNavController().navigate(PrizeFragmentDirections.actionPrizeFragmentToCreateContestFragment())
         }
     }
@@ -74,4 +77,11 @@ class PrizeFragment : Fragment() {
         binding.prizeLayout.addView(view)
     }
 
+    private fun totalPrice() : Int {
+        var result: Int = 0
+        viewModel.prizeList.value?.forEach {
+            result += it.price
+        }
+        return result
+    }
 }

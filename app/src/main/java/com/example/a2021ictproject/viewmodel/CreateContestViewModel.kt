@@ -19,6 +19,8 @@ class CreateContestViewModel : ViewModel() {
     val content = MutableLiveData<String>()
     val date = MutableLiveData<String>()
     val prize = MutableLiveData<String>()
+    var startTime = MutableLiveData<Long>()
+    var dueTime = MutableLiveData<Long>()
 
     private val contestService by lazy { RetrofitInstance.contestService }
 

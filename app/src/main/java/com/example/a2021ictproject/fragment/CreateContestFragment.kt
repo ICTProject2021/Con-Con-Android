@@ -9,8 +9,6 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.activityViewModels
-import androidx.fragment.app.viewModels
-import androidx.lifecycle.Observer
 import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
 import com.example.a2021ictproject.R
@@ -21,9 +19,7 @@ import com.example.a2021ictproject.viewmodel.CreateContestViewModel
 import com.example.a2021ictproject.viewmodel.DialogViewModel
 import com.google.android.material.datepicker.MaterialDatePicker
 import java.sql.Date
-import java.text.NumberFormat
 import java.text.SimpleDateFormat
-import java.util.*
 
 class CreateContestFragment : Fragment() {
 
@@ -55,18 +51,20 @@ class CreateContestFragment : Fragment() {
         binding.etDateCreateContest.setOnClickListener { showCalendar() }
 
         /* focus 일 때, 마지막에 원을 떼고, focus가 아닐 때 원을 붙임 */
-        binding.etPrizeCreateContest.apply {
-            setOnFocusChangeListener { _, hasFocus ->
-                if (hasFocus) {
-                    setText((text.toString()).replace("원", ""))
-                } else {
-                    if (!text.isNullOrBlank()) {
 
-//                        NumberFormat.getInstance(Locale.getDefault()).format(text.toString().trim())
-                        setText("${text}원")
-                    }
-                }
-            }
+        binding.etPrizeCreateContest.apply {
+//            setOnFocusChangeListener { _, hasFocus ->
+//                if (hasFocus) {
+//                    setText((text.toString()).replace("원", ""))
+//                } else {
+//                    if (!text.isNullOrBlank()) {
+//
+////                        NumberFormat.getInstance  (Locale.getDefault()).format(text.toString().trim())
+//                        setText("${text}원")
+//                    }
+//                }
+//            }
+            setText("총 ${totalPrice().toString()} 원")
 
             setOnClickListener {
                 navigateToPrize()
@@ -88,6 +86,8 @@ class CreateContestFragment : Fragment() {
             if (errorMsg != null) {
                 Toast.makeText(requireContext(), "$errorMsg 입력해주세요.", Toast.LENGTH_SHORT).show()
             } else {
+                Log.d("start", startTime.toString())
+                Log.d("end", dueTime.toString())
                 viewModel.postCreateContest(getCreateContest())
             }
         }
@@ -115,8 +115,10 @@ class CreateContestFragment : Fragment() {
 
         dateRangePicker.isCancelable = false
         dateRangePicker.addOnPositiveButtonClickListener {
-            startTime = it.first
-            dueTime = it.second
+//            startTime = it.first
+//            dueTime = it.second
+            viewModel.startTime.value = it.first
+            viewModel.dueTime.value = it.second
             val text = "${viewModel.longTimeToDateAsString(it.first)} ~ ${viewModel.longTimeToDateAsString(it.second)}"
             viewModel.date.value = text
             binding.etDateCreateContest.setText(text)
@@ -129,8 +131,10 @@ class CreateContestFragment : Fragment() {
         ContestRequest(
             binding.etTitleCreateContest.text.toString(),
             binding.etContentCreateContest.text.toString(),
-            longTimeToDateAsString(startTime),
-            longTimeToDateAsString(dueTime),
+//            longTimeToDateAsString(startTime),
+//            longTimeToDateAsString(dueTime),
+            longTimeToDateAsString(viewModel.startTime.value),
+            longTimeToDateAsString(viewModel.dueTime.value),
             pViewModel.prizeList.value!!
         )
 
@@ -143,11 +147,19 @@ class CreateContestFragment : Fragment() {
         navController.navigate(R.id.action_createContestFragment_to_prizeFragment)
     }
 
-    private fun longTimeToDateAsString(time: Long): String {
-        val date: Date = Date(time)
+    private fun longTimeToDateAsString(time: Long?): String {
+//        val date: Date = Date(time)
         val dateFormat = SimpleDateFormat("yyyy-MM-dd HH:mm:ss.sss")
-        Log.d("longTimeToDateAsString", dateFormat.format(date))
-        return dateFormat.format(date)
+//        Log.d("longTimeToDateAsString", dateFormat.format(date))
+        return dateFormat.format(time)
+    }
+
+    private fun totalPrice() : Int {
+        var result: Int = 0
+        pViewModel.prizeList.value?.forEach {
+            result += it.price
+        }
+        return result
     }
 
 }
