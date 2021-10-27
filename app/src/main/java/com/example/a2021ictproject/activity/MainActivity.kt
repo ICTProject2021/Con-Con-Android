@@ -32,22 +32,33 @@ class MainActivity : AppCompatActivity() {
                 NavHostFragment.findNavController(navHostFragment).currentDestination!!.id
             if (currentFragment == R.id.mainFragment) {
                 navController.navigate(R.id.action_mainFragment_to_createContestFragment)
-                gone()
+//                gone()
             } else if (currentFragment == R.id.profileFragment) {
                 navController.navigate(R.id.action_profileFragment_to_createContestFragment)
-                gone()
+//                gone()
             }
+        }
 
+        navController.addOnDestinationChangedListener { _, destination, _ ->
+            if (destination.id == R.id.mainFragment || destination.id == R.id.profileFragment) {
+                binding.bottomNavigationView.visibility = View.VISIBLE
+                binding.fab.visibility = View.VISIBLE
+                binding.bottomAppBar.visibility = View.VISIBLE
+            } else {
+                binding.bottomNavigationView.visibility = View.GONE
+                binding.fab.visibility = View.GONE
+                binding.bottomAppBar.visibility = View.GONE
+            }
         }
     }
 
-    fun visibility() {
-        binding.fab.visibility = View.VISIBLE
-        binding.bottomAppBar.visibility = View.VISIBLE
-    }
-
-    fun gone() {
-        binding.fab.visibility = View.GONE
-        binding.bottomAppBar.visibility = View.GONE
-    }
+//    fun visibility() {
+//        binding.fab.visibility = View.VISIBLE
+//        binding.bottomAppBar.visibility = View.VISIBLE
+//    }
+//
+//    fun gone() {
+//        binding.fab.visibility = View.GONE
+//        binding.bottomAppBar.visibility = View.GONE
+//    }
 }

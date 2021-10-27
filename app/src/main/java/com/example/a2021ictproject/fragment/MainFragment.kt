@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.a2021ictproject.R
 import com.example.a2021ictproject.adapter.MainRecyclerViewAdapter
 import com.example.a2021ictproject.activity.MainActivity
 import com.example.a2021ictproject.databinding.MainFragmentBinding
@@ -38,10 +39,10 @@ class MainFragment : Fragment() {
         initRecyclerView()
     }
 
-    override fun onResume() {
-        super.onResume()
-        (activity as MainActivity).visibility()
-    }
+//    override fun onResume() {
+//        super.onResume()
+//        (activity as MainActivity).visibility()
+//    }
 
     private fun initRecyclerView() {
         val decoration: RecyclerViewDecoration = RecyclerViewDecoration(40)
@@ -75,7 +76,7 @@ class MainFragment : Fragment() {
                     findNavController().navigate(MainFragmentDirections.actionMainFragmentToContestDetailFragment(
                         it[position].ID!!
                     ))
-                    (activity as MainActivity).gone()
+//                    (activity as MainActivity).gone()
                 }
             })
         })
