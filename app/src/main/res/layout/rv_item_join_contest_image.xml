@@ -5,8 +5,8 @@
 
     <data>
         <variable
-            name="url"
-            type="String" />
+            name="uri"
+            type="android.net.Uri" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -25,7 +25,8 @@
             app:layout_constraintTop_toTopOf="parent">
 
             <ImageView
-                loadUrl="@{url}"
+                android:id="@+id/imageView"
+                android:scaleType="centerCrop"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 tools:srcCompat="@tools:sample/avatars" />

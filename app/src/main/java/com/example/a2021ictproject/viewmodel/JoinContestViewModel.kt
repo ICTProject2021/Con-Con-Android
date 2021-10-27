@@ -1,5 +1,6 @@
 package com.example.a2021ictproject.viewmodel
 
+import android.net.Uri
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -20,7 +21,7 @@ import retrofit2.Retrofit
 class JoinContestViewModel : ViewModel() {
 
     val content = MutableLiveData("")
-    val fileList = MutableLiveData<List<String>?>(listOf())
+    val fileList = MutableLiveData<List<Uri>>(listOf())
 
     private val service by lazy { RetrofitInstance.contestService }
 
