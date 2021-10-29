@@ -33,8 +33,8 @@ interface ContestService {
     @POST("/participant/{id}")
     fun postParticipant(
         @Path("id") id: Int,
-        @Part content: RequestBody,
-        @Part attachment: MultipartBody.Part
+        @Part("content") content: RequestBody,
+        @Part attachment: List<MultipartBody.Part>
     ): Call<Msg>
 
     /* 캐시 충전 */

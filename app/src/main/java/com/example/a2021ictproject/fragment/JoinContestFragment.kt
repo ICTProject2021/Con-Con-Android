@@ -37,7 +37,9 @@ class JoinContestFragment : Fragment() {
     private val viewModel: JoinContestViewModel by activityViewModels()
 
     private val navArgs by navArgs<JoinContestFragmentArgs>()
-    private val adapter = JoinContestImageRecyclerViewAdapter()
+
+    private val imgAdapter = JoinContestImageRecyclerViewAdapter()
+    private val joinAdapter = JoinContestRecyclerViewAdapter()
 
     private lateinit var resultLauncher: ActivityResultLauncher<Intent>
 
@@ -75,13 +77,13 @@ class JoinContestFragment : Fragment() {
         }
 
         binding.btnSendJoinContest.setOnClickListener {
-            viewModel.postParticipant()
+            viewModel.postParticipant(navArgs.id, requireContext().contentResolver)
         }
     }
 
     private fun init() {
-        binding.rvParticipantJoinContest.adapter = JoinContestRecyclerViewAdapter()
-        binding.rvJoinJoinContest.adapter = adapter
+        binding.rvParticipantJoinContest.adapter = joinAdapter
+        binding.rvImgJoinContest.adapter = imgAdapter
         viewModel.getParticipantInfo(navArgs.id)
 
         // 대충 이미지 처리하는 로직
@@ -117,15 +119,23 @@ class JoinContestFragment : Fragment() {
 
     private fun observe() = with(viewModel) {
         getParticipantInfoRes.observe(viewLifecycleOwner) {
-            binding.rvParticipantJoinContest.submitList(it!!)
+            joinAdapter.setList(it!!)
         }
 
         postParticipantRes.observe(viewLifecycleOwner) {
-            Toast.makeText(requireContext(), "대회 참가 성공", Toast.LENGTH_SHORT).show()
+            when (it) {
+                "success" -> {
+                    Toast.makeText(requireContext(), "대회 참가 성공", Toast.LENGTH_SHORT).show()
+                }
+
+                "fail" -> {
+
+                }
+            }
         }
 
         fileList.observe(viewLifecycleOwner) {
-            adapter.setList(it)
+            imgAdapter.setList(it)
         }
     }
 
