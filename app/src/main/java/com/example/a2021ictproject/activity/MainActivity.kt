@@ -7,7 +7,6 @@ import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import com.example.a2021ictproject.R
 import com.example.a2021ictproject.databinding.ActivityMainBinding
-import kotlin.math.log
 
 class MainActivity : AppCompatActivity() {
 
@@ -32,10 +31,8 @@ class MainActivity : AppCompatActivity() {
                 NavHostFragment.findNavController(navHostFragment).currentDestination!!.id
             if (currentFragment == R.id.mainFragment) {
                 navController.navigate(R.id.action_mainFragment_to_createContestFragment)
-//                gone()
             } else if (currentFragment == R.id.profileFragment) {
                 navController.navigate(R.id.action_profileFragment_to_createContestFragment)
-//                gone()
             }
         }
 
@@ -51,14 +48,4 @@ class MainActivity : AppCompatActivity() {
             }
         }
     }
-
-//    fun visibility() {
-//        binding.fab.visibility = View.VISIBLE
-//        binding.bottomAppBar.visibility = View.VISIBLE
-//    }
-//
-//    fun gone() {
-//        binding.fab.visibility = View.GONE
-//        binding.bottomAppBar.visibility = View.GONE
-//    }
 }
