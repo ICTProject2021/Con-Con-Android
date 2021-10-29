@@ -53,7 +53,7 @@ class ProfileFragment : Fragment() {
         }
 
         binding.participationContest.setOnClickListener {
-            navController.navigate(R.id.action_profileFragment_to_mainFragment)
+            navController.navigate(R.id.action_profileFragment_to_participatedContestFragment)
         }
     }
 }
