@@ -67,7 +67,7 @@
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/et_layout_id_sign_up"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.BaseInputLayout"
+            style="@style/BaseTextInputLayout"
             setError="@{vm.idErr}"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -88,14 +88,14 @@
                 android:hint="@string/id"
                 android:includeFontPadding="true"
                 android:paddingEnd="100dp"
-                android:text="@={vm.id}"
+                android:text="@={vm.id, default=``}"
                 tools:ignore="SpeakableTextPresentCheck" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/et_layout_nickname_sign_up"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.BaseInputLayout"
+            style="@style/BaseTextInputLayout"
             setError="@{vm.nicknameErr}"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -112,14 +112,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/nickname"
-                android:text="@={vm.nickname}"
+                android:text="@={vm.nickname, default=``}"
                 tools:ignore="SpeakableTextPresentCheck" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/et_layout_phone_number_sign_up"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.BaseInputLayout"
+            style="@style/BaseTextInputLayout"
             setError="@{vm.phoneErr}"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -139,14 +139,14 @@
                 android:hint="@string/phone_number"
                 android:inputType="number"
                 android:maxLength="11"
-                android:text="@={vm.phoneNumber}"
+                android:text="@={vm.phoneNumber, default=``}"
                 tools:ignore="SpeakableTextPresentCheck" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/et_layout_password_sign_up"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.BaseInputLayout"
+            style="@style/BaseTextInputLayout"
             setError="@{vm.pwErr}"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -165,7 +165,7 @@
                 android:layout_height="wrap_content"
                 android:hint="@string/password"
                 android:inputType="textPassword"
-                android:text="@={vm.password}"
+                android:text="@={vm.password, default=``}"
                 tools:ignore="SpeakableTextPresentCheck" />
 
         </com.google.android.material.textfield.TextInputLayout>

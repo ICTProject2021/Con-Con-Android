@@ -51,7 +51,7 @@ class SignUpFragment : Fragment() {
 
     private fun observe() = with(viewModel) {
         id.observe(viewLifecycleOwner) {
-            idErr.value = when(it.isEmpty()) {
+            idErr.value = when(it.isBlank()) {
                 true -> getString(R.string.error_input_id)
                 false -> ""
             }
@@ -59,7 +59,7 @@ class SignUpFragment : Fragment() {
         }
 
         password.observe(viewLifecycleOwner) {
-            pwErr.value = when(it.isEmpty()) {
+            pwErr.value = when(it.isBlank()) {
                 true -> getString(R.string.error_input_pw)
                 false -> ""
             }
@@ -67,7 +67,7 @@ class SignUpFragment : Fragment() {
         }
 
         phoneNumber.observe(viewLifecycleOwner) {
-            phoneErr.value = when(it.isEmpty()) {
+            phoneErr.value = when(it.isBlank()) {
                 true -> "휴대폰 번호를 입력해주세요."
                 false -> ""
             }
@@ -75,7 +75,7 @@ class SignUpFragment : Fragment() {
         }
 
         nickname.observe(viewLifecycleOwner) {
-            nicknameErr.value = when(it.isEmpty()) {
+            nicknameErr.value = when(it.isBlank()) {
                 true -> "닉네임을 입력해주세요."
                 false -> ""
             }

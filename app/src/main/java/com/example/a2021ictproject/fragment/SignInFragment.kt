@@ -56,16 +56,16 @@ class SignInFragment : Fragment() {
 
     private fun observe() = with(viewModel) {
         id.observe(viewLifecycleOwner) {
-            idErr.value = when {
-                it.isBlank() -> getString(R.string.error_input_id)
-                else -> ""
+            idErr.value = when(it.isNullOrBlank()) {
+                true -> getString(R.string.error_input_id)
+                false -> ""
             }
         }
 
         pw.observe(viewLifecycleOwner) {
-            pwErr.value = when {
-                it.isBlank() -> getString(R.string.error_input_pw)
-                else -> ""
+            pwErr.value = when(it.isNullOrBlank()) {
+                true -> getString(R.string.error_input_pw)
+                false -> ""
             }
         }
 

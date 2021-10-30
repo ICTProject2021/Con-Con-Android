@@ -15,11 +15,11 @@ import retrofit2.Response
 
 class SignUpViewModel : ViewModel() {
 
-    val id = MutableLiveData("")
+    val id = MutableLiveData<String>()
     var idCheck = MutableLiveData(false)
-    val password = MutableLiveData("")
-    val phoneNumber = MutableLiveData("")
-    val nickname = MutableLiveData("")
+    val password = MutableLiveData<String>()
+    val phoneNumber = MutableLiveData<String>()
+    val nickname = MutableLiveData<String>()
 
     val idErr = MutableLiveData("")
     val pwErr = MutableLiveData("")
@@ -34,6 +34,8 @@ class SignUpViewModel : ViewModel() {
     val postSignUpRes = MutableLiveData<Msg?>()
 
     fun postCheckId() {
+        if (id.value.isNullOrBlank()) return
+
         val idReq = IdRequest(id.value!!)
 
         accountService.postCheckId(idReq).enqueue(
