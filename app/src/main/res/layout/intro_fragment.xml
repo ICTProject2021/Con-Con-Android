@@ -12,8 +12,8 @@
                 android:id="@+id/btn_sign_up_intro"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="32dp"
-                android:layout_marginEnd="32dp"
+                android:layout_marginStart="24dp"
+                android:layout_marginEnd="24dp"
                 android:layout_marginBottom="32dp"
                 android:background="@drawable/background_gradient_btn"
                 android:stateListAnimator="@null"
@@ -27,8 +27,8 @@
                 android:id="@+id/btn_sign_in_intro"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="32dp"
-                android:layout_marginEnd="32dp"
+                android:layout_marginStart="24dp"
+                android:layout_marginEnd="24dp"
                 android:layout_marginBottom="16dp"
                 android:background="@drawable/background_gradient_outline_thin"
                 android:stateListAnimator="@null"
@@ -36,31 +36,89 @@
                 android:textColor="@drawable/selector_text_color_black_to_white"
                 app:layout_constraintBottom_toTopOf="@+id/btn_sign_up_intro"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent" />
 
             <TextView
                 android:id="@+id/textView5"
-                style="@style/Base.Widget.AppCompat.TextView.Regular"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="16dp"
-                android:text="시작하기"
-                app:layout_constraintBottom_toTopOf="@+id/btn_sign_in_intro"
+                android:text="환영합니다!"
+                android:layout_marginBottom="8dp"
+                android:textColor="@color/black"
+                app:layout_constraintBottom_toTopOf="@+id/textView6"
+                app:layout_constraintEnd_toEndOf="@+id/textView6"
+                app:layout_constraintStart_toStartOf="@+id/textView6" />
+
+            <TextView
+                android:id="@+id/textView12"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="24dp"
+                android:textSize="20sp"
+                android:text="Con-Con"
+                setShader="@{true}"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                app:layout_constraintBottom_toTopOf="@+id/textView11"
+                app:layout_constraintEnd_toEndOf="@+id/textView6"
+                app:layout_constraintStart_toStartOf="@+id/textView6" />
+
+            <TextView
+                android:id="@+id/textView6"
+                style="@style/Base.Widget.AppCompat.TextView.Big"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:gravity="center"
+                android:text="당신의 대회중계 플랫폼,"
+                android:textColor="@color/black"
+                app:layout_constraintBottom_toTopOf="@+id/textView12"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent" />
 
             <TextView
-                android:id="@+id/textView6"
-                setShader="@{true}"
-                android:textColor="@color/black"
+                android:id="@+id/textView11"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="32dp"
-                android:layout_marginTop="40dp"
-                android:text="Con-Con,\n누구나 쉽게 참여하는\n대회 플랫폼"
-                android:textSize="30sp"
-                android:textStyle="bold"
+                android:layout_marginBottom="16dp"
+                android:text="시작하기"
+                android:textColor="@color/black"
+                app:layout_constraintBottom_toTopOf="@+id/btn_sign_in_intro"
+                app:layout_constraintEnd_toEndOf="@+id/btn_sign_in_intro"
+                app:layout_constraintStart_toStartOf="@+id/btn_sign_in_intro" />
+
+            <ImageView
+                android:id="@+id/imageView4"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_constraintBottom_toTopOf="@+id/textView5"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toBottomOf="@+id/textView8"
+                app:srcCompat="@drawable/intro_winner" />
+
+            <TextView
+                android:id="@+id/textView8"
+                setShader="@{true}"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:text="Con-Con"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@+id/imageView5"
+                app:layout_constraintStart_toEndOf="@+id/imageView5"
+                app:layout_constraintTop_toTopOf="@+id/imageView5" />
+
+            <ImageView
+                android:id="@+id/imageView5"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="24dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/ic_logo" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
