@@ -10,27 +10,30 @@
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/btn_sign_up_intro"
-                android:background="@drawable/background_gradient_btn"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="32dp"
                 android:layout_marginEnd="32dp"
                 android:layout_marginBottom="32dp"
+                android:background="@drawable/background_gradient_btn"
+                android:stateListAnimator="@null"
                 android:text="@string/sign_up"
-                android:textColor="@color/white"
+                android:textColor="@drawable/selector_text_color_white_to_black"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent" />
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/btn_sign_in_intro"
-                android:background="@drawable/background_gradient_outline_thin"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="32dp"
                 android:layout_marginEnd="32dp"
                 android:layout_marginBottom="16dp"
+                android:background="@drawable/background_gradient_outline_thin"
+                android:stateListAnimator="@null"
                 android:text="@string/sign_in"
+                android:textColor="@drawable/selector_text_color_black_to_white"
                 app:layout_constraintBottom_toTopOf="@+id/btn_sign_up_intro"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent" />
