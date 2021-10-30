@@ -6,7 +6,6 @@ import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -15,16 +14,14 @@ import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ObservableArrayList
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.a2021ictproject.R
 import com.example.a2021ictproject.adapter.JoinContestImageRecyclerViewAdapter
 import com.example.a2021ictproject.adapter.JoinContestRecyclerViewAdapter
-import com.example.a2021ictproject.bind.submitList
 import com.example.a2021ictproject.databinding.JoinContestFragmentBinding
-import com.example.a2021ictproject.network.dto.response.Participant
 import com.example.a2021ictproject.utils.MessageUtils
 import com.example.a2021ictproject.viewmodel.JoinContestViewModel
 import java.io.IOException
@@ -79,6 +76,11 @@ class JoinContestFragment : Fragment() {
         binding.btnSendJoinContest.setOnClickListener {
             viewModel.postParticipant(navArgs.id, requireContext().contentResolver)
         }
+
+        // 리사이클러뷰 좋아요 클릭리스너
+        joinAdapter.onClickJoinListener {
+            viewModel.putLikes(navArgs.id, it)
+        }
     }
 
     private fun init() {
@@ -123,15 +125,11 @@ class JoinContestFragment : Fragment() {
         }
 
         postParticipantRes.observe(viewLifecycleOwner) {
-            when (it) {
-                "success" -> {
-                    Toast.makeText(requireContext(), "대회 참가 성공", Toast.LENGTH_SHORT).show()
-                }
+            Toast.makeText(requireContext(), "대회 참가 성공", Toast.LENGTH_SHORT).show()
+        }
 
-                "fail" -> {
+        isSuccessPutLikes.observe(viewLifecycleOwner) {
 
-                }
-            }
         }
 
         fileList.observe(viewLifecycleOwner) {

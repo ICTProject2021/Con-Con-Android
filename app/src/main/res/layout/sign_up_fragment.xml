@@ -29,7 +29,7 @@
             app:layout_constraintTop_toTopOf="parent">
 
             <ImageView
-                android:id="@+id/imageView4"
+                android:id="@+id/btn_favorites"
                 android:layout_width="@dimen/sign_logo_width"
                 android:layout_height="@dimen/sign_logo_height"
                 app:srcCompat="@drawable/logo" />

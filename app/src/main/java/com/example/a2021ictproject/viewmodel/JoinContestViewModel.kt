@@ -30,6 +30,7 @@ class JoinContestViewModel : ViewModel() {
 
     val getParticipantInfoRes = MutableLiveData<List<Participant>?>()
     val postParticipantRes = MutableLiveData<String?>()
+    val isSuccessPutLikes = MutableLiveData<String?>()
 
     fun getParticipantInfo(id: Int) {
         val tag = "getParticipantInfo"
@@ -68,10 +69,10 @@ class JoinContestViewModel : ViewModel() {
         service.postParticipant(id, content, list).enqueue(
             object : Callback<Msg> {
                 override fun onResponse(call: Call<Msg>, response: Response<Msg>) {
-                    Log.d(tag, response.raw().toString())
-                    Log.d(tag, response.body().toString())
+                    Log.d(tag, "${response.raw()}\n${response.body()}")
                     if (response.isSuccessful) {
-                        postParticipantRes.postValue(response.body()!!.msg)
+                        if (response.body()!!.msg == "success")
+                            postParticipantRes.postValue(response.body()!!.msg)
                     }
                 }
 
@@ -80,6 +81,27 @@ class JoinContestViewModel : ViewModel() {
                     postParticipantRes.postValue(null)
                 }
 
+            }
+        )
+    }
+
+    fun putLikes(contId: Int, partId: Int) {
+        val tag = "putLikes"
+
+        service.putLikes(contId, partId).enqueue(
+            object : Callback<Msg> {
+                override fun onResponse(call: Call<Msg>, response: Response<Msg>) {
+                    Log.d(tag, "${response.raw()}\n${response.body()}")
+                    if (response.isSuccessful) {
+                        val it = response.body()?.msg
+                        if (it == "success")
+                            isSuccessPutLikes.postValue(it)
+                    }
+                }
+
+                override fun onFailure(call: Call<Msg>, t: Throwable) {
+                    Log.e(tag, t.message.toString())
+                }
             }
         )
     }
