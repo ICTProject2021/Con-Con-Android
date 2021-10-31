@@ -6,7 +6,7 @@
     <data>
         <variable
             name="vm"
-            type="com.example.a2021ictproject.viewmodel.CreateContestViewModel" />
+            type="com.project.concon.viewmodel.CreateContestViewModel" />
 
     </data>
 

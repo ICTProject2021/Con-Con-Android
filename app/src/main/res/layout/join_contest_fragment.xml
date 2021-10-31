@@ -5,14 +5,14 @@
 
     <data>
         <import type="androidx.databinding.ObservableArrayList" />
-        <import type="com.example.a2021ictproject.network.dto.response.Participant" />
+        <import type="com.project.concon.network.dto.response.Participant" />
 
         <variable
             name="participantList"
             type="ObservableArrayList&lt;Participant&gt;" />
         <variable
             name="vm"
-            type="com.example.a2021ictproject.viewmodel.JoinContestViewModel" />
+            type="com.project.concon.viewmodel.JoinContestViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

@@ -6,10 +6,10 @@
     <data>
         <variable
             name="vm"
-            type="com.example.a2021ictproject.viewmodel.ContestDetailViewModel" />
+            type="com.project.concon.viewmodel.ContestDetailViewModel" />
         <variable
             name="data"
-            type="com.example.a2021ictproject.network.dto.response.ContestDetail" />
+            type="com.project.concon.network.dto.response.ContestDetail" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

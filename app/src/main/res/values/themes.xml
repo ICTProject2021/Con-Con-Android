@@ -125,7 +125,7 @@
         <item name="android:paddingTop">10dp</item>
         <item name="android:paddingBottom">10dp</item>
         <item name="android:gravity">center_vertical</item>
-        <item name="android:background">@drawable/background_gradient_outline</item>
+        <item name="android:background">@drawable/background_gradient_outline_thin</item>
     </style>
 
 </resources>
