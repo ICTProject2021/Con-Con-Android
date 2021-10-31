@@ -53,6 +53,9 @@
         <action
             android:id="@+id/action_profileFragment_to_participatedContestFragment"
             app:destination="@id/participatedContestFragment" />
+        <action
+            android:id="@+id/action_profileFragment_to_paymentFragment"
+            app:destination="@id/paymentFragment" />
     </fragment>
     <fragment
         android:id="@+id/chargeCashFragment"
@@ -126,5 +129,14 @@
         <action
             android:id="@+id/action_participatedContestFragment_to_contestDetailFragment"
             app:destination="@id/contestDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/paymentFragment"
+        android:name="com.example.a2021ictproject.fragment.PaymentFragment"
+        android:label="PaymentFragment"
+        tools:layout="@layout/payment_fragment">
+        <action
+            android:id="@+id/action_paymentFragment_to_profileFragment"
+            app:destination="@id/profileFragment" />
     </fragment>
 </navigation>

@@ -42,6 +42,7 @@
         <entry key="..\:/Github/2021IctProject/app/src/main/res/layout/item_prize.xml" value="0.19296875" />
         <entry key="..\:/Github/2021IctProject/app/src/main/res/layout/join_contest_fragment.xml" value="0.264" />
         <entry key="..\:/Github/2021IctProject/app/src/main/res/layout/main_fragment.xml" value="0.2" />
+        <entry key="..\:/Github/2021IctProject/app/src/main/res/layout/payment_fragment.xml" value="0.194140625" />
         <entry key="..\:/Github/2021IctProject/app/src/main/res/layout/profile_fragment.xml" value="0.24427083333333333" />
         <entry key="..\:/Github/2021IctProject/app/src/main/res/layout/rv_item_join_contest.xml" value="0.4" />
         <entry key="..\:/Github/2021IctProject/app/src/main/res/layout/rv_item_join_contest_image.xml" value="0.264" />
@@ -90,7 +91,7 @@
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" project-jdk-name="1.8" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">
