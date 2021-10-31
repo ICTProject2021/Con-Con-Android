@@ -6,7 +6,6 @@ import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -15,16 +14,14 @@ import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ObservableArrayList
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.a2021ictproject.R
 import com.example.a2021ictproject.adapter.JoinContestImageRecyclerViewAdapter
 import com.example.a2021ictproject.adapter.JoinContestRecyclerViewAdapter
-import com.example.a2021ictproject.bind.submitList
 import com.example.a2021ictproject.databinding.JoinContestFragmentBinding
-import com.example.a2021ictproject.network.dto.response.Participant
 import com.example.a2021ictproject.utils.MessageUtils
 import com.example.a2021ictproject.viewmodel.JoinContestViewModel
 import java.io.IOException
@@ -37,7 +34,9 @@ class JoinContestFragment : Fragment() {
     private val viewModel: JoinContestViewModel by activityViewModels()
 
     private val navArgs by navArgs<JoinContestFragmentArgs>()
-    private val adapter = JoinContestImageRecyclerViewAdapter()
+
+    private val imgAdapter = JoinContestImageRecyclerViewAdapter()
+    private val joinAdapter = JoinContestRecyclerViewAdapter()
 
     private lateinit var resultLauncher: ActivityResultLauncher<Intent>
 
@@ -75,13 +74,18 @@ class JoinContestFragment : Fragment() {
         }
 
         binding.btnSendJoinContest.setOnClickListener {
-            viewModel.postParticipant()
+            viewModel.postParticipant(navArgs.id, requireContext().contentResolver)
+        }
+
+        // 리사이클러뷰 좋아요 클릭리스너
+        joinAdapter.onClickJoinListener {
+            viewModel.putLikes(navArgs.id, it)
         }
     }
 
     private fun init() {
-        binding.rvParticipantJoinContest.adapter = JoinContestRecyclerViewAdapter()
-        binding.rvJoinJoinContest.adapter = adapter
+        binding.rvParticipantJoinContest.adapter = joinAdapter
+        binding.rvImgJoinContest.adapter = imgAdapter
         viewModel.getParticipantInfo(navArgs.id)
 
         // 대충 이미지 처리하는 로직
@@ -117,15 +121,19 @@ class JoinContestFragment : Fragment() {
 
     private fun observe() = with(viewModel) {
         getParticipantInfoRes.observe(viewLifecycleOwner) {
-            binding.rvParticipantJoinContest.submitList(it!!)
+            joinAdapter.setList(it!!)
         }
 
         postParticipantRes.observe(viewLifecycleOwner) {
             Toast.makeText(requireContext(), "대회 참가 성공", Toast.LENGTH_SHORT).show()
         }
 
+        isSuccessPutLikes.observe(viewLifecycleOwner) {
+
+        }
+
         fileList.observe(viewLifecycleOwner) {
-            adapter.setList(it)
+            imgAdapter.setList(it)
         }
     }
 

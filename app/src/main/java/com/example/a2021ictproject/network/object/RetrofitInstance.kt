@@ -12,7 +12,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 import java.util.*
 
 object RetrofitInstance {
-    private const val BASE_URL = "http://10.80.161.222:3000/"
+    private const val BASE_URL = "http://ec2-18-219-111-210.us-east-2.compute.amazonaws.com:3000/"
 
     private val gson = Gson().newBuilder().setLenient().create()
 

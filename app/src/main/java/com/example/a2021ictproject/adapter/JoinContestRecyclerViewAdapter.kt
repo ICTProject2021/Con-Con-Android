@@ -1,5 +1,6 @@
 package com.example.a2021ictproject.adapter
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -8,6 +9,20 @@ import com.example.a2021ictproject.databinding.RvItemJoinContestBinding
 import com.example.a2021ictproject.network.dto.response.Participant
 
 class JoinContestRecyclerViewAdapter : RecyclerView.Adapter<JoinContestRecyclerViewAdapter.ViewHolder>() {
+
+    private lateinit var setOnClickJoinListener: OnClickJoinListener
+
+    interface OnClickJoinListener {
+        fun onClick(partId: Int)
+    }
+
+    fun onClickJoinListener(listener: (Int) -> Unit) {
+        setOnClickJoinListener = object : OnClickJoinListener {
+            override fun onClick(partId: Int) {
+                listener(partId)
+            }
+        }
+    }
 
     private val list: MutableList<Participant> = mutableListOf()
 
@@ -21,7 +36,12 @@ class JoinContestRecyclerViewAdapter : RecyclerView.Adapter<JoinContestRecyclerV
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        binding.participant = list[position]
+        val data = list[position]
+        binding.participant = data
+
+        binding.btnFavorites.setOnClickListener {
+            setOnClickJoinListener.onClick(data.ID)
+        }
     }
 
     override fun getItemCount(): Int = list.size
@@ -30,5 +50,9 @@ class JoinContestRecyclerViewAdapter : RecyclerView.Adapter<JoinContestRecyclerV
         this.list.clear()
         this.list.addAll(list)
         notifyDataSetChanged()
+    }
+
+    fun setLikes() {
+        // 좋아요 눌렀을 때 ui 변경~~
     }
 }

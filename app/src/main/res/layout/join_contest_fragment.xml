@@ -24,6 +24,8 @@
             android:id="@+id/btn_back_join_contest"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
             android:background="@android:color/transparent"
             android:minWidth="32dp"
             android:minHeight="32dp"
@@ -42,8 +44,10 @@
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintBottom_toTopOf="@+id/linearLayout3"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/btn_back_join_contest"
+            app:layout_constraintVertical_bias="1.0"
             tools:listitem="@layout/rv_item_join_contest">
 
         </androidx.recyclerview.widget.RecyclerView>
@@ -69,6 +73,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="120dp"
                 android:hint="아무거나 입력하세요."
+                android:text="@={vm.content}"
                 android:paddingTop="40dp"
                 tools:ignore="SpeakableTextPresentCheck" />
 
@@ -101,7 +106,7 @@
                 app:srcCompat="@drawable/ic_close" />
 
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rv_join_join_contest"
+                android:id="@+id/rv_img_join_contest"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 submitList="@{vm.fileList}"

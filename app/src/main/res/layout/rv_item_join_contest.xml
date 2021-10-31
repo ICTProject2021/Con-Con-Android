@@ -10,9 +10,8 @@
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:paddingStart="@dimen/layout_margin"
-        android:paddingEnd="@dimen/layout_margin"
-        android:paddingTop="10dp"
+        android:paddingStart="15dp"
+        android:paddingEnd="15dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
@@ -47,7 +46,9 @@
 
         <TextView
             android:id="@+id/tv_name_rv_item_join_contest"
-            style="@style/Base.Widget.AppCompat.TextView.Bold"
+            android:textColor="@color/black"
+            android:textSize="17sp"
+            android:textStyle="bold"
             android:text="@{participant.nickname}"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -56,26 +57,27 @@
             app:layout_constraintTop_toTopOf="@+id/cardView"
             tools:text="카리나" />
 
-        <ImageView
-            android:id="@+id/imageView4"
+        <ImageButton
+            android:id="@+id/btn_favorites"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
-            android:layout_marginTop="13dp"
+            android:background="@android:color/transparent"
+            android:minWidth="48dp"
+            android:minHeight="48dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/tv_like_rv_item_join_contest"
             app:layout_constraintTop_toBottomOf="@+id/recyclerView"
-            app:srcCompat="@drawable/ic_heart" />
+            app:srcCompat="@drawable/ic_like_outline" />
 
         <TextView
             android:id="@+id/tv_like_rv_item_join_contest"
             style="@style/Base.Widget.AppCompat.TextView.Regular"
-            android:text="@{participant.likes}"
+            android:text="@{String.valueOf(participant.likes)}"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintBottom_toBottomOf="@+id/imageView4"
+            app:layout_constraintBottom_toBottomOf="@+id/btn_favorites"
             app:layout_constraintEnd_toEndOf="@+id/tv_content_rv_item_join_contest"
-            app:layout_constraintTop_toTopOf="@+id/imageView4"
+            app:layout_constraintTop_toTopOf="@+id/btn_favorites"
             tools:text="00" />
 
         <androidx.recyclerview.widget.RecyclerView

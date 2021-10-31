@@ -18,10 +18,10 @@ import java.lang.IllegalStateException
 
 class SignInViewModel : ViewModel() {
 
-    val id = MutableLiveData("")
-    val pw = MutableLiveData("")
-    val idErr = MutableLiveData("")
-    val pwErr = MutableLiveData("")
+    val id = MutableLiveData<String?>()
+    val pw = MutableLiveData<String?>()
+    val idErr = MutableLiveData<String>()
+    val pwErr = MutableLiveData<String>()
 
     private val accountService: AccountService by lazy { RetrofitInstance.accountService }
 

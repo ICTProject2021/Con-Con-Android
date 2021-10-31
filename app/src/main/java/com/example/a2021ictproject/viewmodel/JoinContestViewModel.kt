@@ -1,13 +1,17 @@
 package com.example.a2021ictproject.viewmodel
 
+import android.content.ContentResolver
 import android.net.Uri
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.a2021ictproject.network.`object`.RetrofitInstance
 import com.example.a2021ictproject.network.dao.ContestService
+import com.example.a2021ictproject.network.dto.response.Msg
 import com.example.a2021ictproject.network.dto.response.Participant
 import com.example.a2021ictproject.network.dto.response.Res
+import com.example.a2021ictproject.utils.getImageBody
+import com.example.a2021ictproject.utils.getRequestBody
 import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.MultipartBody
@@ -19,7 +23,6 @@ import retrofit2.Response
 import retrofit2.Retrofit
 
 class JoinContestViewModel : ViewModel() {
-
     val content = MutableLiveData("")
     val fileList = MutableLiveData<List<Uri>>(listOf())
 
@@ -27,6 +30,7 @@ class JoinContestViewModel : ViewModel() {
 
     val getParticipantInfoRes = MutableLiveData<List<Participant>?>()
     val postParticipantRes = MutableLiveData<String?>()
+    val isSuccessPutLikes = MutableLiveData<String?>()
 
     fun getParticipantInfo(id: Int) {
         val tag = "getParticipantInfo"
@@ -38,6 +42,7 @@ class JoinContestViewModel : ViewModel() {
                     response: Response<List<Participant>>
                 ) {
                     Log.d(tag, response.raw().toString())
+                    Log.d(tag, response.body().toString())
                     if (response.isSuccessful)
                         getParticipantInfoRes.postValue(response.body())
                 }
@@ -50,33 +55,54 @@ class JoinContestViewModel : ViewModel() {
         )
     }
 
-    fun postParticipant() {
+    fun postParticipant(id: Int, contentResolver: ContentResolver) {
         val tag = "postParticipant"
 
-        val id = 1
-        val content = this.content.value!!.toRequestBody("text/plain".toMediaTypeOrNull())
-        var file: MultipartBody.Part?
+        val content = this.content.value!!.getRequestBody()
 
-        if (fileList.value!!.isNotEmpty()) {
-            val builder = MultipartBody.Builder()
-        } else {
-            return
+        val list = mutableListOf<MultipartBody.Part>()
+        Log.d("list-size", fileList.value!!.size.toString())
+        fileList.value!!.forEach {
+            list.add(it.getImageBody("attachment", contentResolver))
         }
 
-//        service.postParticipant(id, content, file).enqueue(
-//            object : Callback<String> {
-//                override fun onResponse(call: Call<String>, response: Response<String>) {
-//                    Log.d(tag, response.raw().toString())
-//                    if (response.isSuccessful)
-//                        postParticipantRes.postValue(response.body())
-//                }
-//
-//                override fun onFailure(call: Call<String>, t: Throwable) {
-//                    Log.d(tag, t.message.toString())
-//                    postParticipantRes.postValue(null)
-//                }
-//
-//            }
-//        )
+        service.postParticipant(id, content, list).enqueue(
+            object : Callback<Msg> {
+                override fun onResponse(call: Call<Msg>, response: Response<Msg>) {
+                    Log.d(tag, "${response.raw()}\n${response.body()}")
+                    if (response.isSuccessful) {
+                        if (response.body()!!.msg == "success")
+                            postParticipantRes.postValue(response.body()!!.msg)
+                    }
+                }
+
+                override fun onFailure(call: Call<Msg>, t: Throwable) {
+                    Log.d(tag, t.message.toString())
+                    postParticipantRes.postValue(null)
+                }
+
+            }
+        )
+    }
+
+    fun putLikes(contId: Int, partId: Int) {
+        val tag = "putLikes"
+
+        service.putLikes(contId, partId).enqueue(
+            object : Callback<Msg> {
+                override fun onResponse(call: Call<Msg>, response: Response<Msg>) {
+                    Log.d(tag, "${response.raw()}\n${response.body()}")
+                    if (response.isSuccessful) {
+                        val it = response.body()?.msg
+                        if (it == "success")
+                            isSuccessPutLikes.postValue(it)
+                    }
+                }
+
+                override fun onFailure(call: Call<Msg>, t: Throwable) {
+                    Log.e(tag, t.message.toString())
+                }
+            }
+        )
     }
 }

@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".fragment.ParticipatedContestFragment">
+
+    <androidx.constraintlayout.motion.widget.MotionLayout
+        android:id="@+id/constraintLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layoutDescription="@xml/main_fragment_scene">
+
+        <ImageView
+            android:id="@+id/pTitleImg"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:background="@drawable/background_gradient"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageButton
+            android:id="@+id/btn_back_participated_contest"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/back_btn_margin_start"
+            android:layout_marginTop="@dimen/back_btn_margin_top"
+            android:background="@android:color/transparent"
+            android:src="@drawable/ic_back"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/pImageView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:src="@drawable/ic_index"
+            app:layout_constraintBottom_toBottomOf="@+id/pTitleImg"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/pTitleImg" />
+
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:text="내가 참가한 대회 목록"
+            android:textColor="@color/white"
+            android:textSize="25sp"
+            android:textStyle="bold"
+            app:layout_constraintTop_toTopOf="@id/pImageView"
+            app:layout_constraintBottom_toBottomOf="@+id/pImageView"
+            app:layout_constraintStart_toEndOf="@+id/pImageView" />
+
+        <androidx.core.widget.NestedScrollView
+            android:id="@+id/container"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_gravity="fill_vertical"
+            android:overScrollMode="never"
+            android:fillViewport="true"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/pImageView">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/contestRecyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="18dp"
+                android:layout_marginTop="10dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@id/pTitleImg"
+                tools:listitem="@layout/item_main" />
+
+        </androidx.core.widget.NestedScrollView>
+
+
+    </androidx.constraintlayout.motion.widget.MotionLayout>
+
+</FrameLayout>

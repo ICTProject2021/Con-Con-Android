@@ -44,16 +44,16 @@ class ProfileFragment : Fragment() {
                 Glide.with(binding.profileImg).load(it.profile).into(binding.profileImg)
             }
 
-            binding.cash.text = it.cash.toString() + "원"
+            binding.cash.text = "${it.cash}원"
             binding.profileNickname.text = it.nickname
         })
 
         binding.withdraw.setOnClickListener {
-            navController.navigate(R.id.action_profileFragment_to_chargeCashFragment)
+            navController.navigate(R.id.action_profileFragment_to_paymentFragment)
         }
 
         binding.participationContest.setOnClickListener {
-            navController.navigate(R.id.action_profileFragment_to_mainFragment)
+            navController.navigate(R.id.action_profileFragment_to_participatedContestFragment)
         }
     }
 }
