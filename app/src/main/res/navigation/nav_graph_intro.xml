@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/introFragment"
-        android:name="com.example.a2021ictproject.fragment.IntroFragment"
+        android:name="com.project.concon.fragment.IntroFragment"
         android:label="intro_fragment"
         tools:layout="@layout/intro_fragment" >
         <action
@@ -19,7 +19,7 @@
     </fragment>
     <fragment
         android:id="@+id/signInFragment"
-        android:name="com.example.a2021ictproject.fragment.SignInFragment"
+        android:name="com.project.concon.fragment.SignInFragment"
         android:label="SignInFragment" >
         <action
             android:id="@+id/action_signInFragment_to_introFragment"
@@ -27,7 +27,7 @@
     </fragment>
     <fragment
         android:id="@+id/signUpFragment"
-        android:name="com.example.a2021ictproject.fragment.SignUpFragment"
+        android:name="com.project.concon.fragment.SignUpFragment"
         android:label="sign_up_fragment"
         tools:layout="@layout/sign_up_fragment" >
         <action

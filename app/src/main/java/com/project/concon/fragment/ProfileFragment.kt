@@ -9,8 +9,8 @@ import android.view.ViewGroup
 import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
-import com.example.a2021ictproject.R
-import com.example.a2021ictproject.databinding.ProfileFragmentBinding
+import com.project.concon.R
+import com.project.concon.databinding.ProfileFragmentBinding
 import com.project.concon.viewmodel.ProfileViewModel
 
 class ProfileFragment : Fragment() {

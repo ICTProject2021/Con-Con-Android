@@ -8,9 +8,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.a2021ictproject.databinding.MainFragmentBinding
-import com.example.a2021ictproject.fragment.MainFragmentDirections
 import com.project.concon.adapter.MainRecyclerViewAdapter
+import com.project.concon.databinding.MainFragmentBinding
 import com.project.concon.decoration.RecyclerViewDecoration
 import com.project.concon.viewmodel.MainViewModel
 

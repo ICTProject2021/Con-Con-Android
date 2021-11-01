@@ -11,9 +11,9 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
-import com.example.a2021ictproject.R
-import com.example.a2021ictproject.databinding.CreateContestFragmentBinding
 import com.google.android.material.datepicker.MaterialDatePicker
+import com.project.concon.R
+import com.project.concon.databinding.CreateContestFragmentBinding
 import com.project.concon.network.dto.request.ContestRequest
 import com.project.concon.network.dto.response.Prize
 import com.project.concon.viewmodel.CreateContestViewModel

@@ -4,7 +4,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.example.a2021ictproject.databinding.RvItemJoinContestBinding
+import com.project.concon.databinding.RvItemJoinContestBinding
 import com.project.concon.network.dto.response.Participant
 
 class JoinContestRecyclerViewAdapter : RecyclerView.Adapter<JoinContestRecyclerViewAdapter.ViewHolder>() {

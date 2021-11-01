@@ -7,7 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.activityViewModels
-import com.example.a2021ictproject.databinding.FragmentPrizeDialogBinding
+import com.project.concon.databinding.FragmentPrizeDialogBinding
 import com.project.concon.network.dto.response.Prize
 import com.project.concon.viewmodel.DialogViewModel
 

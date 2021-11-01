@@ -7,8 +7,8 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
-import com.example.a2021ictproject.R
-import com.example.a2021ictproject.databinding.IntroFragmentBinding
+import com.project.concon.R
+import com.project.concon.databinding.IntroFragmentBinding
 
 class IntroFragment : Fragment() {
 

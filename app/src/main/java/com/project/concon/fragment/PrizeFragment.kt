@@ -8,9 +8,8 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
-import com.example.a2021ictproject.R
-import com.example.a2021ictproject.databinding.FragmentPrizeBinding
-import com.example.a2021ictproject.fragment.PrizeFragmentDirections
+import com.project.concon.R
+import com.project.concon.databinding.FragmentPrizeBinding
 import com.project.concon.viewmodel.CreateContestViewModel
 import com.project.concon.viewmodel.DialogViewModel
 

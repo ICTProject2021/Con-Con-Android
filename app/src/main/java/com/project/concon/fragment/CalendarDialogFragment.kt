@@ -12,10 +12,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.DialogFragment
-import com.example.a2021ictproject.R
-import com.example.a2021ictproject.databinding.CalendarDialogFragmentBinding
+import com.project.concon.databinding.CalendarDialogFragmentBinding
 import com.prolificinteractive.materialcalendarview.*
-import java.util.*
+import com.project.concon.R
 
 class CalendarDialogFragment : DialogFragment() {
 

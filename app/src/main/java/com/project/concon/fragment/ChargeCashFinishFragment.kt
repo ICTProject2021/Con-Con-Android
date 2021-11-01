@@ -7,8 +7,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.activityViewModels
-import com.example.a2021ictproject.R
-import com.example.a2021ictproject.databinding.ChargeCashFinishFragmentBinding
+import com.project.concon.R
+import com.project.concon.databinding.ChargeCashFinishFragmentBinding
 import com.project.concon.viewmodel.ChargeCashViewModel
 
 class ChargeCashFinishFragment : Fragment() {

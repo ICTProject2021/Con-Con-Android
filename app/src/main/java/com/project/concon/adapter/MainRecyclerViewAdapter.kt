@@ -8,7 +8,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.example.a2021ictproject.R
+import com.project.concon.R
 import com.project.concon.network.dto.response.Contest
 import java.text.SimpleDateFormat
 import java.util.*

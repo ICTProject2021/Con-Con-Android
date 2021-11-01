@@ -11,10 +11,8 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
-import com.example.a2021ictproject.R
-import com.example.a2021ictproject.databinding.ContestDetailFragmentBinding
-import com.example.a2021ictproject.fragment.ContestDetailFragmentArgs
-import com.example.a2021ictproject.fragment.ContestDetailFragmentDirections
+import com.project.concon.R
+import com.project.concon.databinding.ContestDetailFragmentBinding
 import com.project.concon.network.dto.response.ContestDetail
 import com.project.concon.viewmodel.ContestDetailViewModel
 

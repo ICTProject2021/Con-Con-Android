@@ -17,12 +17,10 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
-import com.example.a2021ictproject.R
-import com.example.a2021ictproject.databinding.JoinContestFragmentBinding
-import com.example.a2021ictproject.fragment.JoinContestFragmentArgs
-import com.example.a2021ictproject.fragment.JoinContestFragmentDirections
+import com.project.concon.R
 import com.project.concon.adapter.JoinContestImageRecyclerViewAdapter
 import com.project.concon.adapter.JoinContestRecyclerViewAdapter
+import com.project.concon.databinding.JoinContestFragmentBinding
 import com.project.concon.utils.MessageUtils
 import com.project.concon.viewmodel.JoinContestViewModel
 import java.io.IOException

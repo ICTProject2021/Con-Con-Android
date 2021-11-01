@@ -9,8 +9,8 @@ import android.widget.Button
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
-import com.example.a2021ictproject.R
-import com.example.a2021ictproject.databinding.ChargeCashFragmentBinding
+import com.project.concon.R
+import com.project.concon.databinding.ChargeCashFragmentBinding
 import com.project.concon.utils.MessageUtils
 import com.project.concon.viewmodel.ChargeCashViewModel
 

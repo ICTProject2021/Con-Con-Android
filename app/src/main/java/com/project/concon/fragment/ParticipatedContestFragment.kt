@@ -8,9 +8,8 @@ import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.a2021ictproject.databinding.FragmentParticipatedContestBinding
-import com.example.a2021ictproject.fragment.ParticipatedContestFragmentDirections
 import com.project.concon.adapter.ParticipatedRecyclerViewAdapter
+import com.project.concon.databinding.FragmentParticipatedContestBinding
 import com.project.concon.decoration.RecyclerViewDecoration
 import com.project.concon.viewmodel.ParticipatedContestViewModel
 

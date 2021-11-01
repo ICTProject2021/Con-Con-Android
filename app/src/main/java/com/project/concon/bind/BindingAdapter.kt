@@ -16,8 +16,8 @@ import androidx.core.content.ContextCompat
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.example.a2021ictproject.R
 import com.google.android.material.textfield.TextInputLayout
+import com.project.concon.R
 import com.project.concon.adapter.JoinContestImageRecyclerViewAdapter
 import com.project.concon.adapter.JoinContestRecyclerViewAdapter
 import com.project.concon.network.dto.response.Participant

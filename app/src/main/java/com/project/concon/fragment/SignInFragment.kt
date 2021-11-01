@@ -11,8 +11,8 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.viewModels
 import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
-import com.example.a2021ictproject.R
-import com.example.a2021ictproject.databinding.SignInFragmentBinding
+import com.project.concon.R
+import com.project.concon.databinding.SignInFragmentBinding
 import com.project.concon.utils.MessageUtils
 import com.project.concon.utils.PreferenceUtils
 import com.project.concon.viewmodel.SignInViewModel

@@ -5,8 +5,8 @@ import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
-import com.example.a2021ictproject.R
-import com.example.a2021ictproject.databinding.ActivityMainBinding
+import com.project.concon.R
+import com.project.concon.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
 

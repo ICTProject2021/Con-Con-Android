@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/mainFragment"
-        android:name="com.example.a2021ictproject.fragment.MainFragment"
+        android:name="com.project.concon.fragment.MainFragment"
         android:label="main_fragment"
         tools:layout="@layout/main_fragment" >
         <action
@@ -23,7 +23,7 @@
     </fragment>
     <fragment
         android:id="@+id/createContestFragment"
-        android:name="com.example.a2021ictproject.fragment.CreateContestFragment"
+        android:name="com.project.concon.fragment.CreateContestFragment"
         android:label="create_contest_fragment"
         tools:layout="@layout/create_contest_fragment">
         <action
@@ -38,7 +38,7 @@
     </fragment>
     <fragment
         android:id="@+id/profileFragment"
-        android:name="com.example.a2021ictproject.fragment.ProfileFragment"
+        android:name="com.project.concon.fragment.ProfileFragment"
         android:label="profile_fragment"
         tools:layout="@layout/profile_fragment" >
         <action
@@ -59,7 +59,7 @@
     </fragment>
     <fragment
         android:id="@+id/chargeCashFragment"
-        android:name="com.example.a2021ictproject.fragment.ChargeCashFragment"
+        android:name="com.project.concon.fragment.ChargeCashFragment"
         android:label="charge_cash_fragment"
         tools:layout="@layout/charge_cash_fragment" >
         <action
@@ -71,7 +71,7 @@
     </fragment>
     <fragment
         android:id="@+id/joinContestFragment"
-        android:name="com.example.a2021ictproject.fragment.JoinContestFragment"
+        android:name="com.project.concon.fragment.JoinContestFragment"
         android:label="join_contest_fragment"
         tools:layout="@layout/join_contest_fragment">
         <action
@@ -84,7 +84,7 @@
     </fragment>
     <fragment
         android:id="@+id/contestDetailFragment"
-        android:name="com.example.a2021ictproject.fragment.ContestDetailFragment"
+        android:name="com.project.concon.fragment.ContestDetailFragment"
         android:label="contest_detail_fragment"
         tools:layout="@layout/contest_detail_fragment" >
         <action
@@ -99,7 +99,7 @@
     </fragment>
     <fragment
         android:id="@+id/chargeCashFinishFragment"
-        android:name="com.example.a2021ictproject.fragment.ChargeCashFinishFragment"
+        android:name="com.project.concon.fragment.ChargeCashFinishFragment"
         android:label="fragment_charge_cash_finish"
         tools:layout="@layout/charge_cash_finish_fragment" >
         <action
@@ -111,7 +111,7 @@
     </fragment>
     <fragment
         android:id="@+id/prizeFragment"
-        android:name="com.example.a2021ictproject.fragment.PrizeFragment"
+        android:name="com.project.concon.fragment.PrizeFragment"
         android:label="fragment_prize"
         tools:layout="@layout/fragment_prize" >
         <action
@@ -120,7 +120,7 @@
     </fragment>
     <fragment
         android:id="@+id/participatedContestFragment"
-        android:name="com.example.a2021ictproject.fragment.ParticipatedContestFragment"
+        android:name="com.project.concon.fragment.ParticipatedContestFragment"
         android:label="fragment_participated_contest"
         tools:layout="@layout/fragment_participated_contest" >
         <action
@@ -132,7 +132,7 @@
     </fragment>
     <fragment
         android:id="@+id/paymentFragment"
-        android:name="com.example.a2021ictproject.fragment.PaymentFragment"
+        android:name="com.project.concon.fragment.PaymentFragment"
         android:label="PaymentFragment"
         tools:layout="@layout/payment_fragment">
         <action

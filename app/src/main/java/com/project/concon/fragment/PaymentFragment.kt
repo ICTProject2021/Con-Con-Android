@@ -6,8 +6,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
-import com.example.a2021ictproject.R
-import com.example.a2021ictproject.databinding.PaymentFragmentBinding
+import com.project.concon.R
+import com.project.concon.databinding.PaymentFragmentBinding
 import com.project.concon.utils.BillingManager
 import com.project.concon.utils.MessageUtils
 import com.project.concon.utils.PurchaseMessageListener
