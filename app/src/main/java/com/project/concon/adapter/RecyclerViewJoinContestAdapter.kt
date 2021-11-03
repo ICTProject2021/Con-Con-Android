@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.project.concon.databinding.RvItemJoinContestBinding
 import com.project.concon.network.dto.response.Participant
 
-class JoinContestRecyclerViewAdapter : RecyclerView.Adapter<JoinContestRecyclerViewAdapter.ViewHolder>() {
+class RecyclerViewJoinContestAdapter : RecyclerView.Adapter<RecyclerViewJoinContestAdapter.ViewHolder>() {
 
     private lateinit var setOnClickJoinListener: OnClickJoinListener
 

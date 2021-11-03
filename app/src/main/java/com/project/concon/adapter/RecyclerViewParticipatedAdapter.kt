@@ -12,8 +12,8 @@ import com.project.concon.network.dto.response.ParticipatedContest
 import java.text.SimpleDateFormat
 import java.util.*
 
-class ParticipatedRecyclerViewAdapter :
-    RecyclerView.Adapter<ParticipatedRecyclerViewAdapter.ViewHolder>() {
+class RecyclerViewParticipatedAdapter :
+    RecyclerView.Adapter<RecyclerViewParticipatedAdapter.ViewHolder>() {
 
     private var dataList = mutableListOf<ParticipatedContest>()
     private lateinit var mListener: OnItemClickListener

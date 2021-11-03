@@ -13,7 +13,7 @@ import com.project.concon.network.dto.response.Contest
 import java.text.SimpleDateFormat
 import java.util.*
 
-class MainRecyclerViewAdapter : RecyclerView.Adapter<MainRecyclerViewAdapter.ViewHolder>(){
+class RecyclerViewMainAdapter : RecyclerView.Adapter<RecyclerViewMainAdapter.ViewHolder>(){
 
     private var dataList = mutableListOf<Contest>()
     private lateinit var mListener: onItemClickListener

@@ -14,7 +14,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.project.concon.databinding.RvItemJoinContestImageBinding
 
-class JoinContestImageRecyclerViewAdapter: RecyclerView.Adapter<JoinContestImageRecyclerViewAdapter.ViewHolder>() {
+class RecyclerViewJoinContestImageAdapter: RecyclerView.Adapter<RecyclerViewJoinContestImageAdapter.ViewHolder>() {
 
     private val list: MutableList<Uri> = mutableListOf()
 
