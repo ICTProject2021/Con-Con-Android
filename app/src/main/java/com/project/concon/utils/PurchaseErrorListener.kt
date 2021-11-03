@@ -7,4 +7,6 @@ interface PurchaseMessageListener {
 
     // 결제가 취소되었을 때 메서드
     fun onPurchaseCancel()
+
+    fun test(msg: String)
 }
