@@ -5,6 +5,7 @@
     android:gravity="center">
 
     <TextView
+        android:id="@+id/item_rank"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="1등"
@@ -12,6 +13,7 @@
         android:textStyle="bold" />
 
     <TextView
+        android:id="@+id/item_nickName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
@@ -19,6 +21,7 @@
         android:textSize="15sp" />
 
     <TextView
+        android:id="@+id/item_price"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="140dp"

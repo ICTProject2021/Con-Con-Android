@@ -2,10 +2,7 @@ package com.project.concon.network.dao
 
 import com.project.concon.network.dto.request.CashRequest
 import com.project.concon.network.dto.request.ContestRequest
-import com.project.concon.network.dto.response.Contest
-import com.project.concon.network.dto.response.ContestDetail
-import com.project.concon.network.dto.response.Msg
-import com.project.concon.network.dto.response.Participant
+import com.project.concon.network.dto.response.*
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import retrofit2.Call
@@ -47,4 +44,7 @@ interface ContestService {
     /* 캐시 충전 */
     @PUT("/charge")
     fun putCharge(@Body cash: CashRequest): Call<Msg>
+
+    @GET("/prize/{contestid}")
+    fun winnerList(@Path("contestid") contestid: String) : Call<List<Winner>>
 }
