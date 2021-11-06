@@ -54,7 +54,7 @@ class ContestDetailFragment : Fragment() {
         }
 
         binding.btnJoinContestDetail.setOnClickListener {
-            if (binding.data.duedate < today.toString()) {
+            if (binding.data?.duedate!! < today.toString()) {
                 navigateToWinner()
             } else {
                 navigateToJoinContest()
