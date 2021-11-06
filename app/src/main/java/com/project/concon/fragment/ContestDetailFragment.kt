@@ -1,11 +1,13 @@
 package com.project.concon.fragment
 
+import android.os.Build
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.annotation.RequiresApi
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.viewModels
 import androidx.navigation.NavController
@@ -15,6 +17,7 @@ import com.project.concon.R
 import com.project.concon.databinding.ContestDetailFragmentBinding
 import com.project.concon.network.dto.response.ContestDetail
 import com.project.concon.viewmodel.ContestDetailViewModel
+import java.time.LocalDate
 
 class ContestDetailFragment : Fragment() {
 
@@ -36,8 +39,11 @@ class ContestDetailFragment : Fragment() {
         return binding.root
     }
 
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        val today: LocalDate = LocalDate.now()
 
         viewModel.getContestDetail(args.id)
 
@@ -48,7 +54,11 @@ class ContestDetailFragment : Fragment() {
         }
 
         binding.btnJoinContestDetail.setOnClickListener {
-            navigateToJoinContest()
+            if (binding.data.duedate < today.toString()) {
+                navigateToWinner()
+            } else {
+                navigateToJoinContest()
+            }
         }
     }
 
@@ -71,5 +81,9 @@ class ContestDetailFragment : Fragment() {
 
     private fun navigateToJoinContest() {
         navController.navigate(ContestDetailFragmentDirections.actionContestDetailFragmentToJoinContestFragment(args.id))
+    }
+
+    private fun navigateToWinner() {
+        navController.navigate(ContestDetailFragmentDirections.actionContestDetailFragmentToWinnerFragment(args.id))
     }
 }

@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.project.concon.R
 import com.project.concon.network.dto.response.Winner
 
-class WinnerRecyclerViewAdapter: RecyclerView.Adapter<WinnerRecyclerViewAdapter.ViewHolder>() {
+class RecyclerViewWinnerAdapter: RecyclerView.Adapter<RecyclerViewWinnerAdapter.ViewHolder>() {
     private var dataList = mutableListOf<Winner>()
 
     fun setData(data: List<Winner>) {
