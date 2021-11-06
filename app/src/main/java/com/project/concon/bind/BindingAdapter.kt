@@ -18,8 +18,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.google.android.material.textfield.TextInputLayout
 import com.project.concon.R
-import com.project.concon.adapter.JoinContestImageRecyclerViewAdapter
-import com.project.concon.adapter.JoinContestRecyclerViewAdapter
+import com.project.concon.adapter.RecyclerViewJoinContestImageAdapter
+import com.project.concon.adapter.RecyclerViewJoinContestAdapter
 import com.project.concon.network.dto.response.Participant
 
 @BindingAdapter("setVisible")
@@ -75,7 +75,7 @@ fun ImageView.setImageBitmap(uri: Uri) {
 @BindingAdapter("submitList")
 fun RecyclerView.submitList(list: List<Participant>?) {
     if (list != null) {
-        val adapter = JoinContestRecyclerViewAdapter()
+        val adapter = RecyclerViewJoinContestAdapter()
         adapter.setList(list)
     }
 }
@@ -84,7 +84,7 @@ fun RecyclerView.submitList(list: List<Participant>?) {
 @BindingAdapter("submitList")
 fun RecyclerView.submitList(list: List<Uri>?) {
     if (list != null) {
-        val adapter = JoinContestImageRecyclerViewAdapter()
+        val adapter = RecyclerViewJoinContestImageAdapter()
         adapter.setList(list)
     }
 }

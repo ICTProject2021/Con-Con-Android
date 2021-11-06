@@ -18,8 +18,8 @@ import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.project.concon.R
-import com.project.concon.adapter.JoinContestImageRecyclerViewAdapter
-import com.project.concon.adapter.JoinContestRecyclerViewAdapter
+import com.project.concon.adapter.RecyclerViewJoinContestImageAdapter
+import com.project.concon.adapter.RecyclerViewJoinContestAdapter
 import com.project.concon.databinding.JoinContestFragmentBinding
 import com.project.concon.utils.MessageUtils
 import com.project.concon.viewmodel.JoinContestViewModel
@@ -34,8 +34,8 @@ class JoinContestFragment : Fragment() {
 
     private val navArgs by navArgs<JoinContestFragmentArgs>()
 
-    private val imgAdapter = JoinContestImageRecyclerViewAdapter()
-    private val joinAdapter = JoinContestRecyclerViewAdapter()
+    private val imgAdapter = RecyclerViewJoinContestImageAdapter()
+    private val joinAdapter = RecyclerViewJoinContestAdapter()
 
     private lateinit var resultLauncher: ActivityResultLauncher<Intent>
 

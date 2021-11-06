@@ -1,29 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
-    <LinearLayout
+
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".fragment.PaymentFragment">
 
-        <Button
-            android:id="@+id/btn_test1"
-            android:layout_width="match_parent"
+        <ImageButton
+            android:id="@+id/btn_close_payment"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="test1" />
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:background="@android:color/transparent"
+            android:minWidth="48dp"
+            android:minHeight="48dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_close"
+            tools:ignore="SpeakableTextPresentCheck" />
 
-        <Button
-            android:id="@+id/btn_test2"
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_payment"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            android:overScrollMode="never"
+            android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="test2" />
+            android:layout_height="0dp"
+            android:layout_marginTop="16dp"
+            tools:listitem="@layout/rv_item_payment"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btn_close_payment" />
 
         <TextView
-            android:id="@+id/tv_code"
-            android:textColor="@color/black"
-            android:layout_width="match_parent"
+            android:id="@+id/textView13"
+            style="@style/Base.Widget.AppCompat.TextView.Bold"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="" />
-    </LinearLayout>
+            android:layout_marginStart="20dp"
+            android:text="충전하기"
+            app:layout_constraintBottom_toBottomOf="@+id/btn_close_payment"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/btn_close_payment" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

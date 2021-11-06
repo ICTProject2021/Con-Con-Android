@@ -8,7 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.project.concon.adapter.MainRecyclerViewAdapter
+import com.project.concon.adapter.RecyclerViewMainAdapter
 import com.project.concon.databinding.MainFragmentBinding
 import com.project.concon.decoration.RecyclerViewDecoration
 import com.project.concon.viewmodel.MainViewModel
@@ -18,7 +18,7 @@ class MainFragment : Fragment() {
 
     private lateinit var viewModel: MainViewModel
     private lateinit var binding: MainFragmentBinding
-    private lateinit var recyclerViewAdapter: MainRecyclerViewAdapter
+    private lateinit var recyclerViewAdapter: RecyclerViewMainAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -43,7 +43,7 @@ class MainFragment : Fragment() {
         val decoration: RecyclerViewDecoration = RecyclerViewDecoration(40)
         binding.contestRecyclerView.apply {
             layoutManager = LinearLayoutManager(context)
-            recyclerViewAdapter = MainRecyclerViewAdapter()
+            recyclerViewAdapter = RecyclerViewMainAdapter()
             adapter = recyclerViewAdapter
             addItemDecoration(decoration)
         }
@@ -66,7 +66,7 @@ class MainFragment : Fragment() {
 //                    )
                 )
             }
-            recyclerViewAdapter.setOnItemClickListener(object: MainRecyclerViewAdapter.onItemClickListener{
+            recyclerViewAdapter.setOnItemClickListener(object: RecyclerViewMainAdapter.onItemClickListener{
                 override fun onClick(v: View, position: Int) {
                     findNavController().navigate(MainFragmentDirections.actionMainFragmentToContestDetailFragment(
                         it[position].ID!!

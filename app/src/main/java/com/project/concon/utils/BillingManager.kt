@@ -4,15 +4,12 @@ import android.app.Activity
 import android.content.Context
 import android.util.Log
 import com.android.billingclient.api.*
+import com.project.concon.data.SkuData
 
 class BillingManager(private val listener: PurchaseMessageListener) :
     PurchasesUpdatedListener {
 
     private val TAG = "BillingManager"
-
-    private val SKUID5000 = "money_5000"
-    private val SKUID10000 = "money_10000"
-    private val SKUID20000 = "money_20000"
 
     private lateinit var billingClient: BillingClient
     private var skuDetailList: List<SkuDetails> = listOf()
@@ -52,9 +49,11 @@ class BillingManager(private val listener: PurchaseMessageListener) :
 
     private fun getSkuDetailList() {
         val skuList = arrayListOf(
-            "money_5000",
-            "money_10000",
-            "money_20000",
+            SkuData.MONEY_1000.sku,
+            SkuData.MONEY_5000.sku,
+            SkuData.MONEY_10000.sku,
+            SkuData.MONEY_20000.sku,
+            SkuData.MONEY_30000.sku
         )
 
         val params = SkuDetailsParams.newBuilder()
@@ -81,6 +80,11 @@ class BillingManager(private val listener: PurchaseMessageListener) :
         }
 
         Log.d(TAG, "doBillingFlow: ${skuDetails.toString()}")
+
+        if (skuDetails == null) {
+            listener.onPurchaseCancel()
+            return
+        }
 
         val flow = BillingFlowParams.newBuilder().setSkuDetails(skuDetails!!).build()
         billingClient.launchBillingFlow(activity, flow)
@@ -116,6 +120,4 @@ class BillingManager(private val listener: PurchaseMessageListener) :
             listener.onPurchaseCancel()
         }
     }
-
-
 }
