@@ -1,11 +1,12 @@
 <resources>
+    <string name="app_name">ConCon</string>
+
     <string name="fail_server">서버 통신에 실패했습니다.</string>
     <string name="error_input_info">정보를 입력해주세요,</string>
     <string name="fail_sign_up">회원가입에 실패했습니다.</string>
     <string name="error_input_id">아이디를 입력해주세요.</string>
     <string name="error_input_pw">비밀번호를 입력해주세요.</string>
 
-    <string name="app_name">2021IctProject</string>
     <string name="sign_in">로그인</string>
     <string name="password">비밀번호</string>
     <string name="id">아이디</string>
