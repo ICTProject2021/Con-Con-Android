@@ -5,36 +5,34 @@
 
     <Transition
         motion:constraintSetEnd="@+id/end"
-        motion:constraintSetStart="@id/start"
-        motion:duration="1000"
-        motion:motionInterpolator="linear">
+        motion:constraintSetStart="@id/start">
 
         <OnSwipe
-            motion:dragDirection="dragDown"
-            motion:touchAnchorSide="bottom"/>
+            motion:dragDirection="dragUp"
+            motion:touchAnchorId="@id/contestRecyclerView"
+            motion:touchAnchorSide="top"/>
     </Transition>
 
     <ConstraintSet android:id="@+id/start">
         <Constraint
-            android:id="@+id/imageView"
+            android:id="@id/linear"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="32dp"
-            android:src="@drawable/ic_index"
             motion:layout_constraintBottom_toBottomOf="@+id/titleImg"
+            motion:layout_constraintEnd_toEndOf="parent"
             motion:layout_constraintStart_toStartOf="parent"
-            motion:layout_constraintTop_toTopOf="@+id/titleImg" />
+            motion:layout_constraintTop_toTopOf="parent"/>
     </ConstraintSet>
 
     <ConstraintSet android:id="@+id/end">
         <Constraint
+            android:id="@id/linear"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            motion:layout_constraintBottom_toBottomOf="@+id/titleImg"
-            android:layout_marginStart="32dp"
-            motion:layout_constraintTop_toTopOf="@+id/titleImg"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
             motion:layout_constraintStart_toStartOf="parent"
-            android:id="@+id/imageView"
-            motion:layout_constraintVertical_bias="0.15" />
+            motion:layout_constraintEnd_toEndOf="parent"
+            motion:layout_constraintTop_toTopOf="parent"/>
     </ConstraintSet>
 </MotionScene>
