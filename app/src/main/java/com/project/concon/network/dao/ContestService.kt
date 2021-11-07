@@ -2,6 +2,7 @@ package com.project.concon.network.dao
 
 import com.project.concon.network.dto.request.CashRequest
 import com.project.concon.network.dto.request.ContestRequest
+import com.project.concon.network.dto.request.WinnerPrizeRequest
 import com.project.concon.network.dto.response.*
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
@@ -46,5 +47,8 @@ interface ContestService {
     fun putCharge(@Body cash: CashRequest): Call<Msg>
 
     @GET("/prize/{contestid}")
-    fun winnerList(@Path("contestid") contestid: String) : Call<List<Winner>>
+    fun winnerList(@Path("contestid") contestid: Int) : Call<List<Winner>>
+
+    @PUT("/prize/{contestid}")
+    fun winnerPrizeSelect(@Path("contestid") contestid: Int, @Body winnerPrizeRequest: List<WinnerPrizeRequest>) : Call<Msg>
 }

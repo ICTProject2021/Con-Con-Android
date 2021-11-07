@@ -42,7 +42,7 @@ class WinnerFragment : Fragment() {
             adapter = recyclerViewAdapter
             addItemDecoration(decoration)
         }
-        viewModel.callWinnerList(args.contestId.toString())
+        viewModel.callWinnerList(args.contestId)
         viewModel.winnerLiveData.observe(viewLifecycleOwner, {
             if (it != null) {
                 recyclerViewAdapter.setData(it)

@@ -13,7 +13,7 @@ class WinnerViewModel : ViewModel() {
     val winnerLiveData = MutableLiveData<List<Winner>?>()
     private val contestService: ContestService by lazy { RetrofitInstance.contestService }
 
-    fun callWinnerList(contestId: String) {
+    fun callWinnerList(contestId: Int) {
         contestService.winnerList(contestId).enqueue(object : Callback<List<Winner>> {
             override fun onResponse(call: Call<List<Winner>>, response: Response<List<Winner>>) {
                 if (response.isSuccessful) {

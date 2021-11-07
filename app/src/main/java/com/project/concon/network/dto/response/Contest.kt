@@ -7,5 +7,6 @@ data class Contest(
     val startdate: String?,
     val duedate: String?,
     val host: String?,
+    val isHost: Boolean,
     val profile: String?
 )

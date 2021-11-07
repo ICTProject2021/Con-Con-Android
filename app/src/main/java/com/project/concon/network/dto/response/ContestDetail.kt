@@ -7,5 +7,6 @@ data class ContestDetail(
     val startdate: String,
     val duedate: String,
     val host: String,
+    val isHost: Boolean,
     val prize: List<Prize>
 )

@@ -26,6 +26,9 @@ class ContestDetailFragment : Fragment() {
     private lateinit var binding: ContestDetailFragmentBinding
     private val viewModel: ContestDetailViewModel by viewModels()
 
+    @RequiresApi(Build.VERSION_CODES.O)
+    private val today: LocalDate = LocalDate.now()
+
     private val args by navArgs<ContestDetailFragmentArgs>()
 
     override fun onCreateView(
@@ -35,15 +38,13 @@ class ContestDetailFragment : Fragment() {
         binding = DataBindingUtil.inflate(inflater, R.layout.contest_detail_fragment, container, false)
         binding.lifecycleOwner = viewLifecycleOwner
         binding.vm = viewModel
-        binding.data = ContestDetail(0, "", "", "", "", "", listOf())
+        binding.data = ContestDetail(0, "", "", "", "", "", false, listOf())
         return binding.root
     }
 
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        val today: LocalDate = LocalDate.now()
 
         viewModel.getContestDetail(args.id)
 
@@ -53,23 +54,25 @@ class ContestDetailFragment : Fragment() {
             navigateToMain()
         }
 
-        binding.btnJoinContestDetail.setOnClickListener {
-            if (binding.data?.duedate!! < today.toString()) {
-                navigateToWinner()
-            } else {
-                navigateToJoinContest()
-            }
-        }
     }
 
+    @RequiresApi(Build.VERSION_CODES.O)
     private fun observe() = with(viewModel) {
-        getContestDetailRes.observe(viewLifecycleOwner) { it ->
-            when(it) {
+        getContestDetailRes.observe(viewLifecycleOwner) { data ->
+            when(data) {
                 null ->
                     Toast.makeText(requireContext(), getString(R.string.fail_server), Toast.LENGTH_SHORT).show()
 
                 else -> {
-                    binding.data = it
+                    binding.data = data
+                    binding.btnJoinContestDetail.setOnClickListener {
+                        if (binding.data?.duedate!! < today.toString()) {
+                            if (data.isHost) navigateToWinnerSelect()
+                            else navigateToWinner()
+                        } else {
+                            navigateToJoinContest()
+                        }
+                    }
                 }
             }
         }
@@ -85,5 +88,9 @@ class ContestDetailFragment : Fragment() {
 
     private fun navigateToWinner() {
         navController.navigate(ContestDetailFragmentDirections.actionContestDetailFragmentToWinnerFragment(args.id))
+    }
+
+    private fun navigateToWinnerSelect() {
+        navController.navigate(ContestDetailFragmentDirections.actionContestDetailFragmentToWinnerSelectFragment(args.id))
     }
 }
