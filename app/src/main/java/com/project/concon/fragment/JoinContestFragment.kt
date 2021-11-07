@@ -4,6 +4,7 @@ import android.app.Activity.RESULT_OK
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import android.os.Message
 import android.provider.MediaStore
 import android.util.Log
 import android.view.LayoutInflater
@@ -133,6 +134,14 @@ class JoinContestFragment : Fragment() {
 
         fileList.observe(viewLifecycleOwner) {
             imgAdapter.setList(it)
+        }
+
+        isLoading.observe(viewLifecycleOwner) {
+            if (it) {
+                MessageUtils.showProgress(requireActivity())
+            } else {
+                MessageUtils.dismissProgress()
+            }
         }
     }
 

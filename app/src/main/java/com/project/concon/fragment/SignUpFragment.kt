@@ -11,10 +11,10 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
 import com.project.concon.R
-import com.project.concon.databinding.SignUpFragmentBinding
 import com.project.concon.utils.MessageUtils
 import com.project.concon.utils.PreferenceUtils
 import com.project.concon.viewmodel.SignUpViewModel
+import com.project.concon.databinding.SignUpFragmentBinding
 
 class SignUpFragment : Fragment() {
 
@@ -80,19 +80,19 @@ class SignUpFragment : Fragment() {
             signUpBtnEnabled()
         }
 
-        postCheckIdRes.observe(viewLifecycleOwner) { it ->
+        postCheckIdRes.observe(viewLifecycleOwner) {
             when (it?.msg) {
-                null -> MessageUtils.showToast(requireContext(), getString(R.string.fail_server))
+                null -> MessageUtils.showFailDialog(requireActivity(), getString(R.string.fail_server))
 
                 "available" -> idCheck.value = true
 
-                "exist" -> MessageUtils.showToast(requireContext(), "중복된 아이디입니다.")
+                "exist"  -> MessageUtils.showToast(requireContext(), "중복된 아이디입니다.")
             }
         }
 
-        postSignUpRes.observe(viewLifecycleOwner) { it ->
+        postSignUpRes.observe(viewLifecycleOwner) {
             when (it) {
-                null -> MessageUtils.showToast(requireContext(), getString(R.string.fail_server))
+                null -> MessageUtils.showFailDialog(requireActivity(), getString(R.string.fail_server))
 
                 else -> {
                     PreferenceUtils.token = it.msg

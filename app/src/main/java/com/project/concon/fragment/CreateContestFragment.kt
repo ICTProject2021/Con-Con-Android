@@ -16,6 +16,7 @@ import com.project.concon.R
 import com.project.concon.databinding.CreateContestFragmentBinding
 import com.project.concon.network.dto.request.ContestRequest
 import com.project.concon.network.dto.response.Prize
+import com.project.concon.utils.MessageUtils
 import com.project.concon.viewmodel.CreateContestViewModel
 import com.project.concon.viewmodel.DialogViewModel
 import java.text.SimpleDateFormat
@@ -92,8 +93,8 @@ class CreateContestFragment : Fragment() {
         }
     }
 
-    private fun observe() {
-        viewModel.postCreateContestRes.observe(viewLifecycleOwner) { it ->
+    private fun observe() = with(viewModel) {
+        postCreateContestRes.observe(viewLifecycleOwner) { it ->
             when (it) {
                 null -> {
                     Toast.makeText(
@@ -107,6 +108,14 @@ class CreateContestFragment : Fragment() {
                     Toast.makeText(requireContext(), "대회 등록에 성공.", Toast.LENGTH_SHORT).show()
                     navigateToMain()
                 }
+            }
+        }
+
+        isLoading.observe(viewLifecycleOwner) {
+            if (it) {
+                MessageUtils.showProgress(requireActivity())
+            } else {
+                MessageUtils.dismissProgress()
             }
         }
     }

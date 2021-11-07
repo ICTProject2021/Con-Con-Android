@@ -1,6 +1,7 @@
 package com.project.concon.viewmodel
 
 import android.util.Log
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.project.concon.network.`object`.RetrofitInstance
@@ -15,7 +16,7 @@ import retrofit2.Response
 class SignUpViewModel : ViewModel() {
 
     val id = MutableLiveData<String>()
-    var idCheck = MutableLiveData(false)
+    val idCheck = MutableLiveData<Boolean>()
     val password = MutableLiveData<String>()
     val phoneNumber = MutableLiveData<String>()
     val nickname = MutableLiveData<String>()
@@ -31,6 +32,8 @@ class SignUpViewModel : ViewModel() {
 
     val postCheckIdRes = MutableLiveData<Msg?>()
     val postSignUpRes = MutableLiveData<Msg?>()
+
+    val isLoading = MutableLiveData(false)
 
     fun postCheckId() {
         if (id.value.isNullOrBlank()) return
@@ -61,6 +64,8 @@ class SignUpViewModel : ViewModel() {
             return
         }
 
+        isLoading.value = true
+
         val signUpReq = SignUpRequest(
             id.value!!,
             password.value!!,
@@ -76,10 +81,13 @@ class SignUpViewModel : ViewModel() {
 
                     if (response.isSuccessful)
                         postSignUpRes.postValue(response.body())
+
+                    isLoading.value = false
                 }
 
                 override fun onFailure(call: Call<Msg>, t: Throwable) {
                     Log.d("postSignUp", t.message.toString())
+                    isLoading.value = false
                 }
             }
         )

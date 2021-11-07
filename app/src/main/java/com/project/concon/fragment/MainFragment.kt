@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.project.concon.adapter.RecyclerViewMainAdapter
 import com.project.concon.databinding.MainFragmentBinding
 import com.project.concon.decoration.RecyclerViewDecoration
+import com.project.concon.utils.MessageUtils
 import com.project.concon.viewmodel.MainViewModel
 
 class MainFragment : Fragment() {
@@ -32,6 +33,14 @@ class MainFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         initRecyclerView()
+
+        viewModel.isLoading.observe(viewLifecycleOwner) {
+            if (it) {
+                MessageUtils.showProgress(requireActivity())
+            } else {
+                MessageUtils.dismissProgress()
+            }
+        }
     }
 
 //    override fun onResume() {

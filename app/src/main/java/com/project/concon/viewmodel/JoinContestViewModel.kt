@@ -25,7 +25,11 @@ class JoinContestViewModel : ViewModel() {
     val postParticipantRes = MutableLiveData<String?>()
     val isSuccessPutLikes = MutableLiveData<String?>()
 
+    val isLoading = MutableLiveData(false)
+
     fun getParticipantInfo(id: Int) {
+        isLoading.value = true
+
         val tag = "getParticipantInfo"
 
         service.getParticipantInfo(id).enqueue(
@@ -38,17 +42,22 @@ class JoinContestViewModel : ViewModel() {
                     Log.d(tag, response.body().toString())
                     if (response.isSuccessful)
                         getParticipantInfoRes.postValue(response.body())
+
+                    isLoading.value = false
                 }
 
                 override fun onFailure(call: Call<List<Participant>>, t: Throwable) {
                     Log.d(tag, t.message.toString())
                     getParticipantInfoRes.postValue(null)
+                    isLoading.value = false
                 }
             }
         )
     }
 
     fun postParticipant(id: Int, contentResolver: ContentResolver) {
+        isLoading.value = true
+
         val tag = "postParticipant"
 
         val content = this.content.value!!.getRequestBody()
@@ -67,11 +76,14 @@ class JoinContestViewModel : ViewModel() {
                         if (response.body()!!.msg == "success")
                             postParticipantRes.postValue(response.body()!!.msg)
                     }
+
+                    isLoading.value = false
                 }
 
                 override fun onFailure(call: Call<Msg>, t: Throwable) {
                     Log.d(tag, t.message.toString())
                     postParticipantRes.postValue(null)
+                    isLoading.value = false
                 }
 
             }

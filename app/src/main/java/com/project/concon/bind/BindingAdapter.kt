@@ -42,17 +42,19 @@ fun TextInputLayout.setError(errorMsg: String?) {
     this.error = errorMsg
 }
 
-@BindingAdapter("loadUri")
-fun ImageView.setImage(uri: Uri) {
-    Glide.with(this.context)
-        .load(uri)
-        .into(this)
-}
+//@BindingAdapter("loadUri")
+//fun ImageView.setImage(uri: Uri) {
+//    Glide.with(this.context)
+//        .load(uri)
+//        .into(this)
+//}
 
 @BindingAdapter("loadUri")
 fun ImageView.setImage(uri: String) {
     Glide.with(this.context)
         .load(uri)
+        .placeholder(R.drawable.ic_profile)
+        .error(R.drawable.ic_profile)
         .into(this)
 }
 

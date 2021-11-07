@@ -13,7 +13,7 @@
     <color name="calendar_main_color">#FFF96F7A</color>
     <color name="gray">#FFC4C4C4</color>
 
-    <color name="enabled_btn_color">#FF979797</color>
+    <color name="enabled_btn_color">#FF707070</color>
     
     <color name="main_gradient_start_color">#FFEBA231</color>
     <color name="main_gradient_end_color">#FFEA5514</color>

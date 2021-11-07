@@ -24,23 +24,29 @@ class CreateContestViewModel : ViewModel() {
 
     val postCreateContestRes = MutableLiveData<Msg?>()
 
+    val isLoading = MutableLiveData(false)
+
     fun longTimeToDateAsString(time: Long): String {
         val dateFormat = SimpleDateFormat("yyyy-MM-dd")
         return dateFormat.format(time)
     }
 
     fun postCreateContest(contestRequest: ContestRequest) {
+        isLoading.value = true
+
         contestService.postCreateContest(contestRequest).enqueue(
             object : Callback<Msg> {
                 override fun onResponse(call: Call<Msg>, response: Response<Msg>) {
                     Log.d("createContest", "${response.code()}: ${response.body()}")
                     Log.d("createContest", response.raw().toString())
                     postCreateContestRes.postValue(response.body())
+                    isLoading.value = false
                 }
 
                 override fun onFailure(call: Call<Msg>, t: Throwable) {
                     Log.d("postCreateContest", t.message.toString())
                     postCreateContestRes.postValue(null)
+                    isLoading.value = false
                 }
             }
         )

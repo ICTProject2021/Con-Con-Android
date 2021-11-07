@@ -1,6 +1,7 @@
 package com.project.concon.viewmodel
 
 import android.util.Log
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.project.concon.network.`object`.RetrofitInstance
@@ -22,7 +23,12 @@ class SignInViewModel : ViewModel() {
 
     val postSignInRes = MutableLiveData<Msg?>()
 
+    private val _isLoading = MutableLiveData(false)
+    val isLoading = _isLoading
+
     fun postSignIn() {
+        _isLoading.value = true
+
         val req = SignInRequest(id.value!!, pw.value!!)
 
         accountService.postSignIn(req).enqueue(
@@ -33,11 +39,14 @@ class SignInViewModel : ViewModel() {
 
                     if (response.isSuccessful)
                         postSignInRes.postValue(response.body()!!)
+
+                    _isLoading.value = false
                 }
 
                 override fun onFailure(call: Call<Msg>, t: Throwable) {
                     Log.d("postSignIn", t.message.toString())
                     postSignInRes.postValue(null)
+                    _isLoading.value = false
                 }
             }
         )

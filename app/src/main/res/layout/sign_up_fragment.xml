@@ -25,8 +25,10 @@
             android:gravity="center"
             app:layout_constraintBottom_toTopOf="@+id/et_layout_id_sign_up"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="1.0">
 
             <ImageView
                 android:id="@+id/btn_favorites"
@@ -41,25 +43,25 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/ic_close"
-            app:layout_constraintBottom_toTopOf="@+id/et_layout_id_sign_up"
+            app:layout_constraintBottom_toBottomOf="@+id/linearLayout"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.73"
+            app:layout_constraintStart_toStartOf="@+id/linearLayout"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout"
             tools:ignore="SpeakableTextPresentCheck" />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btn_id_duplicate_check_sign_up"
-            setVisible="@{vm.id.length != 0 &amp;&amp; !vm.idCheck ? true : false}"
+            setVisible="@{!vm.idCheck, default=true}"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="22dp"
             android:layout_weight="1"
             android:background="@android:color/transparent"
             android:elevation="1dp"
+            android:enabled="@{vm.id.length() != 0}"
             android:onClick="@{() -> vm.postCheckId()}"
-            android:text="@{vm.idErr.length() != 0 ? &quot;&quot; : @string/duplicate_check}"
-            android:textColor="@color/black"
+            android:text="@string/duplicate_check"
+            android:textColor="@drawable/selector_text_color_black_to_white"
             android:textSize="13sp"
             app:layout_constraintBottom_toBottomOf="@+id/et_layout_id_sign_up"
             app:layout_constraintEnd_toEndOf="@+id/et_layout_id_sign_up"
@@ -184,17 +186,6 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
-
-        <ImageView
-            android:id="@+id/imageView3"
-            setVisible="@{vm.idCheck}"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="20dp"
-            app:layout_constraintBottom_toBottomOf="@+id/btn_id_duplicate_check_sign_up"
-            app:layout_constraintEnd_toEndOf="@+id/btn_id_duplicate_check_sign_up"
-            app:layout_constraintTop_toTopOf="@+id/btn_id_duplicate_check_sign_up"
-            app:srcCompat="@drawable/ic_check" />
 
     </androidx.constraintlayout.motion.widget.MotionLayout>
 </layout>

@@ -19,7 +19,11 @@ class MainViewModel : ViewModel() {
         return contestList
     }
 
+    val isLoading = MutableLiveData(false)
+
     fun callApi() {
+        isLoading.value = true
+
         val call : Call<List<Contest>> = contestService.getContest();
         call.enqueue(object : retrofit2.Callback<List<Contest>>{
             override fun onResponse(call: Call<List<Contest>>, response: Response<List<Contest>>) {
@@ -28,11 +32,14 @@ class MainViewModel : ViewModel() {
                 if (response.isSuccessful){
                     contestList.postValue(response.body())
                 }
+
+                isLoading.value = false
             }
 
             override fun onFailure(call: Call<List<Contest>>, t: Throwable) {
                 Log.d("getContest", t.message.toString())
                 contestList.postValue(null)
+                isLoading.value = false
             }
         })
     }

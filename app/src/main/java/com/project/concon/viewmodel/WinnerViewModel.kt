@@ -14,7 +14,7 @@ class WinnerViewModel : ViewModel() {
     private val contestService: ContestService by lazy { RetrofitInstance.contestService }
 
     fun callWinnerList(contestId: Int) {
-        contestService.winnerList(contestId).enqueue(object : Callback<List<Winner>> {
+        contestService.getWinnerList(contestId).enqueue(object : Callback<List<Winner>> {
             override fun onResponse(call: Call<List<Winner>>, response: Response<List<Winner>>) {
                 if (response.isSuccessful) {
                     winnerLiveData.postValue(response.body())

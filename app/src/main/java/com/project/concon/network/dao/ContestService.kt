@@ -47,7 +47,7 @@ interface ContestService {
     fun putCharge(@Body cash: CashRequest): Call<Msg>
 
     @GET("/prize/{contestid}")
-    fun winnerList(@Path("contestid") contestid: Int) : Call<List<Winner>>
+    fun getWinnerList(@Path("contestid") contestid: Int) : Call<List<Winner>>
 
     @PUT("/prize/{contestid}")
     fun winnerPrizeSelect(@Path("contestid") contestid: Int, @Body winnerPrizeRequest: List<WinnerPrizeRequest>) : Call<Msg>

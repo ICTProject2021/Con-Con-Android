@@ -10,7 +10,7 @@
         motion:motionInterpolator="overshoot">
     </Transition>
 
-    <ConstraintSet android:id="@+id/start">
+    <ConstraintSet android:id="@+id/start">'
         <Constraint
             android:id="@+id/linearLayout"
             android:layout_width="0dp"
@@ -21,15 +21,6 @@
             motion:layout_constraintTop_toTopOf="parent"
             motion:layout_constraintStart_toStartOf="parent"
             motion:transitionEasing="standard" />
-        <Constraint
-            android:id="@+id/fab_close_sign_up"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            motion:layout_constraintBottom_toBottomOf="@+id/linearLayout"
-            motion:layout_constraintEnd_toEndOf="parent"
-            motion:layout_constraintStart_toStartOf="parent"
-            motion:layout_constraintTop_toBottomOf="@+id/linearLayout"
-            motion:transitionEasing="linear" />
     </ConstraintSet>
 
     <ConstraintSet android:id="@+id/end">
@@ -43,13 +34,5 @@
             motion:layout_constraintTop_toTopOf="parent"
             motion:layout_constraintStart_toStartOf="parent"
             motion:transitionEasing="linear" />
-        <Constraint
-            android:id="@+id/fab_close_sign_up"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            motion:layout_constraintEnd_toEndOf="parent"
-            motion:layout_constraintTop_toBottomOf="@+id/linearLayout"
-            motion:layout_constraintBottom_toBottomOf="@+id/linearLayout"
-            motion:layout_constraintStart_toStartOf="parent" />
     </ConstraintSet>
 </MotionScene>

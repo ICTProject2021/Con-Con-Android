@@ -2,6 +2,7 @@ package com.project.concon.fragment
 
 import android.content.Intent
 import android.os.Bundle
+import android.os.Message
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -64,10 +65,11 @@ class SignInFragment : Fragment() {
             }
         }
 
-        postSignInRes.observe(viewLifecycleOwner) { it ->
+
+        postSignInRes.observe(viewLifecycleOwner) {
             if (it != null) {
                 when (it.msg) {
-                    "fail" -> MessageUtils.showToast(requireContext(), "올바른 아이디, 비밀번호가 아님")
+                    "fail" -> MessageUtils.showFailDialog(requireActivity(), "아이디 혹은 비밀번호가 올바르지 않습니다.")
 
                     else -> {
                         PreferenceUtils.token = it.msg
@@ -75,7 +77,15 @@ class SignInFragment : Fragment() {
                     }
                 }
             } else {
-                Toast.makeText(requireContext(), "서버 통신 실패", Toast.LENGTH_SHORT).show()
+                MessageUtils.showFailDialog(requireActivity(), getString(R.string.fail_server))
+            }
+        }
+
+        isLoading.observe(viewLifecycleOwner) {
+            if (it) {
+                MessageUtils.showProgress(requireActivity())
+            } else {
+                MessageUtils.dismissProgress()
             }
         }
     }
