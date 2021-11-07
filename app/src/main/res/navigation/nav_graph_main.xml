@@ -99,6 +99,9 @@
         <action
             android:id="@+id/action_contestDetailFragment_to_winnerFragment"
             app:destination="@id/winnerFragment" />
+        <action
+            android:id="@+id/action_contestDetailFragment_to_winnerSelectFragment"
+            app:destination="@id/winnerSelectFragment" />
     </fragment>
     <fragment
         android:id="@+id/chargeCashFinishFragment"
@@ -150,5 +153,20 @@
         <argument
             android:name="contestId"
             app:argType="integer" />
+        <action
+            android:id="@+id/action_winnerFragment_to_contestDetailFragment"
+            app:destination="@id/contestDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/winnerSelectFragment"
+        android:name="com.project.concon.fragment.WinnerSelectFragment"
+        android:label="fragment_winner_select"
+        tools:layout="@layout/fragment_winner_select" >
+        <argument
+            android:name="contestId"
+            app:argType="integer" />
+        <action
+            android:id="@+id/action_winnerSelectFragment_to_contestDetailFragment"
+            app:destination="@id/contestDetailFragment" />
     </fragment>
 </navigation>
