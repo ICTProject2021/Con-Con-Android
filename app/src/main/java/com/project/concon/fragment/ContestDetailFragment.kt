@@ -1,14 +1,12 @@
 package com.project.concon.fragment
 
-import android.os.Build
 import android.os.Bundle
-import androidx.fragment.app.Fragment
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
-import androidx.annotation.RequiresApi
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
@@ -16,8 +14,10 @@ import androidx.navigation.fragment.navArgs
 import com.project.concon.R
 import com.project.concon.databinding.ContestDetailFragmentBinding
 import com.project.concon.network.dto.response.ContestDetail
+import com.project.concon.utils.MessageUtils
 import com.project.concon.viewmodel.ContestDetailViewModel
-import java.time.LocalDate
+import java.text.SimpleDateFormat
+import java.util.*
 
 class ContestDetailFragment : Fragment() {
 
@@ -26,8 +26,8 @@ class ContestDetailFragment : Fragment() {
     private lateinit var binding: ContestDetailFragmentBinding
     private val viewModel: ContestDetailViewModel by viewModels()
 
-    @RequiresApi(Build.VERSION_CODES.O)
-    private val today: LocalDate = LocalDate.now()
+    private lateinit var now: String
+    private lateinit var contestDetail: ContestDetail
 
     private val args by navArgs<ContestDetailFragmentArgs>()
 
@@ -42,9 +42,11 @@ class ContestDetailFragment : Fragment() {
         return binding.root
     }
 
-    @RequiresApi(Build.VERSION_CODES.O)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        val time = Calendar.getInstance().time
+        now = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(time)
 
         viewModel.getContestDetail(args.id)
 
@@ -54,24 +56,38 @@ class ContestDetailFragment : Fragment() {
             navigateToMain()
         }
 
+        binding.btnJoinContestDetail.setOnClickListener {
+            // todo 대회 우승자 설정이 끝난 대회만 우승자 조회가 가능하게 해야함
+            if (contestDetail.duedate < now) {
+                if (contestDetail.isHost) navigateToWinnerSelect()
+                else navigateToWinner()
+            } else {
+                navigateToJoinContest()
+            }
+        }
     }
 
-    @RequiresApi(Build.VERSION_CODES.O)
     private fun observe() = with(viewModel) {
+        isLoading.observe(viewLifecycleOwner) {
+            if (it) {
+                MessageUtils.showProgress(requireActivity())
+            } else {
+                MessageUtils.dismissProgress()
+            }
+        }
+
         getContestDetailRes.observe(viewLifecycleOwner) { data ->
             when(data) {
                 null ->
-                    Toast.makeText(requireContext(), getString(R.string.fail_server), Toast.LENGTH_SHORT).show()
+                    MessageUtils.showFailDialog(requireActivity(), getString(R.string.fail_server))
 
                 else -> {
+                    contestDetail = data
                     binding.data = data
-                    binding.btnJoinContestDetail.setOnClickListener {
-                        if (binding.data?.duedate!! < today.toString()) {
-                            if (data.isHost) navigateToWinnerSelect()
-                            else navigateToWinner()
-                        } else {
-                            navigateToJoinContest()
-                        }
+
+                    Log.d("detail", "${binding.data?.duedate}, $now, ${binding.data?.duedate!! < now}")
+                    if (data.duedate < now) {
+                        binding.btnJoinContestDetail.text = "대회 결과 조회하기"
                     }
                 }
             }
