@@ -24,10 +24,9 @@ object MessageUtils {
             .create()
             .show()
 
+    /** 실패 다이얼로그 */
     fun showFailDialog(activity: FragmentActivity, content: String) {
-        FailDialogFragment()
-            .setContent(content)
-            .show(activity.supportFragmentManager, "fail")
+        FailDialogFragment(content).show(activity.supportFragmentManager, "fail")
     }
 
     fun showToast(context: Context, msg: String) =
