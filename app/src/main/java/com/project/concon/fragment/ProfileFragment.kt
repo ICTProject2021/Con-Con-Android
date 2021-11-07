@@ -1,15 +1,15 @@
 package com.project.concon.fragment
 
-import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
-import com.bumptech.glide.Glide
 import com.project.concon.R
+import com.project.concon.bind.setImage
 import com.project.concon.databinding.ProfileFragmentBinding
 import com.project.concon.viewmodel.ProfileViewModel
 
@@ -37,7 +37,7 @@ class ProfileFragment : Fragment() {
         viewModel.getProfileLiveDataObserver().observe(viewLifecycleOwner, {
             // 프로필 이미지가 없을 때 null로 날아오기 때문에 null 값 체크
             if (it.profile != null) {
-                Glide.with(binding.profileImg).load(it.profile).into(binding.profileImg)
+                binding.profileImg.setImage(it.profile)
             }
 
             binding.cash.text = "${it.cash}원"

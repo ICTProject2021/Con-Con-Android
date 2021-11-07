@@ -13,6 +13,7 @@ import android.view.View.*
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.core.content.ContextCompat
+import androidx.core.net.toUri
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
@@ -20,6 +21,7 @@ import com.google.android.material.textfield.TextInputLayout
 import com.project.concon.R
 import com.project.concon.adapter.RecyclerViewJoinContestImageAdapter
 import com.project.concon.adapter.RecyclerViewJoinContestAdapter
+import com.project.concon.network.`object`.RetrofitInstance
 import com.project.concon.network.dto.response.Participant
 
 @BindingAdapter("setVisible")
@@ -52,7 +54,7 @@ fun TextInputLayout.setError(errorMsg: String?) {
 @BindingAdapter("loadUri")
 fun ImageView.setImage(uri: String) {
     Glide.with(this.context)
-        .load(uri)
+        .load((RetrofitInstance.BASE_URL + uri).toUri())
         .placeholder(R.drawable.ic_profile)
         .error(R.drawable.ic_profile)
         .into(this)

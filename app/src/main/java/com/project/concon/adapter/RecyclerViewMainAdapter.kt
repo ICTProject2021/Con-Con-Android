@@ -7,8 +7,8 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
 import com.project.concon.R
+import com.project.concon.bind.setImage
 import com.project.concon.network.dto.response.Contest
 import java.text.SimpleDateFormat
 import java.util.*
@@ -46,11 +46,8 @@ class RecyclerViewMainAdapter : RecyclerView.Adapter<RecyclerViewMainAdapter.Vie
             user.text = data.host
             dueLine.text = getDateText(data.duedate)
 
-            if (data.profile != null) {
-                Glide.with(profile)
-                    .load(data.profile)
-                    .into(profile)
-            }
+            if (data.profile != null)
+                profile.setImage(data.profile)
         }
 
         private fun getDateText(dueDate: String?): String {
