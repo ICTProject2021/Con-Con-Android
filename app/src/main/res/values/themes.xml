@@ -104,9 +104,9 @@
 
     <!-- Button -->
     <style name="Widget.AppCompat.Button.Main">
+        <item name="android:stateListAnimator">@null</item>
         <item name="android:background">@drawable/selector_btn_main</item>
-        <item name="android:translationZ">10dp</item>
-        <item name="android:elevation">5dp</item>
+        <item name="android:textColor">@drawable/selector_text_color_black_to_white</item>
     </style>
 
     <style name="Widget.MaterialComponents.FloatingActionButton.Main">

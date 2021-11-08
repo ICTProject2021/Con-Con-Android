@@ -69,7 +69,7 @@ class SignInFragment : Fragment() {
         postSignInRes.observe(viewLifecycleOwner) {
             if (it != null) {
                 when (it.msg) {
-                    "fail" -> MessageUtils.showFailDialog(requireActivity(), "아이디 혹은 비밀번호가 올바르지 않습니다.")
+                    "fail" -> MessageUtils.showFailDialog(requireActivity(), "아이디 혹은 비밀번호가\n올바르지 않습니다.")
 
                     else -> {
                         PreferenceUtils.token = it.msg

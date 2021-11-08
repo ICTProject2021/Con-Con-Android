@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:padding="4dp"
     android:gravity="center">
 
     <TextView
@@ -9,6 +10,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="1등"
+        android:textColor="@color/black"
         android:textSize="20sp"
         android:textStyle="bold" />
 
@@ -26,6 +28,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="140dp"
         android:text="50,000원"
+        android:textColor="@color/black"
         android:textSize="15sp" />
 
 </LinearLayout>

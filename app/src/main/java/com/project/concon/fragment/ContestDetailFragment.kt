@@ -46,7 +46,8 @@ class ContestDetailFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         val time = Calendar.getInstance().time
-        now = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(time)
+//        now = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(time)
+        now = "3000-12-30"
 
         viewModel.getContestDetail(args.id)
 

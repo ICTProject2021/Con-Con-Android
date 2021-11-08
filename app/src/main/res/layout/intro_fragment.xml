@@ -18,7 +18,7 @@
                 android:background="@drawable/background_gradient_btn"
                 android:stateListAnimator="@null"
                 android:text="@string/sign_up"
-                android:textColor="@drawable/selector_text_color_white_to_black"
+                android:textColor="@color/white"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent" />
@@ -33,7 +33,7 @@
                 android:background="@drawable/background_gradient_outline_thin"
                 android:stateListAnimator="@null"
                 android:text="@string/sign_in"
-                android:textColor="@drawable/selector_text_color_black_to_white"
+                android:textColor="@color/black"
                 app:layout_constraintBottom_toTopOf="@+id/btn_sign_up_intro"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
