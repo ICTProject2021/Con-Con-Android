@@ -8,6 +8,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.project.concon.R
+import com.project.concon.bind.setImage
 import com.project.concon.network.dto.response.ParticipatedContest
 import java.text.SimpleDateFormat
 import java.util.*
@@ -46,9 +47,7 @@ class RecyclerViewParticipatedAdapter :
             user.text = data.host
 
             if (data.profilepicture != null) {
-                Glide.with(profile)
-                    .load(data.profilepicture)
-                    .into(profile)
+                profile.setImage(data.profilepicture)
             }
         }
 

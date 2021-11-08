@@ -8,6 +8,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.project.concon.R
+import com.project.concon.bind.setImage
 import com.project.concon.network.dto.response.Participant
 import com.project.concon.network.dto.response.ParticipatedContest
 
@@ -44,9 +45,7 @@ class RecyclerViewWinnerSelectAdapter : RecyclerView.Adapter<RecyclerViewWinnerS
             nickname.text = data.nickname
 
             if (data.profile != null) {
-                Glide.with(profile)
-                    .load(data.profile)
-                    .into(profile)
+                profile.setImage(data.profile)
             }
         }
     }
