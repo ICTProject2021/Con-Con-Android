@@ -17,6 +17,8 @@ import com.project.concon.adapter.RecyclerViewWinnerSelectAdapter
 import com.project.concon.databinding.FragmentWinnerSelectBinding
 import com.project.concon.decoration.RecyclerViewDecoration
 import com.project.concon.network.dto.request.WinnerPrizeRequest
+import com.project.concon.utils.MessageUtils
+import com.project.concon.utils.PreferenceUtils
 import com.project.concon.viewmodel.WinnerSelectViewModel
 
 class WinnerSelectFragment : Fragment() {
@@ -38,6 +40,8 @@ class WinnerSelectFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        Log.d("id", args.contestId.toString())
 
         initRecyclerView()
         initButton()
@@ -74,6 +78,7 @@ class WinnerSelectFragment : Fragment() {
 //                        } else {
                             v.setBackgroundColor(Color.parseColor("#C4C4C4"))
                             winnerPrizeList.add(WinnerPrizeRequest(rank, dataList.ID))
+                            Log.d("dataList : ", dataList.ID.toString())
                             rank++
                             Log.d("WinnerPrizeList", winnerPrizeList.toString())
 //                        }
@@ -86,7 +91,20 @@ class WinnerSelectFragment : Fragment() {
     private fun initButton() {
         binding.winnerSelectButton.setOnClickListener {
             viewModel.request(args.contestId, winnerPrizeList)
-            findNavController().navigate(WinnerSelectFragmentDirections.actionWinnerSelectFragmentToContestDetailFragment(args.contestId))
+            Log.d("winnerPrizeList", winnerPrizeList.toString())
+            viewModel.msg.observe(viewLifecycleOwner, {
+                if (it != null) {
+                    when (it.msg) {
+                        "fail" -> MessageUtils.showFailDialog(requireActivity(), "등록에 실패했습니다.")
+
+                        else -> {
+                            findNavController().navigate(WinnerSelectFragmentDirections.actionWinnerSelectFragmentToContestDetailFragment(args.contestId))
+                        }
+                    }
+                } else {
+                    MessageUtils.showFailDialog(requireActivity(), "서버 통신에 실패했습니다.")
+                }
+            })
         }
     }
 

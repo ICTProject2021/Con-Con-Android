@@ -37,9 +37,13 @@ class WinnerSelectViewModel : ViewModel() {
         contestService.winnerPrizeSelect(id, winnerPrizeRequest).enqueue(object : Callback<Msg> {
             override fun onResponse(call: Call<Msg>, response: Response<Msg>) {
                 if (response.isSuccessful) {
-                    Log.d("postSignIn", "${response.code()}-${response.message()}: ${response.body()}")
-                    Log.d("postSignIn", response.raw().toString())
+                    Log.d("request", "${response.code()}-${response.message()}: ${response.body()}")
+                    Log.d("request", response.raw().toString())
                     msg.postValue(response.body())
+                } else {
+                    Log.d("request", "${response.code()}-${response.message()}: ${response.body()}")
+                    Log.d("request", response.raw().toString())
+                    msg.postValue(null)
                 }
             }
 

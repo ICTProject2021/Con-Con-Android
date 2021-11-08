@@ -51,7 +51,7 @@ class WinnerFragment : Fragment() {
         viewModel.winnerLiveData.observe(viewLifecycleOwner, {
             if (it != null) {
                 recyclerViewAdapter.setData(it)
-                binding.winnerMsg.text = ""
+                binding.winnerMsg.text = "대회 우승을 축하합니다!"
             } else {
                 recyclerViewAdapter.setData(listOf())
                 binding.winnerMsg.text = "우승자가 아직 정해지지 않았어요!\n조금만 기다려주세요!"

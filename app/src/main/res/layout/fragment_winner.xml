@@ -23,17 +23,17 @@
             app:layout_constraintTop_toTopOf="parent"
             tools:ignore="SpeakableTextPresentCheck" />
 
-        <com.airbnb.lottie.LottieAnimationView
-            android:id="@+id/winnerImg"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="70dp"
-            android:background="@color/black"
-            app:lottie_rawRes="@raw/trophy_animation"
-            app:lottie_autoPlay="true"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+<!--        <com.airbnb.lottie.LottieAnimationView-->
+<!--            android:id="@+id/winnerImg"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginTop="70dp"-->
+<!--            android:background="@color/black"-->
+<!--            app:lottie_rawRes="@raw/trophy_animation"-->
+<!--            app:lottie_autoPlay="true"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toTopOf="parent" />-->
 
         <TextView
             android:id="@+id/winnerMsg"
@@ -44,7 +44,7 @@
             android:textSize="23sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/winnerImg"
+            app:layout_constraintTop_toTopOf="parent"
             tools:text="대회 우승을 축하합니다!" />
 
         <androidx.recyclerview.widget.RecyclerView
