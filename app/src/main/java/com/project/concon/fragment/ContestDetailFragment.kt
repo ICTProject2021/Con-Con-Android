@@ -38,7 +38,7 @@ class ContestDetailFragment : Fragment() {
         binding = DataBindingUtil.inflate(inflater, R.layout.contest_detail_fragment, container, false)
         binding.lifecycleOwner = viewLifecycleOwner
         binding.vm = viewModel
-        binding.data = ContestDetail(0, "", "", "", "", "", false, listOf())
+        binding.data = ContestDetail(0, "", "", "", "", "", "", false, listOf())
         return binding.root
     }
 
@@ -46,8 +46,8 @@ class ContestDetailFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         val time = Calendar.getInstance().time
-//        now = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(time)
-        now = "3000-12-30"
+        now = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(time)
+//        now = "3000-12-30"
 
         viewModel.getContestDetail(args.id)
 
@@ -58,7 +58,6 @@ class ContestDetailFragment : Fragment() {
         }
 
         binding.btnJoinContestDetail.setOnClickListener {
-            // todo 대회 우승자 설정이 끝난 대회만 우승자 조회가 가능하게 해야함
             if (contestDetail.duedate < now) {
                 if (contestDetail.isHost) navigateToWinnerSelect()
                 else navigateToWinner()

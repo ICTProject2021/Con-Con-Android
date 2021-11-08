@@ -63,12 +63,14 @@
             android:layout_height="40dp"
             android:layout_marginBottom="32dp"
             app:cardCornerRadius="50dp"
+            app:cardElevation="0dp"
+            android:elevation="0dp"
             app:layout_constraintBottom_toTopOf="@+id/btn_join_contest_detail"
             app:layout_constraintStart_toStartOf="@+id/tv_content_contest_detail">
 
             <ImageView
                 android:id="@+id/iv_profile_img_contest_detail"
-                loadUri="@{}"
+                loadUri="@{data.profile}"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 tools:src="@tools:sample/avatars" />

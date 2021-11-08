@@ -2,7 +2,6 @@
 
     <!-- Base application theme. -->
     <style name="Theme.2021IctProject" parent="Theme.MaterialComponents.Light.NoActionBar">
-        <item name="android:windowTranslucentStatus">true</item>
         <item name="colorPrimaryDark">@color/black</item>
 
         <!-- Primary brand color. -->
@@ -105,8 +104,8 @@
     <!-- Button -->
     <style name="Widget.AppCompat.Button.Main">
         <item name="android:stateListAnimator">@null</item>
-        <item name="android:background">@drawable/selector_btn_main</item>
-        <item name="android:textColor">@drawable/selector_text_color_black_to_white</item>
+        <item name="android:background">@drawable/background_gradient_btn</item>
+        <item name="android:textColor">@color/white</item>
     </style>
 
     <style name="Widget.MaterialComponents.FloatingActionButton.Main">
