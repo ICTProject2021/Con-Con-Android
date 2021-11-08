@@ -16,15 +16,17 @@ import java.util.*
 class RecyclerViewMainAdapter : RecyclerView.Adapter<RecyclerViewMainAdapter.ViewHolder>(){
 
     private var dataList = mutableListOf<Contest>()
-    private lateinit var mListener: onItemClickListener
+    private lateinit var mListener: OnItemClickListener
 
-    interface onItemClickListener {
-        fun onClick(v: View, position: Int)
+    interface OnItemClickListener {
+        fun onClick(id: Int)
     }
 
-    fun setOnItemClickListener(listener: onItemClickListener?) {
-        if (listener != null) {
-            this.mListener = listener
+    fun setOnItemClickListener(listener: (Int) -> Unit) {
+        mListener = object : OnItemClickListener {
+            override fun onClick(id: Int) {
+                listener(id)
+            }
         }
     }
 
@@ -75,7 +77,7 @@ class RecyclerViewMainAdapter : RecyclerView.Adapter<RecyclerViewMainAdapter.Vie
     override fun onBindViewHolder(viewHolder: ViewHolder, position: Int) {
         viewHolder.bind(dataList[position])
         viewHolder.itemView.setOnClickListener {
-            mListener.onClick(it, position)
+            mListener.onClick(dataList[position].ID!!)
         }
     }
 

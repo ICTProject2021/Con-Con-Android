@@ -16,6 +16,9 @@ import com.project.concon.viewmodel.MainViewModel
 
 class MainFragment : Fragment() {
 
+    private val navController by lazy {
+        findNavController()
+    }
 
     private lateinit var viewModel: MainViewModel
     private lateinit var binding: MainFragmentBinding
@@ -32,21 +35,12 @@ class MainFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        viewModel = ViewModelProvider(this).get(MainViewModel::class.java)
+        viewModel.callApi()
+
         initRecyclerView()
-
-        viewModel.isLoading.observe(viewLifecycleOwner) {
-            if (it) {
-                MessageUtils.showProgress(requireActivity())
-            } else {
-                MessageUtils.dismissProgress()
-            }
-        }
+        observe()
     }
-
-//    override fun onResume() {
-//        super.onResume()
-//        (activity as MainActivity).visibility()
-//    }
 
     private fun initRecyclerView() {
         val decoration: RecyclerViewDecoration = RecyclerViewDecoration(40)
@@ -56,33 +50,29 @@ class MainFragment : Fragment() {
             adapter = recyclerViewAdapter
             addItemDecoration(decoration)
         }
-        viewModel = ViewModelProvider(requireActivity()).get(MainViewModel::class.java)
-        viewModel.callApi()
-        viewModel.getContestLiveDataObserver().observe(viewLifecycleOwner, {
+
+        recyclerViewAdapter.setOnItemClickListener {
+            navController.navigate(MainFragmentDirections.actionMainFragmentToContestDetailFragment(it))
+        }
+    }
+
+    private fun observe() = with(viewModel) {
+        isLoading.observe(viewLifecycleOwner) {
+            if (it) {
+                MessageUtils.showProgress(requireActivity())
+            } else {
+                MessageUtils.dismissProgress()
+            }
+        }
+
+        getContestLiveDataObserver().observe(viewLifecycleOwner) {
             if (it != null) {
                 recyclerViewAdapter.setData(it)
             } else {
                 recyclerViewAdapter.setData(
                     listOf()
-//                    listOf(
-//                        Contest(
-//                            ID = 0,
-//                            dueDate = 0,
-//                            host = "",
-//                            profile = "",
-//                            title = "아직 대회가 없어요!"
-//                        )
-//                    )
                 )
             }
-            recyclerViewAdapter.setOnItemClickListener(object: RecyclerViewMainAdapter.onItemClickListener{
-                override fun onClick(v: View, position: Int) {
-                    findNavController().navigate(MainFragmentDirections.actionMainFragmentToContestDetailFragment(
-                        it[position].ID!!
-                    ))
-//                    (activity as MainActivity).gone()
-                }
-            })
-        })
+        }
     }
 }

@@ -15,6 +15,7 @@ class ContestDetailViewModel : ViewModel() {
     private val contestService by lazy { RetrofitInstance.contestService }
 
     val getContestDetailRes = MutableLiveData<ContestDetail?>()
+    val isLoading = MutableLiveData(false)
 
     fun toDate(date: String): String {
         return if (date.isNotEmpty()) {
@@ -33,6 +34,8 @@ class ContestDetailViewModel : ViewModel() {
     }
 
     fun getContestDetail(id: Int) {
+        isLoading.value = true
+
         contestService.getContestDetail(id).enqueue(
             object : Callback<ContestDetail> {
                 override fun onResponse(call: Call<ContestDetail>, response: Response<ContestDetail>) {
@@ -41,12 +44,14 @@ class ContestDetailViewModel : ViewModel() {
 
                     if (response.isSuccessful)
                         getContestDetailRes.postValue(response.body())
+
+                    isLoading.value = false
                 }
 
                 override fun onFailure(call: Call<ContestDetail>, t: Throwable) {
                     Log.d("getContestDetail", t.message.toString())
-
                     getContestDetailRes.postValue(null)
+                    isLoading.value = false
                 }
             }
         )
