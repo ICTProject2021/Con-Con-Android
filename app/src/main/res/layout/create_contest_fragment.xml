@@ -25,6 +25,7 @@
             android:layout_marginStart="@dimen/layout_margin"
             android:layout_marginEnd="@dimen/layout_margin"
             android:layout_marginBottom="50dp"
+            android:enabled="true"
             android:text="@string/create_contest"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
