@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.project.concon.R
@@ -32,6 +33,10 @@ class WinnerFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initRecyclerView()
+
+        binding.btnCloseCreateContest.setOnClickListener {
+            findNavController().navigate(WinnerFragmentDirections.actionWinnerFragmentToContestDetailFragment(args.contestId))
+        }
     }
 
     private fun initRecyclerView() {
