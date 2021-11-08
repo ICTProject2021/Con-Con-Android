@@ -37,8 +37,8 @@ class RecyclerViewWinnerSelectAdapter : RecyclerView.Adapter<RecyclerViewWinnerS
     }
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        val nickname: TextView = view.findViewById(R.id.item_nickName)
-        val profile: ImageView = view.findViewById(R.id.item_profile)
+        val nickname: TextView = view.findViewById(R.id.item_nickName_select)
+        val profile: ImageView = view.findViewById(R.id.item_profile_select)
 
         fun bind(data: Participant) {
             nickname.text = data.nickname
@@ -52,7 +52,7 @@ class RecyclerViewWinnerSelectAdapter : RecyclerView.Adapter<RecyclerViewWinnerS
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.fragment_winner_select, parent, false)
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_winner_select, parent, false)
         return ViewHolder(view)
     }
 

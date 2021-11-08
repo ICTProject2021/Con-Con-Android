@@ -24,7 +24,7 @@ class WinnerSelectFragment : Fragment() {
     private val viewModel: WinnerSelectViewModel by viewModels()
     private val args : WinnerSelectFragmentArgs by navArgs()
     private lateinit var recyclerViewAdapter: RecyclerViewWinnerSelectAdapter
-    private lateinit var winnerPrizeList: MutableList<WinnerPrizeRequest>
+    private val winnerPrizeList = mutableListOf<WinnerPrizeRequest>()
     private var rank = 1
 
     override fun onCreateView(
