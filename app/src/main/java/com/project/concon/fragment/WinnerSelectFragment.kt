@@ -2,6 +2,7 @@ package com.project.concon.fragment
 
 import android.graphics.Color
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -60,20 +61,23 @@ class WinnerSelectFragment : Fragment() {
             recyclerViewAdapter.setOnItemClickListener(object: RecyclerViewWinnerSelectAdapter.onItemClickListener{
                 override fun onClick(v: View, position: Int) {
                     val dataList = recyclerViewAdapter.getData(position)
-                    for (i in 0 until winnerPrizeList.size) {
-                        if (winnerPrizeList[i].participantID == dataList.ID) {
-                            if (winnerPrizeList[i].participantID < dataList.ID) {
-                                winnerPrizeList[i].participantID++
-                            } else {
-                                winnerPrizeList[i].participantID--
-                            }
-                            winnerPrizeList.removeAt(i)
-                            return
-                        } else {
+                    Log.d("dataList : ", dataList.toString())
+//                    for (i in 0 until winnerPrizeList.size) {
+//                        if (winnerPrizeList[i].participantID == dataList.ID) {
+//                            if (winnerPrizeList[i].participantID < dataList.ID) {
+//                                winnerPrizeList[i].participantID++
+//                            } else {
+//                                winnerPrizeList[i].participantID--
+//                            }
+//                            winnerPrizeList.removeAt(i)
+//                            return
+//                        } else {
                             v.setBackgroundColor(Color.parseColor("#C4C4C4"))
                             winnerPrizeList.add(WinnerPrizeRequest(rank, dataList.ID))
-                        }
-                    }
+                            rank++
+                            Log.d("WinnerPrizeList", winnerPrizeList.toString())
+//                        }
+//                    }
                 }
             })
         })
