@@ -59,7 +59,9 @@ class ContestDetailFragment : Fragment() {
 
         binding.btnJoinContestDetail.setOnClickListener {
             if (contestDetail.duedate > now) {
-                if (contestDetail.isHost) navigateToWinnerSelect()
+                if (contestDetail.isHost) {
+                    navigateToWinnerSelect()
+                }
                 else navigateToWinner()
             } else {
                 navigateToJoinContest()
@@ -87,7 +89,11 @@ class ContestDetailFragment : Fragment() {
 
                     Log.d("detail", "${binding.data?.duedate}, $now, ${binding.data?.duedate!! < now}")
                     if (data.duedate > now) {
-                        binding.btnJoinContestDetail.text = "대회 결과 조회하기"
+                        if (contestDetail.isHost) {
+                            binding.btnJoinContestDetail.text = "우승자 선택하기"
+                        } else {
+                            binding.btnJoinContestDetail.text = "대회 결과 조회하기"
+                        }
                     }
                 }
             }
