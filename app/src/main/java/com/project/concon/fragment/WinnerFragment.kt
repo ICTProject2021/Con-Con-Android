@@ -51,10 +51,15 @@ class WinnerFragment : Fragment() {
         viewModel.winnerLiveData.observe(viewLifecycleOwner, {
             if (it != null) {
                 recyclerViewAdapter.setData(it)
-                binding.winnerMsg.text = "대회 우승을 축하합니다!"
+                if(it[0].nickname == null) {
+                    binding.winnerMsg.text = "우승자가 아직 정해지지 않았어요!\n조금만 기다려주세요!"
+                    binding.winnerList.visibility = View.GONE
+                } else {
+                    binding.winnerMsg.text = "대회 우승을 축하합니다!"
+                    binding.winnerList.visibility = View.VISIBLE
+                }
             } else {
                 recyclerViewAdapter.setData(listOf())
-                binding.winnerMsg.text = "우승자가 아직 정해지지 않았어요!\n조금만 기다려주세요!"
             }
         })
     }
