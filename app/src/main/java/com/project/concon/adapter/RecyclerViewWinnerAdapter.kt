@@ -7,6 +7,8 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.project.concon.R
 import com.project.concon.network.dto.response.Winner
+import java.text.NumberFormat
+import java.util.*
 
 class RecyclerViewWinnerAdapter: RecyclerView.Adapter<RecyclerViewWinnerAdapter.ViewHolder>() {
     private var dataList = mutableListOf<Winner>()
@@ -25,7 +27,10 @@ class RecyclerViewWinnerAdapter: RecyclerView.Adapter<RecyclerViewWinnerAdapter.
         fun bind(data: Winner) {
             rank.text = data.rank.toString() + "등"
             nickName.text = data.nickname
-            price.text = data.price.toString() + "원"
+            val numberFormat = NumberFormat.getCurrencyInstance(Locale.getDefault())
+            val cash = numberFormat.format(data.price)
+
+            price.text = cash + "원"
         }
     }
 

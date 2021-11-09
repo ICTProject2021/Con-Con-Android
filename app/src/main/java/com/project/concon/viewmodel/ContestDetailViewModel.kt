@@ -9,6 +9,8 @@ import com.project.concon.network.dto.response.Prize
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import java.text.NumberFormat
+import java.util.*
 
 class ContestDetailViewModel : ViewModel() {
 
@@ -30,7 +32,9 @@ class ContestDetailViewModel : ViewModel() {
         list.forEach {
             price += it.price
         }
-        return "총합 ${price}원"
+        val numberFormat = NumberFormat.getCurrencyInstance(Locale.getDefault())
+        val cash = numberFormat.format(price)
+        return "총합 ${cash}원"
     }
 
     fun getContestDetail(id: Int) {

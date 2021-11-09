@@ -12,6 +12,8 @@ import com.project.concon.R
 import com.project.concon.bind.setImage
 import com.project.concon.databinding.ProfileFragmentBinding
 import com.project.concon.viewmodel.ProfileViewModel
+import java.text.NumberFormat
+import java.util.*
 
 class ProfileFragment : Fragment() {
 
@@ -40,7 +42,10 @@ class ProfileFragment : Fragment() {
                 binding.profileImg.setImage(it.profile)
             }
 
-            binding.cash.text = "${it.cash}원"
+            val numberFormat = NumberFormat.getCurrencyInstance(Locale.getDefault())
+            val cash = numberFormat.format(it.cash)
+
+            binding.cash.text = "${cash}원"
             binding.profileNickname.text = it.nickname
         })
 

@@ -12,6 +12,8 @@ import com.project.concon.R
 import com.project.concon.databinding.FragmentPrizeBinding
 import com.project.concon.viewmodel.CreateContestViewModel
 import com.project.concon.viewmodel.DialogViewModel
+import java.text.NumberFormat
+import java.util.*
 
 class PrizeFragment : Fragment() {
 
@@ -69,7 +71,11 @@ class PrizeFragment : Fragment() {
         rankTextView.text = rank.toString() + "등"
 
         val priceTextView: TextView = view.findViewById(R.id.priceTextView)
-        priceTextView.text = prize.toString()
+
+        val numberFormat = NumberFormat.getCurrencyInstance(Locale.getDefault())
+        val cash = numberFormat.format(prize)
+
+        priceTextView.text = cash + "원"
 
         binding.prizeLayout.addView(view)
     }

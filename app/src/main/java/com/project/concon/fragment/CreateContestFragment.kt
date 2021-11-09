@@ -19,7 +19,9 @@ import com.project.concon.network.dto.response.Prize
 import com.project.concon.utils.MessageUtils
 import com.project.concon.viewmodel.CreateContestViewModel
 import com.project.concon.viewmodel.DialogViewModel
+import java.text.NumberFormat
 import java.text.SimpleDateFormat
+import java.util.*
 
 class CreateContestFragment : Fragment() {
 
@@ -64,7 +66,11 @@ class CreateContestFragment : Fragment() {
 //                    }
 //                }
 //            }
-            setText("총 ${totalPrice().toString()} 원")
+
+            val numberFormat = NumberFormat.getCurrencyInstance(Locale.getDefault())
+            val cash = numberFormat.format(totalPrice())
+
+            setText("총 ${cash} 원")
 
             setOnClickListener {
                 navigateToPrize()
