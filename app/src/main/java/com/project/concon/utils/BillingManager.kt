@@ -13,9 +13,9 @@ class BillingManager(private val listener: PurchaseMessageListener) :
 
     private lateinit var billingClient: BillingClient
     private var skuDetailList: List<SkuDetails> = listOf()
-    private val consumerListener: ConsumeResponseListener = ConsumeResponseListener { result, _ ->
+    private val consumerListener: ConsumeResponseListener = ConsumeResponseListener { result, purchase ->
         if (result.responseCode == BillingClient.BillingResponseCode.OK) {
-
+            Log.d(TAG, "consumerListener: $purchase")
         }
     }
 
@@ -102,14 +102,15 @@ class BillingManager(private val listener: PurchaseMessageListener) :
     // 결제 성공 여부 리스너
     override fun onPurchasesUpdated(result: BillingResult, purchases: MutableList<Purchase>?) {
         if (result.responseCode == BillingClient.BillingResponseCode.OK && purchases != null) {
-            listener.test("결제 승인: $purchases")
             Log.d(TAG, "결제 승인: $purchases")
 
             purchases.forEach {
                 handlePurchase(it)
             }
 
-            listener.onPurchaseAccept()
+            val sku = purchases[0].sku
+            val cash = sku.substring(6, sku.length).toInt()
+            listener.onPurchaseAccept(cash)
         } else if (result.responseCode == BillingClient.BillingResponseCode.USER_CANCELED) {
             Log.d(TAG, "결제 취소")
 

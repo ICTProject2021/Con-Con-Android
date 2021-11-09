@@ -85,7 +85,6 @@ class JoinContestViewModel : ViewModel() {
                     postParticipantRes.postValue(null)
                     isLoading.value = false
                 }
-
             }
         )
     }

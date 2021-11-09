@@ -4,7 +4,6 @@ import android.app.Activity.RESULT_OK
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
-import android.os.Message
 import android.provider.MediaStore
 import android.util.Log
 import android.view.LayoutInflater
@@ -19,8 +18,8 @@ import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.project.concon.R
-import com.project.concon.adapter.RecyclerViewJoinContestImageAdapter
 import com.project.concon.adapter.RecyclerViewJoinContestAdapter
+import com.project.concon.adapter.RecyclerViewJoinContestImageAdapter
 import com.project.concon.databinding.JoinContestFragmentBinding
 import com.project.concon.utils.MessageUtils
 import com.project.concon.viewmodel.JoinContestViewModel
@@ -125,7 +124,8 @@ class JoinContestFragment : Fragment() {
         }
 
         postParticipantRes.observe(viewLifecycleOwner) {
-            MessageUtils.showToast(requireContext(), "대회 참가 성공")
+            content.value = ""
+            getParticipantInfo(navArgs.id)
         }
 
         isSuccessPutLikes.observe(viewLifecycleOwner) {
@@ -148,6 +148,5 @@ class JoinContestFragment : Fragment() {
     private fun navigateToContestDetail() {
         navController.navigate(JoinContestFragmentDirections.actionJoinContestFragmentToContestDetailFragment(navArgs.id))
     }
-
 
 }

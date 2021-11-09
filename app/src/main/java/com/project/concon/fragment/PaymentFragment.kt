@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.project.concon.R
 import com.project.concon.adapter.RecyclerViewPaymentAdapter
@@ -15,6 +16,7 @@ import com.project.concon.databinding.PaymentFragmentBinding
 import com.project.concon.utils.BillingManager
 import com.project.concon.utils.MessageUtils
 import com.project.concon.utils.PurchaseMessageListener
+import com.project.concon.viewmodel.PaymentViewModel
 
 class PaymentFragment : Fragment() {
 
@@ -22,7 +24,9 @@ class PaymentFragment : Fragment() {
         findNavController()
     }
 
+    private val viewModel: PaymentViewModel by viewModels()
     private lateinit var binding: PaymentFragmentBinding
+    
     private lateinit var manager: BillingManager
 
     override fun onCreateView(
@@ -46,17 +50,15 @@ class PaymentFragment : Fragment() {
 
     private fun initBilling() {
         manager = BillingManager(object : PurchaseMessageListener {
-            override fun onPurchaseAccept() {
-                MessageUtils.showDialog(requireContext(), "알림", "결제 성공!")
+            override fun onPurchaseAccept(cash: Int) {
+                viewModel.putCharge(cash)
             }
 
             override fun onPurchaseCancel() {
-                MessageUtils.showDialog(requireContext(), "알림", "결제 실패! ㅠㅠ")
+                MessageUtils.showFailDialog(requireActivity(), "결제를 실패했어요.")
             }
 
-            override fun test(msg: String) {
-
-            }
+            override fun test(msg: String) {}
         })
 
         manager.build(requireContext())

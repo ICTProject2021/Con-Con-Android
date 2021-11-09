@@ -13,6 +13,9 @@ import retrofit2.Response
 import java.text.NumberFormat
 import java.util.*
 
+/**
+ * 캐시 충전 프래그먼트 (인앱결제 구현 전) - 삭제 예정
+ * */
 class ChargeCashViewModel : ViewModel() {
     // ChargeCash
     val cash = MutableLiveData("")

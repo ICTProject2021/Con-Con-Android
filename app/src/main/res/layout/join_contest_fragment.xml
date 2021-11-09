@@ -37,6 +37,7 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_participant_join_contest"
             submitList="@{participantList}"
+            android:overScrollMode="never"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_marginTop="32dp"
@@ -64,6 +65,7 @@
             app:boxBackgroundColor="@color/white"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            app:hintEnabled="false"
             app:errorEnabled="false"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -72,7 +74,7 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="120dp"
-                android:hint="아무거나 입력하세요."
+                android:hint="대회 참가하기"
                 android:text="@={vm.content}"
                 android:paddingTop="40dp"
                 tools:ignore="SpeakableTextPresentCheck" />
@@ -109,6 +111,7 @@
                 android:id="@+id/rv_img_join_contest"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:overScrollMode="never"
                 submitList="@{vm.fileList}"
                 android:orientation="horizontal"
                 android:paddingStart="10dp"
