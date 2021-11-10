@@ -7,7 +7,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center"
-        tools:context=".fragment.FailDialogFragment">
+        tools:context=".fragment.DialogFragmentFail">
 
         <androidx.cardview.widget.CardView
             android:layout_width="290dp"

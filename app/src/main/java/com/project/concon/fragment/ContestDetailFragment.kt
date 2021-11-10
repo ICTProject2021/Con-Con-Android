@@ -47,7 +47,6 @@ class ContestDetailFragment : Fragment() {
 
         val time = Calendar.getInstance().time
         now = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(time)
-//        now = "3000-12-30"
 
         viewModel.getContestDetail(args.id)
 
@@ -58,7 +57,7 @@ class ContestDetailFragment : Fragment() {
         }
 
         binding.btnJoinContestDetail.setOnClickListener {
-            if (contestDetail.duedate > now) {
+            if (contestDetail.duedate < now) {
                 if (contestDetail.isHost) {
                     navigateToWinnerSelect()
                 }
@@ -88,7 +87,7 @@ class ContestDetailFragment : Fragment() {
                     binding.data = data
 
                     Log.d("detail", "${binding.data?.duedate}, $now, ${binding.data?.duedate!! < now}")
-                    if (data.duedate > now) {
+                    if (data.duedate < now) {
                         if (contestDetail.isHost) {
                             binding.btnJoinContestDetail.text = "우승자 선택하기"
                         } else {

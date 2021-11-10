@@ -25,6 +25,7 @@
         <entry key="..\:/Github/2021IctProject/app/src/main/res/drawable/item_main_background.xml" value="0.1625" />
         <entry key="..\:/Github/2021IctProject/app/src/main/res/drawable/main_gradient.xml" value="0.16354166666666667" />
         <entry key="..\:/Github/2021IctProject/app/src/main/res/drawable/selector_btn_main.xml" value="0.20625" />
+        <entry key="..\:/Github/2021IctProject/app/src/main/res/drawable/selector_color_white_to_grey.xml" value="0.205078125" />
         <entry key="..\:/Github/2021IctProject/app/src/main/res/drawable/selector_gradient.xml" value="0.14296875" />
         <entry key="..\:/Github/2021IctProject/app/src/main/res/drawable/selector_text.xml" value="0.20625" />
         <entry key="..\:/Github/2021IctProject/app/src/main/res/drawable/selector_text_color_black_to_white.xml" value="0.20625" />
@@ -39,6 +40,8 @@
         <entry key="..\:/Github/2021IctProject/app/src/main/res/layout/contest_detail_fragment.xml" value="0.4" />
         <entry key="..\:/Github/2021IctProject/app/src/main/res/layout/create_contest_fragment.xml" value="0.2" />
         <entry key="..\:/Github/2021IctProject/app/src/main/res/layout/fragment_charge_cash_finish.xml" value="0.16799999999999998" />
+        <entry key="..\:/Github/2021IctProject/app/src/main/res/layout/fragment_dialog_default.xml" value="0.4" />
+        <entry key="..\:/Github/2021IctProject/app/src/main/res/layout/fragment_dialog_update.xml" value="0.2" />
         <entry key="..\:/Github/2021IctProject/app/src/main/res/layout/fragment_fail_dialog.xml" value="0.2" />
         <entry key="..\:/Github/2021IctProject/app/src/main/res/layout/fragment_loading_dialog.xml" value="0.194140625" />
         <entry key="..\:/Github/2021IctProject/app/src/main/res/layout/fragment_participated_contest.xml" value="0.133203125" />

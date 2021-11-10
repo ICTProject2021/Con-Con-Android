@@ -12,7 +12,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.DialogFragment
 import com.project.concon.databinding.FragmentFailDialogBinding
 
-class FailDialogFragment(private val content: String) : DialogFragment() {
+class DialogFragmentFail(private val content: String) : DialogFragment() {
 
     private lateinit var binding: FragmentFailDialogBinding
 

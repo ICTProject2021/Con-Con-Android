@@ -1,6 +1,7 @@
 package com.project.concon.fragment
 
 import android.os.Bundle
+import android.os.Message
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,6 +12,7 @@ import androidx.navigation.fragment.findNavController
 import com.project.concon.R
 import com.project.concon.bind.setImage
 import com.project.concon.databinding.ProfileFragmentBinding
+import com.project.concon.utils.MessageUtils
 import com.project.concon.viewmodel.ProfileViewModel
 import java.text.NumberFormat
 import java.util.*
@@ -49,8 +51,12 @@ class ProfileFragment : Fragment() {
             binding.profileNickname.text = it.nickname
         })
 
-        binding.withdraw.setOnClickListener {
+        binding.charge.setOnClickListener {
             navController.navigate(R.id.action_profileFragment_to_paymentFragment)
+        }
+
+        binding.withdraw.setOnClickListener {
+            MessageUtils.showUpdateDialog(requireActivity(), "출금하기")
         }
 
         binding.participationContest.setOnClickListener {

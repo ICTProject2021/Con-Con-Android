@@ -2,16 +2,14 @@ package com.project.concon.utils
 
 import android.app.Activity
 import android.app.AlertDialog
-import android.app.ProgressDialog.show
 import android.content.Context
 import android.graphics.drawable.ColorDrawable
-import android.service.autofill.CustomDescription
-import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatDialog
 import androidx.fragment.app.FragmentActivity
 import com.project.concon.R
-import com.project.concon.fragment.FailDialogFragment
+import com.project.concon.fragment.DialogFragmentFail
+import com.project.concon.fragment.DialogFragmentUpdate
 
 object MessageUtils {
 
@@ -26,7 +24,11 @@ object MessageUtils {
 
     /** 실패 다이얼로그 */
     fun showFailDialog(activity: FragmentActivity, content: String) {
-        FailDialogFragment(content).show(activity.supportFragmentManager, "fail")
+        DialogFragmentFail(content).show(activity.supportFragmentManager, "fail")
+    }
+
+    fun showUpdateDialog(activity: FragmentActivity, content: String) {
+        DialogFragmentUpdate(content).show(activity.supportFragmentManager, "update")
     }
 
     fun showToast(context: Context, msg: String) =
