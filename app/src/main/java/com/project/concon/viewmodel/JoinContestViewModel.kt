@@ -60,6 +60,10 @@ class JoinContestViewModel : ViewModel() {
 
         val tag = "postParticipant"
 
+        if (content.value.isNullOrBlank()) {
+            return
+        }
+        
         val content = this.content.value!!.getRequestBody()
 
         val list = mutableListOf<MultipartBody.Part>()

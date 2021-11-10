@@ -15,6 +15,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.databinding.ObservableArrayList
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.project.concon.R
@@ -30,7 +31,7 @@ class JoinContestFragment : Fragment() {
     private val navController by lazy { findNavController() }
 
     private lateinit var binding: JoinContestFragmentBinding
-    private val viewModel: JoinContestViewModel by activityViewModels()
+    private val viewModel: JoinContestViewModel by viewModels()
 
     private val navArgs by navArgs<JoinContestFragmentArgs>()
 
@@ -129,7 +130,7 @@ class JoinContestFragment : Fragment() {
         }
 
         isSuccessPutLikes.observe(viewLifecycleOwner) {
-
+            getParticipantInfo(navArgs.id)
         }
 
         fileList.observe(viewLifecycleOwner) {
@@ -137,6 +138,8 @@ class JoinContestFragment : Fragment() {
         }
 
         isLoading.observe(viewLifecycleOwner) {
+            Log.d("isLoading", it.toString())
+
             if (it) {
                 MessageUtils.showProgress(requireActivity())
             } else {

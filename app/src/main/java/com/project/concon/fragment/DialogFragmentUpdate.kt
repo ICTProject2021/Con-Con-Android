@@ -1,5 +1,6 @@
 package com.project.concon.fragment
 
+import android.app.AlertDialog
 import android.app.Dialog
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
@@ -20,8 +21,6 @@ class DialogFragmentUpdate(private val content: String) : DialogFragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentDialogUpdateBinding.inflate(inflater)
-        this.isCancelable = false
         return binding.root
     }
 
@@ -36,8 +35,15 @@ class DialogFragmentUpdate(private val content: String) : DialogFragment() {
     }
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
-        return super.onCreateDialog(savedInstanceState)
+        binding = FragmentDialogUpdateBinding.inflate(requireActivity().layoutInflater)
 
-        dialog?.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+        val dialog: AlertDialog = AlertDialog.Builder(requireActivity())
+            .setView(binding.root)
+            .create()
+
+        dialog.setCanceledOnTouchOutside(false)
+        dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+
+        return dialog
     }
 }
