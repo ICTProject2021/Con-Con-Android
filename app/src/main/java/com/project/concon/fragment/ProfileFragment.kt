@@ -56,7 +56,7 @@ class ProfileFragment : Fragment() {
         }
 
         binding.withdraw.setOnClickListener {
-            MessageUtils.showUpdateDialog(requireActivity(), "출금하기")
+            MessageUtils.showUpdateDialog(requireActivity(), "출금하기 기능은 추후 업데이트 예정입니다.")
         }
 
         binding.participationContest.setOnClickListener {

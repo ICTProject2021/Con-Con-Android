@@ -9,6 +9,7 @@ import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.activityViewModels
 import com.project.concon.databinding.FragmentPrizeDialogBinding
 import com.project.concon.network.dto.response.Prize
+import com.project.concon.utils.MessageUtils
 import com.project.concon.viewmodel.DialogViewModel
 
 class PrizeDialogFragment : DialogFragment() {
@@ -21,7 +22,6 @@ class PrizeDialogFragment : DialogFragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentPrizeDialogBinding.inflate(inflater, container, false)
-
         return binding.root
     }
 
@@ -32,13 +32,17 @@ class PrizeDialogFragment : DialogFragment() {
             if (binding.price.text.isEmpty()) {
                 TODO()
             } else {
-                Log.d("prize", binding.price.text.toString())
-                viewModel.addPrizeList(
-                    Prize(
-                    viewModel.getLastRank() + 1,
-                    Integer.parseInt(binding.price.text.trim().toString())
-                )
-                )
+                if (binding.price.text.length >= 8) {
+                    MessageUtils.showDefaultDialog(requireActivity(), "대회 상금의 최대 금액은 1억원입니다.")
+                } else {
+                    viewModel.addPrizeList(
+                        Prize(
+                            viewModel.getLastRank() + 1,
+                            Integer.parseInt(binding.price.text.trim().toString())
+                        )
+                    )
+                }
+
                 dismiss()
             }
         }

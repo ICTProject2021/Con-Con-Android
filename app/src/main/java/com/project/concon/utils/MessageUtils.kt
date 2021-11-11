@@ -9,10 +9,11 @@ import androidx.appcompat.app.AppCompatDialog
 import androidx.fragment.app.FragmentActivity
 import com.project.concon.R
 import com.project.concon.fragment.DialogFragmentFail
-import com.project.concon.fragment.DialogFragmentUpdate
+import com.project.concon.fragment.DialogFragmentDefault
 
 object MessageUtils {
 
+    /** @deprecated (삭제 예정) */
     fun showDialog(context: Context, title: String, msg: String) =
         AlertDialog.Builder(context)
             .setTitle(title)
@@ -27,8 +28,14 @@ object MessageUtils {
         DialogFragmentFail(content).show(activity.supportFragmentManager, "fail")
     }
 
+    /** 업데이트 예정 다이얼로그 */
     fun showUpdateDialog(activity: FragmentActivity, content: String) {
-        DialogFragmentUpdate(content).show(activity.supportFragmentManager, "update")
+        DialogFragmentDefault("조금만 기다려주세요!", content).show(activity.supportFragmentManager, "update")
+    }
+
+    /** 기본 다이얼로그 (정보나 알림 띄울 때 사용) */
+    fun showDefaultDialog(activity: FragmentActivity, content: String) {
+        DialogFragmentDefault("알림", content)
     }
 
     fun showToast(context: Context, msg: String) =
