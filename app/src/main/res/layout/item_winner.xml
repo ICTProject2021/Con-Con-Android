@@ -2,8 +2,10 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:padding="4dp"
-    android:gravity="center">
+    android:orientation="horizontal"
+    android:paddingHorizontal="32dp"
+    android:paddingVertical="4dp"
+    android:gravity="center_horizontal">
 
     <TextView
         android:id="@+id/item_rank"
@@ -12,21 +14,26 @@
         android:text="1등"
         android:textColor="@color/black"
         android:textSize="20sp"
+        android:layout_marginEnd="16dp"
         android:textStyle="bold" />
 
     <TextView
         android:id="@+id/item_nickName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
         android:text="닉네임"
         android:textSize="15sp" />
+
+
+    <Space
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1" />
 
     <TextView
         android:id="@+id/item_price"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="140dp"
         android:text="50,000원"
         android:textColor="@color/black"
         android:textSize="15sp" />
