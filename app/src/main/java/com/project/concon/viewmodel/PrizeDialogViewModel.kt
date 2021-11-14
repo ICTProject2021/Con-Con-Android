@@ -5,7 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.project.concon.network.dto.response.Prize
 
-class DialogViewModel : ViewModel() {
+class PrizeDialogViewModel : ViewModel() {
 
     var prize = MutableLiveData<Int>()
     var prizeList = MutableLiveData<List<Prize>>(listOf())
