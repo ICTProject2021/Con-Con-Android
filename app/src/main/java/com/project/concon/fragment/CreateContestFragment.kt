@@ -1,5 +1,7 @@
 package com.project.concon.fragment
 
+import android.app.Activity
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -7,20 +9,23 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.activity.result.ActivityResultLauncher
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
 import com.google.android.material.datepicker.MaterialDatePicker
 import com.project.concon.R
+import com.project.concon.adapter.RecyclerViewJoinContestImageAdapter
 import com.project.concon.databinding.CreateContestFragmentBinding
 import com.project.concon.network.dto.request.ContestRequest
 import com.project.concon.network.dto.response.Prize
+import com.project.concon.utils.ImagePicker
 import com.project.concon.utils.MessageUtils
 import com.project.concon.viewmodel.CreateContestViewModel
-import com.project.concon.viewmodel.DialogViewModel
+import com.project.concon.viewmodel.PrizeDialogViewModel
 import java.text.NumberFormat
-import java.text.SimpleDateFormat
 import java.util.*
 
 class CreateContestFragment : Fragment() {
@@ -29,11 +34,14 @@ class CreateContestFragment : Fragment() {
 
     private lateinit var binding: CreateContestFragmentBinding
     private val viewModel: CreateContestViewModel by activityViewModels()
-    private val pViewModel: DialogViewModel by activityViewModels()
+    private val pViewModelPrize: PrizeDialogViewModel by activityViewModels()
 
     private var startTime: Long = 0
     private var dueTime: Long = 0
     private var prizeList: MutableList<Prize> = mutableListOf()
+
+    private lateinit var resultLauncher: ActivityResultLauncher<Intent>
+    private val imageAdapter = RecyclerViewJoinContestImageAdapter()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -48,6 +56,7 @@ class CreateContestFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        init()
         observe()
 
         binding.etDateCreateContest.setOnClickListener { showCalendar() }
@@ -68,9 +77,9 @@ class CreateContestFragment : Fragment() {
 //            }
 
             val numberFormat = NumberFormat.getCurrencyInstance(Locale.getDefault())
-            val cash = numberFormat.format(totalPrice())
+            val cash = numberFormat.format(getTotalPrice())
 
-            setText("총 ${cash} 원")
+            setText("총 ${cash}원")
 
             setOnClickListener {
                 navigateToPrize()
@@ -90,13 +99,27 @@ class CreateContestFragment : Fragment() {
             }
 
             if (errorMsg != null) {
-                Toast.makeText(requireContext(), "$errorMsg 입력해주세요.", Toast.LENGTH_SHORT).show()
+                MessageUtils.showFailDialog(requireActivity(), "$errorMsg 입력해주세요.")
             } else {
                 Log.d("start", startTime.toString())
                 Log.d("end", dueTime.toString())
                 viewModel.postCreateContest(getCreateContest())
             }
         }
+
+        binding.btnAddPhotoCreateContest.setOnClickListener {
+            ImagePicker.multipleSelectStart(resultLauncher)
+        }
+    }
+
+    private fun init() {
+        resultLauncher = registerForActivityResult(
+            ActivityResultContracts.StartActivityForResult()
+        ) {
+            ImagePicker.init(it)
+        }
+
+        binding.rvPhotoCreateContest.adapter = imageAdapter
     }
 
     private fun observe() = with(viewModel) {
@@ -124,6 +147,10 @@ class CreateContestFragment : Fragment() {
                 MessageUtils.dismissProgress()
             }
         }
+
+        ImagePicker.imageList.observe(viewLifecycleOwner) {
+            imageAdapter.setList(it)
+       }
     }
 
     private fun showCalendar() {
@@ -137,7 +164,7 @@ class CreateContestFragment : Fragment() {
 //            dueTime = it.second
             viewModel.startTime.value = it.first
             viewModel.dueTime.value = it.second
-            val text = "${viewModel.longTimeToDateAsString(it.first)} ~ ${viewModel.longTimeToDateAsString(it.second)}"
+            val text = "${viewModel.getDateAsString(it.first)} ~ ${viewModel.getDateAsString(it.second)}"
             viewModel.date.value = text
             binding.etDateCreateContest.setText(text)
         }
@@ -151,9 +178,9 @@ class CreateContestFragment : Fragment() {
             binding.etContentCreateContest.text.toString(),
 //            longTimeToDateAsString(startTime),
 //            longTimeToDateAsString(dueTime),
-            longTimeToDateAsString(viewModel.startTime.value),
-            longTimeToDateAsString(viewModel.dueTime.value),
-            pViewModel.prizeList.value!!
+            viewModel.getDateAsString(viewModel.startTime.value),
+            viewModel.getDateAsString(viewModel.dueTime.value),
+            pViewModelPrize.prizeList.value!!
         )
 
 
@@ -165,20 +192,12 @@ class CreateContestFragment : Fragment() {
         navController.navigate(R.id.action_createContestFragment_to_prizeFragment)
     }
 
-    private fun longTimeToDateAsString(time: Long?): String {
-//        val date: Date = Date(time)
-        val dateFormat = SimpleDateFormat("yyyy-MM-dd HH:mm:ss.sss")
-//        Log.d("longTimeToDateAsString", dateFormat.format(date))
-        return dateFormat.format(time)
-    }
-
-    private fun totalPrice() : Int {
-        var result: Int = 0
-        pViewModel.prizeList.value?.forEach {
+    private fun getTotalPrice() : Int {
+        var result = 0
+        pViewModelPrize.prizeList.value?.forEach {
             result += it.price
         }
         return result
     }
-
 }
 

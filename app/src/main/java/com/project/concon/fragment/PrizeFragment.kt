@@ -11,14 +11,14 @@ import androidx.navigation.fragment.findNavController
 import com.project.concon.R
 import com.project.concon.databinding.FragmentPrizeBinding
 import com.project.concon.viewmodel.CreateContestViewModel
-import com.project.concon.viewmodel.DialogViewModel
+import com.project.concon.viewmodel.PrizeDialogViewModel
 import java.text.NumberFormat
 import java.util.*
 
 class PrizeFragment : Fragment() {
 
     private lateinit var binding: FragmentPrizeBinding
-    private val viewModel: DialogViewModel by activityViewModels()
+    private val viewModelPrize: PrizeDialogViewModel by activityViewModels()
     private val cViewModel: CreateContestViewModel by activityViewModels()
 
     override fun onCreateView(
@@ -46,7 +46,7 @@ class PrizeFragment : Fragment() {
             )
         }
 
-        viewModel.prizeList.observe(viewLifecycleOwner) {
+        viewModelPrize.prizeList.observe(viewLifecycleOwner) {
             binding.prizeLayout.removeAllViews()
 
             it.forEach { prize ->
@@ -59,7 +59,7 @@ class PrizeFragment : Fragment() {
         }
 
         binding.btnBackPrize.setOnClickListener {
-            cViewModel.prize.value = "총 ${totalPrice()} 원 "
+            cViewModel.prize.value = "총 ${totalPrice()}원 "
             findNavController().navigate(PrizeFragmentDirections.actionPrizeFragmentToCreateContestFragment())
         }
     }
@@ -82,7 +82,7 @@ class PrizeFragment : Fragment() {
 
     private fun totalPrice() : Int {
         var result: Int = 0
-        viewModel.prizeList.value?.forEach {
+        viewModelPrize.prizeList.value?.forEach {
             result += it.price
         }
         return result

@@ -1,7 +1,6 @@
 package com.project.concon.fragment
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,12 +9,12 @@ import androidx.fragment.app.activityViewModels
 import com.project.concon.databinding.FragmentPrizeDialogBinding
 import com.project.concon.network.dto.response.Prize
 import com.project.concon.utils.MessageUtils
-import com.project.concon.viewmodel.DialogViewModel
+import com.project.concon.viewmodel.PrizeDialogViewModel
 
 class PrizeDialogFragment : DialogFragment() {
 
     private lateinit var binding: FragmentPrizeDialogBinding
-    private val viewModel : DialogViewModel by activityViewModels()
+    private val viewModelPrize : PrizeDialogViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -35,9 +34,9 @@ class PrizeDialogFragment : DialogFragment() {
                 if (binding.price.text.length >= 8) {
                     MessageUtils.showDefaultDialog(requireActivity(), "대회 상금의 최대 금액은 1억원입니다.")
                 } else {
-                    viewModel.addPrizeList(
+                    viewModelPrize.addPrizeList(
                         Prize(
-                            viewModel.getLastRank() + 1,
+                            viewModelPrize.getLastRank() + 1,
                             Integer.parseInt(binding.price.text.trim().toString())
                         )
                     )

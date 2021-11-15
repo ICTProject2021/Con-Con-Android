@@ -26,10 +26,11 @@ class CreateContestViewModel : ViewModel() {
 
     val isLoading = MutableLiveData(false)
 
-    fun longTimeToDateAsString(time: Long): String {
-        val dateFormat = SimpleDateFormat("yyyy-MM-dd")
-        return dateFormat.format(time)
-    }
+    fun getDateAsString(time: Long): String =
+        SimpleDateFormat("yyyy-MM-dd").format(time)
+
+    fun getDateAsString(time: Long?): String =
+        SimpleDateFormat("yyyy-MM-dd HH:mm:ss.sss").format(time)
 
     fun postCreateContest(contestRequest: ContestRequest) {
         isLoading.value = true

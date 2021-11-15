@@ -13,6 +13,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.project.concon.databinding.RvItemJoinContestImageBinding
+import com.project.concon.utils.ImagePicker
 
 class RecyclerViewJoinContestImageAdapter: RecyclerView.Adapter<RecyclerViewJoinContestImageAdapter.ViewHolder>() {
 
@@ -36,16 +37,9 @@ class RecyclerViewJoinContestImageAdapter: RecyclerView.Adapter<RecyclerViewJoin
         val uri = list[position]
 
         Log.d("imageAdapter-onBindViewHolder", uri.toString())
-        val contentResolver: ContentResolver = context.contentResolver
-
-        val bitmap: Bitmap = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
-            val source = ImageDecoder.createSource(contentResolver, uri)
-            ImageDecoder.decodeBitmap(source)
-        } else {
-            MediaStore.Images.Media.getBitmap(contentResolver, uri)
-        }
-
-        binding.imageView.setImageBitmap(bitmap)
+        binding.imageView.setImageBitmap(
+            ImagePicker.getBitmap(context.contentResolver, uri)
+        )
     }
 
     override fun getItemCount(): Int = list.size
