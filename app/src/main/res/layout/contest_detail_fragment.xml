@@ -9,13 +9,13 @@
             type="com.project.concon.viewmodel.ContestDetailViewModel" />
         <variable
             name="data"
-            type="com.project.concon.network.dto.response.ContestDetail" />
+            type="com.project.concon.model.remote.dto.response.ContestDetail" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".fragment.ContestDetailFragment">
+        tools:context=".view.fragment.ContestDetailFragment">
 
         <ImageButton
             android:id="@+id/btn_back_contest_detail"

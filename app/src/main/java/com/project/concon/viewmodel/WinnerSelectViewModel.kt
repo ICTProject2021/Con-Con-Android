@@ -3,11 +3,11 @@ package com.project.concon.viewmodel
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.project.concon.network.`object`.RetrofitInstance
-import com.project.concon.network.dao.ContestService
-import com.project.concon.network.dto.request.WinnerPrizeRequest
-import com.project.concon.network.dto.response.Msg
-import com.project.concon.network.dto.response.Participant
+import com.project.concon.model.remote.RetrofitInstance
+import com.project.concon.model.remote.dao.ContestService
+import com.project.concon.model.remote.dto.request.WinnerPrizeRequest
+import com.project.concon.model.remote.dto.response.Msg
+import com.project.concon.model.remote.dto.response.Participant
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response

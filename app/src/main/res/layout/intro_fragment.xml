@@ -6,7 +6,7 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            tools:context=".fragment.IntroFragment">
+            tools:context=".view.fragment.IntroFragment">
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/btn_sign_up_intro"

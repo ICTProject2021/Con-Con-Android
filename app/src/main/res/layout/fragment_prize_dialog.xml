@@ -4,7 +4,7 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:background="@drawable/background_dialog"
-    tools:context=".fragment.PrizeDialogFragment">
+    tools:context=".view.fragment.PrizeDialogFragment">
     
     <LinearLayout
         android:layout_width="320dp"

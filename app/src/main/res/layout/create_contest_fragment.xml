@@ -15,7 +15,7 @@
         android:layout_height="match_parent"
         android:focusable="true"
         android:focusableInTouchMode="true"
-        tools:context=".fragment.CreateContestFragment">
+        tools:context=".view.fragment.CreateContestFragment">
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btn_confirm_create_contest"

@@ -5,9 +5,9 @@ import android.net.Uri
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.project.concon.network.`object`.RetrofitInstance
-import com.project.concon.network.dto.response.Msg
-import com.project.concon.network.dto.response.Participant
+import com.project.concon.model.remote.RetrofitInstance
+import com.project.concon.model.remote.dto.response.Msg
+import com.project.concon.model.remote.dto.response.Participant
 import com.project.concon.utils.getImageBody
 import com.project.concon.utils.getRequestBody
 import okhttp3.MultipartBody

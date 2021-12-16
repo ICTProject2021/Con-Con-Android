@@ -8,8 +8,8 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatDialog
 import androidx.fragment.app.FragmentActivity
 import com.project.concon.R
-import com.project.concon.fragment.DialogFragmentFail
-import com.project.concon.fragment.DialogFragmentDefault
+import com.project.concon.view.fragment.DialogFragmentFail
+import com.project.concon.view.fragment.DialogFragmentDefault
 
 object MessageUtils {
 

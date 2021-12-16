@@ -7,7 +7,7 @@
         android:padding="20dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        tools:context=".fragment.CalendarDialogFragment">
+        tools:context=".view.fragment.CalendarDialogFragment">
 
         <com.prolificinteractive.materialcalendarview.MaterialCalendarView
             android:id="@+id/calendar_view_calendar"

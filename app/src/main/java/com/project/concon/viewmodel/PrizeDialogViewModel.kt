@@ -3,7 +3,7 @@ package com.project.concon.viewmodel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.project.concon.network.dto.response.Prize
+import com.project.concon.model.remote.dto.response.Prize
 
 class PrizeDialogViewModel : ViewModel() {
 

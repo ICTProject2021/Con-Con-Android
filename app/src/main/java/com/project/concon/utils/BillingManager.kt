@@ -4,7 +4,7 @@ import android.app.Activity
 import android.content.Context
 import android.util.Log
 import com.android.billingclient.api.*
-import com.project.concon.data.SkuData
+import com.project.concon.view.data.SkuData
 
 class BillingManager(private val listener: PurchaseMessageListener) :
     PurchasesUpdatedListener {

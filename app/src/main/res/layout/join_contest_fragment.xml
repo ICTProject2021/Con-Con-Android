@@ -5,7 +5,7 @@
 
     <data>
         <import type="androidx.databinding.ObservableArrayList" />
-        <import type="com.project.concon.network.dto.response.Participant" />
+        <import type="com.project.concon.model.remote.dto.response.Participant" />
 
         <variable
             name="participantList"
@@ -18,7 +18,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".fragment.JoinContestFragment">
+        tools:context=".view.fragment.JoinContestFragment">
 
         <ImageButton
             android:id="@+id/btn_back_join_contest"

@@ -14,7 +14,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layoutDescription="@xml/sign_in_fragment_scene"
-        tools:context=".fragment.SignInFragment">
+        tools:context=".view.fragment.SignInFragment">
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/et_layout_id_sign_in"

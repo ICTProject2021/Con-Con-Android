@@ -6,7 +6,7 @@
     <data>
         <variable
             name="participant"
-            type="com.project.concon.network.dto.response.Participant" />
+            type="com.project.concon.model.remote.dto.response.Participant" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

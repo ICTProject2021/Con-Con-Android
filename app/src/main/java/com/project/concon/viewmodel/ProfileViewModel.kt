@@ -3,9 +3,9 @@ package com.project.concon.viewmodel
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.project.concon.network.`object`.RetrofitInstance
-import com.project.concon.network.dao.AccountService
-import com.project.concon.network.dto.response.Profile
+import com.project.concon.model.remote.RetrofitInstance
+import com.project.concon.model.remote.dao.AccountService
+import com.project.concon.model.remote.dto.response.Profile
 import retrofit2.Response
 
 class ProfileViewModel : ViewModel() {

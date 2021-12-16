@@ -1,13 +1,12 @@
 package com.project.concon.viewmodel
 
 import android.util.Log
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.project.concon.network.`object`.RetrofitInstance
-import com.project.concon.network.dao.AccountService
-import com.project.concon.network.dto.request.SignInRequest
-import com.project.concon.network.dto.response.Msg
+import com.project.concon.model.remote.RetrofitInstance
+import com.project.concon.model.remote.dao.AccountService
+import com.project.concon.model.remote.dto.request.SignInRequest
+import com.project.concon.model.remote.dto.response.Msg
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
