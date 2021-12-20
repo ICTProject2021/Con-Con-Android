@@ -3,8 +3,10 @@ package com.project.concon.model.remote
 import com.google.gson.Gson
 import com.project.concon.model.remote.dao.AccountService
 import com.project.concon.model.remote.dao.ContestService
-import com.project.concon.utils.TokenInterceptor
+import com.project.concon.utils.PreferenceUtils
+import okhttp3.Interceptor
 import okhttp3.OkHttpClient
+import okhttp3.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
@@ -26,4 +28,12 @@ object RetrofitInstance {
 
     val accountService: AccountService = retrofit.create(AccountService::class.java)
     val contestService: ContestService = retrofit.create(ContestService::class.java)
+}
+
+class TokenInterceptor : Interceptor {
+    override fun intercept(chain: Interceptor.Chain): Response {
+        val request = chain.request().newBuilder().addHeader("authorization", PreferenceUtils.token
+            ?: "").build()
+        return chain.proceed(request)
+    }
 }
