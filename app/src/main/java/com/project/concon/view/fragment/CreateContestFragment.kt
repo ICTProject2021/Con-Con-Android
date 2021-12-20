@@ -122,7 +122,7 @@ class CreateContestFragment : Fragment() {
     }
 
     private fun observe() = with(viewModel) {
-        postCreateContestRes.observe(viewLifecycleOwner) { it ->
+        isSuccess.observe(viewLifecycleOwner) { it ->
             when (it) {
                 null -> {
                     Toast.makeText(

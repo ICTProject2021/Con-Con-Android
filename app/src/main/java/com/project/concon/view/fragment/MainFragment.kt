@@ -12,7 +12,7 @@ import com.project.concon.view.adapter.RecyclerViewMainAdapter
 import com.project.concon.databinding.MainFragmentBinding
 import com.project.concon.view.decoration.RecyclerViewDecoration
 import com.project.concon.utils.MessageUtils
-import com.project.concon.viewmodel.MainViewModel
+import com.project.concon.viewmodel.HomeViewModel
 
 class MainFragment : Fragment() {
 
@@ -20,7 +20,7 @@ class MainFragment : Fragment() {
         findNavController()
     }
 
-    private lateinit var viewModel: MainViewModel
+    private lateinit var viewModel: HomeViewModel
     private lateinit var binding: MainFragmentBinding
     private lateinit var recyclerViewAdapter: RecyclerViewMainAdapter
 
@@ -35,8 +35,8 @@ class MainFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        viewModel = ViewModelProvider(this).get(MainViewModel::class.java)
-        viewModel.callApi()
+        viewModel = ViewModelProvider(this).get(HomeViewModel::class.java)
+        viewModel.getContestList()
 
         initRecyclerView()
         observe()

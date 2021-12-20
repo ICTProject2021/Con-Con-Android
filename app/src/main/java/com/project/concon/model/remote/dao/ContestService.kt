@@ -28,7 +28,7 @@ interface ContestService {
 
     /* 대회 참여자 조회 */
     @GET("/participant/{id}")
-    fun getParticipantList(@Path("id") id: Int): Single<Response<Res<Participant>>>
+    fun getParticipantList(@Path("id") id: Int): Single<Response<Res<List<Participant>>>>
 
     /* 대회 참여 */
     @Multipart

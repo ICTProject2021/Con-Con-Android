@@ -25,7 +25,7 @@ class ContestRepository(
     fun postCreateContest(contestRequest: ContestRequest): Single<String> =
         service.postCreateContest(contestRequest).map(getMessage())
 
-    fun getParticipantList(id: Int): Single<Participant> =
+    fun getParticipantList(id: Int): Single<List<Participant>> =
         service.getParticipantList(id).map(getResponse())
 
     fun postParticipate(
