@@ -5,7 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.project.concon.model.remote.RetrofitInstance
 import com.project.concon.model.remote.dao.ContestService
-import com.project.concon.model.remote.dto.request.WinnerPrizeRequest
+import com.project.concon.model.remote.dto.request.WinnerRequest
 import com.project.concon.model.remote.dto.response.Msg
 import com.project.concon.model.remote.dto.response.Participant
 import retrofit2.Call
@@ -33,8 +33,8 @@ class WinnerSelectViewModel : ViewModel() {
         })
     }
 
-    fun request(id: Int, winnerPrizeRequest: List<WinnerPrizeRequest>) {
-        contestService.winnerPrizeSelect(id, winnerPrizeRequest).enqueue(object : Callback<Msg> {
+    fun request(id: Int, winnerRequest: List<WinnerRequest>) {
+        contestService.winnerPrizeSelect(id, winnerRequest).enqueue(object : Callback<Msg> {
             override fun onResponse(call: Call<Msg>, response: Response<Msg>) {
                 if (response.isSuccessful) {
                     Log.d("request", "${response.code()}-${response.message()}: ${response.body()}")

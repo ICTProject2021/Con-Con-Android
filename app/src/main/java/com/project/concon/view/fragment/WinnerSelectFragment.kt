@@ -14,7 +14,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.project.concon.view.adapter.RecyclerViewWinnerSelectAdapter
 import com.project.concon.databinding.FragmentWinnerSelectBinding
 import com.project.concon.view.decoration.RecyclerViewDecoration
-import com.project.concon.model.remote.dto.request.WinnerPrizeRequest
+import com.project.concon.model.remote.dto.request.WinnerRequest
 import com.project.concon.utils.MessageUtils
 import com.project.concon.viewmodel.WinnerSelectViewModel
 
@@ -24,7 +24,7 @@ class WinnerSelectFragment : Fragment() {
     private val viewModel: WinnerSelectViewModel by viewModels()
     private val args : WinnerSelectFragmentArgs by navArgs()
     private lateinit var recyclerViewAdapter: RecyclerViewWinnerSelectAdapter
-    private val winnerPrizeList = mutableListOf<WinnerPrizeRequest>()
+    private val winnerPrizeList = mutableListOf<WinnerRequest>()
     private var rank = 1
 
     override fun onCreateView(
@@ -74,7 +74,7 @@ class WinnerSelectFragment : Fragment() {
 //                            return
 //                        } else {
                             v.setBackgroundColor(Color.parseColor("#C4C4C4"))
-                            winnerPrizeList.add(WinnerPrizeRequest(rank, dataList.ID))
+                            winnerPrizeList.add(WinnerRequest(rank, dataList.ID))
                             Log.d("dataList : ", dataList.ID.toString())
                             rank++
                             Log.d("WinnerPrizeList", winnerPrizeList.toString())

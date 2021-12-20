@@ -2,7 +2,7 @@ package com.project.concon.model.remote.dao
 
 import com.project.concon.model.remote.dto.Res
 import com.project.concon.model.remote.dto.request.ContestRequest
-import com.project.concon.model.remote.dto.request.WinnerPrizeRequest
+import com.project.concon.model.remote.dto.request.WinnerRequest
 import com.project.concon.model.remote.dto.response.Contest
 import com.project.concon.model.remote.dto.response.ContestDetail
 import com.project.concon.model.remote.dto.response.Participant
@@ -28,12 +28,12 @@ interface ContestService {
 
     /* 대회 참여자 조회 */
     @GET("/participant/{id}")
-    fun getParticipantInfo(@Path("id") id: Int): Single<Response<Res<Participant>>>
+    fun getParticipantList(@Path("id") id: Int): Single<Response<Res<Participant>>>
 
     /* 대회 참여 */
     @Multipart
     @POST("/participant/{id}")
-    fun postParticipant(
+    fun postParticipate(
         @Path("id") id: Int,
         @Part("content") content: RequestBody,
         @Part attachment: List<MultipartBody.Part>
@@ -54,7 +54,7 @@ interface ContestService {
     @PUT("/prize/{contestid}")
     fun putContestWinnerSelect(
         @Path("contestid") contestid: Int,
-        @Body winnerPrizeRequest: List<WinnerPrizeRequest>
+        @Body winnerRequest: List<WinnerRequest>
     ) : Single<Response<Res<Any>>>
 
     /* 내가 참가한 대회 조회 */
