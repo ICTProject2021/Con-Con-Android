@@ -49,7 +49,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/btn_back_join_contest"
             app:layout_constraintVertical_bias="1.0"
-            tools:listitem="@layout/rv_item_join_contest">
+            tools:listitem="@layout/item_join_contest">
 
         </androidx.recyclerview.widget.RecyclerView>
 
@@ -118,7 +118,7 @@
                 android:paddingVertical="10dp"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 tools:ignore="SpeakableTextPresentCheck"
-                tools:listitem="@layout/rv_item_join_contest_image" />
+                tools:listitem="@layout/item_join_contest_image" />
         </LinearLayout>
 
         <ImageButton

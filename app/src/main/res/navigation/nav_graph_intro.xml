@@ -9,7 +9,7 @@
         android:id="@+id/introFragment"
         android:name="com.project.concon.view.fragment.IntroFragment"
         android:label="intro_fragment"
-        tools:layout="@layout/intro_fragment" >
+        tools:layout="@layout/fragment_intro" >
         <action
             android:id="@+id/action_introFragment_to_signInFragment"
             app:destination="@id/signInFragment" />
@@ -29,7 +29,7 @@
         android:id="@+id/signUpFragment"
         android:name="com.project.concon.view.fragment.SignUpFragment"
         android:label="sign_up_fragment"
-        tools:layout="@layout/sign_up_fragment" >
+        tools:layout="@layout/fragment_sign_up" >
         <action
             android:id="@+id/action_signUpFragment_to_introFragment"
             app:destination="@id/introFragment" />
