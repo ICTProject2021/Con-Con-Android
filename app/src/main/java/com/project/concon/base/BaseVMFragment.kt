@@ -4,20 +4,18 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.annotation.LayoutRes
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
-import androidx.fragment.app.Fragment
-import androidx.navigation.fragment.findNavController
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
+import com.project.concon.viewmodel.factory.ViewModelFactory
+import javax.inject.Inject
 
-abstract class BaseFragment<B : ViewDataBinding> : Fragment() {
+abstract class BaseVMFragment<B: ViewDataBinding, VM: ViewModel> : BaseFragment<B>() {
 
-    protected var _binding: B? = null
-    protected val binding get() = _binding!!
-
-    protected val navController by lazy {
-        findNavController()
-    }
+    @Inject
+    lateinit var viewModelFactory: ViewModelFactory
+    protected lateinit var viewModel: VM
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -26,14 +24,11 @@ abstract class BaseFragment<B : ViewDataBinding> : Fragment() {
     ): View? {
         _binding = DataBindingUtil.inflate(inflater, getLayoutRes(), container, false)
         binding.lifecycleOwner = viewLifecycleOwner
+        // todo owner 를 this 로 해도될지 테스트..
+        viewModel = ViewModelProvider(this, viewModelFactory)[viewModel.javaClass]
+        setViewModel()
         return binding.root
     }
 
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
-    }
-
-    @LayoutRes
-    abstract fun getLayoutRes(): Int
+    abstract fun setViewModel()
 }
