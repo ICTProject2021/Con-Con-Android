@@ -1,40 +1,37 @@
 package com.project.concon.viewmodel
 
-import android.util.Log
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-import com.project.concon.model.remote.RetrofitInstance
-import com.project.concon.model.remote.dao.AccountService
+import com.project.concon.base.BaseViewModel
 import com.project.concon.model.remote.dto.request.SignInRequest
-import com.project.concon.model.remote.dto.response.Msg
 import com.project.concon.model.repository.AccountRepository
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
+import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
+import io.reactivex.rxjava3.schedulers.Schedulers
 import javax.inject.Inject
 
 class SignInViewModel @Inject constructor(
     private val accountRepository: AccountRepository
-) : ViewModel() {
+) : BaseViewModel() {
 
     val id = MutableLiveData<String?>()
     val pw = MutableLiveData<String?>()
     val idErr = MutableLiveData<String>()
     val pwErr = MutableLiveData<String>()
 
-    private val _isLoading = MutableLiveData(false)
-    val isLoading = _isLoading
+    val isSuccess = MutableLiveData<String>()
+    val isFailure = MutableLiveData<String>()
 
     fun postSignIn() {
-        _isLoading.value = true
+        isLoading.value = true
 
-        val req = SignInRequest(id.value!!, pw.value!!)
-
-
-    }
-
-    override fun onCleared() {
-        super.onCleared()
-
+        accountRepository.postSignIn(SignInRequest(id.value!!, pw.value!!))
+            .observeOn(Schedulers.io())
+            .subscribeOn(AndroidSchedulers.mainThread())
+            .subscribe({
+                isSuccess.value = it
+                isLoading.value = false
+            }, {
+                isFailure.value = it.message
+                isLoading.value = false
+            })
     }
 }
