@@ -9,32 +9,35 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.project.concon.R
+import com.project.concon.base.BaseVMFragment
 import com.project.concon.view.adapter.RecyclerViewWinnerAdapter
 import com.project.concon.databinding.FragmentWinnerBinding
 import com.project.concon.view.decoration.RecyclerViewDecoration
 import com.project.concon.viewmodel.WinnerViewModel
 
-class WinnerFragment : Fragment() {
+class WinnerFragment : BaseVMFragment<FragmentWinnerBinding, WinnerViewModel>() {
 
-    private val viewModel: WinnerViewModel by viewModels()
-    private lateinit var binding: FragmentWinnerBinding
+    override fun getLayoutRes(): Int = R.layout.fragment_winner
+
+    override fun setBinding() {}
+
     private lateinit var recyclerViewAdapter: RecyclerViewWinnerAdapter
-    private val args by navArgs<WinnerFragmentArgs>()
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        binding = FragmentWinnerBinding.inflate(inflater, container, false)
-        return binding.root
-    }
+    private val args by navArgs<WinnerFragmentArgs>()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        observe()
         initRecyclerView()
 
+        viewModel.getWinnerList(args.contestId)
+
         binding.btnCloseCreateContest.setOnClickListener {
-            findNavController().navigate(WinnerFragmentDirections.actionWinnerFragmentToContestDetailFragment(args.contestId))
+            navController.navigate(
+                WinnerFragmentDirections.actionWinnerFragmentToContestDetailFragment(args.contestId)
+            )
         }
     }
 
@@ -46,21 +49,19 @@ class WinnerFragment : Fragment() {
             adapter = recyclerViewAdapter
             addItemDecoration(decoration)
         }
-        viewModel.callWinnerList(args.contestId)
-        viewModel.winnerLiveData.observe(viewLifecycleOwner, {
-            if (it != null) {
-                recyclerViewAdapter.setData(it)
-                if(it[0].nickname == null) {
-                    binding.winnerMsg.text = "우승자가 아직 정해지지 않았어요!\n조금만 기다려주세요!"
-                    binding.winnerList.visibility = View.GONE
-                } else {
-                    binding.winnerMsg.text = "대회 우승을 축하합니다!"
-                    binding.winnerList.visibility = View.VISIBLE
-                }
-            } else {
-                recyclerViewAdapter.setData(listOf())
-            }
-        })
     }
 
+    private fun observe() = with(viewModel) {
+        isSuccess.observe(viewLifecycleOwner) {
+            recyclerViewAdapter.setData(it)
+
+            if(it[0].nickname == null) {
+                binding.winnerMsg.text = "우승자가 아직 정해지지 않았어요!\n조금만 기다려주세요!"
+                binding.winnerList.visibility = View.GONE
+            } else {
+                binding.winnerMsg.text = "대회 우승을 축하합니다!"
+                binding.winnerList.visibility = View.VISIBLE
+            }
+        }
+    }
 }

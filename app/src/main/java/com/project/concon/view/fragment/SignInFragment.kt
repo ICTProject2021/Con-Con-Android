@@ -5,17 +5,17 @@ import android.os.Bundle
 import android.view.View
 import com.project.concon.R
 import com.project.concon.base.BaseVMFragment
-import com.project.concon.databinding.SignInFragmentBinding
+import com.project.concon.databinding.FragmentSignInBinding
 import com.project.concon.utils.MessageUtils
 import com.project.concon.utils.PreferenceUtils
 import com.project.concon.view.activity.MainActivity
 import com.project.concon.viewmodel.SignInViewModel
 
-class SignInFragment : BaseVMFragment<SignInFragmentBinding, SignInViewModel>() {
+class SignInFragment : BaseVMFragment<FragmentSignInBinding, SignInViewModel>() {
 
-    override fun getLayoutRes(): Int = R.layout.sign_in_fragment
+    override fun getLayoutRes(): Int = R.layout.fragment_sign_in
 
-    override fun setViewModel() {
+    override fun setBinding() {
         binding.vm = viewModel
     }
 

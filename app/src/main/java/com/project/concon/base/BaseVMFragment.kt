@@ -26,9 +26,9 @@ abstract class BaseVMFragment<B: ViewDataBinding, VM: ViewModel> : BaseFragment<
         binding.lifecycleOwner = viewLifecycleOwner
         // todo owner 를 this 로 해도될지 테스트..
         viewModel = ViewModelProvider(this, viewModelFactory)[viewModel.javaClass]
-        setViewModel()
+        setBinding()
         return binding.root
     }
 
-    abstract fun setViewModel()
+    abstract fun setBinding()
 }

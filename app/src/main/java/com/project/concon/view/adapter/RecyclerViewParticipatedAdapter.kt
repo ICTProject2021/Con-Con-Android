@@ -6,17 +6,16 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
 import com.project.concon.R
+import com.project.concon.model.remote.dto.response.Contest
 import com.project.concon.view.bind.setImage
-import com.project.concon.model.remote.dto.response.ParticipatedContest
 import java.text.SimpleDateFormat
 import java.util.*
 
 class RecyclerViewParticipatedAdapter :
     RecyclerView.Adapter<RecyclerViewParticipatedAdapter.ViewHolder>() {
 
-    private var dataList = mutableListOf<ParticipatedContest>()
+    private var dataList = mutableListOf<Contest>()
     private lateinit var mListener: OnItemClickListener
 
     interface OnItemClickListener {
@@ -29,9 +28,9 @@ class RecyclerViewParticipatedAdapter :
         }
     }
 
-    fun setData(data: List<ParticipatedContest>) {
+    fun setList(list: List<Contest>) {
         this.dataList.clear()
-        this.dataList.addAll(data)
+        this.dataList.addAll(list)
         notifyDataSetChanged()
     }
 
@@ -41,13 +40,13 @@ class RecyclerViewParticipatedAdapter :
         val profile: ImageView = view.findViewById(R.id.item_profile)
         val user: TextView = view.findViewById(R.id.item_user)
 
-        fun bind(data: ParticipatedContest) {
+        fun bind(data: Contest) {
             title.text = data.title
             dueLine.text = getDataText(data.duedate)
             user.text = data.host
 
-            if (data.profilepicture != null) {
-                profile.setImage(data.profilepicture)
+            if (data.profile != null) {
+                profile.setImage(data.profile)
             }
         }
 

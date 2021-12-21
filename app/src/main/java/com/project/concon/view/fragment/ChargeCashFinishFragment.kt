@@ -1,26 +1,27 @@
 package com.project.concon.view.fragment
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import com.project.concon.R
-import com.project.concon.databinding.ChargeCashFinishFragmentBinding
+import com.project.concon.databinding.FragmentChargeCashFinishBinding
 import com.project.concon.viewmodel.ChargeCashViewModel
 
+/** 메이비 삭제 예정 */
 class ChargeCashFinishFragment : Fragment() {
 
     private val viewModel: ChargeCashViewModel by activityViewModels()
-    private lateinit var binding: ChargeCashFinishFragmentBinding
+    private lateinit var binding: FragmentChargeCashFinishBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = DataBindingUtil.inflate(inflater, R.layout.charge_cash_finish_fragment, container, false)
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_charge_cash_finish, container, false)
         return binding.root
     }
 

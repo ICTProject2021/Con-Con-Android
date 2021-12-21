@@ -6,31 +6,28 @@ import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
 import android.util.Log
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
-import androidx.databinding.DataBindingUtil
 import androidx.databinding.ObservableArrayList
-import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
-import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.project.concon.R
+import com.project.concon.base.BaseVMFragment
+import com.project.concon.databinding.FragmentJoinContestBinding
+import com.project.concon.utils.MessageUtils
 import com.project.concon.view.adapter.RecyclerViewJoinContestAdapter
 import com.project.concon.view.adapter.RecyclerViewJoinContestImageAdapter
-import com.project.concon.databinding.JoinContestFragmentBinding
-import com.project.concon.utils.MessageUtils
 import com.project.concon.viewmodel.JoinContestViewModel
 import java.io.IOException
 
-class JoinContestFragment : Fragment() {
+class JoinContestFragment : BaseVMFragment<FragmentJoinContestBinding, JoinContestViewModel>() {
 
-    private val navController by lazy { findNavController() }
+    override fun getLayoutRes(): Int = R.layout.fragment_join_contest
 
-    private lateinit var binding: JoinContestFragmentBinding
-    private val viewModel: JoinContestViewModel by viewModels()
+    override fun setBinding() {
+        binding.participantList = ObservableArrayList()
+        binding.vm = viewModel
+    }
 
     private val navArgs by navArgs<JoinContestFragmentArgs>()
 
@@ -38,17 +35,6 @@ class JoinContestFragment : Fragment() {
     private val joinAdapter = RecyclerViewJoinContestAdapter()
 
     private lateinit var resultLauncher: ActivityResultLauncher<Intent>
-
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        binding = DataBindingUtil.inflate(inflater, R.layout.join_contest_fragment, container, false)
-        binding.lifecycleOwner = viewLifecycleOwner
-        binding.participantList = ObservableArrayList()
-        binding.vm = viewModel
-        return binding.root
-    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -113,17 +99,16 @@ class JoinContestFragment : Fragment() {
                 } catch(e: IOException) {
                     e.printStackTrace()
                 }
-
             }
         }
     }
 
     private fun observe() = with(viewModel) {
-        getParticipantInfoRes.observe(viewLifecycleOwner) {
-            joinAdapter.setList(it!!)
+        isSuccessGetParticipantInfo.observe(viewLifecycleOwner) {
+            joinAdapter.setList(it)
         }
 
-        postParticipantRes.observe(viewLifecycleOwner) {
+        isSuccessPostParticipate.observe(viewLifecycleOwner) {
             content.value = ""
             getParticipantInfo(navArgs.id)
         }
@@ -150,5 +135,4 @@ class JoinContestFragment : Fragment() {
     private fun navigateToContestDetail() {
         navController.navigate(JoinContestFragmentDirections.actionJoinContestFragmentToContestDetailFragment(navArgs.id))
     }
-
 }

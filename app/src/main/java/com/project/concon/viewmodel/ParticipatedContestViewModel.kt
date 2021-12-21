@@ -8,22 +8,23 @@ import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.schedulers.Schedulers
 import javax.inject.Inject
 
-class ParticipatedContestViewModel @Inject constructor(private val contestRepository: ContestRepository): BaseViewModel() {
-    private val participatedLiveData: MutableLiveData<List<Contest>> = MutableLiveData()
+class ParticipatedContestViewModel @Inject constructor(
+    private val contestRepository: ContestRepository
+): BaseViewModel() {
+    val isSuccess: MutableLiveData<List<Contest>> = MutableLiveData()
     val isFailure: MutableLiveData<String> = MutableLiveData()
 
-    fun getObserver() : MutableLiveData<List<Contest>> {
-        return participatedLiveData
-    }
-
     fun getMyContest() {
+        isLoading.value = true
         contestRepository.getMyParticipatedContest()
             .observeOn(Schedulers.io())
             .subscribeOn(AndroidSchedulers.mainThread())
             .subscribe({
-                participatedLiveData.postValue(it)
+                isSuccess.postValue(it)
+                isLoading.value = false
             }, {
                 isFailure.postValue(it.message)
+                isLoading.value = false
             }).apply { disposable.add(this) }
     }
 }

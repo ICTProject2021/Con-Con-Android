@@ -1,56 +1,40 @@
 package com.project.concon.view.fragment
 
 import android.os.Bundle
-import android.util.Log
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
-import androidx.databinding.DataBindingUtil
-import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
-import androidx.navigation.NavController
-import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.project.concon.R
-import com.project.concon.databinding.ContestDetailFragmentBinding
+import com.project.concon.base.BaseVMFragment
+import com.project.concon.databinding.FragmentContestDetailBinding
 import com.project.concon.model.remote.dto.response.ContestDetail
 import com.project.concon.utils.MessageUtils
 import com.project.concon.viewmodel.ContestDetailViewModel
 import java.text.SimpleDateFormat
 import java.util.*
 
-class ContestDetailFragment : Fragment() {
+class ContestDetailFragment : BaseVMFragment<FragmentContestDetailBinding, ContestDetailViewModel>() {
 
-    private val navController: NavController by lazy { findNavController() }
+    override fun getLayoutRes(): Int = R.layout.fragment_contest_detail
 
-    private lateinit var binding: ContestDetailFragmentBinding
-    private val viewModel: ContestDetailViewModel by viewModels()
+    override fun setBinding() {
+        binding.vm = viewModel
+        binding.data = ContestDetail(0, "", "", "", "", "", "", false, listOf())
+    }
 
     private lateinit var now: String
     private lateinit var contestDetail: ContestDetail
 
     private val args by navArgs<ContestDetailFragmentArgs>()
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        binding = DataBindingUtil.inflate(inflater, R.layout.contest_detail_fragment, container, false)
-        binding.lifecycleOwner = viewLifecycleOwner
-        binding.vm = viewModel
-        binding.data = ContestDetail(0, "", "", "", "", "", "", false, listOf())
-        return binding.root
-    }
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        observe()
 
         val time = Calendar.getInstance().time
         now = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(time)
 
         viewModel.getContestDetail(args.id)
-
-        observe()
 
         binding.btnBackContestDetail.setOnClickListener {
             navigateToMain()
@@ -77,25 +61,21 @@ class ContestDetailFragment : Fragment() {
             }
         }
 
-        getContestDetailRes.observe(viewLifecycleOwner) { data ->
-            when(data) {
-                null ->
-                    MessageUtils.showFailDialog(requireActivity(), getString(R.string.fail_server))
+        isSuccess.observe(viewLifecycleOwner) {
+            contestDetail = it
+            binding.data = it
 
-                else -> {
-                    contestDetail = data
-                    binding.data = data
-
-                    Log.d("detail", "${binding.data?.duedate}, $now, ${binding.data?.duedate!! < now}")
-                    if (data.duedate < now) {
-                        if (contestDetail.isHost) {
-                            binding.btnJoinContestDetail.text = "우승자 선택하기"
-                        } else {
-                            binding.btnJoinContestDetail.text = "대회 결과 조회하기"
-                        }
-                    }
+            if (it.duedate < now) {
+                if (contestDetail.isHost) {
+                    binding.btnJoinContestDetail.text = "우승자 선택하기"
+                } else {
+                    binding.btnJoinContestDetail.text = "대회 결과 조회하기"
                 }
             }
+        }
+
+        isFailure.observe(viewLifecycleOwner) {
+            MessageUtils.showFailDialog(requireActivity(), getString(R.string.fail_server))
         }
     }
 

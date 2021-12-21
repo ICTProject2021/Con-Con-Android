@@ -1,24 +1,24 @@
 package com.project.concon.view.fragment
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.project.concon.R
-import com.project.concon.databinding.ChargeCashFragmentBinding
+import com.project.concon.databinding.FragmentChargeCashBinding
 import com.project.concon.utils.MessageUtils
 import com.project.concon.viewmodel.ChargeCashViewModel
-
+/** 삭제 예정 */
 class ChargeCashFragment : Fragment() {
 
     private val navController by lazy { findNavController() }
 
-    private lateinit var binding: ChargeCashFragmentBinding
+    private lateinit var binding: FragmentChargeCashBinding
     private val viewModel: ChargeCashViewModel by viewModels()
 
     private val buttons = mutableListOf<Button>()
@@ -27,7 +27,7 @@ class ChargeCashFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = DataBindingUtil.inflate(inflater, R.layout.charge_cash_fragment, container, false)
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_charge_cash, container, false)
         binding.vm = viewModel
         binding.lifecycleOwner = viewLifecycleOwner
         return binding.root
@@ -56,9 +56,9 @@ class ChargeCashFragment : Fragment() {
 
         binding.btnConfirm.setOnClickListener {
             when {
-                error.value != "" -> {
-                    putCharge()
-                }
+//                error.value != "" -> {
+//                    putCharge()
+//                }
 
                 cash.value == "" ->
                     error.value = "이잉익잉 돈 입력해잉잉"

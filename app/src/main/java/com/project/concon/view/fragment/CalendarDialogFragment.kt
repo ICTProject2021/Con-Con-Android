@@ -1,4 +1,5 @@
 /**
+ * 이친구도 삭제 예정
  * 커스텀 캘린더뷰 클래스
  * 인데 시간 남으면 구현하도록 하겠습니다 일단 기본 material date picker 사용
  * */
@@ -12,9 +13,11 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.DialogFragment
-import com.project.concon.databinding.CalendarDialogFragmentBinding
-import com.prolificinteractive.materialcalendarview.*
 import com.project.concon.R
+import com.project.concon.databinding.FragmentCalendarDialogBinding
+import com.prolificinteractive.materialcalendarview.CalendarDay
+import com.prolificinteractive.materialcalendarview.DayViewDecorator
+import com.prolificinteractive.materialcalendarview.DayViewFacade
 
 class CalendarDialogFragment : DialogFragment() {
 
@@ -22,13 +25,13 @@ class CalendarDialogFragment : DialogFragment() {
         isCancelable = false
     }
 
-    private lateinit var binding: CalendarDialogFragmentBinding
+    private lateinit var binding: FragmentCalendarDialogBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = DataBindingUtil.inflate(inflater, R.layout.calendar_dialog_fragment, container, false)
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_calendar_dialog, container, false)
 
         return binding.root
     }

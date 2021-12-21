@@ -2,36 +2,21 @@ package com.project.concon.view.fragment
 
 import android.content.Intent
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
-import androidx.databinding.DataBindingUtil
-import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
-import androidx.navigation.NavController
-import androidx.navigation.fragment.findNavController
 import com.project.concon.R
+import com.project.concon.base.BaseVMFragment
+import com.project.concon.databinding.FragmentSignUpBinding
 import com.project.concon.utils.MessageUtils
 import com.project.concon.utils.PreferenceUtils
-import com.project.concon.viewmodel.SignUpViewModel
-import com.project.concon.databinding.SignUpFragmentBinding
 import com.project.concon.view.activity.MainActivity
+import com.project.concon.viewmodel.SignUpViewModel
 
-class SignUpFragment : Fragment() {
+class SignUpFragment : BaseVMFragment<FragmentSignUpBinding, SignUpViewModel>() {
 
-    private val navController: NavController by lazy { findNavController() }
+    override fun getLayoutRes(): Int = R.layout.fragment_sign_up
 
-    private val viewModel: SignUpViewModel by viewModels()
-    private lateinit var binding: SignUpFragmentBinding
-
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        binding = DataBindingUtil.inflate(inflater, R.layout.sign_up_fragment, container, false)
-        binding.lifecycleOwner = viewLifecycleOwner
+    override fun setBinding() {
         binding.vm = viewModel
-        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -42,13 +27,13 @@ class SignUpFragment : Fragment() {
         binding.motionLayoutSignUp.transitionToStart()
         binding.motionLayoutSignUp.transitionToEnd()
 
-        /* onClick */
         binding.fabCloseSignUp.setOnClickListener {
             navigateToIntro()
         }
     }
 
     private fun observe() = with(viewModel) {
+        // todo 존나 중복돼 보이는 signUpBtnEnabled 없애기
         id.observe(viewLifecycleOwner) {
             idErr.value = when(it.isBlank()) {
                 true -> getString(R.string.error_input_id)
@@ -81,25 +66,17 @@ class SignUpFragment : Fragment() {
             signUpBtnEnabled()
         }
 
-        postCheckIdRes.observe(viewLifecycleOwner) {
-            when (it?.msg) {
-                null -> MessageUtils.showFailDialog(requireActivity(), getString(R.string.fail_server))
-
-                "available" -> idCheck.value = true
-
-                "exist"  -> MessageUtils.showToast(requireContext(), "중복된 아이디입니다.")
-            }
+        isSuccessCheckId.observe(viewLifecycleOwner) {
+            idCheck.value = true
         }
 
-        postSignUpRes.observe(viewLifecycleOwner) {
-            when (it) {
-                null -> MessageUtils.showFailDialog(requireActivity(), getString(R.string.fail_server))
+        isSuccessSignUp.observe(viewLifecycleOwner) {
+            PreferenceUtils.token = it
+            navigateToMain()
+        }
 
-                else -> {
-                    PreferenceUtils.token = it.msg
-                    navigateToMain()
-                }
-            }
+        isFailure.observe(viewLifecycleOwner) {
+            MessageUtils.showFailDialog(requireActivity(), it)
         }
     }
 

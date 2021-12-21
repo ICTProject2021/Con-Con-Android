@@ -1,41 +1,25 @@
 package com.project.concon.view.fragment
 
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
-import androidx.databinding.DataBindingUtil
-import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
-import androidx.navigation.fragment.findNavController
 import com.project.concon.R
-import com.project.concon.view.adapter.RecyclerViewPaymentAdapter
-import com.project.concon.view.data.Payment
-import com.project.concon.view.data.SkuData
-import com.project.concon.databinding.PaymentFragmentBinding
+import com.project.concon.base.BaseVMFragment
+import com.project.concon.databinding.FragmentPaymentBinding
 import com.project.concon.utils.BillingManager
 import com.project.concon.utils.MessageUtils
 import com.project.concon.utils.PurchaseMessageListener
+import com.project.concon.view.adapter.RecyclerViewPaymentAdapter
+import com.project.concon.view.data.Payment
+import com.project.concon.view.data.SkuData
 import com.project.concon.viewmodel.PaymentViewModel
 
-class PaymentFragment : Fragment() {
+class PaymentFragment : BaseVMFragment<FragmentPaymentBinding, PaymentViewModel>() {
 
-    private val navController by lazy {
-        findNavController()
-    }
+    override fun getLayoutRes(): Int = R.layout.fragment_payment
 
-    private val viewModel: PaymentViewModel by viewModels()
-    private lateinit var binding: PaymentFragmentBinding
-    
+    override fun setBinding() {}
+
     private lateinit var manager: BillingManager
-
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        binding = DataBindingUtil.inflate(inflater, R.layout.payment_fragment, container, false)
-        return binding.root
-    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

@@ -1,33 +1,24 @@
 package com.project.concon.view.fragment
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.project.concon.R
+import com.project.concon.base.BaseFragment
 import com.project.concon.databinding.FragmentPrizeBinding
 import com.project.concon.viewmodel.CreateContestViewModel
 import com.project.concon.viewmodel.PrizeDialogViewModel
 import java.text.NumberFormat
 import java.util.*
 
-class PrizeFragment : Fragment() {
+class PrizeFragment : BaseFragment<FragmentPrizeBinding>() {
 
-    private lateinit var binding: FragmentPrizeBinding
+    override fun getLayoutRes(): Int = R.layout.fragment_prize
+
     private val viewModelPrize: PrizeDialogViewModel by activityViewModels()
     private val cViewModel: CreateContestViewModel by activityViewModels()
-
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        binding = FragmentPrizeBinding.inflate(inflater, container, false)
-        return binding.root
-    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -81,7 +72,7 @@ class PrizeFragment : Fragment() {
     }
 
     private fun totalPrice() : Int {
-        var result: Int = 0
+        var result = 0
         viewModelPrize.prizeList.value?.forEach {
             result += it.price
         }

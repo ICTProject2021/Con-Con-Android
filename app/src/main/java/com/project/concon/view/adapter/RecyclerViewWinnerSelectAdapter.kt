@@ -6,35 +6,32 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
 import com.project.concon.R
-import com.project.concon.view.bind.setImage
 import com.project.concon.model.remote.dto.response.Participant
-import com.project.concon.model.remote.dto.response.ParticipatedContest
+import com.project.concon.view.bind.setImage
 
 class RecyclerViewWinnerSelectAdapter : RecyclerView.Adapter<RecyclerViewWinnerSelectAdapter.ViewHolder>() {
 
-    private val dataList = mutableListOf<Participant>()
-    private lateinit var mListener: onItemClickListener
+    private lateinit var setOnItemClickListener: OnItemClickListener
 
-    interface onItemClickListener {
-        fun onClick(v: View, position: Int)
+    interface OnItemClickListener {
+        fun onClick(v: View, participant: Participant)
     }
 
-    fun setOnItemClickListener(listener: onItemClickListener?) {
-        if (listener != null) {
-            this.mListener = listener
+    fun setOnItemClickListener(listener: (View, Participant) -> Unit) {
+        setOnItemClickListener = object : OnItemClickListener {
+            override fun onClick(v: View, participant: Participant) {
+                listener(v, participant)
+            }
         }
     }
+
+    private val dataList = mutableListOf<Participant>()
 
     fun setData(dataList: List<Participant>) {
         this.dataList.clear()
         this.dataList.addAll(dataList)
         notifyDataSetChanged()
-    }
-
-    fun getData(position: Int) : Participant {
-        return dataList[position]
     }
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
@@ -58,7 +55,7 @@ class RecyclerViewWinnerSelectAdapter : RecyclerView.Adapter<RecyclerViewWinnerS
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.bind(dataList[position])
         holder.itemView.setOnClickListener {
-            mListener.onClick(it, position)
+            setOnItemClickListener.onClick(it, dataList[position])
         }
     }
 

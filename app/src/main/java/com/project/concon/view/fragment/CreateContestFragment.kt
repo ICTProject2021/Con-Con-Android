@@ -3,7 +3,6 @@ package com.project.concon.view.fragment
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,17 +10,18 @@ import android.widget.Toast
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
 import com.google.android.material.datepicker.MaterialDatePicker
 import com.project.concon.R
-import com.project.concon.view.adapter.RecyclerViewJoinContestImageAdapter
-import com.project.concon.databinding.CreateContestFragmentBinding
+import com.project.concon.databinding.FragmentCreateContestBinding
 import com.project.concon.model.remote.dto.request.ContestRequest
 import com.project.concon.model.remote.dto.response.Prize
 import com.project.concon.utils.ImagePicker
 import com.project.concon.utils.MessageUtils
+import com.project.concon.view.adapter.RecyclerViewJoinContestImageAdapter
 import com.project.concon.viewmodel.CreateContestViewModel
 import com.project.concon.viewmodel.PrizeDialogViewModel
 import java.text.NumberFormat
@@ -31,7 +31,7 @@ class CreateContestFragment : Fragment() {
 
     private val navController: NavController by lazy { findNavController() }
 
-    private lateinit var binding: CreateContestFragmentBinding
+    private lateinit var binding: FragmentCreateContestBinding
     private val viewModel: CreateContestViewModel by activityViewModels()
     private val pViewModelPrize: PrizeDialogViewModel by activityViewModels()
 
@@ -46,7 +46,7 @@ class CreateContestFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = DataBindingUtil.inflate(inflater, R.layout.create_contest_fragment, container, false)
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_create_contest, container, false)
         binding.vm = viewModel
         binding.lifecycleOwner = viewLifecycleOwner
         return binding.root
@@ -63,18 +63,6 @@ class CreateContestFragment : Fragment() {
         /* focus 일 때, 마지막에 원을 떼고, focus가 아닐 때 원을 붙임 */
 
         binding.etPrizeCreateContest.apply {
-//            setOnFocusChangeListener { _, hasFocus ->
-//                if (hasFocus) {
-//                    setText((text.toString()).replace("원", ""))
-//                } else {
-//                    if (!text.isNullOrBlank()) {
-//
-////                        NumberFormat.getInstance  (Locale.getDefault()).format(text.toString().trim())
-//                        setText("${text}원")
-//                    }
-//                }
-//            }
-
             val numberFormat = NumberFormat.getCurrencyInstance(Locale.getDefault())
             val cash = numberFormat.format(getTotalPrice())
 

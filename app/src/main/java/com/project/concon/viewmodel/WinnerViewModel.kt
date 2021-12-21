@@ -12,7 +12,7 @@ class WinnerViewModel @Inject constructor(
     private val repository: ContestRepository
 ) : BaseViewModel() {
 
-    val isSuccessGetWinnerList = MutableLiveData<List<Winner>>()
+    val isSuccess = MutableLiveData<List<Winner>>()
     val isFailure = MutableLiveData<String>()
 
     fun getWinnerList(contestId: Int) {
@@ -20,7 +20,7 @@ class WinnerViewModel @Inject constructor(
             .observeOn(Schedulers.io())
             .subscribeOn(AndroidSchedulers.mainThread())
             .subscribe({
-                isSuccessGetWinnerList.value = it
+                isSuccess.value = it
             }, {
                 isFailure.value = it.message
             }).apply { disposable.add(this) }

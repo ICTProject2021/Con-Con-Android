@@ -1,30 +1,14 @@
 package com.project.concon.view.fragment
 
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
-import androidx.fragment.app.Fragment
-import androidx.navigation.NavController
-import androidx.navigation.fragment.findNavController
 import com.project.concon.R
-import com.project.concon.databinding.IntroFragmentBinding
+import com.project.concon.base.BaseFragment
+import com.project.concon.databinding.FragmentIntroBinding
 
-class IntroFragment : Fragment() {
+class IntroFragment : BaseFragment<FragmentIntroBinding>() {
 
-    private val navController: NavController by lazy {
-        findNavController()
-    }
-
-    private lateinit var binding: IntroFragmentBinding
-
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        binding = IntroFragmentBinding.inflate(inflater, container, false)
-        return binding.root
-    }
+    override fun getLayoutRes(): Int = R.layout.fragment_intro
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
