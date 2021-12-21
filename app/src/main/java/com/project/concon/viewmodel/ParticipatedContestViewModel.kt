@@ -3,6 +3,7 @@ package com.project.concon.viewmodel
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.project.concon.base.BaseViewModel
 import com.project.concon.model.remote.RetrofitInstance
 import com.project.concon.model.remote.dao.AccountService
 import com.project.concon.model.remote.dto.response.Contest
@@ -15,7 +16,7 @@ import retrofit2.Call
 import retrofit2.Response
 import javax.inject.Inject
 
-class ParticipatedContestViewModel @Inject constructor(private val contestRepository: ContestRepository): ViewModel() {
+class ParticipatedContestViewModel @Inject constructor(private val contestRepository: ContestRepository): BaseViewModel() {
     private val participatedLiveData: MutableLiveData<List<Contest>> = MutableLiveData()
     val isFailure: MutableLiveData<String> = MutableLiveData()
 
@@ -47,6 +48,6 @@ class ParticipatedContestViewModel @Inject constructor(private val contestReposi
             participatedLiveData.postValue(it)
         }, {
             isFailure.postValue(it.message)
-        })
+        }).apply { disposable.add(this) }
     }
 }

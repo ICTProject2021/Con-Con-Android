@@ -5,6 +5,7 @@ import android.net.Uri
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.project.concon.base.BaseViewModel
 import com.project.concon.model.remote.RetrofitInstance
 import com.project.concon.model.remote.dto.response.Msg
 import com.project.concon.model.remote.dto.response.Participant
@@ -19,7 +20,8 @@ import retrofit2.Callback
 import retrofit2.Response
 import javax.inject.Inject
 
-class JoinContestViewModel @Inject constructor(private val contestRepository: ContestRepository) : ViewModel() {
+class JoinContestViewModel @Inject constructor(private val contestRepository: ContestRepository) : BaseViewModel() {
+
     val content = MutableLiveData("")
     val fileList = MutableLiveData<List<Uri>>(listOf())
 
@@ -28,8 +30,6 @@ class JoinContestViewModel @Inject constructor(private val contestRepository: Co
     val isSuccessPutLikes = MutableLiveData<String?>()
 
     val isFailure: MutableLiveData<String> = MutableLiveData()
-
-    val isLoading = MutableLiveData(false)
 
 //    fun getParticipantInfo(id: Int) {
 //        isLoading.value = true
@@ -68,7 +68,7 @@ class JoinContestViewModel @Inject constructor(private val contestRepository: Co
         }, {
             isFailure.postValue(it.message)
             isLoading.value = false
-        })
+        }).apply { disposable.add(this) }
 
     }
 

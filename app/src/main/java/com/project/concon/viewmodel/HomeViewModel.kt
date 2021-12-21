@@ -2,6 +2,7 @@ package com.project.concon.viewmodel
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.project.concon.base.BaseViewModel
 import com.project.concon.model.remote.RetrofitInstance
 import com.project.concon.model.remote.dao.ContestService
 import com.project.concon.model.remote.dto.response.Contest
@@ -12,12 +13,10 @@ import io.reactivex.rxjava3.schedulers.Schedulers
 import io.reactivex.rxjava3.schedulers.Schedulers.io
 import javax.inject.Inject
 
-class HomeViewModel @Inject constructor(private val contestRepository: ContestRepository) : ViewModel() {
+class HomeViewModel @Inject constructor(private val contestRepository: ContestRepository) : BaseViewModel() {
 
     private val isSuccess = MutableLiveData(listOf<Contest>())
     private val isFailure: MutableLiveData<String> = MutableLiveData()
-
-    val isLoading = MutableLiveData(false)
 
     fun getContestLiveDataObserver(): MutableLiveData<List<Contest>> {
         return isSuccess
@@ -32,7 +31,7 @@ class HomeViewModel @Inject constructor(private val contestRepository: ContestRe
         }, {
             isFailure.postValue(it.message)
             isLoading.value = false
-        })
+        }).apply { disposable.add(this) }
     }
 //
 //
