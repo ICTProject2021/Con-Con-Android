@@ -1,18 +1,18 @@
 package com.project.concon.viewmodel
 
-import android.util.Log
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-import com.project.concon.model.remote.RetrofitInstance
+import com.project.concon.base.BaseViewModel
 import com.project.concon.model.remote.dto.request.IdRequest
 import com.project.concon.model.remote.dto.request.SignUpRequest
-import com.project.concon.model.remote.dto.response.Msg
+import com.project.concon.model.repository.AccountRepository
 import com.project.concon.utils.isNotBlankAll
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
+import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
+import io.reactivex.rxjava3.schedulers.Schedulers
+import javax.inject.Inject
 
-class SignUpViewModel : ViewModel() {
+class SignUpViewModel @Inject constructor(
+    private val repository: AccountRepository
+) : BaseViewModel() {
 
     val id = MutableLiveData<String>()
     val idCheck = MutableLiveData<Boolean>()
@@ -27,42 +27,22 @@ class SignUpViewModel : ViewModel() {
 
     val btnEnabled = MutableLiveData(false)
 
-    private val accountService by lazy { RetrofitInstance.accountService }
-
-    val postCheckIdRes = MutableLiveData<Msg?>()
-    val postSignUpRes = MutableLiveData<Msg?>()
-
-    val isLoading = MutableLiveData(false)
+    val isSuccessCheckId = MutableLiveData<String>()
+    val isSuccessSignUp = MutableLiveData<String>()
+    val isFailure = MutableLiveData<String>()
 
     fun postCheckId() {
-        if (id.value.isNullOrBlank()) return
-
-        val idReq = IdRequest(id.value!!)
-
-        accountService.postCheckId(idReq).enqueue(
-            object : Callback<Msg> {
-                override fun onResponse(call: Call<Msg>, response: Response<Msg>) {
-                    Log.d("postCheckId", "${response.code()}-${response.message()}: ${response.body()}")
-
-                    if (response.isSuccessful)
-                        postCheckIdRes.postValue(response.body())
-                }
-
-                override fun onFailure(call: Call<Msg>, t: Throwable) {
-                    Log.d("postCheckId", t.message.toString())
-                    postSignUpRes.postValue(null)
-                }
-            }
-        )
+        repository.postCheckId(IdRequest(id.value!!))
+            .observeOn(Schedulers.io())
+            .subscribeOn(AndroidSchedulers.mainThread())
+            .subscribe({
+                isSuccessCheckId.value = it
+            }, {
+                isFailure.value = it.message
+            })
     }
 
     fun postSignUp() {
-        if (!idCheck.value!!) {
-            // todo 다이얼로그 띄우기
-            Log.d("signUpViewModel", "중복 체크 안 함")
-            return
-        }
-
         isLoading.value = true
 
         val signUpReq = SignUpRequest(
@@ -72,24 +52,14 @@ class SignUpViewModel : ViewModel() {
             nickname.value!!
         )
 
-        accountService.postSignUp(signUpReq).enqueue(
-            object : Callback<Msg> {
-                override fun onResponse(call: Call<Msg>, response: Response<Msg>) {
-                    Log.d("postSignUp", "${response.code()}: ${response.body()}")
-                    Log.d("postSignUp", response.raw().toString())
-
-                    if (response.isSuccessful)
-                        postSignUpRes.postValue(response.body())
-
-                    isLoading.value = false
-                }
-
-                override fun onFailure(call: Call<Msg>, t: Throwable) {
-                    Log.d("postSignUp", t.message.toString())
-                    isLoading.value = false
-                }
-            }
-        )
+        repository.postSignUp(signUpReq)
+            .observeOn(Schedulers.io())
+            .subscribeOn(AndroidSchedulers.mainThread())
+            .subscribe({
+                isSuccessSignUp.value = it
+            }, {
+                isFailure.value = it.message
+            })
     }
 
     // 리스트의 요소의 값 중 하나가 공백이면 false

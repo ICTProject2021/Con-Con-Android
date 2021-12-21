@@ -1,38 +1,28 @@
 package com.project.concon.viewmodel
 
-import android.util.Log
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-import com.project.concon.model.remote.RetrofitInstance
-import com.project.concon.model.remote.dao.AccountService
+import com.project.concon.base.BaseViewModel
 import com.project.concon.model.remote.dto.response.Profile
-import retrofit2.Response
+import com.project.concon.model.repository.AccountRepository
+import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
+import io.reactivex.rxjava3.schedulers.Schedulers
+import javax.inject.Inject
 
-class ProfileViewModel : ViewModel() {
+class ProfileViewModel @Inject constructor(
+    private val repository: AccountRepository
+) : BaseViewModel() {
 
-    private val profileList: MutableLiveData<Profile> = MutableLiveData()
-    private val accountService : AccountService by lazy { RetrofitInstance.accountService }
+    val isSuccess = MutableLiveData<Profile>()
+    val isFailure = MutableLiveData<String>()
 
-    fun getProfileLiveDataObserver() : MutableLiveData<Profile> {
-        return profileList
-    }
-
-    fun callApi() {
-        val tag = "getProfile"
-
-        accountService.getProfile().enqueue(object : retrofit2.Callback<Profile> {
-            override fun onResponse(call: retrofit2.Call<Profile>, response: Response<Profile>) {
-                Log.d(tag, response.raw().toString())
-                Log.d(tag, response.body().toString())
-                if (response.isSuccessful)
-                    profileList.postValue(response.body())
-            }
-
-            override fun onFailure(call: retrofit2.Call<Profile>, t: Throwable) {
-                Log.d(tag, t.message.toString())
-                profileList.postValue(null)
-            }
-
-        })
+    fun getProfile() {
+        repository.getProfile()
+            .observeOn(Schedulers.io())
+            .subscribeOn(AndroidSchedulers.mainThread())
+            .subscribe({
+                isSuccess.value = it
+            }, {
+                isFailure.value = it.message
+            }).apply { disposable.add(this) }
     }
 }

@@ -32,6 +32,6 @@ class SignInViewModel @Inject constructor(
             }, {
                 isFailure.value = it.message
                 isLoading.value = false
-            })
+            }).apply { disposable.add(this) }
     }
 }

@@ -1,23 +1,22 @@
 package com.project.concon.viewmodel
 
-import android.util.Log
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-import com.project.concon.model.remote.RetrofitInstance
+import com.project.concon.base.BaseViewModel
 import com.project.concon.model.remote.dto.response.ContestDetail
 import com.project.concon.model.remote.dto.response.Prize
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
+import com.project.concon.model.repository.ContestRepository
+import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
+import io.reactivex.rxjava3.schedulers.Schedulers
 import java.text.NumberFormat
 import java.util.*
+import javax.inject.Inject
 
-class ContestDetailViewModel : ViewModel() {
+class ContestDetailViewModel @Inject constructor(
+    private val repository: ContestRepository
+) : BaseViewModel() {
 
-    private val contestService by lazy { RetrofitInstance.contestService }
-
-    val getContestDetailRes = MutableLiveData<ContestDetail?>()
-    val isLoading = MutableLiveData(false)
+    val isSuccess = MutableLiveData<ContestDetail>()
+    val isFailure = MutableLiveData<String>()
 
     fun toDate(date: String): String {
         return if (date.isNotEmpty()) {
@@ -40,26 +39,16 @@ class ContestDetailViewModel : ViewModel() {
     fun getContestDetail(id: Int) {
         isLoading.value = true
 
-        contestService.getContestDetail(id).enqueue(
-            object : Callback<ContestDetail> {
-                override fun onResponse(call: Call<ContestDetail>, response: Response<ContestDetail>) {
-                    Log.d("getContestDetail", "${response.code()}-${response.message()}: ${response.body()}")
-                    Log.d("getContestDetail", response.raw().toString())
-
-                    if (response.isSuccessful)
-                        getContestDetailRes.postValue(response.body())
-
-                    isLoading.value = false
-                }
-
-                override fun onFailure(call: Call<ContestDetail>, t: Throwable) {
-                    Log.d("getContestDetail", t.message.toString())
-                    getContestDetailRes.postValue(null)
-                    isLoading.value = false
-                }
-            }
-        )
+        repository.getContestDetail(id)
+            .observeOn(Schedulers.io())
+            .subscribeOn(AndroidSchedulers.mainThread())
+            .subscribe({
+                isSuccess.value = it
+                isLoading.value = false
+            }, {
+                isFailure.value = it.message
+                isLoading.value = false
+            }).apply { disposable.add(this) }
     }
-
 }
 

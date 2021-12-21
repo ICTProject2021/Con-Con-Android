@@ -1,34 +1,28 @@
 package com.project.concon.viewmodel
 
-import android.util.Log
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-import com.project.concon.model.remote.RetrofitInstance
-import com.project.concon.model.remote.dao.ContestService
+import com.project.concon.base.BaseViewModel
 import com.project.concon.model.remote.dto.response.Winner
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
+import com.project.concon.model.repository.ContestRepository
+import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
+import io.reactivex.rxjava3.schedulers.Schedulers
+import javax.inject.Inject
 
-class WinnerViewModel : ViewModel() {
-    val winnerLiveData = MutableLiveData<List<Winner>?>()
-    private val contestService: ContestService by lazy { RetrofitInstance.contestService }
+class WinnerViewModel @Inject constructor(
+    private val repository: ContestRepository
+) : BaseViewModel() {
 
-    fun callWinnerList(contestId: Int) {
-        contestService.getWinnerList(contestId).enqueue(object : Callback<List<Winner>> {
-            override fun onResponse(call: Call<List<Winner>>, response: Response<List<Winner>>) {
-                if (response.isSuccessful) {
-                    Log.d("getWinnerList", "${response.code()}-${response.message()}: ${response.body()}")
-                    Log.d("getWinnerList", response.raw().toString())
-                    winnerLiveData.postValue(response.body())
-                } else {
-                    winnerLiveData.postValue(null)
-                }
-            }
+    val isSuccessGetWinnerList = MutableLiveData<List<Winner>>()
+    val isFailure = MutableLiveData<String>()
 
-            override fun onFailure(call: Call<List<Winner>>, t: Throwable) {
-                winnerLiveData.postValue(null)
-            }
-        })
+    fun getWinnerList(contestId: Int) {
+        repository.getWinnerList(contestId)
+            .observeOn(Schedulers.io())
+            .subscribeOn(AndroidSchedulers.mainThread())
+            .subscribe({
+                isSuccessGetWinnerList.value = it
+            }, {
+                isFailure.value = it.message
+            }).apply { disposable.add(this) }
     }
 }
