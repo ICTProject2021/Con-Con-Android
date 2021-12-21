@@ -163,7 +163,6 @@
             android:background="@drawable/background_gradient"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:onClick="@{() -> vm.error.length() != 0 ? vm.anime() : vm.putCharge()}"
             android:text="확인"
             android:textColor="@color/white"
             app:layout_constraintBottom_toTopOf="@+id/tableLayout"

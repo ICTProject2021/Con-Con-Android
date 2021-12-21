@@ -4,8 +4,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.project.concon.databinding.ItemPaymentBinding
 import com.project.concon.view.data.Payment
-import com.project.concon.databinding.RvItemPaymentBinding
 
 class RecyclerViewPaymentAdapter(private val list: List<Payment>) : RecyclerView.Adapter<RecyclerViewPaymentAdapter.ViewHolder>() {
 
@@ -23,12 +23,12 @@ class RecyclerViewPaymentAdapter(private val list: List<Payment>) : RecyclerView
         }
     }
 
-    private lateinit var binding: RvItemPaymentBinding
+    private lateinit var binding: ItemPaymentBinding
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        binding = RvItemPaymentBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        binding = ItemPaymentBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return ViewHolder(binding.root)
     }
 

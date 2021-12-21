@@ -4,7 +4,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.project.concon.databinding.RvItemJoinContestBinding
+import com.project.concon.databinding.ItemJoinContestBinding
 import com.project.concon.model.remote.dto.response.Participant
 
 class RecyclerViewJoinContestAdapter : RecyclerView.Adapter<RecyclerViewJoinContestAdapter.ViewHolder>() {
@@ -25,12 +25,12 @@ class RecyclerViewJoinContestAdapter : RecyclerView.Adapter<RecyclerViewJoinCont
 
     private val list: MutableList<Participant> = mutableListOf()
 
-    private lateinit var binding: RvItemJoinContestBinding
+    private lateinit var binding: ItemJoinContestBinding
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        binding = RvItemJoinContestBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        binding = ItemJoinContestBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return ViewHolder(binding.root)
     }
 

@@ -7,20 +7,20 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.project.concon.databinding.RvItemJoinContestImageBinding
+import com.project.concon.databinding.ItemJoinContestImageBinding
 import com.project.concon.utils.ImagePicker
 
 class RecyclerViewJoinContestImageAdapter: RecyclerView.Adapter<RecyclerViewJoinContestImageAdapter.ViewHolder>() {
 
     private val list: MutableList<Uri> = mutableListOf()
 
-    private lateinit var binding: RvItemJoinContestImageBinding
+    private lateinit var binding: ItemJoinContestImageBinding
     private lateinit var context: Context
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        binding = RvItemJoinContestImageBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        binding = ItemJoinContestImageBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         context = parent.context
         return ViewHolder(
             binding.root
