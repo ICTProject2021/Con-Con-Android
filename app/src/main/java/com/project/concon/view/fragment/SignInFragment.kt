@@ -8,29 +8,38 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
 import com.project.concon.R
 import com.project.concon.databinding.SignInFragmentBinding
+import com.project.concon.model.repository.AccountRepository
 import com.project.concon.utils.MessageUtils
 import com.project.concon.utils.PreferenceUtils
 import com.project.concon.view.activity.MainActivity
 import com.project.concon.viewmodel.SignInViewModel
+import com.project.concon.viewmodel.factory.ViewModelFactory
+import javax.inject.Inject
 
 class SignInFragment : Fragment() {
+
+    @Inject
+    lateinit var viewModelFactory: ViewModelFactory
 
     private val navController: NavController by lazy {
         findNavController()
     }
 
     private lateinit var binding: SignInFragmentBinding
-    private val viewModel: SignInViewModel by viewModels()
+    private lateinit var viewModel: SignInViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         binding = DataBindingUtil.inflate(inflater, R.layout.sign_in_fragment, container, false)
+        viewModel = ViewModelProvider(this, viewModelFactory)[SignInViewModel::class.java]
+
         binding.vm = viewModel
         binding.lifecycleOwner = viewLifecycleOwner
         return binding.root
@@ -66,18 +75,18 @@ class SignInFragment : Fragment() {
 
 
         postSignInRes.observe(viewLifecycleOwner) {
-            if (it != null) {
-                when (it.msg) {
-                    "fail" -> MessageUtils.showFailDialog(requireActivity(), "아이디 혹은 비밀번호가\n올바르지 않습니다.")
-
-                    else -> {
-                        PreferenceUtils.token = it.msg
-                        navigateToMain()
-                    }
-                }
-            } else {
-                MessageUtils.showFailDialog(requireActivity(), getString(R.string.fail_server))
-            }
+//            if (it != null) {
+//                when (it.msg) {
+//                    "fail" -> MessageUtils.showFailDialog(requireActivity(), "아이디 혹은 비밀번호가\n올바르지 않습니다.")
+//
+//                    else -> {
+//                        PreferenceUtils.token = it.msg
+//                        navigateToMain()
+//                    }
+//                }
+//            } else {
+//                MessageUtils.showFailDialog(requireActivity(), getString(R.string.fail_server))
+//            }
         }
 
         isLoading.observe(viewLifecycleOwner) {
