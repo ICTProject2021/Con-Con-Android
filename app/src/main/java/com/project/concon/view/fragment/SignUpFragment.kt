@@ -36,7 +36,7 @@ class SignUpFragment : BaseVMFragment<FragmentSignUpBinding, SignUpViewModel>() 
         // todo 존나 중복돼 보이는 signUpBtnEnabled 없애기
         id.observe(viewLifecycleOwner) {
             idErr.value = when(it.isBlank()) {
-                true -> getString(R.string.error_input_id)
+                true -> getString(R.string.error_id)
                 false -> ""
             }
             signUpBtnEnabled()
@@ -44,7 +44,7 @@ class SignUpFragment : BaseVMFragment<FragmentSignUpBinding, SignUpViewModel>() 
 
         password.observe(viewLifecycleOwner) {
             pwErr.value = when(it.isBlank()) {
-                true -> getString(R.string.error_input_pw)
+                true -> getString(R.string.error_pw)
                 false -> ""
             }
             signUpBtnEnabled()

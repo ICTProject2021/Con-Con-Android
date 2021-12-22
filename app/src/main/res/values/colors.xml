@@ -1,22 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
+    <!--==========Basics Color==========-->
     <color name="purple_200">#FFBB86FC</color>
     <color name="purple_500">#FF6200EE</color>
     <color name="purple_700">#FF3700B3</color>
     <color name="teal_200">#FF03DAC5</color>
     <color name="teal_700">#FF018786</color>
+
+    <!--==========greyScales==========-->
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="grey1">#FFAEAEAE</color>
+    <color name="gray2">#FFC4C4C4</color>
 
-    <color name="light_grey">#FFAEAEAE</color>
+    <!--==========Quipper Color==========-->
     <color name="main_color">#FFEBA231</color>
-    <color name="calendar_main_color">#FFF96F7A</color>
-    <color name="gray">#FFC4C4C4</color>
-
-    <color name="enabled_btn_color">#FF707070</color>
-    
+    <color name="main_calendar_color">#FFF96F7A</color>
     <color name="main_gradient_start_color">#FFEBA231</color>
     <color name="main_gradient_end_color">#FFEA5514</color>
+    <color name="enabled_btn_color">#FF707070</color>
+    <color name="error_color">#FFF44336</color>
 
-    <color name="error">#FFF44336</color>
 </resources>

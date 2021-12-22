@@ -88,7 +88,7 @@
                     android:layout_height="1dp"
                     android:layout_marginTop="10dp"
                     android:layout_marginBottom="30dp"
-                    android:background="@color/light_grey" />
+                    android:background="@color/grey1" />
 
                 <com.google.android.material.textfield.TextInputLayout
                     style="@style/BaseTextInputLayout"

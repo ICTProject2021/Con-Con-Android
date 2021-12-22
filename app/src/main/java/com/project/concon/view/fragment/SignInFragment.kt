@@ -35,14 +35,14 @@ class SignInFragment : BaseVMFragment<FragmentSignInBinding, SignInViewModel>() 
     private fun observe() = with(viewModel) {
         id.observe(viewLifecycleOwner) {
             idErr.value = when(it.isNullOrBlank()) {
-                true -> getString(R.string.error_input_id)
+                true -> getString(R.string.error_id)
                 false -> ""
             }
         }
 
         pw.observe(viewLifecycleOwner) {
             pwErr.value = when(it.isNullOrBlank()) {
-                true -> getString(R.string.error_input_pw)
+                true -> getString(R.string.error_pw)
                 false -> ""
             }
         }
@@ -54,7 +54,7 @@ class SignInFragment : BaseVMFragment<FragmentSignInBinding, SignInViewModel>() 
 
         isFailure.observe(viewLifecycleOwner) {
             MessageUtils.showFailDialog(requireActivity(),
-                "${getString(R.string.fail_sign_in)}\n($it)")
+                "${getString(R.string.error_sign_in)}\n($it)")
         }
 
         isLoading.observe(viewLifecycleOwner) {

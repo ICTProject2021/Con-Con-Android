@@ -70,6 +70,27 @@
         <entry key="..\:/Github/2021IctProject/app/src/main/res/menu/bottom_navigation.xml" value="0.25885416666666666" />
         <entry key="..\:/Github/2021IctProject/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.171875" />
         <entry key="..\:/Github/2021IctProject/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.171875" />
+        <entry key="..\:/Users/MinHyukJi/Documents/GitHub/Con-Con-Android/app/src/main/res/layout/activity_intro.xml" value="0.7244791666666667" />
+        <entry key="..\:/Users/MinHyukJi/Documents/GitHub/Con-Con-Android/app/src/main/res/layout/activity_main.xml" value="0.7244791666666667" />
+        <entry key="..\:/Users/MinHyukJi/Documents/GitHub/Con-Con-Android/app/src/main/res/layout/fragment_calendar_dialog.xml" value="0.7244791666666667" />
+        <entry key="..\:/Users/MinHyukJi/Documents/GitHub/Con-Con-Android/app/src/main/res/layout/fragment_charge_cash_finish.xml" value="0.7244791666666667" />
+        <entry key="..\:/Users/MinHyukJi/Documents/GitHub/Con-Con-Android/app/src/main/res/layout/fragment_create_contest.xml" value="0.7244791666666667" />
+        <entry key="..\:/Users/MinHyukJi/Documents/GitHub/Con-Con-Android/app/src/main/res/layout/fragment_dialog_default.xml" value="0.7244791666666667" />
+        <entry key="..\:/Users/MinHyukJi/Documents/GitHub/Con-Con-Android/app/src/main/res/layout/fragment_fail_dialog.xml" value="0.7244791666666667" />
+        <entry key="..\:/Users/MinHyukJi/Documents/GitHub/Con-Con-Android/app/src/main/res/layout/fragment_home.xml" value="0.7244791666666667" />
+        <entry key="..\:/Users/MinHyukJi/Documents/GitHub/Con-Con-Android/app/src/main/res/layout/fragment_intro.xml" value="0.7244791666666667" />
+        <entry key="..\:/Users/MinHyukJi/Documents/GitHub/Con-Con-Android/app/src/main/res/layout/fragment_join_contest.xml" value="0.6649616368286445" />
+        <entry key="..\:/Users/MinHyukJi/Documents/GitHub/Con-Con-Android/app/src/main/res/layout/fragment_participated_contest.xml" value="0.7244791666666667" />
+        <entry key="..\:/Users/MinHyukJi/Documents/GitHub/Con-Con-Android/app/src/main/res/layout/fragment_prize_dialog.xml" value="0.7244791666666667" />
+        <entry key="..\:/Users/MinHyukJi/Documents/GitHub/Con-Con-Android/app/src/main/res/layout/fragment_sign_up.xml" value="0.7244791666666667" />
+        <entry key="..\:/Users/MinHyukJi/Documents/GitHub/Con-Con-Android/app/src/main/res/layout/fragment_winner.xml" value="0.7244791666666667" />
+        <entry key="..\:/Users/MinHyukJi/Documents/GitHub/Con-Con-Android/app/src/main/res/layout/item_join_contest.xml" value="0.7244791666666667" />
+        <entry key="..\:/Users/MinHyukJi/Documents/GitHub/Con-Con-Android/app/src/main/res/layout/item_join_contest_image.xml" value="0.7244791666666667" />
+        <entry key="..\:/Users/MinHyukJi/Documents/GitHub/Con-Con-Android/app/src/main/res/layout/item_join_contest_photo.xml" value="0.7244791666666667" />
+        <entry key="..\:/Users/MinHyukJi/Documents/GitHub/Con-Con-Android/app/src/main/res/layout/item_prize.xml" value="0.7244791666666667" />
+        <entry key="..\:/Users/MinHyukJi/Documents/GitHub/Con-Con-Android/app/src/main/res/layout/item_winner.xml" value="0.7244791666666667" />
+        <entry key="..\:/Users/MinHyukJi/Documents/GitHub/Con-Con-Android/app/src/main/res/layout/item_winner_select.xml" value="0.7244791666666667" />
+        <entry key="..\:/Users/MinHyukJi/Documents/GitHub/Con-Con-Android/app/src/main/res/layout/layout_dialog_loading.xml" value="0.7244791666666667" />
         <entry key="..\:/Users/Minhyuk/Documents/GitHub/2021IctProject/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.3675925925925926" />
         <entry key="..\:/Users/Minhyuk/Documents/GitHub/2021IctProject/app/src/main/res/drawable/backgorund_layout_cash.xml" value="0.278125" />
         <entry key="..\:/Users/Minhyuk/Documents/GitHub/2021IctProject/app/src/main/res/drawable/background_calendar_today.xml" value="0.278125" />

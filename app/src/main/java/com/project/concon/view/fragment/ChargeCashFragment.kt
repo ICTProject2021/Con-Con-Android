@@ -48,7 +48,7 @@ class ChargeCashFragment : Fragment() {
 
         putChargeRes.observe(viewLifecycleOwner) { it ->
             when (it?.msg) {
-                null -> MessageUtils.showDialog(requireContext(), "제목", resources.getString(R.string.fail_server))
+                null -> MessageUtils.showDialog(requireContext(), "제목", resources.getString(R.string.error_server))
 
                 else -> navigateToChargeCashFinish()
             }

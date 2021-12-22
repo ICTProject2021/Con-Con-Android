@@ -84,7 +84,7 @@ class CalendarDialogFragment : DialogFragment() {
 
         override fun decorate(view: DayViewFacade?) {
             /* rmfwk색 light grey로 지정 */
-            view?.addSpan(object : ForegroundColorSpan(R.color.light_grey) {})
+            view?.addSpan(object : ForegroundColorSpan(R.color.grey1) {})
             /* 선택 불가능하게 함 */
             view?.setDaysDisabled(true)
         }
@@ -97,7 +97,7 @@ class CalendarDialogFragment : DialogFragment() {
         override fun decorate(view: DayViewFacade?) {
             val drawable = requireContext().getDrawable(R.drawable.background_calendar_today)
             view?.setBackgroundDrawable(drawable!!)
-            view?.addSpan(object : ForegroundColorSpan(R.color.calendar_main_color) {})
+            view?.addSpan(object : ForegroundColorSpan(R.color.main_calendar_color) {})
         }
 
     }

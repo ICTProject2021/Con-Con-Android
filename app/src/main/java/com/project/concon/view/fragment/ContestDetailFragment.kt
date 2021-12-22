@@ -75,7 +75,7 @@ class ContestDetailFragment : BaseVMFragment<FragmentContestDetailBinding, Conte
         }
 
         isFailure.observe(viewLifecycleOwner) {
-            MessageUtils.showFailDialog(requireActivity(), getString(R.string.fail_server))
+            MessageUtils.showFailDialog(requireActivity(), getString(R.string.error_server))
         }
     }
 

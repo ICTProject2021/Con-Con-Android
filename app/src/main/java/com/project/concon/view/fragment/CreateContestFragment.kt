@@ -115,7 +115,7 @@ class CreateContestFragment : Fragment() {
                 null -> {
                     Toast.makeText(
                         requireContext(),
-                        getString(R.string.fail_server),
+                        getString(R.string.error_server),
                         Toast.LENGTH_SHORT
                     ).show()
                 }
