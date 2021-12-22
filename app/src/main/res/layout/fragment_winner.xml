@@ -19,7 +19,7 @@
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="24dp"
                 android:background="@android:color/transparent"
-                android:src="@drawable/ic_close"
+                android:src="@drawable/vec_ic_close"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:ignore="SpeakableTextPresentCheck" />

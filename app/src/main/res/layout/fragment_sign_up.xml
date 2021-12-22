@@ -34,7 +34,7 @@
                 android:id="@+id/btn_favorites"
                 android:layout_width="@dimen/sign_logo_width"
                 android:layout_height="@dimen/sign_logo_height"
-                app:srcCompat="@drawable/logo" />
+                app:srcCompat="@drawable/ic_logo_white" />
         </LinearLayout>
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -42,7 +42,7 @@
             style="@style/Widget.MaterialComponents.FloatingActionButton.Main"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_close"
+            android:src="@drawable/vec_ic_close"
             app:layout_constraintBottom_toBottomOf="@+id/linearLayout"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@+id/linearLayout"

@@ -112,7 +112,7 @@
                 android:id="@+id/imageView2"
                 android:layout_width="@dimen/sign_logo_width"
                 android:layout_height="@dimen/sign_logo_height"
-                android:src="@drawable/logo" />
+                android:src="@drawable/ic_logo_white" />
         </LinearLayout>
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -122,7 +122,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="70dp"
             android:clickable="true"
-            android:src="@drawable/ic_close"
+            android:src="@drawable/vec_ic_close"
             app:layout_constraintBottom_toTopOf="@+id/et_layout_id_sign_in"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

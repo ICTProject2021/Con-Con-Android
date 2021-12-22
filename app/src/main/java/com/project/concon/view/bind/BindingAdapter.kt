@@ -55,8 +55,8 @@ fun TextInputLayout.setError(errorMsg: String?) {
 fun ImageView.setImage(uri: String) {
     Glide.with(this.context)
         .load((RetrofitInstance.BASE_URL + uri).toUri())
-        .placeholder(R.drawable.ic_profile)
-        .error(R.drawable.ic_profile)
+        .placeholder(R.drawable.vec_ic_profile)
+        .error(R.drawable.vec_ic_profile)
         .into(this)
 }
 

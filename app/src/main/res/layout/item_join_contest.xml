@@ -69,7 +69,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/tv_like_rv_item_join_contest"
             app:layout_constraintTop_toBottomOf="@+id/recyclerView"
-            app:srcCompat="@drawable/ic_like_outline" />
+            app:srcCompat="@drawable/vec_ic_like_outline" />
 
         <TextView
             android:id="@+id/tv_like_rv_item_join_contest"

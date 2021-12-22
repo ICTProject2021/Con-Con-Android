@@ -27,7 +27,7 @@
                         android:layout_margin="20dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        app:srcCompat="@drawable/ic_error_" />
+                        app:srcCompat="@drawable/vec_ic_error" />
 
                     <TextView
                         android:id="@+id/tv_title"

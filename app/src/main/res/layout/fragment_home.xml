@@ -38,7 +38,7 @@
                     android:layout_marginEnd="15dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/ic_index" />
+                    android:src="@drawable/vec_ic_index" />
 
                 <TextView
                     android:id="@+id/textView"

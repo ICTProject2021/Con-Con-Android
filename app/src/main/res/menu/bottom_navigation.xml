@@ -3,12 +3,12 @@
 
     <item android:id="@+id/mainFragment"
         android:title="홈"
-        android:icon="@drawable/ic_home" />
+        android:icon="@drawable/vec_ic_home" />
     <item
         android:id="@+id/placeholder"
         android:title="" />
 
     <item android:id="@+id/profileFragment"
         android:title="프로필"
-        android:icon="@drawable/ic_user"/>
+        android:icon="@drawable/vec_ic_user"/>
 </menu>

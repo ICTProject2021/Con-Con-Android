@@ -24,7 +24,7 @@
             android:layout_marginStart="@dimen/back_btn_margin_start"
             android:layout_marginTop="@dimen/back_btn_margin_top"
             android:background="@android:color/transparent"
-            android:src="@drawable/ic_back"
+            android:src="@drawable/vec_ic_back"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 

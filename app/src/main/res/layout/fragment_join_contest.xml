@@ -29,7 +29,7 @@
             android:background="@android:color/transparent"
             android:minWidth="32dp"
             android:minHeight="32dp"
-            android:src="@drawable/ic_back"
+            android:src="@drawable/vec_ic_back"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:ignore="SpeakableTextPresentCheck,SpeakableTextPresentCheck" />
@@ -105,7 +105,7 @@
                 android:background="@android:color/transparent"
                 android:minWidth="48dp"
                 android:minHeight="48dp"
-                app:srcCompat="@drawable/ic_close" />
+                app:srcCompat="@drawable/vec_ic_close" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rv_img_join_contest"
@@ -132,7 +132,7 @@
             android:minHeight="48dp"
             app:layout_constraintStart_toStartOf="@+id/textInputLayout"
             app:layout_constraintTop_toTopOf="@+id/textInputLayout"
-            app:srcCompat="@drawable/ic_photo" />
+            app:srcCompat="@drawable/vec_ic_photo" />
 
         <ImageButton
             android:id="@+id/btn_send_join_contest"
@@ -145,7 +145,7 @@
             android:minHeight="48dp"
             app:layout_constraintEnd_toEndOf="@+id/textInputLayout"
             app:layout_constraintTop_toTopOf="@+id/textInputLayout"
-            app:srcCompat="@drawable/ic_send" />
+            app:srcCompat="@drawable/vec_ic_send" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

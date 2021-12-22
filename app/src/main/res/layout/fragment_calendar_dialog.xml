@@ -26,7 +26,7 @@
             android:minWidth="48dp"
             android:minHeight="48dp"
             android:padding="10dp"
-            android:src="@drawable/ic_close"
+            android:src="@drawable/vec_ic_close"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:ignore="SpeakableTextPresentCheck" />
@@ -39,7 +39,7 @@
             android:minWidth="48dp"
             android:minHeight="48dp"
             android:padding="10dp"
-            android:src="@drawable/ic_check"
+            android:src="@drawable/vec_ic_check"
             app:layout_constraintBottom_toTopOf="@+id/calendar_view_calendar"
             app:layout_constraintEnd_toEndOf="@+id/calendar_view_calendar"
             tools:ignore="SpeakableTextPresentCheck" />

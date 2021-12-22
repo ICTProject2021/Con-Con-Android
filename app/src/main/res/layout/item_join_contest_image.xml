@@ -67,7 +67,7 @@
                 android:layout_height="8dp"
                 android:layout_gravity="center"
                 android:adjustViewBounds="true"
-                android:background="@drawable/ic_close"
+                android:background="@drawable/vec_ic_close"
                 android:backgroundTint="@color/white"
                 android:elevation="15dp"
                 app:layout_constraintBottom_toBottomOf="@+id/cardView6"

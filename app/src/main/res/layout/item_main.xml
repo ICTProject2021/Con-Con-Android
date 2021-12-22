@@ -57,7 +57,7 @@
                         android:layout_width="34dp"
                         android:layout_height="34dp"
                         android:scaleType="centerCrop"
-                        android:src="@drawable/ic_profile" />
+                        android:src="@drawable/vec_ic_profile" />
                 </androidx.cardview.widget.CardView>
 
                 <TextView

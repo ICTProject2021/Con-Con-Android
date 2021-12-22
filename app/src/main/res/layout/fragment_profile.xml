@@ -72,7 +72,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="30dp"
             android:background="@drawable/background_gradient_btn"
-            android:drawableStart="@drawable/ic_money"
+            android:drawableStart="@drawable/vec_ic_money"
             android:drawablePadding="10dp"
             android:gravity="center"
             android:paddingStart="20dp"
@@ -90,7 +90,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
             android:background="@drawable/background_gradient_btn"
-            android:drawableStart="@drawable/ic_list"
+            android:drawableStart="@drawable/vec_ic_list"
             android:drawablePadding="10dp"
             android:gravity="center"
             android:paddingStart="20dp"
@@ -118,7 +118,7 @@
                 android:layout_width="90dp"
                 android:layout_height="90dp"
                 android:scaleType="centerCrop"
-                android:src="@drawable/ic_profile" />
+                android:src="@drawable/vec_ic_profile" />
         </androidx.cardview.widget.CardView>
 
     </androidx.constraintlayout.widget.ConstraintLayout>

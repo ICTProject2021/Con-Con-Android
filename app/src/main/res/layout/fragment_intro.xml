@@ -96,7 +96,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView8"
-                app:srcCompat="@drawable/intro_winner" />
+                app:srcCompat="@drawable/img_intro_winner" />
 
             <TextView
                 android:id="@+id/textView8"
