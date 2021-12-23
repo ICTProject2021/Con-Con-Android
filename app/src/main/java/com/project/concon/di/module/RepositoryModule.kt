@@ -8,7 +8,7 @@ import dagger.Module
 import dagger.Provides
 
 @Module
-object RepositoryModule {
+class RepositoryModule {
     @Provides
     fun providesAccountRepository(service: AccountService): AccountRepository =
         AccountRepository(service)

@@ -5,10 +5,9 @@ import com.project.concon.model.remote.dao.AccountService
 import com.project.concon.model.remote.dao.ContestService
 import dagger.Module
 import dagger.Provides
-import retrofit2.Retrofit
 
 @Module
-object ServiceModule {
+class ServiceModule {
     @Provides
     fun providesAccountService(): AccountService =
         RetrofitInstance.accountService

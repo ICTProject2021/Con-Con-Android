@@ -1,12 +1,12 @@
 package com.project.concon.view.activity
 
 import android.content.pm.PackageManager
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.core.app.ActivityCompat
 import com.project.concon.R
+import dagger.android.DaggerActivity
 
-class IntroActivity : AppCompatActivity() {
+class IntroActivity : DaggerActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_intro)
