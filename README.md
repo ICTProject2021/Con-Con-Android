@@ -1,2 +1,10 @@
-# Con-Con
-#### 🥇 대회 주체자를 위한 대회 중계 플랫폼
+# Con-Con-Android
+- MVVM Pattern + Repository Pattern
+- Dagger2
+- RxKotlin
+- Retrofit2
+- Okhttp3
+- Navigation
+- Glide
+
+#### 현재 리팩토링 중 (2021.12.21 ~)
