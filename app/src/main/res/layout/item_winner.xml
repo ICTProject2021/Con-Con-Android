@@ -13,8 +13,8 @@
         android:layout_height="wrap_content"
         android:text="1등"
         android:textColor="@color/black"
-        android:textSize="20sp"
-        android:layout_marginEnd="16dp"
+        android:textSize="@dimen/text_size_20sp"
+        android:layout_marginEnd="@dimen/space_16dp"
         android:textStyle="bold" />
 
     <TextView
@@ -22,7 +22,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="닉네임"
-        android:textSize="15sp" />
+        android:textSize="@dimen/text_size_15sp" />
 
 
     <Space
@@ -36,6 +36,6 @@
         android:layout_height="wrap_content"
         android:text="50,000원"
         android:textColor="@color/black"
-        android:textSize="15sp" />
+        android:textSize="@dimen/text_size_15sp" />
 
 </LinearLayout>

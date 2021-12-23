@@ -10,10 +10,10 @@
         tools:context=".view.fragment.DialogFragmentFail">
 
         <androidx.cardview.widget.CardView
-            android:layout_width="290dp"
+            android:layout_width="@dimen/layout_290dp"
             android:layout_height="wrap_content"
-            app:cardCornerRadius="10dp"
-            app:cardElevation="5dp"
+            app:cardCornerRadius="@dimen/radius_10dp"
+            app:cardElevation="@dimen/elevation_5dp"
             app:cardUseCompatPadding="true">
 
                 <LinearLayout
@@ -24,7 +24,7 @@
 
                     <ImageView
                         android:id="@+id/imageView6"
-                        android:layout_margin="20dp"
+                        android:layout_margin="@dimen/space_20dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         app:srcCompat="@drawable/vec_ic_error" />
@@ -32,25 +32,25 @@
                     <TextView
                         android:id="@+id/tv_title"
                         android:textColor="@color/black"
-                        android:layout_marginHorizontal="20dp"
+                        android:layout_marginHorizontal="@dimen/space_20dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginBottom="10dp"
-                        android:textSize="15sp"
+                        android:layout_marginBottom="@dimen/space_10dp"
+                        android:textSize="@dimen/text_size_15sp"
                         android:text="다시 시도해 주세요."/>
 
                     <TextView
                         android:id="@+id/tv_content_dialog_fail"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginHorizontal="20dp"
-                        android:layout_marginBottom="20dp"
+                        android:layout_marginHorizontal="@dimen/space_20dp"
+                        android:layout_marginBottom="@dimen/space_20dp"
                         android:gravity="center"
                         tools:text="실패하 ㄴ워닌" />
 
                     <androidx.appcompat.widget.AppCompatButton
                         android:id="@+id/button11"
-                        android:background="#C83E34"
+                        android:background="@color/error_color"
                         android:textColor="@color/white"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"

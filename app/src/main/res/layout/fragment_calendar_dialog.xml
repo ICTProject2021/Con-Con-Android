@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:padding="20dp"
+        android:padding="@dimen/space_20dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         tools:context=".view.fragment.CalendarDialogFragment">
@@ -23,9 +23,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@android:color/transparent"
-            android:minWidth="48dp"
-            android:minHeight="48dp"
-            android:padding="10dp"
+            android:minWidth="@dimen/button_size_48dp"
+            android:minHeight="@dimen/button_size_48dp"
+            android:padding="@dimen/space_10dp"
             android:src="@drawable/vec_ic_close"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -36,9 +36,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@android:color/transparent"
-            android:minWidth="48dp"
-            android:minHeight="48dp"
-            android:padding="10dp"
+            android:minWidth="@dimen/button_size_48dp"
+            android:minHeight="@dimen/button_size_48dp"
+            android:padding="@dimen/space_10dp"
             android:src="@drawable/vec_ic_check"
             app:layout_constraintBottom_toTopOf="@+id/calendar_view_calendar"
             app:layout_constraintEnd_toEndOf="@+id/calendar_view_calendar"

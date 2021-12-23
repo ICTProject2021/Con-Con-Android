@@ -17,7 +17,7 @@
             <ImageView
                 android:id="@+id/titleImg"
                 android:layout_width="match_parent"
-                android:layout_height="200dp"
+                android:layout_height="@dimen/Image_200dp"
                 android:background="@drawable/background_gradient"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -35,7 +35,7 @@
 
                 <ImageView
                     android:id="@+id/imageView"
-                    android:layout_marginEnd="15dp"
+                    android:layout_marginEnd="@dimen/space_16dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:src="@drawable/vec_ic_index" />
@@ -46,17 +46,17 @@
                     android:layout_height="wrap_content"
                     android:text="대회 목록"
                     android:textColor="@color/white"
-                    android:textSize="25sp"
+                    android:textSize="@dimen/text_size_25sp"
                     android:textStyle="bold" />
             </LinearLayout>
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/contestRecyclerView"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:layout_marginHorizontal="8dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="72dp"
+                android:layout_width="@dimen/layout_0dp"
+                android:layout_height="@dimen/layout_0dp"
+                android:layout_marginHorizontal="@dimen/space_8dp"
+                android:layout_marginTop="@dimen/space_10dp"
+                android:layout_marginBottom="@dimen/space_72dp"
                 android:overScrollMode="never"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"

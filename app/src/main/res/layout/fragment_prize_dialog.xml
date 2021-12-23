@@ -7,10 +7,10 @@
     tools:context=".view.fragment.PrizeDialogFragment">
     
     <LinearLayout
-        android:layout_width="320dp"
-        android:layout_height="157dp"
+        android:layout_width="@dimen/layout_300dp"
+        android:layout_height="@dimen/layout_157dp"
         android:orientation="vertical"
-        android:padding="22dp">
+        android:padding="@dimen/space_22dp">
 
     <TextView
         android:layout_width="wrap_content"
@@ -20,20 +20,20 @@
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:layout_marginTop="15dp"
-        android:layout_marginEnd="76dp"
+        android:layout_marginTop="@dimen/text_size_15sp"
+        android:layout_marginEnd="@dimen/space_72dp"
         android:background="@color/gray2" />
 
     <EditText
         android:id="@+id/price"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="76dp"
+        android:layout_marginTop="@dimen/space_20dp"
+        android:layout_marginEnd="@dimen/space_72dp"
         android:backgroundTint="@color/gray2"
         android:hint="@string/price"
         android:inputType="number"
-        android:textSize="11sp" />
+        android:textSize="@dimen/text_size_11sp" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/addButton"
@@ -45,7 +45,7 @@
         android:minHeight="0dp"
         android:text="추가"
         android:textColor="@color/black"
-        android:textSize="15sp"
+        android:textSize="@dimen/text_size_15sp"
         android:textStyle="bold" />
     </LinearLayout>
 

@@ -12,15 +12,15 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:paddingStart="15dp"
-        android:paddingEnd="15dp">
+        android:paddingStart="@dimen/text_size_15sp"
+        android:paddingEnd="@dimen/text_size_15sp">
 
         <androidx.cardview.widget.CardView
             android:id="@+id/cardView"
-            app:cardCornerRadius="100dp"
-            android:elevation="0dp"
-            android:layout_width="@dimen/join_contest_profile"
-            android:layout_height="@dimen/join_contest_profile"
+            app:cardCornerRadius="@dimen/radius_100dp"
+            android:elevation="@dimen/elevation_0dp"
+            android:layout_width="@dimen/layout_70dp"
+            android:layout_height="@dimen/layout_70dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
@@ -36,9 +36,9 @@
             android:id="@+id/tv_content_rv_item_join_contest"
             style="@style/Base.Widget.AppCompat.TextView.Regular"
             android:text="@{participant.content}"
-            android:layout_width="0dp"
+            android:layout_width="@dimen/layout_0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="@dimen/space_8dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@+id/tv_name_rv_item_join_contest"
             app:layout_constraintTop_toBottomOf="@+id/tv_name_rv_item_join_contest"
@@ -47,12 +47,12 @@
         <TextView
             android:id="@+id/tv_name_rv_item_join_contest"
             android:textColor="@color/black"
-            android:textSize="17sp"
+            android:textSize="@dimen/text_size_17sp"
             android:textStyle="bold"
             android:text="@{participant.nickname}"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
+            android:layout_marginStart="@dimen/space_16dp"
             app:layout_constraintStart_toEndOf="@+id/cardView"
             app:layout_constraintTop_toTopOf="@+id/cardView"
             tools:text="카리나" />
@@ -62,8 +62,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@android:color/transparent"
-            android:minWidth="48dp"
-            android:minHeight="48dp"
+            android:minWidth="@dimen/button_size_48dp"
+            android:minHeight="@dimen/button_size_48dp"
             app:layout_constraintEnd_toStartOf="@+id/tv_like_rv_item_join_contest"
             app:layout_constraintTop_toBottomOf="@+id/recyclerView2"
             app:srcCompat="@drawable/vec_ic_like_outline" />
@@ -81,9 +81,9 @@
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerView"
-            android:layout_width="0dp"
+            android:layout_width="@dimen/layout_0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="@dimen/space_8dp"
             android:orientation="horizontal"
             android:visibility="gone"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
@@ -94,9 +94,9 @@
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerView2"
-            android:layout_width="0dp"
+            android:layout_width="@dimen/layout_0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="@dimen/space_8dp"
             android:orientation="horizontal"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintEnd_toEndOf="@+id/tv_content_rv_item_join_contest"

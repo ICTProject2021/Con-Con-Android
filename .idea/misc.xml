@@ -76,22 +76,32 @@
         <entry key="..\:/Users/MinHyukJi/Documents/GitHub/Con-Con-Android/app/src/main/res/drawable/ic_list.xml" value="0.524074074074074" />
         <entry key="..\:/Users/MinHyukJi/Documents/GitHub/Con-Con-Android/app/src/main/res/drawable/item_main_background.xml" value="0.524074074074074" />
         <entry key="..\:/Users/MinHyukJi/Documents/GitHub/Con-Con-Android/app/src/main/res/layout/activity_intro.xml" value="0.7244791666666667" />
-        <entry key="..\:/Users/MinHyukJi/Documents/GitHub/Con-Con-Android/app/src/main/res/layout/activity_main.xml" value="0.7244791666666667" />
-        <entry key="..\:/Users/MinHyukJi/Documents/GitHub/Con-Con-Android/app/src/main/res/layout/fragment_calendar_dialog.xml" value="0.7244791666666667" />
-        <entry key="..\:/Users/MinHyukJi/Documents/GitHub/Con-Con-Android/app/src/main/res/layout/fragment_charge_cash_finish.xml" value="0.7244791666666667" />
+        <entry key="..\:/Users/MinHyukJi/Documents/GitHub/Con-Con-Android/app/src/main/res/layout/activity_main.xml" value="0.27184466019417475" />
+        <entry key="..\:/Users/MinHyukJi/Documents/GitHub/Con-Con-Android/app/src/main/res/layout/fragment_calendar_dialog.xml" value="0.2506393861892583" />
+        <entry key="..\:/Users/MinHyukJi/Documents/GitHub/Con-Con-Android/app/src/main/res/layout/fragment_charge_cash.xml" value="0.1" />
+        <entry key="..\:/Users/MinHyukJi/Documents/GitHub/Con-Con-Android/app/src/main/res/layout/fragment_charge_cash_finish.xml" value="0.2506393861892583" />
+        <entry key="..\:/Users/MinHyukJi/Documents/GitHub/Con-Con-Android/app/src/main/res/layout/fragment_contest_detail.xml" value="0.3166397415185784" />
         <entry key="..\:/Users/MinHyukJi/Documents/GitHub/Con-Con-Android/app/src/main/res/layout/fragment_create_contest.xml" value="0.7244791666666667" />
-        <entry key="..\:/Users/MinHyukJi/Documents/GitHub/Con-Con-Android/app/src/main/res/layout/fragment_dialog_default.xml" value="0.7244791666666667" />
-        <entry key="..\:/Users/MinHyukJi/Documents/GitHub/Con-Con-Android/app/src/main/res/layout/fragment_fail_dialog.xml" value="0.7244791666666667" />
-        <entry key="..\:/Users/MinHyukJi/Documents/GitHub/Con-Con-Android/app/src/main/res/layout/fragment_home.xml" value="0.7244791666666667" />
-        <entry key="..\:/Users/MinHyukJi/Documents/GitHub/Con-Con-Android/app/src/main/res/layout/fragment_intro.xml" value="0.7244791666666667" />
-        <entry key="..\:/Users/MinHyukJi/Documents/GitHub/Con-Con-Android/app/src/main/res/layout/fragment_join_contest.xml" value="0.6649616368286445" />
-        <entry key="..\:/Users/MinHyukJi/Documents/GitHub/Con-Con-Android/app/src/main/res/layout/fragment_participated_contest.xml" value="0.7244791666666667" />
-        <entry key="..\:/Users/MinHyukJi/Documents/GitHub/Con-Con-Android/app/src/main/res/layout/fragment_prize_dialog.xml" value="0.7244791666666667" />
-        <entry key="..\:/Users/MinHyukJi/Documents/GitHub/Con-Con-Android/app/src/main/res/layout/fragment_sign_up.xml" value="0.7244791666666667" />
-        <entry key="..\:/Users/MinHyukJi/Documents/GitHub/Con-Con-Android/app/src/main/res/layout/fragment_winner.xml" value="0.7244791666666667" />
-        <entry key="..\:/Users/MinHyukJi/Documents/GitHub/Con-Con-Android/app/src/main/res/layout/item_join_contest.xml" value="0.7244791666666667" />
+        <entry key="..\:/Users/MinHyukJi/Documents/GitHub/Con-Con-Android/app/src/main/res/layout/fragment_dialog_default.xml" value="0.4404494382022472" />
+        <entry key="..\:/Users/MinHyukJi/Documents/GitHub/Con-Con-Android/app/src/main/res/layout/fragment_fail_dialog.xml" value="0.3761996161228407" />
+        <entry key="..\:/Users/MinHyukJi/Documents/GitHub/Con-Con-Android/app/src/main/res/layout/fragment_home.xml" value="0.2609853528628495" />
+        <entry key="..\:/Users/MinHyukJi/Documents/GitHub/Con-Con-Android/app/src/main/res/layout/fragment_intro.xml" value="0.40329218106995884" />
+        <entry key="..\:/Users/MinHyukJi/Documents/GitHub/Con-Con-Android/app/src/main/res/layout/fragment_join_contest.xml" value="0.2733612273361227" />
+        <entry key="..\:/Users/MinHyukJi/Documents/GitHub/Con-Con-Android/app/src/main/res/layout/fragment_participated_contest.xml" value="0.1" />
+        <entry key="..\:/Users/MinHyukJi/Documents/GitHub/Con-Con-Android/app/src/main/res/layout/fragment_payment.xml" value="0.27034482758620687" />
+        <entry key="..\:/Users/MinHyukJi/Documents/GitHub/Con-Con-Android/app/src/main/res/layout/fragment_prize.xml" value="0.6722222222222223" />
+        <entry key="..\:/Users/MinHyukJi/Documents/GitHub/Con-Con-Android/app/src/main/res/layout/fragment_prize_dialog.xml" value="0.45265588914549654" />
+        <entry key="..\:/Users/MinHyukJi/Documents/GitHub/Con-Con-Android/app/src/main/res/layout/fragment_profile.xml" value="0.49246231155778897" />
+        <entry key="..\:/Users/MinHyukJi/Documents/GitHub/Con-Con-Android/app/src/main/res/layout/fragment_sign_in.xml" value="0.1" />
+        <entry key="..\:/Users/MinHyukJi/Documents/GitHub/Con-Con-Android/app/src/main/res/layout/fragment_sign_up.xml" value="0.1" />
+        <entry key="..\:/Users/MinHyukJi/Documents/GitHub/Con-Con-Android/app/src/main/res/layout/fragment_winner.xml" value="0.4024640657084189" />
+        <entry key="..\:/Users/MinHyukJi/Documents/GitHub/Con-Con-Android/app/src/main/res/layout/fragment_winner_dialog.xml" value="0.6722222222222223" />
+        <entry key="..\:/Users/MinHyukJi/Documents/GitHub/Con-Con-Android/app/src/main/res/layout/fragment_winner_select.xml" value="0.2938530734632684" />
+        <entry key="..\:/Users/MinHyukJi/Documents/GitHub/Con-Con-Android/app/src/main/res/layout/item_join_contest.xml" value="0.2506393861892583" />
         <entry key="..\:/Users/MinHyukJi/Documents/GitHub/Con-Con-Android/app/src/main/res/layout/item_join_contest_image.xml" value="0.7244791666666667" />
-        <entry key="..\:/Users/MinHyukJi/Documents/GitHub/Con-Con-Android/app/src/main/res/layout/item_join_contest_photo.xml" value="0.7244791666666667" />
+        <entry key="..\:/Users/MinHyukJi/Documents/GitHub/Con-Con-Android/app/src/main/res/layout/item_join_contest_photo.xml" value="0.2506393861892583" />
+        <entry key="..\:/Users/MinHyukJi/Documents/GitHub/Con-Con-Android/app/src/main/res/layout/item_main.xml" value="0.6722222222222223" />
+        <entry key="..\:/Users/MinHyukJi/Documents/GitHub/Con-Con-Android/app/src/main/res/layout/item_payment.xml" value="0.27034482758620687" />
         <entry key="..\:/Users/MinHyukJi/Documents/GitHub/Con-Con-Android/app/src/main/res/layout/item_prize.xml" value="0.7244791666666667" />
         <entry key="..\:/Users/MinHyukJi/Documents/GitHub/Con-Con-Android/app/src/main/res/layout/item_winner.xml" value="0.7244791666666667" />
         <entry key="..\:/Users/MinHyukJi/Documents/GitHub/Con-Con-Android/app/src/main/res/layout/item_winner_select.xml" value="0.7244791666666667" />
