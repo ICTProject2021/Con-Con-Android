@@ -37,7 +37,6 @@ android {
 }
 
 dependencies {
-    // 리팩토링 중 추가한 dependencies
     // rxKotlin
     implementation 'io.reactivex.rxjava3:rxandroid:3.0.0'
     implementation 'io.reactivex.rxjava3:rxjava:3.0.6'
@@ -45,10 +44,10 @@ dependencies {
 
     // Dagger2
     implementation 'com.google.dagger:dagger:2.37'
+    implementation "com.google.dagger:dagger-android:2.37"
+    implementation "com.google.dagger:dagger-android-support:2.37"
     kapt 'com.google.dagger:dagger-compiler:2.37'
-
-
-
+    kapt "com.google.dagger:dagger-android-processor:2.37"
 
     // navigation
     implementation 'androidx.navigation:navigation-fragment-ktx:2.3.5'
