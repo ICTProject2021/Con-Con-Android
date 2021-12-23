@@ -15,11 +15,11 @@
 
         <androidx.cardview.widget.CardView
             android:id="@+id/cardView6"
-            android:layout_width="@dimen/join_contest_image_size"
-            android:layout_height="@dimen/join_contest_image_size"
-            android:layout_marginEnd="8dp"
-            app:cardCornerRadius="25dp"
-            app:cardElevation="0dp">
+            android:layout_width="@dimen/layout_65dp"
+            android:layout_height="@dimen/layout_65dp"
+            android:layout_marginEnd="@dimen/space_8dp"
+            app:cardCornerRadius="@dimen/radius_25dp"
+            app:cardElevation="@dimen/elevation_0dp">
 
             <ImageView
                 android:id="@+id/imageView"
@@ -31,13 +31,13 @@
 
         <FrameLayout
             android:id="@+id/layout_close_rv_item_join_contest_img"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
+            android:layout_width="@dimen/layout_48dp"
+            android:layout_height="@dimen/layout_48dp"
             android:layout_gravity="center"
-            android:layout_marginEnd="4dp"
+            android:layout_marginEnd="@dimen/space_4dp"
             android:clickable="true"
             android:focusable="true"
-            android:padding="8dp"
+            android:padding="@dimen/space_8dp"
             tools:ignore="SpeakableTextPresentCheck">
 
             <androidx.cardview.widget.CardView
@@ -46,7 +46,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:background="@drawable/background_transparent"
-                app:cardCornerRadius="30dp"
+                app:cardCornerRadius="@dimen/radius_30dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="@+id/cardView6"
                 app:layout_constraintStart_toStartOf="@+id/cardView6"
@@ -57,19 +57,19 @@
                     android:layout_height="wrap_content"
                     android:alpha="0.7"
                     android:background="@color/black"
-                    android:padding="10dp" />
+                    android:padding="@dimen/space_10dp" />
 
             </androidx.cardview.widget.CardView>
 
             <ImageView
                 android:id="@+id/imageButton"
-                android:layout_width="8dp"
-                android:layout_height="8dp"
+                android:layout_width="@dimen/layout_8dp"
+                android:layout_height="@dimen/layout_8dp"
                 android:layout_gravity="center"
                 android:adjustViewBounds="true"
                 android:background="@drawable/vec_ic_close"
                 android:backgroundTint="@color/white"
-                android:elevation="15dp"
+                android:elevation="@dimen/elevation_15dp"
                 app:layout_constraintBottom_toBottomOf="@+id/cardView6"
                 app:layout_constraintEnd_toEndOf="@+id/cardView6"
                 app:layout_constraintStart_toStartOf="@+id/cardView6"

@@ -21,8 +21,8 @@
             android:id="@+id/btn_back_contest_detail"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/back_btn_margin_start"
-            android:layout_marginTop="@dimen/back_btn_margin_top"
+            android:layout_marginStart="@dimen/space_24dp"
+            android:layout_marginTop="@dimen/space_32dp"
             android:background="@android:color/transparent"
             android:src="@drawable/vec_ic_back"
             app:layout_constraintStart_toStartOf="parent"
@@ -31,11 +31,11 @@
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btn_join_contest_detail"
             style="@style/Widget.AppCompat.Button.Main"
-            android:layout_width="0dp"
+            android:layout_width="@dimen/layout_0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="24dp"
-            android:layout_marginEnd="24dp"
-            android:layout_marginBottom="40dp"
+            android:layout_marginStart="@dimen/space_24dp"
+            android:layout_marginEnd="@dimen/space_24dp"
+            android:layout_marginBottom="@dimen/space_40dp"
             android:text="@string/join_contest"
             app:layout_constraintBottom_toBottomOf="@+id/nestedScrollView"
             app:layout_constraintEnd_toEndOf="parent"
@@ -43,8 +43,8 @@
 
         <androidx.core.widget.NestedScrollView
             android:id="@+id/nestedScrollView"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
+            android:layout_width="@dimen/layout_0dp"
+            android:layout_height="@dimen/layout_0dp"
             android:fillViewport="true"
             android:overScrollMode="never"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -58,13 +58,13 @@
 
                 <androidx.cardview.widget.CardView
                     android:id="@+id/cardView"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginTop="24dp"
-                    android:elevation="0dp"
-                    app:cardCornerRadius="50dp"
-                    app:cardElevation="0dp"
+                    android:layout_width="@dimen/layout_40dp"
+                    android:layout_height="@dimen/layout_40dp"
+                    android:layout_marginStart="@dimen/space_24dp"
+                    android:layout_marginTop="@dimen/space_24dp"
+                    android:elevation="@dimen/elevation_0dp"
+                    app:cardCornerRadius="@dimen/radius_50dp"
+                    app:cardElevation="@dimen/elevation_0dp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/view2">
 
@@ -79,9 +79,9 @@
                 <LinearLayout
                     android:id="@+id/linearLayout2"
                     style="@style/ContestDetailLinear"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
+                    android:layout_width="@dimen/layout_0dp"
+                    android:layout_height="@dimen/layout_0dp"
+                    android:layout_marginTop="@dimen/space_8dp"
                     android:orientation="horizontal"
                     app:layout_constraintEnd_toEndOf="@+id/linearLayout"
                     app:layout_constraintStart_toStartOf="@+id/linearLayout"
@@ -95,13 +95,13 @@
                         android:text="우승 상금" />
 
                     <androidx.cardview.widget.CardView
-                        android:elevation="0dp"
-                        app:cardElevation="0dp"
-                        android:layout_width="10dp"
-                        android:layout_height="10dp"
-                        android:layout_margin="10dp"
+                        android:elevation="@dimen/elevation_0dp"
+                        app:cardElevation="@dimen/elevation_0dp"
+                        android:layout_width="@dimen/layout_10dp"
+                        android:layout_height="@dimen/layout_10dp"
+                        android:layout_margin="@dimen/space_10dp"
                         android:background="@drawable/background_gradient"
-                        app:cardCornerRadius="50dp">
+                        app:cardCornerRadius="@dimen/radius_50dp">
 
                         <ImageView
                             android:layout_width="match_parent"
@@ -114,7 +114,7 @@
                         style="@style/Base.Widget.AppCompat.TextView.Regular"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="5dp"
+                        android:layout_marginStart="@dimen/space_5dp"
                         android:text="@{vm.getAllPriceSum(data.prize)}" />
                 </LinearLayout>
 
@@ -123,7 +123,7 @@
                     style="@style/Base.Widget.AppCompat.TextView.Regular"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
+                    android:layout_marginStart="@dimen/space_16dp"
                     android:text="@{data.host}"
                     app:layout_constraintBottom_toBottomOf="@+id/cardView"
                     app:layout_constraintStart_toEndOf="@+id/cardView"
@@ -134,9 +134,9 @@
                     style="@style/ContestDetailLinear"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginTop="24dp"
-                    android:layout_marginEnd="24dp"
+                    android:layout_marginStart="@dimen/space_24dp"
+                    android:layout_marginTop="@dimen/space_24dp"
+                    android:layout_marginEnd="@dimen/space_24dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/tv_title_contest_detail">
@@ -152,13 +152,13 @@
 
                     <androidx.cardview.widget.CardView
                         android:id="@+id/cardView5"
-                        android:layout_width="10dp"
-                        android:layout_height="10dp"
-                        android:layout_marginTop="10dp"
-                        android:layout_marginStart="3dp"
-                        app:cardElevation="0dp"
-                        android:elevation="0dp"
-                        app:cardCornerRadius="50dp"
+                        android:layout_width="@dimen/layout_10dp"
+                        android:layout_height="@dimen/layout_10dp"
+                        android:layout_marginTop="@dimen/space_10dp"
+                        android:layout_marginStart="@dimen/space_32dp"
+                        app:cardElevation="@dimen/elevation_0dp"
+                        android:elevation="@dimen/elevation_0dp"
+                        app:cardCornerRadius="@dimen/radius_50dp"
                         app:layout_constraintStart_toStartOf="@+id/textView"
                         app:layout_constraintTop_toBottomOf="@+id/textView">
 
@@ -178,7 +178,7 @@
                         style="@style/Base.Widget.AppCompat.TextView.Regular"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="16dp"
+                        android:layout_marginStart="@dimen/space_16dp"
                         android:text="@{@string/date_format(vm.toDate(data.startdate), vm.toDate(data.duedate))}"
                         app:layout_constraintBottom_toBottomOf="@+id/cardView5"
                         app:layout_constraintStart_toEndOf="@+id/cardView5"
@@ -187,10 +187,10 @@
 
                 <View
                     android:id="@+id/view2"
-                    android:layout_width="0dp"
-                    android:layout_height="1dp"
-                    android:layout_marginTop="24dp"
-                    android:layout_marginHorizontal="16dp"
+                    android:layout_height="@dimen/layout_1dp"
+                    android:layout_width="@dimen/layout_0dp"
+                    android:layout_marginTop="@dimen/space_24dp"
+                    android:layout_marginHorizontal="@dimen/space_16dp"
                     android:background="@color/grey1"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -199,9 +199,9 @@
                 <TextView
                     android:id="@+id/tv_title_contest_detail"
                     style="@style/Base.Widget.AppCompat.TextView.Bold"
-                    android:layout_width="0dp"
-                    android:layout_height="27dp"
-                    android:layout_marginTop="24dp"
+                    android:layout_width="@dimen/layout_0dp"
+                    android:layout_height="@dimen/layout_27dp"
+                    android:layout_marginTop="@dimen/space_24dp"
                     android:text="@{data.title}"
                     app:layout_constraintEnd_toEndOf="@+id/linearLayout"
                     app:layout_constraintStart_toStartOf="@+id/linearLayout"
@@ -211,11 +211,11 @@
                 <TextView
                     android:id="@+id/tv_content_contest_detail"
                     style="@style/Base.Widget.AppCompat.TextView.Regular"
-                    android:layout_width="0dp"
+                    android:layout_width="@dimen/layout_0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginTop="24dp"
-                    android:layout_marginEnd="24dp"
+                    android:layout_marginStart="@dimen/space_24dp"
+                    android:layout_marginTop="@dimen/space_24dp"
+                    android:layout_marginEnd="@dimen/space_24dp"
                     android:text="@{data.content}"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -224,7 +224,7 @@
 
                 <View
                     android:layout_width="wrap_content"
-                    android:layout_height="150dp"
+                    android:layout_height="@dimen/layout_150dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/cardView" />

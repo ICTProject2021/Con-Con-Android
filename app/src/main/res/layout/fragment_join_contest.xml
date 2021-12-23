@@ -24,11 +24,11 @@
             android:id="@+id/btn_back_join_contest"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginStart="@dimen/space_16dp"
+            android:layout_marginTop="@dimen/space_16dp"
             android:background="@android:color/transparent"
-            android:minWidth="32dp"
-            android:minHeight="32dp"
+            android:minWidth="@dimen/button_size_32dp"
+            android:minHeight="@dimen/button_size_32dp"
             android:src="@drawable/vec_ic_back"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -38,9 +38,9 @@
             android:id="@+id/rv_participant_join_contest"
             submitList="@{participantList}"
             android:overScrollMode="never"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_marginTop="32dp"
+            android:layout_width="@dimen/layout_0dp"
+            android:layout_height="@dimen/layout_0dp"
+            android:layout_marginTop="@dimen/space_32dp"
             android:orientation="vertical"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintBottom_toTopOf="@+id/linearLayout3"
@@ -56,14 +56,14 @@
         <View
             android:id="@+id/view"
             android:layout_width="match_parent"
-            android:layout_height="1dp"
+            android:layout_height="@dimen/layout_1dp"
             android:background="@color/grey1"
             app:layout_constraintBottom_toTopOf="@+id/textInputLayout"/>
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/textInputLayout"
             app:boxBackgroundColor="@color/white"
-            android:layout_width="0dp"
+            android:layout_width="@dimen/layout_0dp"
             android:layout_height="wrap_content"
             app:hintEnabled="false"
             app:errorEnabled="false"
@@ -73,10 +73,10 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
-                android:layout_height="120dp"
+                android:layout_height="@dimen/layout_120dp"
                 android:hint="대회 참가하기"
                 android:text="@={vm.content}"
-                android:paddingTop="40dp"
+                android:paddingTop="@dimen/space_40dp"
                 tools:ignore="SpeakableTextPresentCheck" />
 
         </com.google.android.material.textfield.TextInputLayout>
@@ -84,7 +84,7 @@
         <LinearLayout
             android:id="@+id/linearLayout3"
             setGone="@{vm.fileList.size() == 0}"
-            android:layout_width="0dp"
+            android:layout_width="@dimen/layout_0dp"
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:background="@color/white"
@@ -94,7 +94,7 @@
 
             <View
                 android:layout_width="match_parent"
-                android:layout_height="1dp"
+                android:layout_height="@dimen/layout_1dp"
                 android:background="@color/grey1"/>
 
             <ImageButton
@@ -103,8 +103,8 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="end"
                 android:background="@android:color/transparent"
-                android:minWidth="48dp"
-                android:minHeight="48dp"
+                android:minWidth="@dimen/button_size_48dp"
+                android:minHeight="@dimen/button_size_48dp"
                 app:srcCompat="@drawable/vec_ic_close" />
 
             <androidx.recyclerview.widget.RecyclerView
@@ -114,8 +114,8 @@
                 android:overScrollMode="never"
                 submitList="@{vm.fileList}"
                 android:orientation="horizontal"
-                android:paddingStart="10dp"
-                android:paddingVertical="10dp"
+                android:paddingStart="@dimen/space_10dp"
+                android:paddingVertical="@dimen/space_10dp"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 tools:ignore="SpeakableTextPresentCheck"
                 tools:listitem="@layout/item_join_contest_image" />
@@ -125,11 +125,11 @@
             android:id="@+id/btn_photo_join_contest"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="4dp"
-            android:layout_marginTop="4dp"
+            android:layout_marginStart="@dimen/space_4dp"
+            android:layout_marginTop="@dimen/space_4dp"
             android:background="@android:color/transparent"
-            android:minWidth="48dp"
-            android:minHeight="48dp"
+            android:minWidth="@dimen/button_size_48dp"
+            android:minHeight="@dimen/button_size_48dp"
             app:layout_constraintStart_toStartOf="@+id/textInputLayout"
             app:layout_constraintTop_toTopOf="@+id/textInputLayout"
             app:srcCompat="@drawable/vec_ic_photo" />
@@ -138,11 +138,11 @@
             android:id="@+id/btn_send_join_contest"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
-            android:layout_marginEnd="4dp"
+            android:layout_marginTop="@dimen/space_4dp"
+            android:layout_marginEnd="@dimen/space_4dp"
             android:background="@android:color/transparent"
-            android:minWidth="48dp"
-            android:minHeight="48dp"
+            android:minWidth="@dimen/button_size_48dp"
+            android:minHeight="@dimen/button_size_48dp"
             app:layout_constraintEnd_toEndOf="@+id/textInputLayout"
             app:layout_constraintTop_toTopOf="@+id/textInputLayout"
             app:srcCompat="@drawable/vec_ic_send" />
