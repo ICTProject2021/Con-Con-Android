@@ -10,15 +10,13 @@ import androidx.databinding.ViewDataBinding
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
-import com.project.concon.viewmodel.factory.ViewModelFactory
 import dagger.android.support.DaggerFragment
 import javax.inject.Inject
 
-abstract class BaseVMFragment<B: ViewDataBinding, VM: ViewModel>
-    : DaggerFragment() {
+abstract class BaseVMFragment<B: ViewDataBinding, VM: ViewModel> : DaggerFragment() {
 
     @Inject
-    lateinit var viewModelFactory: ViewModelFactory
+    lateinit var viewModelFactory: ViewModelProvider.Factory
     protected lateinit var viewModel: VM
 
     protected var _binding: B? = null
@@ -36,7 +34,6 @@ abstract class BaseVMFragment<B: ViewDataBinding, VM: ViewModel>
         _binding = DataBindingUtil.inflate(inflater, getLayoutRes(), container, false)
         binding.lifecycleOwner = viewLifecycleOwner
         // todo owner 를 this 로 해도될지 테스트..
-        viewModel = ViewModelProvider(this, viewModelFactory)[viewModel.javaClass]
         setBinding()
         return binding.root
     }

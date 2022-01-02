@@ -17,6 +17,6 @@ abstract class ViewModelModule {
 
     @Binds
     @IntoMap
-    @ViewModelKey(SignInViewModel::class)
+    @ViewModelKey(SignUpViewModel::class)
     abstract fun bindsSignUpViewModel(signUpViewModel: SignUpViewModel): ViewModel
 }
