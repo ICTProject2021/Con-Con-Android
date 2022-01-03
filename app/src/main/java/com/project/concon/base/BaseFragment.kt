@@ -12,7 +12,7 @@ import androidx.navigation.fragment.findNavController
 
 abstract class BaseFragment<B : ViewDataBinding> : Fragment() {
 
-    protected var _binding: B? = null
+    private var _binding: B? = null
     protected val binding get() = _binding!!
 
     protected val navController by lazy {

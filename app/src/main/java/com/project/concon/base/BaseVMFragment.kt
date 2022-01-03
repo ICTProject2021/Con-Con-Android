@@ -19,7 +19,7 @@ abstract class BaseVMFragment<B: ViewDataBinding, VM: ViewModel> : DaggerFragmen
     lateinit var viewModelFactory: ViewModelProvider.Factory
     protected lateinit var viewModel: VM
 
-    protected var _binding: B? = null
+    private var _binding: B? = null
     protected val binding get() = _binding!!
 
     protected val navController by lazy {
@@ -33,18 +33,21 @@ abstract class BaseVMFragment<B: ViewDataBinding, VM: ViewModel> : DaggerFragmen
     ): View? {
         _binding = DataBindingUtil.inflate(inflater, getLayoutRes(), container, false)
         binding.lifecycleOwner = viewLifecycleOwner
-        // todo owner 를 this 로 해도될지 테스트..
-        setBinding()
+        setViewModelOrBinding(viewModelFactory)
         return binding.root
     }
-
-    abstract fun setBinding()
 
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
     }
 
+    /**
+     * 파라미터로 주어진 viewModelFactory로 ViewModel 초기화, 데이터 바인딩 (강제 x)
+     * */
+    abstract fun setViewModelOrBinding(viewModelFactory: ViewModelProvider.Factory)
+
+    /** 상속받는 프래그먼트의 layout 리소스를 반환한다 */
     @LayoutRes
     abstract fun getLayoutRes(): Int
 }
