@@ -16,9 +16,11 @@ import com.project.concon.viewmodel.WinnerSelectViewModel
 
 class WinnerSelectFragment : BaseVMFragment<FragmentWinnerSelectBinding, WinnerSelectViewModel>() {
 
+    override fun setBinding() {}
+
     override fun getLayoutRes(): Int = R.layout.fragment_winner_select
 
-    override fun setBinding() {}
+    override fun getViewModelClass(): Class<WinnerSelectViewModel> = WinnerSelectViewModel::class.java
 
     private val args : WinnerSelectFragmentArgs by navArgs()
 

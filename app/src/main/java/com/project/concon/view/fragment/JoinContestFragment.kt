@@ -22,12 +22,14 @@ import java.io.IOException
 
 class JoinContestFragment : BaseVMFragment<FragmentJoinContestBinding, JoinContestViewModel>() {
 
-    override fun getLayoutRes(): Int = R.layout.fragment_join_contest
-
     override fun setBinding() {
         binding.participantList = ObservableArrayList()
         binding.vm = viewModel
     }
+
+    override fun getLayoutRes(): Int = R.layout.fragment_join_contest
+
+    override fun getViewModelClass(): Class<JoinContestViewModel> = JoinContestViewModel::class.java
 
     private val navArgs by navArgs<JoinContestFragmentArgs>()
 
@@ -83,7 +85,7 @@ class JoinContestFragment : BaseVMFragment<FragmentJoinContestBinding, JoinConte
                         val count = it.data!!.clipData!!.itemCount
 
                         if (count > 5) {
-                            MessageUtils.showDialog(requireContext(), "알림", "최대 선택할 수 있는 사진의 갯수는 5장입니다.")
+//                            MessageUtils.showDialog(requireContext(), "알림", "최대 선택할 수 있는 사진의 갯수는 5장입니다.")
                         } else {
                             val list = mutableListOf<Uri>()
                             for (i in 0 until count) {

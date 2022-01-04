@@ -12,14 +12,18 @@ import com.project.concon.viewmodel.ContestDetailViewModel
 import java.text.SimpleDateFormat
 import java.util.*
 
+/** 대회 상세 페이지 */
 class ContestDetailFragment : BaseVMFragment<FragmentContestDetailBinding, ContestDetailViewModel>() {
-
-    override fun getLayoutRes(): Int = R.layout.fragment_contest_detail
 
     override fun setBinding() {
         binding.vm = viewModel
         binding.data = ContestDetail(0, "", "", "", "", "", "", false, listOf())
     }
+
+    override fun getLayoutRes(): Int = R.layout.fragment_contest_detail
+
+    override fun getViewModelClass(): Class<ContestDetailViewModel> =
+        ContestDetailViewModel::class.java
 
     private lateinit var now: String
     private lateinit var contestDetail: ContestDetail
@@ -30,11 +34,7 @@ class ContestDetailFragment : BaseVMFragment<FragmentContestDetailBinding, Conte
         super.onViewCreated(view, savedInstanceState)
 
         observe()
-
-        val time = Calendar.getInstance().time
-        now = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(time)
-
-        viewModel.getContestDetail(args.id)
+        init()
 
         binding.btnBackContestDetail.setOnClickListener {
             navigateToMain()
@@ -50,6 +50,13 @@ class ContestDetailFragment : BaseVMFragment<FragmentContestDetailBinding, Conte
                 navigateToJoinContest()
             }
         }
+    }
+
+    private fun init() {
+        val time = Calendar.getInstance().time
+        now = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(time)
+
+        viewModel.getContestDetail(args.id)
     }
 
     private fun observe() = with(viewModel) {
@@ -80,18 +87,20 @@ class ContestDetailFragment : BaseVMFragment<FragmentContestDetailBinding, Conte
     }
 
     private fun navigateToMain() {
-        navController.navigate(R.id.action_contestDetailFragment_to_mainFragment)
+        navController.navigate(ContestDetailFragmentDirections.toMainFragment())
     }
 
     private fun navigateToJoinContest() {
-        navController.navigate(ContestDetailFragmentDirections.actionContestDetailFragmentToJoinContestFragment(args.id))
+        navController.navigate(
+            ContestDetailFragmentDirections.toJoinContestFragment(args.id)
+        )
     }
 
     private fun navigateToWinner() {
-        navController.navigate(ContestDetailFragmentDirections.actionContestDetailFragmentToWinnerFragment(args.id))
+        navController.navigate(ContestDetailFragmentDirections.toWinnerFragment(args.id))
     }
 
     private fun navigateToWinnerSelect() {
-        navController.navigate(ContestDetailFragmentDirections.actionContestDetailFragmentToWinnerSelectFragment(args.id))
+        navController.navigate(ContestDetailFragmentDirections.toWinnerFragment(args.id))
     }
 }

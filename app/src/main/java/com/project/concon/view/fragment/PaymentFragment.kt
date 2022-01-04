@@ -15,9 +15,11 @@ import com.project.concon.viewmodel.PaymentViewModel
 
 class PaymentFragment : BaseVMFragment<FragmentPaymentBinding, PaymentViewModel>() {
 
+    override fun setBinding() {}
+
     override fun getLayoutRes(): Int = R.layout.fragment_payment
 
-    override fun setBinding() {}
+    override fun getViewModelClass(): Class<PaymentViewModel> = PaymentViewModel::class.java
 
     private lateinit var manager: BillingManager
 

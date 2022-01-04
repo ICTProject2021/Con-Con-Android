@@ -13,9 +13,11 @@ import java.util.*
 
 class ProfileFragment : BaseVMFragment<FragmentProfileBinding, ProfileViewModel>() {
 
+    override fun setBinding() {}
+
     override fun getLayoutRes(): Int = R.layout.fragment_profile
 
-    override fun setBinding() {}
+    override fun getViewModelClass(): Class<ProfileViewModel> = ProfileViewModel::class.java
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

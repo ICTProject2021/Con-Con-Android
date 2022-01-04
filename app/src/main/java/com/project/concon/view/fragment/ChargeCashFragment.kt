@@ -11,7 +11,6 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.project.concon.R
 import com.project.concon.databinding.FragmentChargeCashBinding
-import com.project.concon.utils.MessageUtils
 import com.project.concon.viewmodel.ChargeCashViewModel
 /** 삭제 예정 */
 class ChargeCashFragment : Fragment() {
@@ -48,7 +47,7 @@ class ChargeCashFragment : Fragment() {
 
         putChargeRes.observe(viewLifecycleOwner) { it ->
             when (it?.msg) {
-                null -> MessageUtils.showDialog(requireContext(), "제목", resources.getString(R.string.error_server))
+//                null -> MessageUtils.showDialog(requireContext(), "제목", resources.getString(R.string.error_server))
 
                 else -> navigateToChargeCashFinish()
             }

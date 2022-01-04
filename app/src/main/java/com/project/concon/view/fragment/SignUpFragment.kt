@@ -13,11 +13,13 @@ import com.project.concon.viewmodel.SignUpViewModel
 
 class SignUpFragment : BaseVMFragment<FragmentSignUpBinding, SignUpViewModel>() {
 
-    override fun getLayoutRes(): Int = R.layout.fragment_sign_up
-
     override fun setBinding() {
         binding.vm = viewModel
     }
+
+    override fun getViewModelClass(): Class<SignUpViewModel> = SignUpViewModel::class.java
+
+    override fun getLayoutRes(): Int = R.layout.fragment_sign_up
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

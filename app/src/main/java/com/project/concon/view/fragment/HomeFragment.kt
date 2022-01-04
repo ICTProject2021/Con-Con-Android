@@ -14,9 +14,11 @@ import com.project.concon.viewmodel.HomeViewModel
 
 class HomeFragment : BaseVMFragment<FragmentHomeBinding, HomeViewModel>() {
 
+    override fun setBinding() {}
+
     override fun getLayoutRes(): Int = R.layout.fragment_home
 
-    override fun setBinding() {}
+    override fun getViewModelClass(): Class<HomeViewModel> = HomeViewModel::class.java
 
     private lateinit var recyclerViewAdapter: RecyclerViewMainAdapter
 

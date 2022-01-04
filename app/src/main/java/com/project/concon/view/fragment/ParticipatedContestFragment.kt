@@ -14,9 +14,12 @@ import com.project.concon.viewmodel.ParticipatedContestViewModel
 class ParticipatedContestFragment
     : BaseVMFragment<FragmentParticipatedContestBinding, ParticipatedContestViewModel>() {
 
+    override fun setBinding() {}
+
     override fun getLayoutRes(): Int = R.layout.fragment_participated_contest
 
-    override fun setBinding() {}
+    override fun getViewModelClass(): Class<ParticipatedContestViewModel> =
+        ParticipatedContestViewModel::class.java
 
     private lateinit var recyclerViewParticipatedAdapter: RecyclerViewParticipatedAdapter
 
