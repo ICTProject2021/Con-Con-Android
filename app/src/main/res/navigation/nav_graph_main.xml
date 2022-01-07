@@ -88,20 +88,20 @@
         android:label="contest_detail_fragment"
         tools:layout="@layout/fragment_contest_detail" >
         <action
-            android:id="@+id/action_contestDetailFragment_to_mainFragment"
+            android:id="@+id/to_mainFragment"
             app:destination="@id/mainFragment" />
         <action
-            android:id="@+id/action_contestDetailFragment_to_joinContestFragment"
+            android:id="@+id/to_joinContestFragment"
             app:destination="@id/joinContestFragment" />
+        <action
+            android:id="@+id/to_winnerFragment"
+            app:destination="@id/winnerFragment" />
+        <action
+            android:id="@+id/to_winnerSelectFragment"
+            app:destination="@id/winnerSelectFragment" />
         <argument
             android:name="id"
             app:argType="integer" />
-        <action
-            android:id="@+id/action_contestDetailFragment_to_winnerFragment"
-            app:destination="@id/winnerFragment" />
-        <action
-            android:id="@+id/action_contestDetailFragment_to_winnerSelectFragment"
-            app:destination="@id/winnerSelectFragment" />
     </fragment>
     <fragment
         android:id="@+id/chargeCashFinishFragment"

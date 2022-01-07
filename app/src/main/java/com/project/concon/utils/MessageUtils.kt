@@ -1,27 +1,16 @@
 package com.project.concon.utils
 
 import android.app.Activity
-import android.app.AlertDialog
 import android.content.Context
 import android.graphics.drawable.ColorDrawable
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatDialog
 import androidx.fragment.app.FragmentActivity
 import com.project.concon.R
-import com.project.concon.view.fragment.DialogFragmentFail
 import com.project.concon.view.fragment.DialogFragmentDefault
+import com.project.concon.view.fragment.DialogFragmentFail
 
 object MessageUtils {
-
-    /** @deprecated (삭제 예정) */
-    fun showDialog(context: Context, title: String, msg: String) =
-        AlertDialog.Builder(context)
-            .setTitle(title)
-            .setMessage(msg)
-            .setPositiveButton("확인") { _, _ -> }
-            .setCancelable(false)
-            .create()
-            .show()
 
     /** 실패 다이얼로그 */
     fun showFailDialog(activity: FragmentActivity, content: String) {

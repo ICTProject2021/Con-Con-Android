@@ -21,6 +21,14 @@ interface AppComponent : AndroidInjector<App> {
 
     fun inject(signInFragment: SignInFragment)
     fun inject(signUpFragment: SignUpFragment)
+//    fun inject(contestDetailFragment: ContestDetailFragment)
+//    fun inject(homeFragment: HomeFragment)
+//    fun inject(joinContestFragment: JoinContestFragment)
+//    fun inject(participatedContestFragment: ParticipatedContestFragment)
+//    fun inject(paymentFragment: PaymentFragment)
+//    fun inject(profileFragment: ProfileFragment)
+//    fun inject(winnerFragment: WinnerFragment)
+//    fun inject(winnerSelectFragment: WinnerSelectFragment)
 
     @Component.Factory
     interface Factory {
