@@ -22,9 +22,9 @@ class WinnerSelectViewModel @Inject constructor(
             .observeOn(Schedulers.io())
             .subscribeOn(AndroidSchedulers.mainThread())
             .subscribe({
-                isSuccessGetParticipantInfo.value = it
+                isSuccessGetParticipantInfo.postValue(it)
             }, {
-                isFailure.value = it.message
+                isFailure.postValue(it.message)
             }).apply { disposable.add(this) }
     }
 
@@ -33,9 +33,9 @@ class WinnerSelectViewModel @Inject constructor(
             .observeOn(Schedulers.io())
             .subscribeOn(AndroidSchedulers.mainThread())
             .subscribe({
-                isSuccessPutContestWinnerSelect.value = it
+                isSuccessPutContestWinnerSelect.postValue(it)
             }, {
-                isFailure.value = it.message
+                isFailure.postValue(it.message)
             }).apply { disposable.add(this) }
     }
 }

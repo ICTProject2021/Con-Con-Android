@@ -21,17 +21,16 @@ class SignInViewModel @Inject constructor(
     val isFailure = MutableLiveData<String>()
 
     fun postSignIn() {
-        isLoading.value = true
-
+        startLoading()
         accountRepository.postSignIn(SignInRequest(id.value!!, pw.value!!))
             .observeOn(Schedulers.io())
             .subscribeOn(AndroidSchedulers.mainThread())
             .subscribe({
-                isSuccess.value = it
-                isLoading.value = false
+                isSuccess.postValue(it)
+                stopLoading()
             }, {
-                isFailure.value = it.message
-                isLoading.value = false
+                isFailure.postValue(it.message)
+                stopLoading()
             }).apply { disposable.add(this) }
     }
 }

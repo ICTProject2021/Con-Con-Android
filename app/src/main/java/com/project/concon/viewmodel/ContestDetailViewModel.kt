@@ -37,17 +37,16 @@ class ContestDetailViewModel @Inject constructor(
     }
 
     fun getContestDetail(id: Int) {
-        isLoading.value = true
-
+        startLoading()
         repository.getContestDetail(id)
             .observeOn(Schedulers.io())
             .subscribeOn(AndroidSchedulers.mainThread())
             .subscribe({
-                isSuccess.value = it
-                isLoading.value = false
+                isSuccess.postValue(it)
+                stopLoading()
             }, {
-                isFailure.value = it.message
-                isLoading.value = false
+                isFailure.postValue(it.message)
+                stopLoading()
             }).apply { disposable.add(this) }
     }
 }

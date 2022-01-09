@@ -16,17 +16,16 @@ class PaymentViewModel @Inject constructor(
     val isFailure = MutableLiveData<String>()
 
     fun putCharge(cash: Int) {
-        isLoading.value = false
-
+        startLoading()
         repository.putChargeCash(CashRequest(cash))
             .observeOn(Schedulers.io())
             .subscribeOn(AndroidSchedulers.mainThread())
             .subscribe({
-                isSuccess.value = it
-                isLoading.value = true
-            },{
-                isFailure.value = it.message
-                isLoading.value = true
+                isSuccess.postValue(it)
+                stopLoading()
+            }, {
+                isFailure.postValue(it.message)
+                stopLoading()
             }).apply { disposable.add(this) }
     }
 }

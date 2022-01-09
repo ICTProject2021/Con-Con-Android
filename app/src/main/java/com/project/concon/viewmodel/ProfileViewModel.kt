@@ -20,9 +20,9 @@ class ProfileViewModel @Inject constructor(
             .observeOn(Schedulers.io())
             .subscribeOn(AndroidSchedulers.mainThread())
             .subscribe({
-                isSuccess.value = it
+                isSuccess.postValue(it)
             }, {
-                isFailure.value = it.message
+                isFailure.postValue(it.message)
             }).apply { disposable.add(this) }
     }
 }

@@ -26,15 +26,17 @@ class JoinContestViewModel @Inject constructor(
     val isFailure = MutableLiveData<String>()
 
     fun getParticipantInfo(id: Int) {
-        isLoading.value = true
-
-        contestRepository.getParticipantList(id).observeOn(Schedulers.io()).subscribeOn(AndroidSchedulers.mainThread()).subscribe({
-            isSuccessGetParticipantInfo.value = it
-            isLoading.value = false
-        }, {
-            isFailure.postValue(it.message)
-            isLoading.value = false
-        }).apply { disposable.add(this) }
+        startLoading()
+        contestRepository.getParticipantList(id)
+            .observeOn(Schedulers.io())
+            .subscribeOn(AndroidSchedulers.mainThread())
+            .subscribe({
+                isSuccessGetParticipantInfo.postValue(it)
+                stopLoading()
+            }, {
+                isFailure.postValue(it.message)
+                stopLoading()
+            }).apply { disposable.add(this) }
     }
 
     fun postParticipant(id: Int, contentResolver: ContentResolver) {
@@ -49,7 +51,7 @@ class JoinContestViewModel @Inject constructor(
             .observeOn(Schedulers.io())
             .subscribeOn(AndroidSchedulers.mainThread())
             .subscribe({
-                isSuccessPostParticipate.value = it
+                isSuccessPostParticipate.postValue(it)
             }, {
                 isFailure.postValue(it.message)
             }).apply { disposable.add(this) }

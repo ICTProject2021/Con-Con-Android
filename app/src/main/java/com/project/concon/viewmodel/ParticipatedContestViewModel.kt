@@ -21,7 +21,7 @@ class ParticipatedContestViewModel @Inject constructor(
             .subscribeOn(AndroidSchedulers.mainThread())
             .subscribe({
                 isSuccess.postValue(it)
-                isLoading.value = false
+                isLoading.postValue(false)
             }, {
                 isFailure.postValue(it.message)
                 isLoading.value = false

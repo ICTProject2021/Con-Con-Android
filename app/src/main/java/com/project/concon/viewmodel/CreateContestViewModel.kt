@@ -35,10 +35,10 @@ class CreateContestViewModel @Inject constructor(
         contestRepository.postCreateContest(contestRequest).observeOn(Schedulers.io())
             .subscribeOn(AndroidSchedulers.mainThread()).subscribe({
                 isSuccess.postValue(it)
-                isLoading.value = false
+                stopLoading()
             }, {
                 isFailure.postValue(it.message)
-                isLoading.value = false
+                stopLoading()
             }).apply { disposable.add(this) }
     }
 }

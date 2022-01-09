@@ -11,6 +11,14 @@ abstract class BaseViewModel : ViewModel() {
 
     val isLoading = MutableLiveData<Boolean>()
 
+    protected fun startLoading() {
+        isLoading.postValue(true)
+    }
+
+    protected fun stopLoading() {
+        isLoading.postValue(false)
+    }
+
     override fun onCleared() {
         super.onCleared()
         disposable.clear()

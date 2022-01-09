@@ -16,14 +16,16 @@ class HomeViewModel @Inject constructor(
     val isFailure: MutableLiveData<String> = MutableLiveData()
 
     fun getContestList() {
-        isLoading.value = true
-
-        contestRepository.getContestList().subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe({
-            isSuccess.postValue(it)
-            isLoading.value = false
-        }, {
-            isFailure.postValue(it.message)
-            isLoading.value = false
-        }).apply { disposable.add(this) }
+        startLoading()
+        contestRepository.getContestList()
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe({
+                isSuccess.postValue(it)
+                stopLoading()
+            }, {
+                isFailure.postValue(it.message)
+                stopLoading()
+            }).apply { disposable.add(this) }
     }
 }

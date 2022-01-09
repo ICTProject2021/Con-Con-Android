@@ -36,15 +36,13 @@ class SignUpViewModel @Inject constructor(
             .observeOn(Schedulers.io())
             .subscribeOn(AndroidSchedulers.mainThread())
             .subscribe({
-                isSuccessCheckId.value = it
+                isSuccessCheckId.postValue(it)
             }, {
-                isFailure.value = it.message
+                isFailure.postValue(it.message)
             })
     }
 
     fun postSignUp() {
-        isLoading.value = true
-
         val signUpReq = SignUpRequest(
             id.value!!,
             password.value!!,
@@ -52,13 +50,16 @@ class SignUpViewModel @Inject constructor(
             nickname.value!!
         )
 
+        startLoading()
         repository.postSignUp(signUpReq)
             .observeOn(Schedulers.io())
             .subscribeOn(AndroidSchedulers.mainThread())
             .subscribe({
-                isSuccessSignUp.value = it
+                isSuccessSignUp.postValue(it)
+                stopLoading()
             }, {
-                isFailure.value = it.message
+                isFailure.postValue(it.message)
+                stopLoading()
             })
     }
 
