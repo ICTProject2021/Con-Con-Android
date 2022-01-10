@@ -1,5 +1,6 @@
 package com.project.concon.model.remote
 
+import android.util.Log
 import com.project.concon.model.remote.dto.Res
 import retrofit2.Response
 import io.reactivex.rxjava3.functions.Function
@@ -24,6 +25,7 @@ abstract class BaseRemote<SV> {
 
     private fun <T> checkError(response: Response<T>) {
         if (!response.isSuccessful) {
+            Log.e("server", response.raw().toString())
             val errorBody = JSONObject(response.errorBody()!!.string())
             throw Throwable(errorBody.getString("message"))
         }

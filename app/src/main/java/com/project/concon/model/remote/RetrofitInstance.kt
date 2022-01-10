@@ -8,10 +8,11 @@ import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.Response
 import retrofit2.Retrofit
+import retrofit2.adapter.rxjava3.RxJava3CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 
 object RetrofitInstance {
-    const val BASE_URL = "http://ec2-18-216-110-95.us-east-2.compute.amazonaws.com:3000/"
+    const val BASE_URL = "http://ec2-18-191-238-179.us-east-2.compute.amazonaws.com:3000/"
 
     private val gson = Gson().newBuilder().setLenient().create()
 
@@ -22,6 +23,7 @@ object RetrofitInstance {
         Retrofit.Builder()
             .baseUrl(BASE_URL)
             .addConverterFactory(GsonConverterFactory.create(gson))
+            .addCallAdapterFactory(RxJava3CallAdapterFactory.create())
             .client(okHttpClient)
             .build()
     }
