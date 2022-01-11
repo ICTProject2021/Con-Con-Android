@@ -10,7 +10,7 @@ import com.project.concon.databinding.FragmentHomeBinding
 import com.project.concon.utils.MessageUtils
 import com.project.concon.view.adapter.RecyclerViewMainAdapter
 import com.project.concon.view.decoration.RecyclerViewDecoration
-import com.project.concon.viewmodel.HomeViewModel
+import com.project.concon.view.viewmodel.HomeViewModel
 
 class HomeFragment : BaseVMFragment<FragmentHomeBinding, HomeViewModel>() {
 

@@ -6,7 +6,7 @@
     <data>
         <variable
             name="vm"
-            type="com.project.concon.viewmodel.SignInViewModel" />
+            type="com.project.concon.view.viewmodel.SignInViewModel" />
     </data>
 
     <androidx.constraintlayout.motion.widget.MotionLayout

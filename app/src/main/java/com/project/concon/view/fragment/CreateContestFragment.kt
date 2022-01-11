@@ -22,8 +22,8 @@ import com.project.concon.model.remote.dto.response.Prize
 import com.project.concon.utils.ImagePicker
 import com.project.concon.utils.MessageUtils
 import com.project.concon.view.adapter.RecyclerViewJoinContestImageAdapter
-import com.project.concon.viewmodel.CreateContestViewModel
-import com.project.concon.viewmodel.PrizeDialogViewModel
+import com.project.concon.view.viewmodel.CreateContestViewModel
+import com.project.concon.view.viewmodel.PrizeDialogViewModel
 import java.text.NumberFormat
 import java.util.*
 

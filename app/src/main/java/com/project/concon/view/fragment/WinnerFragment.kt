@@ -9,7 +9,7 @@ import com.project.concon.view.base.BaseVMFragment
 import com.project.concon.databinding.FragmentWinnerBinding
 import com.project.concon.view.adapter.RecyclerViewWinnerAdapter
 import com.project.concon.view.decoration.RecyclerViewDecoration
-import com.project.concon.viewmodel.WinnerViewModel
+import com.project.concon.view.viewmodel.WinnerViewModel
 
 class WinnerFragment : BaseVMFragment<FragmentWinnerBinding, WinnerViewModel>() {
 

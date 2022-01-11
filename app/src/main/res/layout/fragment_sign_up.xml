@@ -6,7 +6,7 @@
     <data>
         <variable
             name="vm"
-            type="com.project.concon.viewmodel.SignUpViewModel" />
+            type="com.project.concon.view.viewmodel.SignUpViewModel" />
     </data>
 
 

@@ -8,8 +8,8 @@ import androidx.navigation.fragment.findNavController
 import com.project.concon.R
 import com.project.concon.view.base.BaseFragment
 import com.project.concon.databinding.FragmentPrizeBinding
-import com.project.concon.viewmodel.CreateContestViewModel
-import com.project.concon.viewmodel.PrizeDialogViewModel
+import com.project.concon.view.viewmodel.CreateContestViewModel
+import com.project.concon.view.viewmodel.PrizeDialogViewModel
 import java.text.NumberFormat
 import java.util.*
 

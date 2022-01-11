@@ -11,7 +11,7 @@ import com.project.concon.utils.PurchaseMessageListener
 import com.project.concon.view.adapter.RecyclerViewPaymentAdapter
 import com.project.concon.view.data.Payment
 import com.project.concon.view.data.SkuData
-import com.project.concon.viewmodel.PaymentViewModel
+import com.project.concon.view.viewmodel.PaymentViewModel
 
 class PaymentFragment : BaseVMFragment<FragmentPaymentBinding, PaymentViewModel>() {
 

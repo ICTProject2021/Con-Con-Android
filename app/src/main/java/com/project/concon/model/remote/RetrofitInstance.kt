@@ -34,8 +34,8 @@ object RetrofitInstance {
 
 class TokenInterceptor : Interceptor {
     override fun intercept(chain: Interceptor.Chain): Response {
-        val request = chain.request().newBuilder().addHeader("authorization", PreferenceUtils.token
-            ?: "").build()
+        val request = chain.request().newBuilder().addHeader(
+            "authorization", PreferenceUtils.token ?: "").build()
         return chain.proceed(request)
     }
 }

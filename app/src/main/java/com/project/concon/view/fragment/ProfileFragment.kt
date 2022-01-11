@@ -7,7 +7,7 @@ import com.project.concon.view.base.BaseVMFragment
 import com.project.concon.databinding.FragmentProfileBinding
 import com.project.concon.utils.MessageUtils
 import com.project.concon.view.bind.setImage
-import com.project.concon.viewmodel.ProfileViewModel
+import com.project.concon.view.viewmodel.ProfileViewModel
 import java.text.NumberFormat
 import java.util.*
 

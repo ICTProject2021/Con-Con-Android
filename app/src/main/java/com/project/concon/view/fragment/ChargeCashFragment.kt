@@ -11,7 +11,7 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.project.concon.R
 import com.project.concon.databinding.FragmentChargeCashBinding
-import com.project.concon.viewmodel.ChargeCashViewModel
+import com.project.concon.view.viewmodel.ChargeCashViewModel
 /** 삭제 예정 */
 class ChargeCashFragment : Fragment() {
 

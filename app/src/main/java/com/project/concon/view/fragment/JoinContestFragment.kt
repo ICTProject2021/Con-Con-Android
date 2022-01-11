@@ -17,7 +17,7 @@ import com.project.concon.databinding.FragmentJoinContestBinding
 import com.project.concon.utils.MessageUtils
 import com.project.concon.view.adapter.RecyclerViewJoinContestAdapter
 import com.project.concon.view.adapter.RecyclerViewJoinContestImageAdapter
-import com.project.concon.viewmodel.JoinContestViewModel
+import com.project.concon.view.viewmodel.JoinContestViewModel
 import java.io.IOException
 
 class JoinContestFragment : BaseVMFragment<FragmentJoinContestBinding, JoinContestViewModel>() {

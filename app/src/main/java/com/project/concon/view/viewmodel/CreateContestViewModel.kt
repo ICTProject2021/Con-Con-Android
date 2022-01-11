@@ -1,4 +1,4 @@
-package com.project.concon.viewmodel
+package com.project.concon.view.viewmodel
 
 import androidx.lifecycle.MutableLiveData
 import com.project.concon.view.base.BaseViewModel

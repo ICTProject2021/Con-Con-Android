@@ -1,28 +1,36 @@
-package com.project.concon.viewmodel
+package com.project.concon.view.viewmodel
 
 import androidx.lifecycle.MutableLiveData
 import com.project.concon.view.base.BaseViewModel
-import com.project.concon.model.remote.dto.response.Profile
+import com.project.concon.model.remote.dto.request.SignInRequest
 import com.project.concon.model.repository.AccountRepository
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.schedulers.Schedulers
 import javax.inject.Inject
 
-class ProfileViewModel @Inject constructor(
-    private val repository: AccountRepository
+class SignInViewModel @Inject constructor(
+    private val accountRepository: AccountRepository
 ) : BaseViewModel() {
 
-    val isSuccess = MutableLiveData<Profile>()
+    val id = MutableLiveData<String?>()
+    val pw = MutableLiveData<String?>()
+    val idErr = MutableLiveData<String>()
+    val pwErr = MutableLiveData<String>()
+
+    val isSuccess = MutableLiveData<String>()
     val isFailure = MutableLiveData<String>()
 
-    fun getProfile() {
-        repository.getProfile()
+    fun postSignIn() {
+        startLoading()
+        accountRepository.postSignIn(SignInRequest(id.value!!, pw.value!!))
             .observeOn(Schedulers.io())
             .subscribeOn(AndroidSchedulers.mainThread())
             .subscribe({
                 isSuccess.postValue(it)
+                stopLoading()
             }, {
                 isFailure.postValue(it.message)
+                stopLoading()
             }).apply { disposable.add(this) }
     }
 }

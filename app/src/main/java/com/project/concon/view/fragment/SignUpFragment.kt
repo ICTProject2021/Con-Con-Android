@@ -9,7 +9,7 @@ import com.project.concon.databinding.FragmentSignUpBinding
 import com.project.concon.utils.MessageUtils
 import com.project.concon.utils.PreferenceUtils
 import com.project.concon.view.activity.MainActivity
-import com.project.concon.viewmodel.SignUpViewModel
+import com.project.concon.view.viewmodel.SignUpViewModel
 
 class SignUpFragment : BaseVMFragment<FragmentSignUpBinding, SignUpViewModel>() {
 

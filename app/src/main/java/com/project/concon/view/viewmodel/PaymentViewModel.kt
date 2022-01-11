@@ -1,28 +1,23 @@
-package com.project.concon.viewmodel
+package com.project.concon.view.viewmodel
 
 import androidx.lifecycle.MutableLiveData
 import com.project.concon.view.base.BaseViewModel
-import com.project.concon.model.remote.dto.request.SignInRequest
+import com.project.concon.model.remote.dto.request.CashRequest
 import com.project.concon.model.repository.AccountRepository
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.schedulers.Schedulers
 import javax.inject.Inject
 
-class SignInViewModel @Inject constructor(
-    private val accountRepository: AccountRepository
+class PaymentViewModel @Inject constructor(
+    private val repository: AccountRepository
 ) : BaseViewModel() {
-
-    val id = MutableLiveData<String?>()
-    val pw = MutableLiveData<String?>()
-    val idErr = MutableLiveData<String>()
-    val pwErr = MutableLiveData<String>()
 
     val isSuccess = MutableLiveData<String>()
     val isFailure = MutableLiveData<String>()
 
-    fun postSignIn() {
+    fun putCharge(cash: Int) {
         startLoading()
-        accountRepository.postSignIn(SignInRequest(id.value!!, pw.value!!))
+        repository.putChargeCash(CashRequest(cash))
             .observeOn(Schedulers.io())
             .subscribeOn(AndroidSchedulers.mainThread())
             .subscribe({

@@ -8,7 +8,7 @@ import com.project.concon.view.base.BaseVMFragment
 import com.project.concon.databinding.FragmentContestDetailBinding
 import com.project.concon.model.remote.dto.response.ContestDetail
 import com.project.concon.utils.MessageUtils
-import com.project.concon.viewmodel.ContestDetailViewModel
+import com.project.concon.view.viewmodel.ContestDetailViewModel
 import java.text.SimpleDateFormat
 import java.util.*
 

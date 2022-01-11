@@ -9,7 +9,7 @@ import com.project.concon.view.base.BaseVMFragment
 import com.project.concon.databinding.FragmentParticipatedContestBinding
 import com.project.concon.view.adapter.RecyclerViewParticipatedAdapter
 import com.project.concon.view.decoration.RecyclerViewDecoration
-import com.project.concon.viewmodel.ParticipatedContestViewModel
+import com.project.concon.view.viewmodel.ParticipatedContestViewModel
 
 class ParticipatedContestFragment
     : BaseVMFragment<FragmentParticipatedContestBinding, ParticipatedContestViewModel>() {

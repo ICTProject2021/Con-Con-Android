@@ -12,7 +12,7 @@
             type="ObservableArrayList&lt;Participant&gt;" />
         <variable
             name="vm"
-            type="com.project.concon.viewmodel.JoinContestViewModel" />
+            type="com.project.concon.view.viewmodel.JoinContestViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
