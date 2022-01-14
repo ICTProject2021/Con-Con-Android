@@ -19,13 +19,14 @@ abstract class BaseRemote<SV> {
     protected fun <T> getMessage(): Function<Response<Res<T>>, String> {
         return Function {
             checkError(it)
-            it.body()!!.message
+            it.body()?.message?:""
         }
     }
 
     private fun <T> checkError(response: Response<T>) {
+        Log.d("server", response.raw().toString())
+
         if (!response.isSuccessful) {
-            Log.e("server", response.raw().toString())
             val errorBody = JSONObject(response.errorBody()!!.string())
             throw Throwable(errorBody.getString("message"))
         }
