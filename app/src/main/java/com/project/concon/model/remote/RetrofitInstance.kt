@@ -3,7 +3,7 @@ package com.project.concon.model.remote
 import com.google.gson.Gson
 import com.project.concon.model.remote.dao.AccountService
 import com.project.concon.model.remote.dao.ContestService
-import com.project.concon.utils.PreferenceUtils
+import com.project.concon.widget.utils.PreferenceUtils
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.Response

@@ -5,11 +5,11 @@ import android.view.View
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.project.concon.R
-import com.project.concon.view.base.BaseVMFragment
+import com.project.concon.base.BaseVMFragment
 import com.project.concon.databinding.FragmentWinnerBinding
-import com.project.concon.view.adapter.RecyclerViewWinnerAdapter
-import com.project.concon.view.decoration.RecyclerViewDecoration
-import com.project.concon.view.viewmodel.WinnerViewModel
+import com.project.concon.widget.recyclerview.RecyclerViewWinnerAdapter
+import com.project.concon.widget.recyclerview.RecyclerViewDecoration
+import com.project.concon.viewmodel.WinnerViewModel
 
 class WinnerFragment : BaseVMFragment<FragmentWinnerBinding, WinnerViewModel>() {
 

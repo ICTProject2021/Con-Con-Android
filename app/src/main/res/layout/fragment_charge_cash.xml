@@ -6,7 +6,7 @@
     <data>
         <variable
             name="vm"
-            type="com.project.concon.view.viewmodel.ChargeCashViewModel" />
+            type="com.project.concon.viewmodel.ChargeCashViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

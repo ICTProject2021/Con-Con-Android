@@ -4,12 +4,12 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import com.project.concon.R
-import com.project.concon.view.base.BaseVMFragment
+import com.project.concon.base.BaseVMFragment
 import com.project.concon.databinding.FragmentSignInBinding
-import com.project.concon.utils.MessageUtils
-import com.project.concon.utils.PreferenceUtils
+import com.project.concon.widget.utils.MessageUtils
+import com.project.concon.widget.utils.PreferenceUtils
 import com.project.concon.view.activity.MainActivity
-import com.project.concon.view.viewmodel.SignInViewModel
+import com.project.concon.viewmodel.SignInViewModel
 
 class SignInFragment : BaseVMFragment<FragmentSignInBinding, SignInViewModel>() {
 

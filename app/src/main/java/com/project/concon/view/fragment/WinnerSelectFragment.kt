@@ -6,13 +6,13 @@ import android.view.View
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.project.concon.R
-import com.project.concon.view.base.BaseVMFragment
+import com.project.concon.base.BaseVMFragment
 import com.project.concon.databinding.FragmentWinnerSelectBinding
 import com.project.concon.model.remote.dto.request.WinnerRequest
-import com.project.concon.utils.MessageUtils
-import com.project.concon.view.adapter.RecyclerViewWinnerSelectAdapter
-import com.project.concon.view.decoration.RecyclerViewDecoration
-import com.project.concon.view.viewmodel.WinnerSelectViewModel
+import com.project.concon.widget.utils.MessageUtils
+import com.project.concon.widget.recyclerview.RecyclerViewWinnerSelectAdapter
+import com.project.concon.widget.recyclerview.RecyclerViewDecoration
+import com.project.concon.viewmodel.WinnerSelectViewModel
 
 class WinnerSelectFragment : BaseVMFragment<FragmentWinnerSelectBinding, WinnerSelectViewModel>() {
 

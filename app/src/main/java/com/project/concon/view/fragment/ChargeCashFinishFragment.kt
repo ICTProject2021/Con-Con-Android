@@ -9,7 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import com.project.concon.R
 import com.project.concon.databinding.FragmentChargeCashFinishBinding
-import com.project.concon.view.viewmodel.ChargeCashViewModel
+import com.project.concon.viewmodel.ChargeCashViewModel
 
 /** 메이비 삭제 예정 */
 class ChargeCashFinishFragment : Fragment() {

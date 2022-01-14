@@ -5,12 +5,12 @@ import android.view.View
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.project.concon.R
-import com.project.concon.view.base.BaseVMFragment
+import com.project.concon.base.BaseVMFragment
 import com.project.concon.databinding.FragmentHomeBinding
-import com.project.concon.utils.MessageUtils
-import com.project.concon.view.adapter.RecyclerViewMainAdapter
-import com.project.concon.view.decoration.RecyclerViewDecoration
-import com.project.concon.view.viewmodel.HomeViewModel
+import com.project.concon.widget.utils.MessageUtils
+import com.project.concon.widget.recyclerview.RecyclerViewMainAdapter
+import com.project.concon.widget.recyclerview.RecyclerViewDecoration
+import com.project.concon.viewmodel.HomeViewModel
 
 class HomeFragment : BaseVMFragment<FragmentHomeBinding, HomeViewModel>() {
 

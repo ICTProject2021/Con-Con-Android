@@ -3,15 +3,15 @@ package com.project.concon.view.fragment
 import android.os.Bundle
 import android.view.View
 import com.project.concon.R
-import com.project.concon.view.base.BaseVMFragment
+import com.project.concon.base.BaseVMFragment
 import com.project.concon.databinding.FragmentPaymentBinding
-import com.project.concon.utils.BillingManager
-import com.project.concon.utils.MessageUtils
-import com.project.concon.utils.PurchaseMessageListener
-import com.project.concon.view.adapter.RecyclerViewPaymentAdapter
-import com.project.concon.view.data.Payment
-import com.project.concon.view.data.SkuData
-import com.project.concon.view.viewmodel.PaymentViewModel
+import com.project.concon.widget.utils.BillingManager
+import com.project.concon.widget.utils.MessageUtils
+import com.project.concon.widget.utils.PurchaseMessageListener
+import com.project.concon.widget.recyclerview.RecyclerViewPaymentAdapter
+import com.project.concon.widget.data.Payment
+import com.project.concon.widget.data.SkuData
+import com.project.concon.viewmodel.PaymentViewModel
 
 class PaymentFragment : BaseVMFragment<FragmentPaymentBinding, PaymentViewModel>() {
 

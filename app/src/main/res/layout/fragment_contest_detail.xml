@@ -6,7 +6,7 @@
     <data>
         <variable
             name="vm"
-            type="com.project.concon.view.viewmodel.ContestDetailViewModel" />
+            type="com.project.concon.viewmodel.ContestDetailViewModel" />
         <variable
             name="data"
             type="com.project.concon.model.remote.dto.response.ContestDetail" />

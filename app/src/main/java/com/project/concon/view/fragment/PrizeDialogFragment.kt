@@ -8,8 +8,8 @@ import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.activityViewModels
 import com.project.concon.databinding.FragmentPrizeDialogBinding
 import com.project.concon.model.remote.dto.response.Prize
-import com.project.concon.utils.MessageUtils
-import com.project.concon.view.viewmodel.PrizeDialogViewModel
+import com.project.concon.widget.utils.MessageUtils
+import com.project.concon.viewmodel.PrizeDialogViewModel
 
 class PrizeDialogFragment : DialogFragment() {
 

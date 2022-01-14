@@ -3,11 +3,11 @@ package com.project.concon.view.fragment
 import android.os.Bundle
 import android.view.View
 import com.project.concon.R
-import com.project.concon.view.base.BaseVMFragment
+import com.project.concon.base.BaseVMFragment
 import com.project.concon.databinding.FragmentProfileBinding
-import com.project.concon.utils.MessageUtils
-import com.project.concon.view.bind.setImage
-import com.project.concon.view.viewmodel.ProfileViewModel
+import com.project.concon.widget.utils.MessageUtils
+import com.project.concon.widget.bind.setImage
+import com.project.concon.viewmodel.ProfileViewModel
 import java.text.NumberFormat
 import java.util.*
 

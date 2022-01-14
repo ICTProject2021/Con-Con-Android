@@ -2,9 +2,9 @@ package com.project.concon.di.module
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.project.concon.view.viewmodel.*
-import com.project.concon.view.viewmodel.factory.ViewModelFactory
-import com.project.concon.view.viewmodel.factory.ViewModelKey
+import com.project.concon.viewmodel.factory.ViewModelFactory
+import com.project.concon.viewmodel.factory.ViewModelKey
+import com.project.concon.viewmodel.*
 import dagger.Binds
 import dagger.Module
 import dagger.multibindings.IntoMap

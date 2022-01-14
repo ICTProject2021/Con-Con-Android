@@ -19,11 +19,11 @@ import com.project.concon.R
 import com.project.concon.databinding.FragmentCreateContestBinding
 import com.project.concon.model.remote.dto.request.ContestRequest
 import com.project.concon.model.remote.dto.response.Prize
-import com.project.concon.utils.ImagePicker
-import com.project.concon.utils.MessageUtils
-import com.project.concon.view.adapter.RecyclerViewJoinContestImageAdapter
-import com.project.concon.view.viewmodel.CreateContestViewModel
-import com.project.concon.view.viewmodel.PrizeDialogViewModel
+import com.project.concon.widget.utils.ImagePicker
+import com.project.concon.widget.utils.MessageUtils
+import com.project.concon.widget.recyclerview.RecyclerViewJoinContestImageAdapter
+import com.project.concon.viewmodel.CreateContestViewModel
+import com.project.concon.viewmodel.PrizeDialogViewModel
 import java.text.NumberFormat
 import java.util.*
 
