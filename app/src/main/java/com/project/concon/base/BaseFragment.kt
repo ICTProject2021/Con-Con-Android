@@ -7,33 +7,70 @@ import android.view.ViewGroup
 import androidx.annotation.LayoutRes
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
-import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import com.project.concon.BR
+import com.project.concon.R
+import dagger.android.support.DaggerFragment
+import java.lang.StringBuilder
+import java.lang.reflect.ParameterizedType
+import java.util.*
+import javax.inject.Inject
 
-abstract class BaseFragment<B : ViewDataBinding> : Fragment() {
+abstract class BaseFragment<VB: ViewDataBinding, VM: ViewModel> : DaggerFragment() {
 
-    private var _binding: B? = null
-    protected val binding get() = _binding!!
+    @Inject
+    lateinit var viewModelFactory: ViewModelProvider.Factory
+    protected lateinit var viewModel: VM
+    protected lateinit var binding: VB
 
     protected val navController by lazy {
         findNavController()
     }
+
+    protected abstract fun observerViewModel()
+
+    protected abstract fun getViewModelClass(): Class<VM>
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding = DataBindingUtil.inflate(inflater, getLayoutRes(), container, false)
-        binding.lifecycleOwner = viewLifecycleOwner
+        performDataBinding(inflater, container)
+        observerViewModel()
+
         return binding.root
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
-        _binding = null
+        binding.unbind()
+    }
+
+    private fun performDataBinding(inflater: LayoutInflater, container: ViewGroup?) {
+        viewModel = ViewModelProvider(this, viewModelFactory)[getViewModelClass()]
+
+        binding = DataBindingUtil.inflate(inflater, getLayoutRes(), container, false)
+        binding.lifecycleOwner = this
+        binding.setVariable(BR.vm, viewModel)
+        binding.executePendingBindings()
     }
 
     @LayoutRes
-    abstract fun getLayoutRes(): Int
+    private fun getLayoutRes(): Int {
+        val split = ((Objects.requireNonNull(javaClass.genericSuperclass) as ParameterizedType).actualTypeArguments[0] as Class<*>)
+            .simpleName.replace("Binding$".toRegex(), "")
+            .split("(?<=.)(?=\\p{Upper})".toRegex())
+            .dropLastWhile { it.isEmpty() }.toTypedArray()
+
+        val name = StringBuilder()
+        for (i in split.indices) {
+            name.append(split[i].lowercase(Locale.ROOT))
+            if (i != split.size - 1) name.append("_")
+        }
+
+        return R.layout::class.java.getField(name.toString()).getInt(R.layout::class.java)
+    }
 }
