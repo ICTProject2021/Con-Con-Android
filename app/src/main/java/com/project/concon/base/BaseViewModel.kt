@@ -28,7 +28,7 @@ abstract class BaseViewModel : ViewModel() {
         isLoading.postValue(false)
     }
 
-    protected fun addDisposable(single: Single<Any>, observer: DisposableSingleObserver<Any>) {
+    protected fun addDisposable(single: Single<*>, observer: DisposableSingleObserver<*>) {
         disposable.add(single.subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribeWith(observer as SingleObserver<Any>) as Disposable)

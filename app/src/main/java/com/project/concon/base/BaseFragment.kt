@@ -29,9 +29,11 @@ abstract class BaseFragment<VB: ViewDataBinding, VM: ViewModel> : DaggerFragment
         findNavController()
     }
 
-    protected abstract fun observerViewModel()
-
     protected abstract fun getViewModelClass(): Class<VM>
+
+    protected abstract fun init()
+
+    protected abstract fun observerViewModel()
 
     override fun onCreateView(
         inflater: LayoutInflater,
