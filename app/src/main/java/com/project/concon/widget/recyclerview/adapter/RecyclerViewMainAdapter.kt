@@ -1,4 +1,4 @@
-package com.project.concon.widget.recyclerview
+package com.project.concon.widget.recyclerview.adapter
 
 import android.util.Log
 import android.view.LayoutInflater

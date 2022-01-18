@@ -1,4 +1,4 @@
-package com.project.concon.widget.recyclerview
+package com.project.concon.widget.recyclerview.decoration
 
 import android.graphics.Rect
 import android.view.View

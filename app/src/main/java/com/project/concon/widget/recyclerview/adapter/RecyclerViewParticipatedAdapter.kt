@@ -1,4 +1,4 @@
-package com.project.concon.widget.recyclerview
+package com.project.concon.widget.recyclerview.adapter
 
 import android.view.LayoutInflater
 import android.view.View
@@ -19,12 +19,14 @@ class RecyclerViewParticipatedAdapter :
     private lateinit var mListener: OnItemClickListener
 
     interface OnItemClickListener {
-        fun onClick(v: View, position: Int)
+        fun onClick(id: Int)
     }
 
-    fun setOnItemClickListener(listener: OnItemClickListener?) {
-        if (listener != null) {
-            this.mListener = listener
+    fun setOnItemClickListener(listener: (Int) -> Unit) {
+        mListener = object : OnItemClickListener {
+            override fun onClick(id: Int) {
+                listener(id)
+            }
         }
     }
 
@@ -77,7 +79,7 @@ class RecyclerViewParticipatedAdapter :
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.bind(dataList[position])
         holder.itemView.setOnClickListener {
-            mListener.onClick(it, position)
+            mListener.onClick(dataList[position].ID!!)
         }
     }
 
