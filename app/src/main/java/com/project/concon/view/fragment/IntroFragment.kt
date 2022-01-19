@@ -1,32 +1,24 @@
 package com.project.concon.view.fragment
 
-import android.os.Bundle
-import android.view.View
-import com.project.concon.R
 import com.project.concon.base.BaseFragment
 import com.project.concon.databinding.FragmentIntroBinding
+import com.project.concon.viewmodel.IntroViewModel
 
-class IntroFragment : BaseFragment<FragmentIntroBinding>() {
+class IntroFragment : BaseFragment<FragmentIntroBinding, IntroViewModel>() {
 
-    override fun getLayoutRes(): Int = R.layout.fragment_intro
+    override fun getViewModelClass(): Class<IntroViewModel> = IntroViewModel::class.java
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
+    override fun init() {}
 
-        binding.btnSignInIntro.setOnClickListener {
-            navigateToSignIn()
+    override fun observerViewModel() {
+        with(viewModel) {
+            onSignInEvent.observe(this@IntroFragment) {
+                navController.navigate(IntroFragmentDirections.toSignInFragment())
+            }
+
+            onSignUpEvent.observe(this@IntroFragment) {
+                navController.navigate(IntroFragmentDirections.toSignUpFragment())
+            }
         }
-
-        binding.btnSignUpIntro.setOnClickListener {
-            navigateToSignUp()
-        }
-    }
-
-    private fun navigateToSignIn() {
-        navController.navigate(R.id.action_introFragment_to_signInFragment)
-    }
-
-    private fun navigateToSignUp() {
-        navController.navigate(R.id.action_introFragment_to_signUpFragment)
     }
 }

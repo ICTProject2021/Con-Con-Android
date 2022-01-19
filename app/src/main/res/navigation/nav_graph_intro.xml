@@ -11,10 +11,10 @@
         android:label="intro_fragment"
         tools:layout="@layout/fragment_intro" >
         <action
-            android:id="@+id/action_introFragment_to_signInFragment"
+            android:id="@+id/to_signInFragment"
             app:destination="@id/signInFragment" />
         <action
-            android:id="@+id/action_introFragment_to_signUpFragment"
+            android:id="@+id/to_signUpFragment"
             app:destination="@id/signUpFragment" />
     </fragment>
     <fragment
