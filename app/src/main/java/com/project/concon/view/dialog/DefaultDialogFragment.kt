@@ -1,4 +1,4 @@
-package com.project.concon.view.fragment
+package com.project.concon.view.dialog
 
 import android.app.AlertDialog
 import android.app.Dialog
@@ -11,7 +11,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.DialogFragment
 import com.project.concon.databinding.FragmentDialogDefaultBinding
 
-class DialogFragmentDefault(
+class DefaultDialogFragment(
     private val title: String,
     private val content: String
 ) : DialogFragment() {
