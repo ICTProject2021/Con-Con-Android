@@ -7,9 +7,6 @@
         <variable
             name="vm"
             type="com.project.concon.viewmodel.ContestDetailViewModel" />
-        <variable
-            name="data"
-            type="com.project.concon.model.remote.dto.response.ContestDetail" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -24,6 +21,9 @@
             android:layout_marginStart="@dimen/space_24dp"
             android:layout_marginTop="@dimen/space_32dp"
             android:background="@android:color/transparent"
+            android:minWidth="@dimen/button_size_min"
+            android:minHeight="@dimen/button_size_min"
+            android:onClick="@{()->vm.joinEvent()}"
             android:src="@drawable/vec_ic_back"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -36,6 +36,7 @@
             android:layout_marginStart="@dimen/space_24dp"
             android:layout_marginEnd="@dimen/space_24dp"
             android:layout_marginBottom="@dimen/space_40dp"
+            android:onClick="@{()->vm.joinEvent()}"
             android:text="@string/join_contest"
             app:layout_constraintBottom_toBottomOf="@+id/nestedScrollView"
             app:layout_constraintEnd_toEndOf="parent"
@@ -70,7 +71,7 @@
 
                     <ImageView
                         android:id="@+id/iv_profile_img_contest_detail"
-                        loadUri="@{data.profile}"
+                        loadUri="@{vm.isSuccess().profile}"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         tools:src="@tools:sample/avatars" />
@@ -115,7 +116,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/space_5dp"
-                        android:text="@{vm.getAllPriceSum(data.prize)}" />
+                        android:text="@{vm.getAllPriceSum()}" />
                 </LinearLayout>
 
                 <TextView
@@ -124,7 +125,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/space_16dp"
-                    android:text="@{data.host}"
+                    android:text="@{vm.isSuccess().host}"
                     app:layout_constraintBottom_toBottomOf="@+id/cardView"
                     app:layout_constraintStart_toEndOf="@+id/cardView"
                     app:layout_constraintTop_toTopOf="@+id/cardView" />
@@ -179,7 +180,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/space_16dp"
-                        android:text="@{@string/date_format(vm.toDate(data.startdate), vm.toDate(data.duedate))}"
+                        android:text="@{@string/date_format(vm.toDate(vm.isSuccess().startdate), vm.toDate(vm.isSuccess().duedate))}"
                         app:layout_constraintBottom_toBottomOf="@+id/cardView5"
                         app:layout_constraintStart_toEndOf="@+id/cardView5"
                         app:layout_constraintTop_toTopOf="@+id/cardView5" />
@@ -202,7 +203,7 @@
                     android:layout_width="@dimen/layout_0dp"
                     android:layout_height="@dimen/layout_27dp"
                     android:layout_marginTop="@dimen/space_24dp"
-                    android:text="@{data.title}"
+                    android:text="@{vm.isSuccess().title}"
                     app:layout_constraintEnd_toEndOf="@+id/linearLayout"
                     app:layout_constraintStart_toStartOf="@+id/linearLayout"
                     app:layout_constraintTop_toTopOf="parent"
@@ -216,7 +217,7 @@
                     android:layout_marginStart="@dimen/space_24dp"
                     android:layout_marginTop="@dimen/space_24dp"
                     android:layout_marginEnd="@dimen/space_24dp"
-                    android:text="@{data.content}"
+                    android:text="@{vm.isSuccess().content}"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/linearLayout2"
@@ -230,6 +231,5 @@
                     app:layout_constraintTop_toBottomOf="@+id/cardView" />
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.core.widget.NestedScrollView>
-
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

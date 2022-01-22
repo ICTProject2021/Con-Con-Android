@@ -164,7 +164,7 @@
         <entry key="app/src/main/res/layout/dialog_fragment_prize.xml" value="0.47782549921969636" />
         <entry key="app/src/main/res/layout/fragment_charge_cash.xml" value="0.14947916666666666" />
         <entry key="app/src/main/res/layout/fragment_charge_cash_finish.xml" value="0.14947916666666666" />
-        <entry key="app/src/main/res/layout/fragment_contest_detail.xml" value="0.14947916666666666" />
+        <entry key="app/src/main/res/layout/fragment_contest_detail.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_create_contest.xml" value="0.4139582203946718" />
         <entry key="app/src/main/res/layout/fragment_dialog_default.xml" value="0.2171875" />
         <entry key="app/src/main/res/layout/fragment_home.xml" value="0.2171875" />
