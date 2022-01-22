@@ -75,7 +75,7 @@
             android:layout_marginBottom="@dimen/space_50dp"
             android:background="@drawable/background_gradient_btn"
             android:enabled="@{vm.id.length() != 0 &amp;&amp; vm.pw.length() != 0 ? true : false}"
-            android:onClick="@{() -> vm.postSignIn()}"
+            android:onClick="@{() -> vm.signIn()}"
             android:stateListAnimator="@null"
             android:text="@string/sign_in"
             android:textColor="@color/white"
