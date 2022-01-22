@@ -16,22 +16,20 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class PaymentFragment : BaseFragment<FragmentPaymentBinding, PaymentViewModel>() {
 
-//    override fun getViewModelClass(): Class<PaymentViewModel> = PaymentViewModel::class.java
-
-    private val viewModel: PaymentViewModel by viewModel()
+    override val viewModel: PaymentViewModel by viewModel()
     private lateinit var manager: BillingManager
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
-        binding.btnClosePayment.setOnClickListener {
-            navController.navigate(R.id.action_paymentFragment_to_profileFragment)
-        }
-    }
 
     override fun init() {
         initBilling()
         initRecyclerView()
+    }
+
+    override fun observerViewModel() {
+        with(viewModel) {
+            onCloseEvent.observe(this@PaymentFragment) {
+                navController.popBackStack()
+            }
+        }
     }
 
     private fun initBilling() {
@@ -71,14 +69,6 @@ class PaymentFragment : BaseFragment<FragmentPaymentBinding, PaymentViewModel>()
             }
 
             manager.doBillingFlow(requireActivity(), sku)
-        }
-    }
-
-    override fun observerViewModel() {
-        with(viewModel) {
-            onCloseEvent.observe(this@PaymentFragment) {
-                navController.popBackStack()
-            }
         }
     }
 }

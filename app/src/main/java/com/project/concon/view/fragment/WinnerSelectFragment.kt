@@ -17,9 +17,7 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class WinnerSelectFragment : BaseFragment<FragmentWinnerSelectBinding, WinnerSelectViewModel>() {
 
-//    override fun getViewModelClass(): Class<WinnerSelectViewModel> = WinnerSelectViewModel::class.java
-
-    private val viewModel: WinnerSelectViewModel by viewModel()
+    override val viewModel: WinnerSelectViewModel by viewModel()
     private val args : WinnerSelectFragmentArgs by navArgs()
 
     private val recyclerViewAdapter = RecyclerViewWinnerSelectAdapter()
@@ -82,10 +80,8 @@ class WinnerSelectFragment : BaseFragment<FragmentWinnerSelectBinding, WinnerSel
     }
 
     override fun init() {
-        TODO("Not yet implemented")
     }
 
     override fun observerViewModel() {
-        TODO("Not yet implemented")
     }
 }

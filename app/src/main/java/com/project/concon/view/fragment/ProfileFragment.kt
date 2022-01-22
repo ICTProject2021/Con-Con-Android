@@ -14,8 +14,7 @@ import java.util.*
 
 class ProfileFragment : BaseFragment<FragmentProfileBinding, ProfileViewModel>() {
 
-//    override fun getViewModelClass(): Class<ProfileViewModel> = ProfileViewModel::class.java
-    private val viewModel: ProfileViewModel by viewModel()
+    override val viewModel: ProfileViewModel by viewModel()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

@@ -32,8 +32,7 @@ class JoinContestFragment : BaseFragment<FragmentJoinContestBinding, JoinContest
 
     private lateinit var resultLauncher: ActivityResultLauncher<Intent>
 
-//    override fun getViewModelClass(): Class<JoinContestViewModel> = JoinContestViewModel::class.java
-    private val viewModel: JoinContestViewModel by viewModel()
+    override val viewModel: JoinContestViewModel by viewModel()
 
     override fun init() {
         binding.rvParticipantJoinContest.adapter = joinAdapter

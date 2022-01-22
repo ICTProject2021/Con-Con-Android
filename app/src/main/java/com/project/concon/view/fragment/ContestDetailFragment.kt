@@ -9,28 +9,16 @@ import com.project.concon.viewmodel.ContestDetailViewModel
 import com.project.concon.widget.extension.formatToString
 import com.project.concon.widget.utils.MessageUtils
 import org.koin.androidx.viewmodel.ext.android.viewModel
-import java.text.SimpleDateFormat
 import java.util.*
 
 /** 대회 상세 페이지 */
 class ContestDetailFragment : BaseFragment<FragmentContestDetailBinding, ContestDetailViewModel>() {
-//    override fun setBinding() {
-//        binding.vm = viewModel
-//        binding.data = ContestDetail(0, "", "", "", "", "", "", false, listOf())
-//    }
-
-//    override fun getViewModelClass(): Class<ContestDetailViewModel> =
-//        ContestDetailViewModel::class.java
-
-    private val viewModel: ContestDetailViewModel by viewModel()
+    override val viewModel: ContestDetailViewModel by viewModel()
 
     private lateinit var now: String
     private lateinit var contestDetail: ContestDetail
 
     private val args by navArgs<ContestDetailFragmentArgs>()
-
-//    override fun getViewModelClass(): Class<ContestDetailViewModel> =
-//        ContestDetailViewModel::class.java
 
     override fun init() {
         now = Calendar.getInstance().time.formatToString() // 현재 시각 구해서 문자열로 변

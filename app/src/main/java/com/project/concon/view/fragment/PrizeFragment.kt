@@ -1,25 +1,20 @@
 package com.project.concon.view.fragment
 
-import androidx.fragment.app.viewModels
 import com.project.concon.base.BaseFragment
 import com.project.concon.databinding.FragmentPrizeBinding
 import com.project.concon.view.dialog.PrizeDialogFragment
 import com.project.concon.viewmodel.CreateContestViewModel
 import com.project.concon.viewmodel.PrizeViewModel
 import com.project.concon.widget.recyclerview.adapter.RecyclerViewPrizeAdapter
-import dagger.android.support.AndroidSupportInjection.inject
+import org.koin.androidx.viewmodel.ext.android.viewModel
 import java.text.NumberFormat
 import java.util.*
-import javax.inject.Inject
-import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class PrizeFragment : BaseFragment<FragmentPrizeBinding, PrizeViewModel>() {
 
+    override val viewModel: PrizeViewModel by viewModel()
     private val adapter = RecyclerViewPrizeAdapter()
-    private val viewModel: PrizeViewModel by viewModel()
     private val createContestViewModel: CreateContestViewModel by viewModel()
-
-//    override fun getViewModelClass(): Class<PrizeViewModel> = PrizeViewModel::class.java
 
     override fun init() {
         binding.rvPrize.adapter = adapter

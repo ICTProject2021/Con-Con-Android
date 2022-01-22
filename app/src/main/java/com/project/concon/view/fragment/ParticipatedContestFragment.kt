@@ -10,8 +10,7 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 class ParticipatedContestFragment
     : BaseFragment<FragmentParticipatedContestBinding, ParticipatedContestViewModel>() {
 
-//    override fun getViewModelClass(): Class<ParticipatedContestViewModel> = ParticipatedContestViewModel::class.java
-    private val viewModel: ParticipatedContestViewModel by viewModel()
+    override val viewModel: ParticipatedContestViewModel by viewModel()
 
     private val adapter = RecyclerViewParticipatedAdapter()
 

@@ -25,13 +25,11 @@ class CreateContestFragment : BaseFragment<FragmentCreateContestBinding, CreateC
         private const val TAG = "CreateContestFragment"
     }
 
-    private val viewModel: CreateContestViewModel by viewModel()
+    override val viewModel: CreateContestViewModel by viewModel()
     private val prizeViewModel: PrizeViewModel by viewModels()
 
     private lateinit var resultLauncher: ActivityResultLauncher<Intent>
     private val imageAdapter = RecyclerViewJoinContestImageAdapter()
-
-//    override fun getViewModelClass(): Class<CreateContestViewModel> = CreateContestViewModel::class.java
 
     override fun init() {
         resultLauncher = registerForActivityResult(

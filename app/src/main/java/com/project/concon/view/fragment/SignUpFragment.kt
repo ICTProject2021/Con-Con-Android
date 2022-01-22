@@ -12,8 +12,7 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class SignUpFragment : BaseFragment<FragmentSignUpBinding, SignUpViewModel>() {
 
-//    override fun getViewModelClass(): Class<SignUpViewModel> = SignUpViewModel::class.java
-    private val viewModel: SignUpViewModel by viewModel()
+    override val viewModel: SignUpViewModel by viewModel()
 
     override fun init() {
         binding.motionLayoutSignUp.transitionToStart()

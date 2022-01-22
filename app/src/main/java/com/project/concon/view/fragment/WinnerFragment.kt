@@ -14,9 +14,7 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class WinnerFragment : BaseFragment<FragmentWinnerBinding, WinnerViewModel>() {
 
-//    override fun getViewModelClass(): Class<WinnerViewModel> = WinnerViewModel::class.java
-
-    private val viewModel: WinnerViewModel by viewModel()
+    override val viewModel: WinnerViewModel by viewModel()
 
     private lateinit var recyclerViewAdapter: RecyclerViewWinnerAdapter
 

@@ -12,9 +12,7 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>() {
 
     private val recyclerViewAdapter = RecyclerViewMainAdapter()
-
-//    override fun getViewModelClass(): Class<HomeViewModel> = HomeViewModel::class.java
-    private val viewModel: HomeViewModel by viewModel()
+    override val viewModel: HomeViewModel by viewModel()
 
     override fun init() {
         viewModel.getContestList()
@@ -27,7 +25,6 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>() {
             addItemDecoration(decoration)
         }
 
-        // TODO(recyclerView item click event 는 어떻게 처리해야하는지 확인하)
         recyclerViewAdapter.setOnItemClickListener {
             navController.navigate(HomeFragmentDirections.toContestDetailFragment(it))
         }

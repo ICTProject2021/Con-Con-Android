@@ -9,31 +9,20 @@ import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.project.concon.BR
 import com.project.concon.R
-import dagger.android.support.DaggerFragment
-import java.lang.StringBuilder
 import java.lang.reflect.ParameterizedType
 import java.util.*
-import javax.inject.Inject
 
 abstract class BaseFragment<VB: ViewDataBinding, VM: ViewModel> : Fragment() {
 
-//    @Inject
-//    lateinit var viewModelFactory: ViewModelProvider.Factory
-//    @Inject
-//    lateinit var mViewModel: VM
-//
-//    protected val viewModel: VM get() = mViewModel
+    protected abstract val viewModel: VM
     protected lateinit var binding: VB
 
     protected val navController by lazy {
         findNavController()
     }
-
-//    protected abstract fun getViewModelClass(): Class<VM>
 
     protected abstract fun init()
 
@@ -57,11 +46,9 @@ abstract class BaseFragment<VB: ViewDataBinding, VM: ViewModel> : Fragment() {
     }
 
     private fun performDataBinding(inflater: LayoutInflater, container: ViewGroup?) {
-//        viewModel = ViewModelProvider(this, viewModelFactory?: defaultViewModelProviderFactory)[getViewModelClass()]
-
         binding = DataBindingUtil.inflate(inflater, getLayoutRes(), container, false)
         binding.lifecycleOwner = this
-//        binding.setVariable(BR.vm, viewModel)
+        binding.setVariable(BR.vm, viewModel)
         binding.executePendingBindings()
     }
 
