@@ -5,10 +5,6 @@ import com.project.concon.base.BaseViewModel
 import com.project.concon.model.remote.dto.request.SignInRequest
 import com.project.concon.model.repository.AccountRepository
 import com.project.concon.widget.livedata.SingleLiveEvent
-import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
-import io.reactivex.rxjava3.observers.DisposableSingleObserver
-import io.reactivex.rxjava3.schedulers.Schedulers
-import javax.inject.Inject
 
 class SignInViewModel (
     private val repository: AccountRepository
@@ -27,7 +23,7 @@ class SignInViewModel (
         onClose.call()
     }
 
-    fun postSignIn() {
+    fun signIn() {
         startLoading()
         addDisposable(repository.postSignIn(SignInRequest(id.value?:"", pw.value?:"")), {
             isSuccess.postValue(it as String)
