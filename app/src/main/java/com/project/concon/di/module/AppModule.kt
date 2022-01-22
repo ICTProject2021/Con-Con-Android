@@ -53,4 +53,10 @@ val viewModelModule = module {
     viewModel {
         JoinContestViewModel(get())
     }
+    viewModel {
+        HomeViewModel(get())
+    }
+    viewModel {
+        CreateContestViewModel(get())
+    }
 }
