@@ -7,24 +7,24 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatDialog
 import androidx.fragment.app.FragmentActivity
 import com.project.concon.R
-import com.project.concon.view.fragment.DialogFragmentDefault
-import com.project.concon.view.fragment.DialogFragmentFail
+import com.project.concon.view.dialog.DefaultDialogFragment
+import com.project.concon.view.dialog.FailDialogFragment
 
 object MessageUtils {
 
     /** 실패 다이얼로그 */
     fun showFailDialog(activity: FragmentActivity, content: String) {
-        DialogFragmentFail(content).show(activity.supportFragmentManager, "fail")
+        FailDialogFragment(content).show(activity.supportFragmentManager, "fail")
     }
 
     /** 업데이트 예정 다이얼로그 */
     fun showUpdateDialog(activity: FragmentActivity, content: String) {
-        DialogFragmentDefault("조금만 기다려주세요!", content).show(activity.supportFragmentManager, "update")
+        DefaultDialogFragment("조금만 기다려주세요!", content).show(activity.supportFragmentManager, "update")
     }
 
     /** 기본 다이얼로그 (정보나 알림 띄울 때 사용) */
     fun showDefaultDialog(activity: FragmentActivity, content: String) {
-        DialogFragmentDefault("알림", content)
+        DefaultDialogFragment("알림", content)
     }
 
     fun showToast(context: Context, msg: String) =

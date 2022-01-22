@@ -3,6 +3,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <data>
+        <variable
+            name="vm"
+            type="com.project.concon.viewmodel.PaymentViewModel" />
+    </data>
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
@@ -13,8 +19,9 @@
             android:id="@+id/btn_close_payment"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/space_8dp"
-            android:layout_marginEnd="@dimen/space_8dp"
+            android:onClick="@{()->vm.closeEvent()}"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
             android:background="@android:color/transparent"
             android:minWidth="@dimen/button_size_48dp"
             android:minHeight="@dimen/button_size_48dp"
@@ -43,7 +50,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/space_20dp"
-            android:text="충전하기"
+            android:text="@string/charge"
             app:layout_constraintBottom_toBottomOf="@+id/btn_close_payment"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/btn_close_payment" />

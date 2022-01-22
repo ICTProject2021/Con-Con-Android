@@ -1,66 +1,53 @@
 package com.project.concon.view.fragment
 
-import android.os.Bundle
-import android.view.View
-import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.project.concon.R
-import com.project.concon.base.BaseVMFragment
+import com.project.concon.base.BaseFragment
 import com.project.concon.databinding.FragmentHomeBinding
 import com.project.concon.widget.utils.MessageUtils
-import com.project.concon.widget.recyclerview.RecyclerViewMainAdapter
-import com.project.concon.widget.recyclerview.RecyclerViewDecoration
+import com.project.concon.widget.recyclerview.adapter.RecyclerViewMainAdapter
+import com.project.concon.widget.recyclerview.decoration.RecyclerViewDecoration
 import com.project.concon.viewmodel.HomeViewModel
 
-class HomeFragment : BaseVMFragment<FragmentHomeBinding, HomeViewModel>() {
+class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>() {
 
-    override fun setBinding() {}
-
-    override fun getLayoutRes(): Int = R.layout.fragment_home
+    private val recyclerViewAdapter = RecyclerViewMainAdapter()
 
     override fun getViewModelClass(): Class<HomeViewModel> = HomeViewModel::class.java
 
-    private lateinit var recyclerViewAdapter: RecyclerViewMainAdapter
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
-        viewModel = ViewModelProvider(this).get(HomeViewModel::class.java)
+    override fun init() {
         viewModel.getContestList()
 
-        initRecyclerView()
-        observe()
-    }
-
-    private fun initRecyclerView() {
         val decoration = RecyclerViewDecoration(40)
+
         binding.contestRecyclerView.apply {
             layoutManager = LinearLayoutManager(context)
-            recyclerViewAdapter = RecyclerViewMainAdapter()
             adapter = recyclerViewAdapter
             addItemDecoration(decoration)
         }
 
+        // TODO(recyclerView item click event 는 어떻게 처리해야하는지 확인하)
         recyclerViewAdapter.setOnItemClickListener {
-            navController.navigate(HomeFragmentDirections.actionMainFragmentToContestDetailFragment(it))
+            navController.navigate(HomeFragmentDirections.toContestDetailFragment(it))
         }
     }
 
-    private fun observe() = with(viewModel) {
-        isLoading.observe(viewLifecycleOwner) {
-            if (it) {
-                MessageUtils.showProgress(requireActivity())
-            } else {
-                MessageUtils.dismissProgress()
+    override fun observerViewModel() {
+        with(viewModel) {
+            isLoading.observe(this@HomeFragment) {
+                if (it) {
+                    MessageUtils.showProgress(requireActivity())
+                } else {
+                    MessageUtils.dismissProgress()
+                }
             }
-        }
 
-        isSuccess.observe(viewLifecycleOwner) {
-            recyclerViewAdapter.setData(it)
-        }
+            isSuccess.observe(this@HomeFragment) {
+                recyclerViewAdapter.setData(it)
+            }
 
-        isFailure.observe(viewLifecycleOwner) {
-            MessageUtils.showDefaultDialog(requireActivity(), "fail!!!!!!!!!!!!")
+            isFailure.observe(this@HomeFragment) {
+                MessageUtils.showDefaultDialog(requireActivity(), it.toString())
+            }
         }
     }
 }

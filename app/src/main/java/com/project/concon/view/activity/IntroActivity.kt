@@ -5,9 +5,10 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import com.project.concon.R
+import com.project.concon.di.component.DaggerAppComponent
+import dagger.android.support.DaggerAppCompatActivity
 
 class IntroActivity : AppCompatActivity() {
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_intro)

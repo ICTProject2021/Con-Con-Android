@@ -6,7 +6,7 @@
     <data>
         <variable
             name="data"
-            type="com.project.concon.view.data.Payment" />
+            type="com.project.concon.widget.data.Payment" />
     </data>
 
     <LinearLayout

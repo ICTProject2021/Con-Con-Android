@@ -7,7 +7,6 @@
         <variable
             name="vm"
             type="com.project.concon.viewmodel.CreateContestViewModel" />
-
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -19,13 +18,14 @@
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btn_confirm_create_contest"
-            style="@style/Widget.AppCompat.Button.Main"
+            style="@style/Button.MainColor"
             android:layout_width="@dimen/layout_0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/space_32dp"
             android:layout_marginEnd="@dimen/space_32dp"
             android:layout_marginBottom="@dimen/space_50dp"
             android:enabled="true"
+            android:onClick="@{()->vm.confirmEvent()}"
             android:text="@string/create_contest"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -57,6 +57,7 @@
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/et_date_create_contest"
                         style="@style/Widget.AppCompat.EditText.BaseEditText"
+                        android:onClick="@{()->vm.setDateEvent()}"
                         android:focusableInTouchMode="false"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -74,10 +75,12 @@
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/et_prize_create_contest"
                         style="@style/Widget.AppCompat.EditText.BaseEditText"
-                        android:inputType="number"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:hint="우승 상금 등록하기"
+                        android:inputType="number"
+                        android:onClick="@{()->vm.setPrizeEvent()}"
+                        android:text="@{vm.prize}"
                         tools:ignore="TouchTargetSizeCheck" />
 
                 </com.google.android.material.textfield.TextInputLayout>
@@ -101,6 +104,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:hint="@string/title"
+                        android:text="@={vm.title}"
                         tools:ignore="TouchTargetSizeCheck" />
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -113,18 +117,20 @@
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/et_content_create_contest"
                         style="@style/Widget.AppCompat.EditText.ContentEditText"
-                        android:gravity="top"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:hint="@string/content" />
+                        android:gravity="top"
+                        android:hint="@string/content"
+                        android:text="@={vm.content}" />
 
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <Button
                     android:id="@+id/btn_add_photo_create_contest"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="0dp"
                     android:layout_weight="1"
+                    android:onClick="@{()->vm.selectPhotoEvent()}"
                     android:layout_marginVertical="@dimen/space_16dp"
                     android:text="사진 첨부하기" />
 
@@ -149,6 +155,7 @@
             android:layout_marginStart="@dimen/space_16dp"
             android:layout_marginTop="@dimen/space_16dp"
             android:background="@android:color/transparent"
+            android:onClick="@{()->vm.closeEvent()}"
             android:src="@drawable/vec_ic_close"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"

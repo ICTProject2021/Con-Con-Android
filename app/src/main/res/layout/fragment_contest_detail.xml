@@ -30,7 +30,7 @@
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btn_join_contest_detail"
-            style="@style/Widget.AppCompat.Button.Main"
+            style="@style/Button.MainColor"
             android:layout_width="@dimen/layout_0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/space_24dp"

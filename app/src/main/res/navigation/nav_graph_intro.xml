@@ -22,7 +22,7 @@
         android:name="com.project.concon.view.fragment.SignInFragment"
         android:label="SignInFragment" >
         <action
-            android:id="@+id/action_signInFragment_to_introFragment"
+            android:id="@+id/to_introFragment"
             app:destination="@id/introFragment" />
     </fragment>
     <fragment

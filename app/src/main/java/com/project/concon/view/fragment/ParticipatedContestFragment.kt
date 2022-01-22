@@ -1,63 +1,44 @@
 package com.project.concon.view.fragment
 
-import android.os.Bundle
-import android.view.View
-import androidx.navigation.fragment.findNavController
-import androidx.recyclerview.widget.LinearLayoutManager
-import com.project.concon.R
-import com.project.concon.base.BaseVMFragment
+import com.project.concon.base.BaseFragment
 import com.project.concon.databinding.FragmentParticipatedContestBinding
-import com.project.concon.widget.recyclerview.RecyclerViewParticipatedAdapter
-import com.project.concon.widget.recyclerview.RecyclerViewDecoration
 import com.project.concon.viewmodel.ParticipatedContestViewModel
+import com.project.concon.widget.recyclerview.adapter.RecyclerViewParticipatedAdapter
+import com.project.concon.widget.recyclerview.decoration.RecyclerViewDecoration
 
 class ParticipatedContestFragment
-    : BaseVMFragment<FragmentParticipatedContestBinding, ParticipatedContestViewModel>() {
+    : BaseFragment<FragmentParticipatedContestBinding, ParticipatedContestViewModel>() {
 
-    override fun setBinding() {}
+    override fun getViewModelClass(): Class<ParticipatedContestViewModel> = ParticipatedContestViewModel::class.java
 
-    override fun getLayoutRes(): Int = R.layout.fragment_participated_contest
+    private val adapter = RecyclerViewParticipatedAdapter()
 
-    override fun getViewModelClass(): Class<ParticipatedContestViewModel> =
-        ParticipatedContestViewModel::class.java
+    override fun init() {
+        viewModel.getMyParticipatedContestList()
 
-    private lateinit var recyclerViewParticipatedAdapter: RecyclerViewParticipatedAdapter
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
-        observe()
-        initRecyclerView()
-
-        viewModel.getMyContest()
-
-        binding.btnBackParticipatedContest.setOnClickListener {
-            findNavController().navigate(ParticipatedContestFragmentDirections.actionParticipatedContestFragmentToProfileFragment())
-        }
-    }
-
-    private fun initRecyclerView() {
         val decoration = RecyclerViewDecoration(40)
         binding.contestRecyclerView.apply {
-            layoutManager = LinearLayoutManager(context)
-            recyclerViewParticipatedAdapter = RecyclerViewParticipatedAdapter()
-            adapter = recyclerViewParticipatedAdapter
+            adapter = this@ParticipatedContestFragment.adapter
             addItemDecoration(decoration)
+        }
+
+        adapter.setOnItemClickListener {
+            navController.navigate(ParticipatedContestFragmentDirections.toContestDetailFragment(it))
         }
     }
 
-    private fun observe() = with(viewModel) {
-        isSuccess.observe(viewLifecycleOwner) {
-            recyclerViewParticipatedAdapter.setList(it)
-            recyclerViewParticipatedAdapter.setOnItemClickListener(
-                object: RecyclerViewParticipatedAdapter.OnItemClickListener{
-                    override fun onClick(v: View, position: Int) {
-                        navController.navigate(
-                            ParticipatedContestFragmentDirections.actionParticipatedContestFragmentToContestDetailFragment(
-                                it[position].ID!!
-                            ))
-                    }
-                })
+    override fun observerViewModel() {
+        with(viewModel) {
+            onBackEvent.observe(this@ParticipatedContestFragment) {
+                navController.popBackStack()
+            }
+
+            isSuccess.observe(this@ParticipatedContestFragment) {
+                adapter.setList(it)
+            }
+
+            isFailure.observe(this@ParticipatedContestFragment) {
+            }
         }
     }
 }

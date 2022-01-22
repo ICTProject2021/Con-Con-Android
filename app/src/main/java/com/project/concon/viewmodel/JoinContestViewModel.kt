@@ -6,9 +6,11 @@ import androidx.lifecycle.MutableLiveData
 import com.project.concon.base.BaseViewModel
 import com.project.concon.model.remote.dto.response.Participant
 import com.project.concon.model.repository.ContestRepository
+import com.project.concon.widget.livedata.SingleLiveEvent
 import com.project.concon.widget.utils.getImageBody
 import com.project.concon.widget.utils.getRequestBody
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
+import io.reactivex.rxjava3.observers.DisposableSingleObserver
 import io.reactivex.rxjava3.schedulers.Schedulers
 import okhttp3.MultipartBody
 import javax.inject.Inject
@@ -16,30 +18,46 @@ import javax.inject.Inject
 class JoinContestViewModel @Inject constructor(
     private val contestRepository: ContestRepository
 ) : BaseViewModel() {
-
     val content = MutableLiveData("")
     val fileList = MutableLiveData<List<Uri>>(listOf())
+
+    val onBackEvent = SingleLiveEvent<Unit>()
+    val onSendEvent = SingleLiveEvent<Unit>()
+    val onSelectPhotoEvent = SingleLiveEvent<Unit>()
 
     val isSuccessGetParticipantInfo = MutableLiveData<List<Participant>>()
     val isSuccessPostParticipate = MutableLiveData<String>()
     val isSuccessPutLikes = MutableLiveData<String>()
     val isFailure = MutableLiveData<String>()
 
-    fun getParticipantInfo(id: Int) {
-        startLoading()
-        contestRepository.getParticipantList(id)
-            .observeOn(Schedulers.io())
-            .subscribeOn(AndroidSchedulers.mainThread())
-            .subscribe({
-                isSuccessGetParticipantInfo.postValue(it)
-                stopLoading()
-            }, {
-                isFailure.postValue(it.message)
-                stopLoading()
-            }).apply { disposable.add(this) }
+    fun backEvent() {
+        onBackEvent.call()
     }
 
-    fun postParticipant(id: Int, contentResolver: ContentResolver) {
+    fun sendEvent() {
+        onSendEvent.call()
+    }
+
+    fun selectPhotoEvent() {
+        onSelectPhotoEvent.call()
+    }
+
+    fun deleteAllPhotoEvent() {
+        fileList.value = listOf()
+    }
+
+    fun getParticipantInfo(id: Int) {
+        startLoading()
+        addDisposable(contestRepository.getParticipantList(id), {
+            isSuccessGetParticipantInfo.postValue(it as List<Participant>)
+            stopLoading()
+        }, {
+            isFailure.postValue(it.message)
+            stopLoading()
+        })
+    }
+
+    fun participate(id: Int, contentResolver: ContentResolver) {
         val content = this.content.value!!.getRequestBody()
         val list = mutableListOf<MultipartBody.Part>()
 
@@ -47,24 +65,18 @@ class JoinContestViewModel @Inject constructor(
             list.add(it.getImageBody("attachment", contentResolver))
         }
 
-        contestRepository.postParticipate(id, content, list)
-            .observeOn(Schedulers.io())
-            .subscribeOn(AndroidSchedulers.mainThread())
-            .subscribe({
-                isSuccessPostParticipate.postValue(it)
-            }, {
-                isFailure.postValue(it.message)
-            }).apply { disposable.add(this) }
+        addDisposable(contestRepository.postParticipate(id, content, list), {
+            isSuccessPostParticipate.postValue(it as String)
+        }, {
+            isFailure.postValue(it.message)
+        })
     }
 
-    fun putLikes(contId: Int, partId: Int) {
-        contestRepository.putLike(contId, partId)
-            .observeOn(Schedulers.io())
-            .subscribeOn(AndroidSchedulers.mainThread())
-            .subscribe({
-                isSuccessPutLikes.postValue(it)
-            }, {
-                isFailure.postValue(it.message)
-            }).apply { disposable.add(this) }
+    fun like(contId: Int, partId: Int) {
+        addDisposable(contestRepository.putLike(contId, partId), {
+            isSuccessPutLikes.postValue(it as String)
+        }, {
+            isFailure.postValue(it.message)
+        })
     }
 }

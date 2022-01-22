@@ -29,6 +29,7 @@
             android:background="@android:color/transparent"
             android:minWidth="@dimen/button_size_32dp"
             android:minHeight="@dimen/button_size_32dp"
+            android:onClick="@{() -> vm.backEvent()}"
             android:src="@drawable/vec_ic_back"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -73,12 +74,11 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/layout_120dp"
-                android:hint="대회 참가하기"
+                android:layout_height="@dimen/join_contest_edit_text_height"
+                android:hint="@string/join_contest"
                 android:text="@={vm.content}"
-                android:paddingTop="@dimen/space_40dp"
+                android:paddingTop="@dimen/join_contest_edit_text_padding_top"
                 tools:ignore="SpeakableTextPresentCheck" />
-
         </com.google.android.material.textfield.TextInputLayout>
 
         <LinearLayout
@@ -102,6 +102,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="end"
+                android:onClick="@{() -> vm.deleteAllPhotoEvent()}"
                 android:background="@android:color/transparent"
                 android:minWidth="@dimen/button_size_48dp"
                 android:minHeight="@dimen/button_size_48dp"
@@ -130,12 +131,14 @@
             android:background="@android:color/transparent"
             android:minWidth="@dimen/button_size_48dp"
             android:minHeight="@dimen/button_size_48dp"
+            android:onClick="@{() -> vm.selectPhotoEvent()}"
             app:layout_constraintStart_toStartOf="@+id/textInputLayout"
             app:layout_constraintTop_toTopOf="@+id/textInputLayout"
             app:srcCompat="@drawable/vec_ic_photo" />
 
         <ImageButton
             android:id="@+id/btn_send_join_contest"
+            android:onClick="@{() -> vm.sendEvent()}"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/space_4dp"
@@ -146,7 +149,5 @@
             app:layout_constraintEnd_toEndOf="@+id/textInputLayout"
             app:layout_constraintTop_toTopOf="@+id/textInputLayout"
             app:srcCompat="@drawable/vec_ic_send" />
-
-
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

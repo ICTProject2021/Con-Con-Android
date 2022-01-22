@@ -3,7 +3,7 @@ package com.project.concon.view.fragment
 import android.os.Bundle
 import android.view.View
 import com.project.concon.R
-import com.project.concon.base.BaseVMFragment
+import com.project.concon.base.BaseFragment
 import com.project.concon.databinding.FragmentProfileBinding
 import com.project.concon.widget.utils.MessageUtils
 import com.project.concon.widget.bind.setImage
@@ -11,11 +11,7 @@ import com.project.concon.viewmodel.ProfileViewModel
 import java.text.NumberFormat
 import java.util.*
 
-class ProfileFragment : BaseVMFragment<FragmentProfileBinding, ProfileViewModel>() {
-
-    override fun setBinding() {}
-
-    override fun getLayoutRes(): Int = R.layout.fragment_profile
+class ProfileFragment : BaseFragment<FragmentProfileBinding, ProfileViewModel>() {
 
     override fun getViewModelClass(): Class<ProfileViewModel> = ProfileViewModel::class.java
 
@@ -53,5 +49,13 @@ class ProfileFragment : BaseVMFragment<FragmentProfileBinding, ProfileViewModel>
             binding.cash.text = "${cash}원"
             binding.profileNickname.text = it.nickname
         }
+    }
+
+    override fun init() {
+        TODO("Not yet implemented")
+    }
+
+    override fun observerViewModel() {
+        TODO("Not yet implemented")
     }
 }

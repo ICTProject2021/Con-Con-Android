@@ -1,81 +1,61 @@
 package com.project.concon.view.fragment
 
-import android.os.Bundle
-import android.view.View
-import android.widget.TextView
-import androidx.fragment.app.activityViewModels
-import androidx.navigation.fragment.findNavController
-import com.project.concon.R
+import androidx.fragment.app.viewModels
 import com.project.concon.base.BaseFragment
 import com.project.concon.databinding.FragmentPrizeBinding
+import com.project.concon.view.dialog.PrizeDialogFragment
 import com.project.concon.viewmodel.CreateContestViewModel
-import com.project.concon.viewmodel.PrizeDialogViewModel
+import com.project.concon.viewmodel.PrizeViewModel
+import com.project.concon.widget.recyclerview.adapter.RecyclerViewPrizeAdapter
+import dagger.android.support.AndroidSupportInjection.inject
 import java.text.NumberFormat
 import java.util.*
+import javax.inject.Inject
 
-class PrizeFragment : BaseFragment<FragmentPrizeBinding>() {
+class PrizeFragment : BaseFragment<FragmentPrizeBinding, PrizeViewModel>() {
 
-    override fun getLayoutRes(): Int = R.layout.fragment_prize
+    private val adapter = RecyclerViewPrizeAdapter()
+    private val createContestViewModel: CreateContestViewModel by viewModels()
 
-    private val viewModelPrize: PrizeDialogViewModel by activityViewModels()
-    private val cViewModel: CreateContestViewModel by activityViewModels()
+    override fun getViewModelClass(): Class<PrizeViewModel> = PrizeViewModel::class.java
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
-//        for (i in 0 until viewModel.prizeList.value!!.size - 2) {
-//            val it = viewModel.prizeList.value!![i]
-//            addView(it.rank, it.price)
-//        }
-//        viewModel.prizeList.value?.forEach {
-//            addView(it.rank, it.price)
-//        }
-
-        binding.addPrizeButton.setOnClickListener {
-            PrizeDialogFragment().show(
-                parentFragmentManager, "PrizeDialog"
-            )
+    override fun init() {
+        binding.rvPrize.adapter = adapter
+        adapter.setOnItemClickListener {
+            removePrize(it)
         }
+    }
 
-        viewModelPrize.prizeList.observe(viewLifecycleOwner) {
-            binding.prizeLayout.removeAllViews()
-
-            it.forEach { prize ->
-                addView(prize.rank, prize.price)
+    override fun observerViewModel() {
+        with(viewModel) {
+            onAddEvent.observe(this@PrizeFragment) {
+                PrizeDialogFragment().show(parentFragmentManager, "PrizeDialog")
             }
-//            if (it.isNotEmpty()) {
-//                val prize = it[it.size-1]
-//                addView(prize.rank, prize.price)
-//            }
-        }
 
-        binding.btnBackPrize.setOnClickListener {
-            cViewModel.prize.value = "총 ${totalPrice()}원 "
-            findNavController().navigate(PrizeFragmentDirections.actionPrizeFragmentToCreateContestFragment())
+            onBackEvent.observe(this@PrizeFragment) {
+                createContestViewModel.prize.value = "총 ${getTotalPrize()}원 "
+                navController.popBackStack()
+            }
+
+            prizeList.observe(this@PrizeFragment) {
+                adapter.setList(it)
+            }
         }
     }
 
-    private fun addView(rank: Int, prize: Int) {
-        val view = layoutInflater.inflate(R.layout.item_prize, null, false )
-
-        val rankTextView: TextView = view.findViewById(R.id.rankTextView)
-        rankTextView.text = rank.toString() + "등"
-
-        val priceTextView: TextView = view.findViewById(R.id.priceTextView)
-
-        val numberFormat = NumberFormat.getCurrencyInstance(Locale.getDefault())
-        val cash = numberFormat.format(prize)
-
-        priceTextView.text = cash + "원"
-
-        binding.prizeLayout.addView(view)
-    }
-
-    private fun totalPrice() : Int {
+    private fun getTotalPrize(): String {
         var result = 0
-        viewModelPrize.prizeList.value?.forEach {
+        viewModel.prizeList.value?.forEach {
             result += it.price
         }
-        return result
+
+        val numberFormat = NumberFormat.getCurrencyInstance(Locale.getDefault()) // 돈 자릿수따라 콤마 처
+        return numberFormat.format(result)
+    }
+
+    private fun removePrize(index: Int) {
+        viewModel.prizeList.apply {
+            value = value!!.filter { it != value!![index] }
+        }
     }
 }

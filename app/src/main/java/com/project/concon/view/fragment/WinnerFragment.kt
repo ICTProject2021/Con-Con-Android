@@ -5,17 +5,13 @@ import android.view.View
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.project.concon.R
-import com.project.concon.base.BaseVMFragment
+import com.project.concon.base.BaseFragment
 import com.project.concon.databinding.FragmentWinnerBinding
-import com.project.concon.widget.recyclerview.RecyclerViewWinnerAdapter
-import com.project.concon.widget.recyclerview.RecyclerViewDecoration
+import com.project.concon.widget.recyclerview.adapter.RecyclerViewWinnerAdapter
+import com.project.concon.widget.recyclerview.decoration.RecyclerViewDecoration
 import com.project.concon.viewmodel.WinnerViewModel
 
-class WinnerFragment : BaseVMFragment<FragmentWinnerBinding, WinnerViewModel>() {
-
-    override fun setBinding() {}
-
-    override fun getLayoutRes(): Int = R.layout.fragment_winner
+class WinnerFragment : BaseFragment<FragmentWinnerBinding, WinnerViewModel>() {
 
     override fun getViewModelClass(): Class<WinnerViewModel> = WinnerViewModel::class.java
 
@@ -60,5 +56,13 @@ class WinnerFragment : BaseVMFragment<FragmentWinnerBinding, WinnerViewModel>() 
                 binding.winnerList.visibility = View.VISIBLE
             }
         }
+    }
+
+    override fun init() {
+        TODO("Not yet implemented")
+    }
+
+    override fun observerViewModel() {
+        TODO("Not yet implemented")
     }
 }

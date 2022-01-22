@@ -14,7 +14,7 @@
             android:id="@+id/action_mainFragment_to_createContestFragment"
             app:destination="@id/createContestFragment" />
         <action
-            android:id="@+id/action_mainFragment_to_contestDetailFragment"
+            android:id="@+id/to_contestDetailFragment"
             app:destination="@id/contestDetailFragment" />
         <action
             android:id="@+id/action_mainFragment_to_profileFragment"
@@ -33,7 +33,7 @@
             android:id="@+id/action_createContestFragment_to_profileFragment"
             app:destination="@id/profileFragment" />
         <action
-            android:id="@+id/action_createContestFragment_to_prizeFragment"
+            android:id="@+id/to_prizeFragment"
             app:destination="@id/prizeFragment" />
     </fragment>
     <fragment
@@ -75,7 +75,7 @@
         android:label="join_contest_fragment"
         tools:layout="@layout/fragment_join_contest">
         <action
-            android:id="@+id/action_joinContestFragment_to_contestDetailFragment"
+            android:id="@+id/to_contestDetailFragment"
             app:destination="@id/contestDetailFragment" />
         <argument
             android:name="id"
@@ -121,7 +121,7 @@
         android:label="fragment_prize"
         tools:layout="@layout/fragment_prize" >
         <action
-            android:id="@+id/action_prizeFragment_to_createContestFragment"
+            android:id="@+id/to_createContestFragment"
             app:destination="@id/createContestFragment" />
     </fragment>
     <fragment
@@ -130,10 +130,10 @@
         android:label="fragment_participated_contest"
         tools:layout="@layout/fragment_participated_contest" >
         <action
-            android:id="@+id/action_participatedContestFragment_to_profileFragment"
+            android:id="@+id/to_profileFragment"
             app:destination="@id/profileFragment" />
         <action
-            android:id="@+id/action_participatedContestFragment_to_contestDetailFragment"
+            android:id="@+id/to_contestDetailFragment"
             app:destination="@id/contestDetailFragment" />
     </fragment>
     <fragment

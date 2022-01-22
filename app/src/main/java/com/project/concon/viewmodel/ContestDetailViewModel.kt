@@ -6,6 +6,7 @@ import com.project.concon.model.remote.dto.response.ContestDetail
 import com.project.concon.model.remote.dto.response.Prize
 import com.project.concon.model.repository.ContestRepository
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
+import io.reactivex.rxjava3.observers.DisposableSingleObserver
 import io.reactivex.rxjava3.schedulers.Schedulers
 import java.text.NumberFormat
 import java.util.*
@@ -38,16 +39,13 @@ class ContestDetailViewModel @Inject constructor(
 
     fun getContestDetail(id: Int) {
         startLoading()
-        repository.getContestDetail(id)
-            .observeOn(Schedulers.io())
-            .subscribeOn(AndroidSchedulers.mainThread())
-            .subscribe({
-                isSuccess.postValue(it)
-                stopLoading()
-            }, {
-                isFailure.postValue(it.message)
-                stopLoading()
-            }).apply { disposable.add(this) }
+        addDisposable(repository.getContestDetail(id), {
+            isSuccess.postValue(it as ContestDetail)
+            stopLoading()
+        }, {
+            isFailure.postValue(it.message)
+            stopLoading()
+        })
     }
 }
 

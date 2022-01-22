@@ -16,13 +16,10 @@ class ProfileViewModel @Inject constructor(
     val isFailure = MutableLiveData<String>()
 
     fun getProfile() {
-        repository.getProfile()
-            .observeOn(Schedulers.io())
-            .subscribeOn(AndroidSchedulers.mainThread())
-            .subscribe({
-                isSuccess.postValue(it)
-            }, {
-                isFailure.postValue(it.message)
-            }).apply { disposable.add(this) }
+        addDisposable(repository.getProfile(), {
+            isSuccess.postValue(it as Profile)
+        }, {
+            isFailure.postValue(it.message)
+        })
     }
 }

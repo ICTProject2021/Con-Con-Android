@@ -6,19 +6,15 @@ import android.view.View
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.project.concon.R
-import com.project.concon.base.BaseVMFragment
+import com.project.concon.base.BaseFragment
 import com.project.concon.databinding.FragmentWinnerSelectBinding
 import com.project.concon.model.remote.dto.request.WinnerRequest
 import com.project.concon.widget.utils.MessageUtils
-import com.project.concon.widget.recyclerview.RecyclerViewWinnerSelectAdapter
-import com.project.concon.widget.recyclerview.RecyclerViewDecoration
+import com.project.concon.widget.recyclerview.adapter.RecyclerViewWinnerSelectAdapter
+import com.project.concon.widget.recyclerview.decoration.RecyclerViewDecoration
 import com.project.concon.viewmodel.WinnerSelectViewModel
 
-class WinnerSelectFragment : BaseVMFragment<FragmentWinnerSelectBinding, WinnerSelectViewModel>() {
-
-    override fun setBinding() {}
-
-    override fun getLayoutRes(): Int = R.layout.fragment_winner_select
+class WinnerSelectFragment : BaseFragment<FragmentWinnerSelectBinding, WinnerSelectViewModel>() {
 
     override fun getViewModelClass(): Class<WinnerSelectViewModel> = WinnerSelectViewModel::class.java
 
@@ -81,5 +77,13 @@ class WinnerSelectFragment : BaseVMFragment<FragmentWinnerSelectBinding, WinnerS
             adapter = recyclerViewAdapter
             addItemDecoration(decoration)
         }
+    }
+
+    override fun init() {
+        TODO("Not yet implemented")
+    }
+
+    override fun observerViewModel() {
+        TODO("Not yet implemented")
     }
 }

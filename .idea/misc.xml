@@ -3,6 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="../../../../../layout/custom_preview.xml" value="0.325" />
         <entry key="..\:/Github/2021IctProject/app/src/main/res/drawable/background_calendar_today.xml" value="0.119921875" />
         <entry key="..\:/Github/2021IctProject/app/src/main/res/drawable/background_dialog.xml" value="0.20386100386100386" />
         <entry key="..\:/Github/2021IctProject/app/src/main/res/drawable/background_gradient.xml" value="0.119921875" />
@@ -158,6 +159,29 @@
         <entry key="..\:/Users/Minhyuk/Documents/GitHub/2021IctProject/app/src/main/res/layout/sign_in_fragment.xml" value="0.36822916666666666" />
         <entry key="..\:/Users/Minhyuk/Documents/GitHub/2021IctProject/app/src/main/res/layout/sign_up_fragment.xml" value="0.36822916666666666" />
         <entry key="..\:/Users/Minhyuk/Documents/GitHub/2021IctProject/app/src/main/res/menu/bottom_navigation.xml" value="0.36822916666666666" />
+        <entry key="app/src/main/res/layout/dialog_fragment_default.xml" value="0.14947916666666666" />
+        <entry key="app/src/main/res/layout/dialog_fragment_fail.xml" value="0.14947916666666666" />
+        <entry key="app/src/main/res/layout/dialog_fragment_prize.xml" value="0.47782549921969636" />
+        <entry key="app/src/main/res/layout/fragment_charge_cash.xml" value="0.14947916666666666" />
+        <entry key="app/src/main/res/layout/fragment_charge_cash_finish.xml" value="0.14947916666666666" />
+        <entry key="app/src/main/res/layout/fragment_contest_detail.xml" value="0.14947916666666666" />
+        <entry key="app/src/main/res/layout/fragment_create_contest.xml" value="0.4139582203946718" />
+        <entry key="app/src/main/res/layout/fragment_dialog_default.xml" value="0.2171875" />
+        <entry key="app/src/main/res/layout/fragment_home.xml" value="0.2171875" />
+        <entry key="app/src/main/res/layout/fragment_intro.xml" value="0.2171875" />
+        <entry key="app/src/main/res/layout/fragment_join_contest.xml" value="0.2171875" />
+        <entry key="app/src/main/res/layout/fragment_participated_contest.xml" value="0.22871376811594202" />
+        <entry key="app/src/main/res/layout/fragment_payment.xml" value="0.2171875" />
+        <entry key="app/src/main/res/layout/fragment_prize.xml" value="0.1469027042924761" />
+        <entry key="app/src/main/res/layout/fragment_prize_dialog.xml" value="0.2171875" />
+        <entry key="app/src/main/res/layout/fragment_profile.xml" value="0.14947916666666666" />
+        <entry key="app/src/main/res/layout/fragment_sign_in.xml" value="0.2463768115942029" />
+        <entry key="app/src/main/res/layout/fragment_sign_up.xml" value="0.2463768115942029" />
+        <entry key="app/src/main/res/layout/fragment_winner.xml" value="0.14947916666666666" />
+        <entry key="app/src/main/res/layout/fragment_winner_select.xml" value="0.14947916666666666" />
+        <entry key="app/src/main/res/layout/item_join_contest.xml" value="0.14947916666666666" />
+        <entry key="app/src/main/res/layout/item_payment.xml" value="0.14947916666666666" />
+        <entry key="app/src/main/res/layout/item_prize.xml" value="0.3575236382370352" />
       </map>
     </option>
   </component>

@@ -2,7 +2,7 @@
 
     <string name="app_name">ConCon</string>
 
-    <!--==========Server Error==========-->
+    <!--==========Error Message==========-->
     <string name="error_server">서버 통신에 실패했습니다.</string>
     <string name="error_sign_up">회원가입에 실패했습니다.</string>
     <string name="error_sign_in">로그인에 실패했습니다.</string>
@@ -10,6 +10,11 @@
     <string name="error_id">아이디를 입력해주세요.</string>
     <string name="error_pw">비밀번호를 입력해주세요.</string>
     <string name="error_retry">다시 시도해주세요.</string>
+
+    <!--==========Intro==========-->
+    <string name="start">시작하기</string>
+    <string name="intro_1">환영합니다!</string>
+    <string name="intro_2">당신의 대회중계 플랫폼,</string>
 
     <!--==========Sign In/Up==========-->
     <string name="sign_in">로그인</string>
@@ -34,5 +39,7 @@
     <string name="server_success">success</string>
     <string name="server_fail">fail</string>
     <string name="confirm">확인</string>
+
+    <string name="charge">충전하기</string>
 
 </resources>

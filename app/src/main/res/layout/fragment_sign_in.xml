@@ -118,15 +118,14 @@
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/fab_close_sign_in"
             style="@style/Widget.MaterialComponents.FloatingActionButton.Main"
+            android:onClick="@{()->vm.closeEvent()}"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/space_70dp"
-            android:clickable="true"
             android:src="@drawable/vec_ic_close"
             app:layout_constraintBottom_toTopOf="@+id/et_layout_id_sign_in"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             tools:ignore="SpeakableTextPresentCheck" />
-
     </androidx.constraintlayout.motion.widget.MotionLayout>
 </layout>

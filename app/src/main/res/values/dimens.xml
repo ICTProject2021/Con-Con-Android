@@ -45,7 +45,6 @@
     <dimen name="layout_65dp">65dp</dimen>
     <dimen name="layout_70dp">70dp</dimen>
     <dimen name="layout_100dp">100dp</dimen>
-    <dimen name="layout_120dp">120dp</dimen>
     <dimen name="layout_150dp">150dp</dimen>
     <dimen name="layout_157dp">157dp</dimen>
     <dimen name="layout_200dp">200dp</dimen>
@@ -90,5 +89,8 @@
     <dimen name="space_45dp">45dp</dimen>
     <dimen name="space_100dp">100dp</dimen>
 
+
+    <dimen name="join_contest_edit_text_height">120dp</dimen>
+    <dimen name="join_contest_edit_text_padding_top">40dp</dimen>
 
 </resources>

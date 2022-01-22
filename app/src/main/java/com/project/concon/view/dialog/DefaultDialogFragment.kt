@@ -9,14 +9,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.DialogFragment
-import com.project.concon.databinding.FragmentDialogDefaultBinding
+import com.project.concon.databinding.DialogFragmentDefaultBinding
 
 class DefaultDialogFragment(
     private val title: String,
     private val content: String
 ) : DialogFragment() {
 
-    private lateinit var binding: FragmentDialogDefaultBinding
+    private lateinit var binding: DialogFragmentDefaultBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -37,7 +37,7 @@ class DefaultDialogFragment(
     }
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
-        binding = FragmentDialogDefaultBinding.inflate(requireActivity().layoutInflater)
+        binding = DialogFragmentDefaultBinding.inflate(requireActivity().layoutInflater)
 
         val dialog: AlertDialog = AlertDialog.Builder(requireActivity())
             .setView(binding.root)

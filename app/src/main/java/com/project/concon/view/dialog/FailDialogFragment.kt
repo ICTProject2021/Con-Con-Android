@@ -5,16 +5,15 @@ import android.app.Dialog
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.DialogFragment
-import com.project.concon.databinding.FragmentFailDialogBinding
+import com.project.concon.databinding.DialogFragmentFailBinding
 
 class FailDialogFragment(private val content: String) : DialogFragment() {
 
-    private lateinit var binding: FragmentFailDialogBinding
+    private lateinit var binding: DialogFragmentFailBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -34,7 +33,7 @@ class FailDialogFragment(private val content: String) : DialogFragment() {
     }
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
-        binding = FragmentFailDialogBinding.inflate(requireActivity().layoutInflater)
+        binding = DialogFragmentFailBinding.inflate(requireActivity().layoutInflater)
 
         val dialog = AlertDialog.Builder(requireActivity())
             .setView(binding.root)

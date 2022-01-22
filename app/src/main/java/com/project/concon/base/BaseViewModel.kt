@@ -28,9 +28,17 @@ abstract class BaseViewModel : ViewModel() {
         isLoading.postValue(false)
     }
 
-    protected fun addDisposable(single: Single<*>, observer: DisposableSingleObserver<*>) {
+    protected fun addDisposable(single: Single<*>, successListener: (Any)->Unit, errorListener: (Throwable)->Unit) {
         disposable.add(single.subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
-            .subscribeWith(observer as SingleObserver<Any>) as Disposable)
+            .subscribeWith(object : DisposableSingleObserver<Any>() {
+                override fun onSuccess(t: Any) {
+                    successListener(t)
+                }
+
+                override fun onError(e: Throwable) {
+                    errorListener(e)
+                }
+            }) as Disposable)
     }
 }

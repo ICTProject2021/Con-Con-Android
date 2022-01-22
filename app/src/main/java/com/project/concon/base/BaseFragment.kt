@@ -22,7 +22,10 @@ abstract class BaseFragment<VB: ViewDataBinding, VM: ViewModel> : DaggerFragment
 
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
-    protected lateinit var viewModel: VM
+    @Inject
+    lateinit var mViewModel: VM
+
+    protected val viewModel: VM get() = mViewModel
     protected lateinit var binding: VB
 
     protected val navController by lazy {
@@ -42,6 +45,7 @@ abstract class BaseFragment<VB: ViewDataBinding, VM: ViewModel> : DaggerFragment
     ): View? {
         performDataBinding(inflater, container)
         observerViewModel()
+        init()
 
         return binding.root
     }
@@ -52,7 +56,7 @@ abstract class BaseFragment<VB: ViewDataBinding, VM: ViewModel> : DaggerFragment
     }
 
     private fun performDataBinding(inflater: LayoutInflater, container: ViewGroup?) {
-        viewModel = ViewModelProvider(this, viewModelFactory)[getViewModelClass()]
+//        viewModel = ViewModelProvider(this, viewModelFactory?: defaultViewModelProviderFactory)[getViewModelClass()]
 
         binding = DataBindingUtil.inflate(inflater, getLayoutRes(), container, false)
         binding.lifecycleOwner = this

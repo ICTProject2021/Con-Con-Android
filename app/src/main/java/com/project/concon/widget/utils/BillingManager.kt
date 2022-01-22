@@ -6,10 +6,12 @@ import android.util.Log
 import com.android.billingclient.api.*
 import com.project.concon.widget.data.SkuData
 
-class BillingManager(private val listener: PurchaseMessageListener) :
+class BillingManager(private val listener: PurchaseListener) :
     PurchasesUpdatedListener {
 
-    private val TAG = "BillingManager"
+    companion object {
+        private const val TAG = "BillingManager"
+    }
 
     private lateinit var billingClient: BillingClient
     private var skuDetailList: List<SkuDetails> = listOf()
@@ -30,7 +32,6 @@ class BillingManager(private val listener: PurchaseMessageListener) :
         billingClient.startConnection(object : BillingClientStateListener {
             override fun onBillingSetupFinished(result: BillingResult) {
                 if (result.responseCode == BillingClient.BillingResponseCode.OK) {
-                    listener.test("구글 결제 서버 접속 성공")
                     Log.d(TAG, "구글 결제 서버 접속 성공")
 
                     getSkuDetailList()
@@ -62,11 +63,10 @@ class BillingManager(private val listener: PurchaseMessageListener) :
 
         billingClient.querySkuDetailsAsync(params.build()) { result, list ->
             if (result.responseCode == BillingClient.BillingResponseCode.OK && list != null) {
-                listener.test("인앱 상품 가져오기 성공: ${result.debugMessage}, $list")
-
+                Log.d(TAG, "인앱 상품 가져오기 성공: ${result.debugMessage}, $list")
                 skuDetailList = list
             } else {
-                listener.test("인앱 상품 가져오기 실패: ${result.debugMessage}, $list")
+                Log.e(TAG, "인앱 상품 가져오기 실패: ${result.debugMessage}, $list")
             }
         }
     }

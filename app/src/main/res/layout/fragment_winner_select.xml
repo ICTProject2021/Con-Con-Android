@@ -37,7 +37,7 @@
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/winnerSelectButton"
-                style="@style/Widget.AppCompat.Button.Main"
+                style="@style/Button.MainColor"
                 android:layout_marginHorizontal="@dimen/space_20dp"
                 android:layout_marginBottom="@dimen/space_20dp"
                 android:text="확인"

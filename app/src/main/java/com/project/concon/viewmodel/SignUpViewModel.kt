@@ -5,6 +5,7 @@ import com.project.concon.base.BaseViewModel
 import com.project.concon.model.remote.dto.request.IdRequest
 import com.project.concon.model.remote.dto.request.SignUpRequest
 import com.project.concon.model.repository.AccountRepository
+import com.project.concon.widget.livedata.SingleLiveEvent
 import com.project.concon.widget.utils.isNotBlankAll
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.schedulers.Schedulers
@@ -13,6 +14,8 @@ import javax.inject.Inject
 class SignUpViewModel @Inject constructor(
     private val repository: AccountRepository
 ) : BaseViewModel() {
+
+    val onClose = SingleLiveEvent<Unit>()
 
     val id = MutableLiveData<String>()
     val idCheck = MutableLiveData<Boolean>()
@@ -24,43 +27,40 @@ class SignUpViewModel @Inject constructor(
     val pwErr = MutableLiveData("")
     val phoneErr = MutableLiveData("")
     val nicknameErr = MutableLiveData("")
-
     val btnEnabled = MutableLiveData(false)
 
     val isSuccessCheckId = MutableLiveData<String>()
     val isSuccessSignUp = MutableLiveData<String>()
     val isFailure = MutableLiveData<String>()
 
-    fun postCheckId() {
-        repository.postCheckId(IdRequest(id.value!!))
-            .observeOn(Schedulers.io())
-            .subscribeOn(AndroidSchedulers.mainThread())
-            .subscribe({
-                isSuccessCheckId.postValue(it)
-            }, {
-                isFailure.postValue(it.message)
-            })
+    fun closeEvent() {
+        onClose.call()
     }
 
-    fun postSignUp() {
+    fun postCheckId() {
+        addDisposable(repository.postCheckId(IdRequest(id.value?:"")), {
+            isSuccessCheckId.postValue(it as String)
+        }, {
+            isFailure.postValue(it.message)
+        })
+    }
+
+    fun signUp() {
         val signUpReq = SignUpRequest(
-            id.value!!,
-            password.value!!,
-            phoneNumber.value!!,
-            nickname.value!!
+            id.value?:"",
+            password.value?:"",
+            phoneNumber.value?:"",
+            nickname.value?:""
         )
 
         startLoading()
-        repository.postSignUp(signUpReq)
-            .observeOn(Schedulers.io())
-            .subscribeOn(AndroidSchedulers.mainThread())
-            .subscribe({
-                isSuccessSignUp.postValue(it)
-                stopLoading()
-            }, {
-                isFailure.postValue(it.message)
-                stopLoading()
-            })
+        addDisposable(repository.postSignUp(signUpReq), {
+            isSuccessSignUp.postValue(it as String)
+            stopLoading()
+        }, {
+            isFailure.postValue(it.message)
+            stopLoading()
+        })
     }
 
     // 리스트의 요소의 값 중 하나가 공백이면 false

@@ -1,105 +1,37 @@
 package com.project.concon.view.fragment
 
 import android.content.Intent
-import android.os.Bundle
 import android.util.Log
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import android.widget.Toast
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
-import androidx.databinding.DataBindingUtil
-import androidx.fragment.app.Fragment
-import androidx.fragment.app.activityViewModels
-import androidx.navigation.NavController
-import androidx.navigation.fragment.findNavController
+import androidx.fragment.app.viewModels
 import com.google.android.material.datepicker.MaterialDatePicker
 import com.project.concon.R
+import com.project.concon.base.BaseFragment
 import com.project.concon.databinding.FragmentCreateContestBinding
-import com.project.concon.model.remote.dto.request.ContestRequest
-import com.project.concon.model.remote.dto.response.Prize
+import com.project.concon.viewmodel.CreateContestViewModel
+import com.project.concon.viewmodel.PrizeViewModel
+import com.project.concon.widget.extension.DATE
+import com.project.concon.widget.extension.getDateAsString
+import com.project.concon.widget.recyclerview.adapter.RecyclerViewJoinContestImageAdapter
 import com.project.concon.widget.utils.ImagePicker
 import com.project.concon.widget.utils.MessageUtils
-import com.project.concon.widget.recyclerview.RecyclerViewJoinContestImageAdapter
-import com.project.concon.viewmodel.CreateContestViewModel
-import com.project.concon.viewmodel.PrizeDialogViewModel
-import java.text.NumberFormat
 import java.util.*
 
-class CreateContestFragment : Fragment() {
+class CreateContestFragment : BaseFragment<FragmentCreateContestBinding, CreateContestViewModel>() {
 
-    private val navController: NavController by lazy { findNavController() }
+    companion object {
+        private const val TAG = "CreateContestFragment"
+    }
 
-    private lateinit var binding: FragmentCreateContestBinding
-    private val viewModel: CreateContestViewModel by activityViewModels()
-    private val pViewModelPrize: PrizeDialogViewModel by activityViewModels()
-
-    private var startTime: Long = 0
-    private var dueTime: Long = 0
-    private var prizeList: MutableList<Prize> = mutableListOf()
+    private val prizeViewModel: PrizeViewModel by viewModels()
 
     private lateinit var resultLauncher: ActivityResultLauncher<Intent>
     private val imageAdapter = RecyclerViewJoinContestImageAdapter()
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_create_contest, container, false)
-        binding.vm = viewModel
-        binding.lifecycleOwner = viewLifecycleOwner
-        return binding.root
-    }
+    override fun getViewModelClass(): Class<CreateContestViewModel> = CreateContestViewModel::class.java
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
-        init()
-        observe()
-
-        binding.etDateCreateContest.setOnClickListener { showCalendar() }
-
-        /* focus 일 때, 마지막에 원을 떼고, focus가 아닐 때 원을 붙임 */
-
-        binding.etPrizeCreateContest.apply {
-            val numberFormat = NumberFormat.getCurrencyInstance(Locale.getDefault())
-            val cash = numberFormat.format(getTotalPrice())
-
-            setText("총 ${cash}원")
-
-            setOnClickListener {
-                navigateToPrize()
-            }
-        }
-
-        binding.btnCloseCreateContest.setOnClickListener { navigateToMain() }
-
-        binding.btnConfirmCreateContest.setOnClickListener {
-            /* 에러 메세지 처리 */
-            val errorMsg: String? = when {
-                binding.etDateCreateContest.text.isNullOrBlank() -> "대회 날짜를"
-                binding.etPrizeCreateContest.text.isNullOrBlank() -> "우승 상금을"
-                binding.etTitleCreateContest.text.isNullOrBlank() -> "제목을"
-                binding.etContentCreateContest.text.isNullOrBlank() -> "내용을"
-                else -> null
-            }
-
-            if (errorMsg != null) {
-                MessageUtils.showFailDialog(requireActivity(), "$errorMsg 입력해주세요.")
-            } else {
-                Log.d("start", startTime.toString())
-                Log.d("end", dueTime.toString())
-                viewModel.postCreateContest(getCreateContest())
-            }
-        }
-
-        binding.btnAddPhotoCreateContest.setOnClickListener {
-            ImagePicker.multipleSelectStart(resultLauncher)
-        }
-    }
-
-    private fun init() {
+    override fun init() {
         resultLauncher = registerForActivityResult(
             ActivityResultContracts.StartActivityForResult()
         ) {
@@ -109,82 +41,72 @@ class CreateContestFragment : Fragment() {
         binding.rvPhotoCreateContest.adapter = imageAdapter
     }
 
-    private fun observe() = with(viewModel) {
-        isSuccess.observe(viewLifecycleOwner) { it ->
-            when (it) {
-                null -> {
-                    Toast.makeText(
-                        requireContext(),
-                        getString(R.string.error_server),
-                        Toast.LENGTH_SHORT
-                    ).show()
+    override fun observerViewModel() {
+        with(viewModel) {
+            onCloseEvent.observe(this@CreateContestFragment) {
+                navController.popBackStack()
+            }
+
+            onConfirmEvent.observe(this@CreateContestFragment) {
+                val errorMsg: String? = when {
+                    date.value.isNullOrBlank() -> "대회 날짜를"
+                    prize.value.isNullOrBlank() -> "우승 상금을"
+                    title.value.isNullOrBlank() -> "제목을"
+                    content.value.isNullOrBlank() -> "내용을"
+                    else -> null
                 }
 
-                else -> {
-                    Toast.makeText(requireContext(), "대회 등록에 성공.", Toast.LENGTH_SHORT).show()
-                    navigateToMain()
+                if (errorMsg != null) {
+                    MessageUtils.showFailDialog(requireActivity(), "$errorMsg 입력해주세요.")
+                } else {
+                    Log.d(TAG, "start: $startTime, due: $dueTime")
+                    createContest(prizeViewModel.prizeList.value!!)
                 }
             }
-        }
 
-        isLoading.observe(viewLifecycleOwner) {
-            if (it) {
-                MessageUtils.showProgress(requireActivity())
-            } else {
-                MessageUtils.dismissProgress()
+            onSelectPhotoEvent.observe(this@CreateContestFragment) {
+                ImagePicker.multipleSelectStart(resultLauncher)
+            }
+
+            onSetPrizeEvent.observe(this@CreateContestFragment) {
+                navController.navigate(CreateContestFragmentDirections.toPrizeFragment())
+            }
+
+            onSetDateEvent.observe(this@CreateContestFragment) {
+                showCalendar()
+            }
+
+            isSuccess.observe(this@CreateContestFragment) {
+                when (it) {
+                    null -> MessageUtils.showToast(requireContext(), getString(R.string.error_server))
+                    else -> navController.popBackStack()
+                }
+            }
+
+            isLoading.observe(this@CreateContestFragment) {
+                if (it) MessageUtils.showProgress(requireActivity())
+                else MessageUtils.dismissProgress()
+            }
+
+            isFailure.observe(this@CreateContestFragment) {
+            }
+
+            ImagePicker.imageList.observe(this@CreateContestFragment) {
+                imageAdapter.setList(it)
             }
         }
-
-        ImagePicker.imageList.observe(viewLifecycleOwner) {
-            imageAdapter.setList(it)
-       }
     }
 
     private fun showCalendar() {
-        val dateRangePicker = MaterialDatePicker.Builder.dateRangePicker()
-            .setTitleText("대회 기간 선택")
-            .build()
-
-        dateRangePicker.isCancelable = false
-        dateRangePicker.addOnPositiveButtonClickListener {
-//            startTime = it.first
-//            dueTime = it.second
-            viewModel.startTime.value = it.first
-            viewModel.dueTime.value = it.second
-            val text = "${viewModel.getDateAsString(it.first)} ~ ${viewModel.getDateAsString(it.second)}"
-            viewModel.date.value = text
-            binding.etDateCreateContest.setText(text)
+        MaterialDatePicker.Builder.dateRangePicker().setTitleText("대회 기간을 선택해주세요.").build().apply {
+            isCancelable = false
+            addOnPositiveButtonClickListener {
+                viewModel.startTime.value = it.first
+                viewModel.dueTime.value = it.second
+                viewModel.date.value = "${it.first.getDateAsString(DATE)} ~ ${it.second.getDateAsString(DATE)}"
+            }
+            show(requireActivity().supportFragmentManager, "Calendar")
         }
-
-        dateRangePicker.show(requireActivity().supportFragmentManager, "Calendar")
-    }
-
-    private fun getCreateContest(): ContestRequest =
-        ContestRequest(
-            binding.etTitleCreateContest.text.toString(),
-            binding.etContentCreateContest.text.toString(),
-//            longTimeToDateAsString(startTime),
-//            longTimeToDateAsString(dueTime),
-            viewModel.getDateAsString(viewModel.startTime.value),
-            viewModel.getDateAsString(viewModel.dueTime.value),
-            pViewModelPrize.prizeList.value!!
-        )
-
-
-    private fun navigateToMain() {
-        navController.navigate(R.id.action_createContestFragment_to_mainFragment)
-    }
-
-    private fun navigateToPrize() {
-        navController.navigate(R.id.action_createContestFragment_to_prizeFragment)
-    }
-
-    private fun getTotalPrice() : Int {
-        var result = 0
-        pViewModelPrize.prizeList.value?.forEach {
-            result += it.price
-        }
-        return result
     }
 }
 

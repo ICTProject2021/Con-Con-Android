@@ -4,7 +4,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.navigation.fragment.navArgs
 import com.project.concon.R
-import com.project.concon.base.BaseVMFragment
+import com.project.concon.base.BaseFragment
 import com.project.concon.databinding.FragmentContestDetailBinding
 import com.project.concon.model.remote.dto.response.ContestDetail
 import com.project.concon.widget.utils.MessageUtils
@@ -13,14 +13,12 @@ import java.text.SimpleDateFormat
 import java.util.*
 
 /** 대회 상세 페이지 */
-class ContestDetailFragment : BaseVMFragment<FragmentContestDetailBinding, ContestDetailViewModel>() {
+class ContestDetailFragment : BaseFragment<FragmentContestDetailBinding, ContestDetailViewModel>() {
 
-    override fun setBinding() {
-        binding.vm = viewModel
-        binding.data = ContestDetail(0, "", "", "", "", "", "", false, listOf())
-    }
-
-    override fun getLayoutRes(): Int = R.layout.fragment_contest_detail
+//    override fun setBinding() {
+//        binding.vm = viewModel
+//        binding.data = ContestDetail(0, "", "", "", "", "", "", false, listOf())
+//    }
 
     override fun getViewModelClass(): Class<ContestDetailViewModel> =
         ContestDetailViewModel::class.java
@@ -52,7 +50,7 @@ class ContestDetailFragment : BaseVMFragment<FragmentContestDetailBinding, Conte
         }
     }
 
-    private fun init() {
+    override fun init() {
         val time = Calendar.getInstance().time
         now = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(time)
 
@@ -102,5 +100,9 @@ class ContestDetailFragment : BaseVMFragment<FragmentContestDetailBinding, Conte
 
     private fun navigateToWinnerSelect() {
         navController.navigate(ContestDetailFragmentDirections.toWinnerFragment(args.id))
+    }
+
+    override fun observerViewModel() {
+        TODO("Not yet implemented")
     }
 }

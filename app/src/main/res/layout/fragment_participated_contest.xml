@@ -1,6 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="vm"
+            type="com.project.concon.viewmodel.ParticipatedContestViewModel" />
+    </data>
+
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -24,6 +31,7 @@
 
             <ImageButton
                 android:id="@+id/btn_back_participated_contest"
+                android:onClick="@{() -> vm.backEvent()}"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/space_24dp"
@@ -63,8 +71,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/layout_0dp"
                 android:layout_gravity="fill_vertical"
-                android:overScrollMode="never"
                 android:fillViewport="true"
+                android:overScrollMode="never"
                 app:layout_behavior="@string/appbar_scrolling_view_behavior"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -77,6 +85,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="@dimen/text_size_18sp"
                     android:layout_marginTop="@dimen/space_10dp"
+                    android:orientation="vertical"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="1.0"
                     app:layout_constraintStart_toStartOf="parent"

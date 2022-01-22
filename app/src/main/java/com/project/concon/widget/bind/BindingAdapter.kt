@@ -19,8 +19,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.google.android.material.textfield.TextInputLayout
 import com.project.concon.R
-import com.project.concon.widget.recyclerview.RecyclerViewJoinContestImageAdapter
-import com.project.concon.widget.recyclerview.RecyclerViewJoinContestAdapter
+import com.project.concon.widget.recyclerview.adapter.RecyclerViewJoinContestImageAdapter
+import com.project.concon.widget.recyclerview.adapter.RecyclerViewJoinContestAdapter
 import com.project.concon.model.remote.RetrofitInstance
 import com.project.concon.model.remote.dto.response.Participant
 
