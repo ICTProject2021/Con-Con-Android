@@ -16,6 +16,7 @@ import com.project.concon.widget.extension.getDateAsString
 import com.project.concon.widget.recyclerview.adapter.RecyclerViewJoinContestImageAdapter
 import com.project.concon.widget.utils.ImagePicker
 import com.project.concon.widget.utils.MessageUtils
+import org.koin.androidx.viewmodel.ext.android.viewModel
 import java.util.*
 
 class CreateContestFragment : BaseFragment<FragmentCreateContestBinding, CreateContestViewModel>() {
@@ -24,12 +25,13 @@ class CreateContestFragment : BaseFragment<FragmentCreateContestBinding, CreateC
         private const val TAG = "CreateContestFragment"
     }
 
+    private val viewModel: CreateContestViewModel by viewModel()
     private val prizeViewModel: PrizeViewModel by viewModels()
 
     private lateinit var resultLauncher: ActivityResultLauncher<Intent>
     private val imageAdapter = RecyclerViewJoinContestImageAdapter()
 
-    override fun getViewModelClass(): Class<CreateContestViewModel> = CreateContestViewModel::class.java
+//    override fun getViewModelClass(): Class<CreateContestViewModel> = CreateContestViewModel::class.java
 
     override fun init() {
         resultLauncher = registerForActivityResult(

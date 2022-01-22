@@ -10,10 +10,13 @@ import com.project.concon.databinding.FragmentWinnerBinding
 import com.project.concon.widget.recyclerview.adapter.RecyclerViewWinnerAdapter
 import com.project.concon.widget.recyclerview.decoration.RecyclerViewDecoration
 import com.project.concon.viewmodel.WinnerViewModel
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class WinnerFragment : BaseFragment<FragmentWinnerBinding, WinnerViewModel>() {
 
-    override fun getViewModelClass(): Class<WinnerViewModel> = WinnerViewModel::class.java
+//    override fun getViewModelClass(): Class<WinnerViewModel> = WinnerViewModel::class.java
+
+    private val viewModel: WinnerViewModel by viewModel()
 
     private lateinit var recyclerViewAdapter: RecyclerViewWinnerAdapter
 

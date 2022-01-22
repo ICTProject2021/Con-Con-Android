@@ -8,10 +8,12 @@ import com.project.concon.view.activity.MainActivity
 import com.project.concon.viewmodel.SignUpViewModel
 import com.project.concon.widget.utils.MessageUtils
 import com.project.concon.widget.utils.PreferenceUtils
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class SignUpFragment : BaseFragment<FragmentSignUpBinding, SignUpViewModel>() {
 
-    override fun getViewModelClass(): Class<SignUpViewModel> = SignUpViewModel::class.java
+//    override fun getViewModelClass(): Class<SignUpViewModel> = SignUpViewModel::class.java
+    private val viewModel: SignUpViewModel by viewModel()
 
     override fun init() {
         binding.motionLayoutSignUp.transitionToStart()

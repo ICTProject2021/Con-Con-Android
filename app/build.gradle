@@ -50,6 +50,14 @@ dependencies {
     kapt 'com.google.dagger:dagger-compiler:2.37'
     kapt "com.google.dagger:dagger-android-processor:2.37"
 
+    // Koin
+    def koin_version = "3.1.5"
+    implementation "io.insert-koin:koin-android:$koin_version"
+    implementation "io.insert-koin:koin-android-compat:$koin_version"
+    implementation "io.insert-koin:koin-androidx-workmanager:$koin_version"
+    implementation "io.insert-koin:koin-androidx-navigation:$koin_version"
+    implementation "io.insert-koin:koin-androidx-compose:$koin_version"
+
     // navigation
     implementation 'androidx.navigation:navigation-fragment-ktx:2.3.5'
     implementation 'androidx.navigation:navigation-ui-ktx:2.3.5'

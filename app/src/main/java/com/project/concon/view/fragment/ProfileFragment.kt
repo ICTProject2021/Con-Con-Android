@@ -8,12 +8,14 @@ import com.project.concon.databinding.FragmentProfileBinding
 import com.project.concon.widget.utils.MessageUtils
 import com.project.concon.widget.bind.setImage
 import com.project.concon.viewmodel.ProfileViewModel
+import org.koin.androidx.viewmodel.ext.android.viewModel
 import java.text.NumberFormat
 import java.util.*
 
 class ProfileFragment : BaseFragment<FragmentProfileBinding, ProfileViewModel>() {
 
-    override fun getViewModelClass(): Class<ProfileViewModel> = ProfileViewModel::class.java
+//    override fun getViewModelClass(): Class<ProfileViewModel> = ProfileViewModel::class.java
+    private val viewModel: ProfileViewModel by viewModel()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

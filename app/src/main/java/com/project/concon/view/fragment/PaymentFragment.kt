@@ -12,11 +12,13 @@ import com.project.concon.widget.recyclerview.adapter.RecyclerViewPaymentAdapter
 import com.project.concon.widget.utils.BillingManager
 import com.project.concon.widget.utils.MessageUtils
 import com.project.concon.widget.utils.PurchaseListener
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class PaymentFragment : BaseFragment<FragmentPaymentBinding, PaymentViewModel>() {
 
-    override fun getViewModelClass(): Class<PaymentViewModel> = PaymentViewModel::class.java
+//    override fun getViewModelClass(): Class<PaymentViewModel> = PaymentViewModel::class.java
 
+    private val viewModel: PaymentViewModel by viewModel()
     private lateinit var manager: BillingManager
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

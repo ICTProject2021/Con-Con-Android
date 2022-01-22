@@ -12,13 +12,15 @@ import androidx.navigation.fragment.findNavController
 import com.project.concon.R
 import com.project.concon.databinding.FragmentChargeCashBinding
 import com.project.concon.viewmodel.ChargeCashViewModel
+import org.koin.androidx.viewmodel.ext.android.viewModel
+
 /** 삭제 예정 */
 class ChargeCashFragment : Fragment() {
 
     private val navController by lazy { findNavController() }
 
     private lateinit var binding: FragmentChargeCashBinding
-    private val viewModel: ChargeCashViewModel by viewModels()
+    private val viewModel: ChargeCashViewModel by viewModel()
 
     private val buttons = mutableListOf<Button>()
 

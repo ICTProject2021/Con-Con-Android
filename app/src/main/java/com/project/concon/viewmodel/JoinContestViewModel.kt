@@ -15,7 +15,7 @@ import io.reactivex.rxjava3.schedulers.Schedulers
 import okhttp3.MultipartBody
 import javax.inject.Inject
 
-class JoinContestViewModel @Inject constructor(
+class JoinContestViewModel (
     private val contestRepository: ContestRepository
 ) : BaseViewModel() {
     val content = MutableLiveData("")

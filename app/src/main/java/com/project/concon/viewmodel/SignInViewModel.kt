@@ -10,7 +10,7 @@ import io.reactivex.rxjava3.observers.DisposableSingleObserver
 import io.reactivex.rxjava3.schedulers.Schedulers
 import javax.inject.Inject
 
-class SignInViewModel @Inject constructor(
+class SignInViewModel (
     private val repository: AccountRepository
 ) : BaseViewModel() {
     val id = MutableLiveData<String?>()

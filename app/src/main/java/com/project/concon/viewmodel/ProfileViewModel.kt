@@ -8,7 +8,7 @@ import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.schedulers.Schedulers
 import javax.inject.Inject
 
-class ProfileViewModel @Inject constructor(
+class ProfileViewModel (
     private val repository: AccountRepository
 ) : BaseViewModel() {
 

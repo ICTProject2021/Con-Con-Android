@@ -13,7 +13,7 @@ import java.text.NumberFormat
 import java.util.*
 import javax.inject.Inject
 
-class ContestDetailViewModel @Inject constructor(
+class ContestDetailViewModel (
     private val repository: ContestRepository
 ) : BaseViewModel() {
     val onBack = SingleLiveEvent<Unit>()

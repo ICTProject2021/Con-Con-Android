@@ -5,11 +5,13 @@ import com.project.concon.databinding.FragmentParticipatedContestBinding
 import com.project.concon.viewmodel.ParticipatedContestViewModel
 import com.project.concon.widget.recyclerview.adapter.RecyclerViewParticipatedAdapter
 import com.project.concon.widget.recyclerview.decoration.RecyclerViewDecoration
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class ParticipatedContestFragment
     : BaseFragment<FragmentParticipatedContestBinding, ParticipatedContestViewModel>() {
 
-    override fun getViewModelClass(): Class<ParticipatedContestViewModel> = ParticipatedContestViewModel::class.java
+//    override fun getViewModelClass(): Class<ParticipatedContestViewModel> = ParticipatedContestViewModel::class.java
+    private val viewModel: ParticipatedContestViewModel by viewModel()
 
     private val adapter = RecyclerViewParticipatedAdapter()
 

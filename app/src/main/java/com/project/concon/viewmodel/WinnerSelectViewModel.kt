@@ -10,7 +10,7 @@ import io.reactivex.rxjava3.observers.DisposableSingleObserver
 import io.reactivex.rxjava3.schedulers.Schedulers
 import javax.inject.Inject
 
-class WinnerSelectViewModel @Inject constructor(
+class WinnerSelectViewModel (
     private val repository: ContestRepository
 ) : BaseViewModel() {
     val isSuccessGetParticipantInfo = MutableLiveData<List<Participant>>()

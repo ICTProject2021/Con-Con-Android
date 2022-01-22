@@ -14,7 +14,7 @@ import io.reactivex.rxjava3.schedulers.Schedulers
 import java.text.SimpleDateFormat
 import javax.inject.Inject
 
-class CreateContestViewModel @Inject constructor(
+class CreateContestViewModel (
     private val repository: ContestRepository
 ) : BaseViewModel() {
     val title = MutableLiveData<String>()

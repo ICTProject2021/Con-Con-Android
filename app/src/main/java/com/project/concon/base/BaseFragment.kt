@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.annotation.LayoutRes
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
@@ -18,21 +19,21 @@ import java.lang.reflect.ParameterizedType
 import java.util.*
 import javax.inject.Inject
 
-abstract class BaseFragment<VB: ViewDataBinding, VM: ViewModel> : DaggerFragment() {
+abstract class BaseFragment<VB: ViewDataBinding, VM: ViewModel> : Fragment() {
 
-    @Inject
-    lateinit var viewModelFactory: ViewModelProvider.Factory
-    @Inject
-    lateinit var mViewModel: VM
-
-    protected val viewModel: VM get() = mViewModel
+//    @Inject
+//    lateinit var viewModelFactory: ViewModelProvider.Factory
+//    @Inject
+//    lateinit var mViewModel: VM
+//
+//    protected val viewModel: VM get() = mViewModel
     protected lateinit var binding: VB
 
     protected val navController by lazy {
         findNavController()
     }
 
-    protected abstract fun getViewModelClass(): Class<VM>
+//    protected abstract fun getViewModelClass(): Class<VM>
 
     protected abstract fun init()
 
@@ -60,7 +61,7 @@ abstract class BaseFragment<VB: ViewDataBinding, VM: ViewModel> : DaggerFragment
 
         binding = DataBindingUtil.inflate(inflater, getLayoutRes(), container, false)
         binding.lifecycleOwner = this
-        binding.setVariable(BR.vm, viewModel)
+//        binding.setVariable(BR.vm, viewModel)
         binding.executePendingBindings()
     }
 

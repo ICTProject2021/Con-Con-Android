@@ -15,6 +15,7 @@ import com.project.concon.widget.recyclerview.adapter.RecyclerViewJoinContestAda
 import com.project.concon.widget.recyclerview.adapter.RecyclerViewJoinContestImageAdapter
 import com.project.concon.viewmodel.JoinContestViewModel
 import java.io.IOException
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class JoinContestFragment : BaseFragment<FragmentJoinContestBinding, JoinContestViewModel>() {
 
@@ -31,7 +32,8 @@ class JoinContestFragment : BaseFragment<FragmentJoinContestBinding, JoinContest
 
     private lateinit var resultLauncher: ActivityResultLauncher<Intent>
 
-    override fun getViewModelClass(): Class<JoinContestViewModel> = JoinContestViewModel::class.java
+//    override fun getViewModelClass(): Class<JoinContestViewModel> = JoinContestViewModel::class.java
+    private val viewModel: JoinContestViewModel by viewModel()
 
     override fun init() {
         binding.rvParticipantJoinContest.adapter = joinAdapter

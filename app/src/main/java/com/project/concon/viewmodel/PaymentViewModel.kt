@@ -10,7 +10,7 @@ import io.reactivex.rxjava3.observers.DisposableSingleObserver
 import io.reactivex.rxjava3.schedulers.Schedulers
 import javax.inject.Inject
 
-class PaymentViewModel @Inject constructor(
+class PaymentViewModel (
     private val repository: AccountRepository
 ) : BaseViewModel() {
     val onCloseEvent = SingleLiveEvent<Unit>()

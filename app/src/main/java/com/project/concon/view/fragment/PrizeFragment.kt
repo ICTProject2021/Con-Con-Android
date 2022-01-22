@@ -11,13 +11,15 @@ import dagger.android.support.AndroidSupportInjection.inject
 import java.text.NumberFormat
 import java.util.*
 import javax.inject.Inject
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class PrizeFragment : BaseFragment<FragmentPrizeBinding, PrizeViewModel>() {
 
     private val adapter = RecyclerViewPrizeAdapter()
-    private val createContestViewModel: CreateContestViewModel by viewModels()
+    private val viewModel: PrizeViewModel by viewModel()
+    private val createContestViewModel: CreateContestViewModel by viewModel()
 
-    override fun getViewModelClass(): Class<PrizeViewModel> = PrizeViewModel::class.java
+//    override fun getViewModelClass(): Class<PrizeViewModel> = PrizeViewModel::class.java
 
     override fun init() {
         binding.rvPrize.adapter = adapter

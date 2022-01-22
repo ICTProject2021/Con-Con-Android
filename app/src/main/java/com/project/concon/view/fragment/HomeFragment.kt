@@ -7,12 +7,14 @@ import com.project.concon.widget.utils.MessageUtils
 import com.project.concon.widget.recyclerview.adapter.RecyclerViewMainAdapter
 import com.project.concon.widget.recyclerview.decoration.RecyclerViewDecoration
 import com.project.concon.viewmodel.HomeViewModel
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>() {
 
     private val recyclerViewAdapter = RecyclerViewMainAdapter()
 
-    override fun getViewModelClass(): Class<HomeViewModel> = HomeViewModel::class.java
+//    override fun getViewModelClass(): Class<HomeViewModel> = HomeViewModel::class.java
+    private val viewModel: HomeViewModel by viewModel()
 
     override fun init() {
         viewModel.getContestList()
