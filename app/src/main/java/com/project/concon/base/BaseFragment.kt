@@ -47,7 +47,7 @@ abstract class BaseFragment<VB: ViewDataBinding, VM: ViewModel> : Fragment() {
 
     private fun performDataBinding(inflater: LayoutInflater, container: ViewGroup?) {
         binding = DataBindingUtil.inflate(inflater, getLayoutRes(), container, false)
-        binding.lifecycleOwner = this
+        binding.lifecycleOwner = viewLifecycleOwner
         binding.setVariable(BR.vm, viewModel)
         binding.executePendingBindings()
     }

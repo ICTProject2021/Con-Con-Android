@@ -9,17 +9,15 @@ import com.project.concon.widget.extension.safeNavigate
 class IntroFragment : BaseFragment<FragmentIntroBinding, IntroViewModel>() {
     override val viewModel: IntroViewModel by viewModels()
 
-    override fun init() {}
+    override fun init() {
+        binding.btnSignInIntro.setOnClickListener {
+            navController.safeNavigate(IntroFragmentDirections.toSignInFragment())
+        }
 
-    override fun observerViewModel() {
-        with(viewModel) {
-            onSignInEvent.observe(this@IntroFragment) {
-                navController.safeNavigate(IntroFragmentDirections.toSignInFragment())
-            }
-
-            onSignUpEvent.observe(this@IntroFragment) {
-                navController.safeNavigate(IntroFragmentDirections.toSignUpFragment())
-            }
+        binding.btnSignUpIntro.setOnClickListener {
+            navController.safeNavigate(IntroFragmentDirections.toSignUpFragment())
         }
     }
+
+    override fun observerViewModel() {}
 }

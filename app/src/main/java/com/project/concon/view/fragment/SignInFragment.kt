@@ -2,6 +2,7 @@ package com.project.concon.view.fragment
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import com.project.concon.R
 import com.project.concon.base.BaseFragment
@@ -10,6 +11,7 @@ import com.project.concon.widget.utils.MessageUtils
 import com.project.concon.widget.utils.PreferenceUtils
 import com.project.concon.view.activity.MainActivity
 import com.project.concon.viewmodel.SignInViewModel
+import com.project.concon.widget.extension.safeNavigate
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class SignInFragment : BaseFragment<FragmentSignInBinding, SignInViewModel>() {
@@ -19,14 +21,14 @@ class SignInFragment : BaseFragment<FragmentSignInBinding, SignInViewModel>() {
     override fun init() {
         binding.motionLayoutSignIn.transitionToStart()
         binding.motionLayoutSignIn.transitionToEnd()
+
+        binding.fabClose.setOnClickListener {
+            navController.popBackStack()
+        }
     }
 
     override fun observerViewModel() {
         with (viewModel) {
-            onClose.observe(this@SignInFragment) {
-                navController.popBackStack()
-            }
-
             id.observe(viewLifecycleOwner) {
                 idErr.value = when(it.isNullOrBlank()) {
                     true -> getString(R.string.error_id)

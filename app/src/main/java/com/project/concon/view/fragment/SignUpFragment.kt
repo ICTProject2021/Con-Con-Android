@@ -17,14 +17,14 @@ class SignUpFragment : BaseFragment<FragmentSignUpBinding, SignUpViewModel>() {
     override fun init() {
         binding.motionLayoutSignUp.transitionToStart()
         binding.motionLayoutSignUp.transitionToEnd()
+
+        binding.fabClose.setOnClickListener {
+            navController.popBackStack()
+        }
     }
 
     override fun observerViewModel() {
         with(viewModel) {
-            onClose.observe(this@SignUpFragment) {
-                navController.popBackStack()
-            }
-
             id.observe(viewLifecycleOwner) {
                 idErr.value = when(it.isBlank()) {
                     true -> getString(R.string.error_id)
