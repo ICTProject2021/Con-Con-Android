@@ -1,17 +1,13 @@
 package com.project.concon.view.fragment
 
-import android.content.Intent
-import android.os.Bundle
-import android.util.Log
-import android.view.View
 import com.project.concon.R
 import com.project.concon.base.BaseFragment
 import com.project.concon.databinding.FragmentSignInBinding
-import com.project.concon.widget.utils.MessageUtils
-import com.project.concon.widget.utils.PreferenceUtils
 import com.project.concon.view.activity.MainActivity
 import com.project.concon.viewmodel.SignInViewModel
-import com.project.concon.widget.extension.safeNavigate
+import com.project.concon.widget.extension.startActivityWithFinish
+import com.project.concon.widget.utils.MessageUtils
+import com.project.concon.widget.utils.PreferenceUtils
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class SignInFragment : BaseFragment<FragmentSignInBinding, SignInViewModel>() {
@@ -45,12 +41,11 @@ class SignInFragment : BaseFragment<FragmentSignInBinding, SignInViewModel>() {
 
             isSuccess.observe(viewLifecycleOwner) {
                 PreferenceUtils.token = it
-                startActivity(Intent(requireActivity(), MainActivity::class.java))
+                requireActivity().startActivityWithFinish(requireContext(), MainActivity::class.java)
             }
 
             isFailure.observe(viewLifecycleOwner) {
-                MessageUtils.showFailDialog(requireActivity(),
-                    "${getString(R.string.error_sign_in)}\n($it)")
+                MessageUtils.showFailDialog(requireActivity(), "${getString(R.string.error_sign_in)}\n($it)")
             }
 
             isLoading.observe(viewLifecycleOwner) {

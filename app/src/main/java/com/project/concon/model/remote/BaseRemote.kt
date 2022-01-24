@@ -25,6 +25,7 @@ abstract class BaseRemote<SV> {
 
     private fun <T> checkError(response: Response<T>) {
         Log.d("server", response.raw().toString())
+        Log.d("server", "${response.body()}")
 
         if (!response.isSuccessful) {
             val errorBody = JSONObject(response.errorBody()!!.string())

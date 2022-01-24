@@ -118,7 +118,6 @@
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/fab_close"
             style="@style/Widget.MaterialComponents.FloatingActionButton.Main"
-            android:onClick="@{()->vm.closeEvent()}"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/space_70dp"

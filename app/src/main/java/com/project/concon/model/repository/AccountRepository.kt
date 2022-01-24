@@ -12,10 +12,10 @@ import io.reactivex.rxjava3.core.Single
 class AccountRepository(override val service: AccountService) : BaseRemote<AccountService>() {
 
     fun postSignIn(signInRequest: SignInRequest): Single<String> =
-        service.postSignIn(signInRequest).map(getMessage())
+        service.postSignIn(signInRequest).map(getResponse())
 
     fun postSignUp(signUpRequest: SignUpRequest): Single<String> =
-        service.postSignUp(signUpRequest).map(getMessage())
+        service.postSignUp(signUpRequest).map(getResponse())
 
     fun postCheckId(idRequest: IdRequest): Single<String> =
         service.postCheckId(idRequest).map(getMessage())

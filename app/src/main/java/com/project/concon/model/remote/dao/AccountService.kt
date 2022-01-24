@@ -16,11 +16,11 @@ import retrofit2.http.PUT
 interface AccountService {
     /* 로그인 */
     @POST("/signin")
-    fun postSignIn(@Body signInRequest: SignInRequest): Single<Response<Res<Any>>>
+    fun postSignIn(@Body signInRequest: SignInRequest): Single<Response<Res<String>>>
 
     /* 회원가입 */
     @POST("/signup")
-    fun postSignUp(@Body signUpRequest: SignUpRequest): Single<Response<Res<Any>>>
+    fun postSignUp(@Body signUpRequest: SignUpRequest): Single<Response<Res<String>>>
 
     /* 아이디 중복체크 */
     @POST("/check")
