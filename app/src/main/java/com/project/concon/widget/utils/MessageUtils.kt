@@ -29,27 +29,4 @@ object MessageUtils {
 
     fun showToast(context: Context, msg: String) =
         Toast.makeText(context, msg, Toast.LENGTH_SHORT).show()
-
-    /** 로딩 프로그레스 다이얼로그 */
-    private var progressDialog: AppCompatDialog? = null
-
-    fun showProgress(activity: Activity) {
-        if (progressDialog == null)
-            progressDialog = AppCompatDialog(activity)
-
-        progressDialog!!.apply {
-            setCancelable(false)
-            window?.setBackgroundDrawable(ColorDrawable(android.graphics.Color.TRANSPARENT))
-            setContentView(R.layout.layout_dialog_loading)
-            show()
-        }
-    }
-
-    fun dismissProgress() {
-        if (progressDialog != null) {
-            if (progressDialog!!.isShowing) {
-                progressDialog!!.dismiss()
-            }
-        }
-    }
 }
