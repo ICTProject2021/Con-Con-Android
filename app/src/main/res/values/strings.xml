@@ -41,5 +41,6 @@
     <string name="confirm">확인</string>
 
     <string name="charge">충전하기</string>
+    <string name="contest_date">대회 날짜</string>
 
 </resources>

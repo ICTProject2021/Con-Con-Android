@@ -12,10 +12,13 @@ import com.project.concon.databinding.FragmentCreateContestBinding
 import com.project.concon.viewmodel.CreateContestViewModel
 import com.project.concon.viewmodel.PrizeViewModel
 import com.project.concon.widget.extension.DATE
+import com.project.concon.widget.extension.dismissProgress
 import com.project.concon.widget.extension.getDateAsString
+import com.project.concon.widget.extension.showProgress
 import com.project.concon.widget.recyclerview.adapter.RecyclerViewJoinContestImageAdapter
 import com.project.concon.widget.utils.ImagePicker
 import com.project.concon.widget.utils.MessageUtils
+import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import java.util.*
 
@@ -25,8 +28,8 @@ class CreateContestFragment : BaseFragment<FragmentCreateContestBinding, CreateC
         private const val TAG = "CreateContestFragment"
     }
 
-    override val viewModel: CreateContestViewModel by viewModel()
-    private val prizeViewModel: PrizeViewModel by viewModels()
+    override val viewModel: CreateContestViewModel by sharedViewModel()
+    private val prizeViewModel: PrizeViewModel by sharedViewModel()
 
     private lateinit var resultLauncher: ActivityResultLauncher<Intent>
     private val imageAdapter = RecyclerViewJoinContestImageAdapter()
@@ -39,15 +42,13 @@ class CreateContestFragment : BaseFragment<FragmentCreateContestBinding, CreateC
         }
 
         binding.rvPhotoCreateContest.adapter = imageAdapter
-    }
 
-    override fun observerViewModel() {
-        with(viewModel) {
-            onCloseEvent.observe(this@CreateContestFragment) {
-                navController.popBackStack()
-            }
+        binding.btnClose.setOnClickListener {
+            navController.popBackStack()
+        }
 
-            onConfirmEvent.observe(this@CreateContestFragment) {
+        binding.btnConfirm.setOnClickListener {
+            viewModel.apply {
                 val errorMsg: String? = when {
                     date.value.isNullOrBlank() -> "대회 날짜를"
                     prize.value.isNullOrBlank() -> "우승 상금을"
@@ -63,50 +64,54 @@ class CreateContestFragment : BaseFragment<FragmentCreateContestBinding, CreateC
                     createContest(prizeViewModel.prizeList.value!!)
                 }
             }
+        }
 
-            onSelectPhotoEvent.observe(this@CreateContestFragment) {
-                ImagePicker.multipleSelectStart(resultLauncher)
-            }
+        binding.btnSelectPhoto.setOnClickListener {
+            ImagePicker.multipleSelectStart(resultLauncher)
+        }
 
-            onSetPrizeEvent.observe(this@CreateContestFragment) {
-                navController.navigate(CreateContestFragmentDirections.toPrizeFragment())
-            }
+        binding.etPrize.setOnClickListener {
+            navController.navigate(CreateContestFragmentDirections.toPrizeFragment())
+        }
 
-            onSetDateEvent.observe(this@CreateContestFragment) {
-                showCalendar()
-            }
+        binding.etDate.setOnClickListener {
+            showCalendar()
+        }
+    }
 
-            isSuccess.observe(this@CreateContestFragment) {
-                when (it) {
+    override fun observerViewModel() {
+        with(viewModel) {
+            isSuccess.observe(viewLifecycleOwner) {
+                when(it) {
                     null -> MessageUtils.showToast(requireContext(), getString(R.string.error_server))
                     else -> navController.popBackStack()
                 }
             }
 
-            isLoading.observe(this@CreateContestFragment) {
-                if (it) MessageUtils.showProgress(requireActivity())
-                else MessageUtils.dismissProgress()
+            isLoading.observe(viewLifecycleOwner) {
+                if(it) showProgress() else dismissProgress()
             }
 
-            isFailure.observe(this@CreateContestFragment) {
+            isFailure.observe(viewLifecycleOwner) {
             }
 
-            ImagePicker.imageList.observe(this@CreateContestFragment) {
+            ImagePicker.imageList.observe(viewLifecycleOwner) {
                 imageAdapter.setList(it)
             }
         }
     }
 
     private fun showCalendar() {
-        MaterialDatePicker.Builder.dateRangePicker().setTitleText("대회 기간을 선택해주세요.").build().apply {
+        val calendar = MaterialDatePicker.Builder.dateRangePicker().setTitleText("대회 기간을 선택해주세요.").build()
+        calendar.apply {
             isCancelable = false
             addOnPositiveButtonClickListener {
                 viewModel.startTime.value = it.first
                 viewModel.dueTime.value = it.second
                 viewModel.date.value = "${it.first.getDateAsString(DATE)} ~ ${it.second.getDateAsString(DATE)}"
             }
-            show(requireActivity().supportFragmentManager, "Calendar")
         }
+        calendar.show(parentFragmentManager, "Calendar")
     }
 }
 

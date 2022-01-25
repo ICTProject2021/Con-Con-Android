@@ -13,7 +13,7 @@
             android:layout_height="match_parent">
 
             <ImageButton
-                android:id="@+id/btn_close_create_contest"
+                android:id="@+id/btn_close"
                 android:layout_width="@dimen/button_size_50dp"
                 android:layout_height="@dimen/button_size_50dp"
                 android:layout_marginStart="@dimen/space_16dp"

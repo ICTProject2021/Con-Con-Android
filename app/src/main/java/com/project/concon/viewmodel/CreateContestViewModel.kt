@@ -24,34 +24,8 @@ class CreateContestViewModel (
     var dueTime = MutableLiveData<Long>()
     val prize = MutableLiveData<String>()
 
-    val onCloseEvent = SingleLiveEvent<Unit>()
-    val onConfirmEvent = SingleLiveEvent<Unit>()
-    val onSelectPhotoEvent = SingleLiveEvent<Unit>()
-    val onSetPrizeEvent = SingleLiveEvent<Unit>()
-    val onSetDateEvent = SingleLiveEvent<Unit>()
-
     val isSuccess = MutableLiveData<String>()
     val isFailure: MutableLiveData<String> = MutableLiveData()
-
-    fun closeEvent() {
-        onCloseEvent.call()
-    }
-
-    fun confirmEvent() {
-        onConfirmEvent.call()
-    }
-
-    fun selectPhotoEvent() {
-        onSelectPhotoEvent.call()
-    }
-
-    fun setPrizeEvent() {
-        onSetPrizeEvent.call()
-    }
-
-    fun setDateEvent() {
-        onSetDateEvent.call()
-    }
 
     fun createContest(prizeList: List<Prize>) {
         startLoading()

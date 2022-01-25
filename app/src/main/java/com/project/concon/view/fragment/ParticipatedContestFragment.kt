@@ -30,15 +30,15 @@ class ParticipatedContestFragment
 
     override fun observerViewModel() {
         with(viewModel) {
-            onBackEvent.observe(this@ParticipatedContestFragment) {
+            onBackEvent.observe(viewLifecycleOwner) {
                 navController.popBackStack()
             }
 
-            isSuccess.observe(this@ParticipatedContestFragment) {
+            isSuccess.observe(viewLifecycleOwner) {
                 adapter.setList(it)
             }
 
-            isFailure.observe(this@ParticipatedContestFragment) {
+            isFailure.observe(viewLifecycleOwner) {
             }
         }
     }

@@ -11,30 +11,12 @@
         android:label="main_fragment"
         tools:layout="@layout/fragment_home" >
         <action
-            android:id="@+id/action_mainFragment_to_createContestFragment"
-            app:destination="@id/createContestFragment" />
-        <action
             android:id="@+id/to_contestDetailFragment"
             app:destination="@id/contestDetailFragment" />
         <action
             android:id="@+id/action_mainFragment_to_profileFragment"
             app:destination="@id/profileFragment" />
 
-    </fragment>
-    <fragment
-        android:id="@+id/createContestFragment"
-        android:name="com.project.concon.view.fragment.CreateContestFragment"
-        android:label="create_contest_fragment"
-        tools:layout="@layout/fragment_create_contest">
-        <action
-            android:id="@+id/action_createContestFragment_to_mainFragment"
-            app:destination="@id/mainFragment" />
-        <action
-            android:id="@+id/action_createContestFragment_to_profileFragment"
-            app:destination="@id/profileFragment" />
-        <action
-            android:id="@+id/to_prizeFragment"
-            app:destination="@id/prizeFragment" />
     </fragment>
     <fragment
         android:id="@+id/profileFragment"
@@ -47,9 +29,6 @@
         <action
             android:id="@+id/action_profileFragment_to_mainFragment"
             app:destination="@id/mainFragment" />
-        <action
-            android:id="@+id/action_profileFragment_to_createContestFragment"
-            app:destination="@id/createContestFragment" />
         <action
             android:id="@+id/action_profileFragment_to_participatedContestFragment"
             app:destination="@id/participatedContestFragment" />
@@ -119,11 +98,7 @@
         android:id="@+id/prizeFragment"
         android:name="com.project.concon.view.fragment.PrizeFragment"
         android:label="fragment_prize"
-        tools:layout="@layout/fragment_prize" >
-        <action
-            android:id="@+id/to_createContestFragment"
-            app:destination="@id/createContestFragment" />
-    </fragment>
+        tools:layout="@layout/fragment_prize" />
     <fragment
         android:id="@+id/participatedContestFragment"
         android:name="com.project.concon.view.fragment.ParticipatedContestFragment"

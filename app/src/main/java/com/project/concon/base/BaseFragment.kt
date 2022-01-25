@@ -12,6 +12,7 @@ import androidx.lifecycle.ViewModel
 import androidx.navigation.fragment.findNavController
 import com.project.concon.BR
 import com.project.concon.R
+import com.project.concon.widget.extension.dismissProgress
 import java.lang.reflect.ParameterizedType
 import java.util.*
 
@@ -66,5 +67,10 @@ abstract class BaseFragment<VB: ViewDataBinding, VM: ViewModel> : Fragment() {
         }
 
         return R.layout::class.java.getField(name.toString()).getInt(R.layout::class.java)
+    }
+
+    override fun onPause() {
+        super.onPause()
+        dismissProgress()
     }
 }

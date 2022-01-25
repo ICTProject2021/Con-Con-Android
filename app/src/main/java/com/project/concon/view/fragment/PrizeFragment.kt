@@ -6,35 +6,37 @@ import com.project.concon.view.dialog.PrizeDialogFragment
 import com.project.concon.viewmodel.CreateContestViewModel
 import com.project.concon.viewmodel.PrizeViewModel
 import com.project.concon.widget.recyclerview.adapter.RecyclerViewPrizeAdapter
-import org.koin.androidx.viewmodel.ext.android.viewModel
+import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 import java.text.NumberFormat
 import java.util.*
 
 class PrizeFragment : BaseFragment<FragmentPrizeBinding, PrizeViewModel>() {
 
-    override val viewModel: PrizeViewModel by viewModel()
+    override val viewModel: PrizeViewModel by sharedViewModel()
+    private val createContestViewModel: CreateContestViewModel by sharedViewModel()
+
     private val adapter = RecyclerViewPrizeAdapter()
-    private val createContestViewModel: CreateContestViewModel by viewModel()
 
     override fun init() {
         binding.rvPrize.adapter = adapter
+
         adapter.setOnItemClickListener {
             removePrize(it)
+        }
+
+        binding.btnBack.setOnClickListener {
+            createContestViewModel.prize.value = "총 ${getTotalPrize()}원 "
+            navController.popBackStack()
+        }
+
+        binding.fabAdd.setOnClickListener {
+            PrizeDialogFragment().show(parentFragmentManager, "PrizeDialog")
         }
     }
 
     override fun observerViewModel() {
         with(viewModel) {
-            onAddEvent.observe(this@PrizeFragment) {
-                PrizeDialogFragment().show(parentFragmentManager, "PrizeDialog")
-            }
-
-            onBackEvent.observe(this@PrizeFragment) {
-                createContestViewModel.prize.value = "총 ${getTotalPrize()}원 "
-                navController.popBackStack()
-            }
-
-            prizeList.observe(this@PrizeFragment) {
+            prizeList.observe(viewLifecycleOwner) {
                 adapter.setList(it)
             }
         }

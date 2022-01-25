@@ -16,19 +16,8 @@ import javax.inject.Inject
 class ContestDetailViewModel (
     private val repository: ContestRepository
 ) : BaseViewModel() {
-    val onBack = SingleLiveEvent<Unit>()
-    val onJoin = SingleLiveEvent<Unit>()
-
     val isSuccess = MutableLiveData<ContestDetail>()
     val isFailure = MutableLiveData<String>()
-
-    fun backEvent() {
-        onBack.call()
-    }
-
-    fun joinEvent() {
-        onJoin.call()
-    }
 
     fun toDate(date: String): String {
         return if (date.isNotEmpty()) {
@@ -40,7 +29,7 @@ class ContestDetailViewModel (
 
     fun getAllPriceSum(): String {
         var price = 0
-        isSuccess.value!!.prize.forEach {
+        isSuccess.value?.prize?.forEach {
             price += it.price
         }
         val numberFormat = NumberFormat.getCurrencyInstance(Locale.getDefault())

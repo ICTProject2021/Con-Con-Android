@@ -7,6 +7,7 @@ import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import com.project.concon.R
 import com.project.concon.databinding.ActivityMainBinding
+import com.project.concon.widget.extension.startActivity
 
 class MainActivity : AppCompatActivity() {
 
@@ -27,13 +28,7 @@ class MainActivity : AppCompatActivity() {
         binding.bottomNavigationView.setupWithNavController(navController)
 
         binding.fab.setOnClickListener {
-            val currentFragment =
-                NavHostFragment.findNavController(navHostFragment).currentDestination!!.id
-            if (currentFragment == R.id.mainFragment) {
-                navController.navigate(R.id.action_mainFragment_to_createContestFragment)
-            } else if (currentFragment == R.id.profileFragment) {
-                navController.navigate(R.id.action_profileFragment_to_createContestFragment)
-            }
+            startActivity(CreateContestActivity::class.java)
         }
 
         navController.addOnDestinationChangedListener { _, destination, _ ->

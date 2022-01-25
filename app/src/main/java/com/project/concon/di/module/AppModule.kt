@@ -26,37 +26,16 @@ val repositoryModule = module {
 }
 
 val viewModelModule = module {
-    viewModel {
-        ContestDetailViewModel(get())
-    }
-    viewModel {
-        WinnerViewModel(get())
-    }
-    viewModel {
-        WinnerSelectViewModel(get())
-    }
-    viewModel {
-        SignUpViewModel(get())
-    }
-    viewModel {
-        SignInViewModel(get())
-    }
-    viewModel {
-        ProfileViewModel(get())
-    }
-    viewModel {
-        PaymentViewModel(get())
-    }
-    viewModel {
-        ParticipatedContestViewModel(get())
-    }
-    viewModel {
-        JoinContestViewModel(get())
-    }
-    viewModel {
-        HomeViewModel(get())
-    }
-    viewModel {
-        CreateContestViewModel(get())
-    }
+    viewModel { ContestDetailViewModel(get()) }
+    viewModel { WinnerViewModel(get()) }
+    viewModel { WinnerSelectViewModel(get()) }
+    viewModel { SignUpViewModel(get()) }
+    viewModel { SignInViewModel(get()) }
+    viewModel { ProfileViewModel(get()) }
+    viewModel { PaymentViewModel(get()) }
+    viewModel { ParticipatedContestViewModel(get()) }
+    viewModel { JoinContestViewModel(get()) }
+    viewModel { HomeViewModel(get()) }
+    viewModel { CreateContestViewModel(get()) }
+    viewModel { PrizeViewModel() }
 }

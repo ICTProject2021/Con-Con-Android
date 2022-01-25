@@ -10,15 +10,14 @@ import io.reactivex.rxjava3.schedulers.Schedulers
 import javax.inject.Inject
 
 class HomeViewModel (
-    private val contestRepository: ContestRepository
+    private val repository: ContestRepository
 ) : BaseViewModel() {
     val isSuccess = MutableLiveData<List<Contest>>()
     val isFailure = MutableLiveData<String>()
 
     fun getContestList() {
         startLoading()
-
-        addDisposable(contestRepository.getContestList(), {
+        addDisposable(repository.getContestList(), {
             isSuccess.postValue(it as List<Contest>)
             stopLoading()
         }, {

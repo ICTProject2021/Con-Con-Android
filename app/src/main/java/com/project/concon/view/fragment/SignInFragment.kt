@@ -5,6 +5,8 @@ import com.project.concon.base.BaseFragment
 import com.project.concon.databinding.FragmentSignInBinding
 import com.project.concon.view.activity.MainActivity
 import com.project.concon.viewmodel.SignInViewModel
+import com.project.concon.widget.extension.dismissProgress
+import com.project.concon.widget.extension.showProgress
 import com.project.concon.widget.extension.startActivityWithFinish
 import com.project.concon.widget.utils.MessageUtils
 import com.project.concon.widget.utils.PreferenceUtils
@@ -41,7 +43,7 @@ class SignInFragment : BaseFragment<FragmentSignInBinding, SignInViewModel>() {
 
             isSuccess.observe(viewLifecycleOwner) {
                 PreferenceUtils.token = it
-                requireActivity().startActivityWithFinish(requireContext(), MainActivity::class.java)
+                startActivityWithFinish(MainActivity::class.java)
             }
 
             isFailure.observe(viewLifecycleOwner) {
@@ -49,11 +51,7 @@ class SignInFragment : BaseFragment<FragmentSignInBinding, SignInViewModel>() {
             }
 
             isLoading.observe(viewLifecycleOwner) {
-                if (it) {
-                    MessageUtils.showProgress(requireActivity())
-                } else {
-                    MessageUtils.dismissProgress()
-                }
+                if(it) showProgress() else dismissProgress()
             }
         }
     }

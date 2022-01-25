@@ -14,6 +14,8 @@ import com.project.concon.widget.utils.MessageUtils
 import com.project.concon.widget.recyclerview.adapter.RecyclerViewJoinContestAdapter
 import com.project.concon.widget.recyclerview.adapter.RecyclerViewJoinContestImageAdapter
 import com.project.concon.viewmodel.JoinContestViewModel
+import com.project.concon.widget.extension.dismissProgress
+import com.project.concon.widget.extension.showProgress
 import java.io.IOException
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -109,11 +111,7 @@ class JoinContestFragment : BaseFragment<FragmentJoinContestBinding, JoinContest
             }
 
             isLoading.observe(viewLifecycleOwner) {
-                if (it) {
-                    MessageUtils.showProgress(requireActivity())
-                } else {
-                    MessageUtils.dismissProgress()
-                }
+                if(it) showProgress() else dismissProgress()
             }
         }
     }

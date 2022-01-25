@@ -10,11 +10,12 @@ import com.project.concon.databinding.DialogFragmentPrizeBinding
 import com.project.concon.model.remote.dto.response.Prize
 import com.project.concon.viewmodel.PrizeViewModel
 import com.project.concon.widget.utils.MessageUtils
+import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 
 class PrizeDialogFragment : DialogFragment() {
 
     private lateinit var binding: DialogFragmentPrizeBinding
-    private val prizeViewModel : PrizeViewModel by viewModels()
+    private val prizeViewModel : PrizeViewModel by sharedViewModel()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
