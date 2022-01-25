@@ -30,7 +30,7 @@
         </androidx.cardview.widget.CardView>
 
         <FrameLayout
-            android:id="@+id/layout_close_rv_item_join_contest_img"
+            android:id="@+id/layout_remove"
             android:layout_width="@dimen/layout_48dp"
             android:layout_height="@dimen/layout_48dp"
             android:layout_gravity="center"

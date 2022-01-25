@@ -10,9 +10,8 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.navigation.fragment.navArgs
 import com.project.concon.base.BaseFragment
 import com.project.concon.databinding.FragmentJoinContestBinding
-import com.project.concon.widget.utils.MessageUtils
 import com.project.concon.widget.recyclerview.adapter.RecyclerViewJoinContestAdapter
-import com.project.concon.widget.recyclerview.adapter.RecyclerViewJoinContestImageAdapter
+import com.project.concon.widget.recyclerview.adapter.RecyclerViewImageAdapter
 import com.project.concon.viewmodel.JoinContestViewModel
 import com.project.concon.widget.extension.dismissProgress
 import com.project.concon.widget.extension.showProgress
@@ -29,7 +28,7 @@ class JoinContestFragment : BaseFragment<FragmentJoinContestBinding, JoinContest
 
     private val navArgs by navArgs<JoinContestFragmentArgs>()
 
-    private val imgAdapter = RecyclerViewJoinContestImageAdapter()
+    private val imgAdapter = RecyclerViewImageAdapter()
     private val joinAdapter = RecyclerViewJoinContestAdapter()
 
     private lateinit var resultLauncher: ActivityResultLauncher<Intent>

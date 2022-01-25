@@ -4,7 +4,6 @@ import android.content.Intent
 import android.util.Log
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
-import androidx.fragment.app.viewModels
 import com.google.android.material.datepicker.MaterialDatePicker
 import com.project.concon.R
 import com.project.concon.base.BaseFragment
@@ -15,12 +14,10 @@ import com.project.concon.widget.extension.DATE
 import com.project.concon.widget.extension.dismissProgress
 import com.project.concon.widget.extension.getDateAsString
 import com.project.concon.widget.extension.showProgress
-import com.project.concon.widget.recyclerview.adapter.RecyclerViewJoinContestImageAdapter
+import com.project.concon.widget.recyclerview.adapter.RecyclerViewImageAdapter
 import com.project.concon.widget.utils.ImagePicker
 import com.project.concon.widget.utils.MessageUtils
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
-import org.koin.androidx.viewmodel.ext.android.viewModel
-import java.util.*
 
 class CreateContestFragment : BaseFragment<FragmentCreateContestBinding, CreateContestViewModel>() {
 
@@ -32,7 +29,7 @@ class CreateContestFragment : BaseFragment<FragmentCreateContestBinding, CreateC
     private val prizeViewModel: PrizeViewModel by sharedViewModel()
 
     private lateinit var resultLauncher: ActivityResultLauncher<Intent>
-    private val imageAdapter = RecyclerViewJoinContestImageAdapter()
+    private val imageAdapter = RecyclerViewImageAdapter()
 
     override fun init() {
         resultLauncher = registerForActivityResult(

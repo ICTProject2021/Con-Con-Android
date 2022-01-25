@@ -134,7 +134,7 @@
                     android:id="@+id/rv_photo_create_contest"
                     app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                     android:orientation="horizontal"
-                    tools:listitem="@layout/item_join_contest_image"
+                    tools:listitem="@layout/item_image"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
 

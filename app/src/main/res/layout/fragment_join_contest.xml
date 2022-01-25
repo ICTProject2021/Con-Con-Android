@@ -119,7 +119,7 @@
                 android:paddingVertical="@dimen/space_10dp"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 tools:ignore="SpeakableTextPresentCheck"
-                tools:listitem="@layout/item_join_contest_image" />
+                tools:listitem="@layout/item_image" />
         </LinearLayout>
 
         <ImageButton
