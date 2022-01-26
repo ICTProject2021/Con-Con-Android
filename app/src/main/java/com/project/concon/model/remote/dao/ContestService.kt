@@ -3,10 +3,7 @@ package com.project.concon.model.remote.dao
 import com.project.concon.model.remote.dto.Res
 import com.project.concon.model.remote.dto.request.ContestRequest
 import com.project.concon.model.remote.dto.request.WinnerRequest
-import com.project.concon.model.remote.dto.response.Contest
-import com.project.concon.model.remote.dto.response.ContestDetail
-import com.project.concon.model.remote.dto.response.Participant
-import com.project.concon.model.remote.dto.response.Winner
+import com.project.concon.model.remote.dto.response.*
 import io.reactivex.rxjava3.core.Single
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
@@ -23,8 +20,16 @@ interface ContestService {
     fun getContestDetail(@Path("id") id: Int): Single<Response<Res<ContestDetail>>>
 
     /* 대회 생성 */
+    @Multipart
     @POST("/contest")
-    fun postCreateContest(@Body contestRequest: ContestRequest): Single<Response<Res<Any>>>
+    fun postCreateContest(
+        @Part attachment: List<MultipartBody.Part>,
+        @Part("title") title: RequestBody,
+        @Part("content") content: RequestBody,
+        @Part("startdate") startDate: RequestBody,
+        @Part("duedate") dueDate: RequestBody,
+        @Part("prize") prizeList: List<Prize>
+    ): Single<Response<Res<Any>>>
 
     /* 대회 참여자 조회 */
     @GET("/participant/{id}")

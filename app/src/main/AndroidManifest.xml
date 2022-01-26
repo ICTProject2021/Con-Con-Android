@@ -19,6 +19,9 @@
         android:theme="@style/Theme.2021IctProject"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".view.activity.JoinContestActivity"
+            android:exported="false" />
+        <activity
             android:name=".view.activity.CreateContestActivity"
             android:exported="false" />
         <activity

@@ -35,10 +35,8 @@ class PrizeFragment : BaseFragment<FragmentPrizeBinding, PrizeViewModel>() {
     }
 
     override fun observerViewModel() {
-        with(viewModel) {
-            prizeList.observe(viewLifecycleOwner) {
-                adapter.setList(it)
-            }
+        viewModel.prizeList.observe(viewLifecycleOwner) {
+            adapter.setList(it)
         }
     }
 

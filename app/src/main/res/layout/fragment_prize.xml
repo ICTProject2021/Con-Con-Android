@@ -36,7 +36,6 @@
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="@dimen/space_30dp"
                 android:layout_marginBottom="@dimen/space_45dp"
-                android:onClick="@{()->vm.addEvent()}"
                 android:src="@drawable/vec_ic_add"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent" />
@@ -46,6 +45,8 @@
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:layout_marginTop="@dimen/space_16dp"
+                android:orientation="vertical"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
