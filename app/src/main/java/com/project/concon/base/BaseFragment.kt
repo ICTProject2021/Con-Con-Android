@@ -70,7 +70,7 @@ abstract class BaseFragment<VB: ViewDataBinding, VM: ViewModel> : Fragment() {
     }
 
     override fun onPause() {
-        super.onPause()
         dismissProgress()
+        super.onPause()
     }
 }

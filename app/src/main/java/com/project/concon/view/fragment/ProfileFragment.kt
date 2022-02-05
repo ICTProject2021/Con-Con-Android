@@ -1,13 +1,11 @@
 package com.project.concon.view.fragment
 
-import android.os.Bundle
-import android.view.View
 import com.project.concon.R
 import com.project.concon.base.BaseFragment
 import com.project.concon.databinding.FragmentProfileBinding
-import com.project.concon.widget.utils.MessageUtils
-import com.project.concon.widget.bind.setImage
 import com.project.concon.viewmodel.ProfileViewModel
+import com.project.concon.widget.bind.setImage
+import com.project.concon.widget.utils.MessageUtils
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import java.text.NumberFormat
 import java.util.*
@@ -16,11 +14,7 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding, ProfileViewModel>()
 
     override val viewModel: ProfileViewModel by viewModel()
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
-        observe()
-
+    override fun init() {
         viewModel.getProfile()
 
         binding.charge.setOnClickListener {
@@ -36,27 +30,20 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding, ProfileViewModel>()
         }
     }
 
-    private fun observe() = with(viewModel) {
-        isSuccess.observe(viewLifecycleOwner) {
-            // 프로필 이미지가 없을 때 null 로 날아오기 때문에 null 값 체크
-            // todo .....................
-            if (it.profile != null) {
-                binding.profileImg.setImage(it.profile)
-            }
-
-            val numberFormat = NumberFormat.getCurrencyInstance(Locale.getDefault())
-            val cash = numberFormat.format(it.cash)
-
-            binding.cash.text = "${cash}원"
-            binding.profileNickname.text = it.nickname
-        }
-    }
-
-    override fun init() {
-        TODO("Not yet implemented")
-    }
-
     override fun observerViewModel() {
-        TODO("Not yet implemented")
+        with(viewModel) {
+            isSuccess.observe(viewLifecycleOwner) {
+                // 프로필 이미지가 없을 때 null 로 날아오기 때문에 null 값 체크
+                if (it.profile != null) {
+                    binding.profileImg.setImage(it.profile)
+                }
+
+                val numberFormat = NumberFormat.getCurrencyInstance(Locale.getDefault())
+                val cash = numberFormat.format(it.cash)
+
+                binding.cash.text = "${cash}원"
+                binding.profileNickname.text = it.nickname
+            }
+        }
     }
 }
