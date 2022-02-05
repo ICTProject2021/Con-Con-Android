@@ -32,6 +32,7 @@ class ContestDetailFragment : BaseFragment<FragmentContestDetailBinding, Contest
         }
 
         binding.btnJoin.setOnClickListener {
+            // 현재 날짜와 대회 주최자인가에 따라 화면이 바
             val directions: NavDirections = if (contestDetail.duedate < now) {
                 if (contestDetail.isHost)
                     ContestDetailFragmentDirections.toWinnerSelectFragment(args.id)

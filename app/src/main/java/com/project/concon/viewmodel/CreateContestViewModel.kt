@@ -2,17 +2,13 @@ package com.project.concon.viewmodel
 
 import androidx.lifecycle.MutableLiveData
 import com.project.concon.base.BaseViewModel
-import com.project.concon.model.remote.dto.request.ContestRequest
 import com.project.concon.model.remote.dto.response.Prize
 import com.project.concon.model.repository.ContestRepository
 import com.project.concon.widget.extension.SECOND
 import com.project.concon.widget.extension.getDateAsString
-import com.project.concon.widget.livedata.SingleLiveEvent
-import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
-import io.reactivex.rxjava3.observers.DisposableSingleObserver
-import io.reactivex.rxjava3.schedulers.Schedulers
-import java.text.SimpleDateFormat
-import javax.inject.Inject
+import com.project.concon.widget.utils.getMultipartBody
+import com.project.concon.widget.utils.getRequestBody
+import okhttp3.MultipartBody
 
 class CreateContestViewModel (
     private val repository: ContestRepository
@@ -20,25 +16,24 @@ class CreateContestViewModel (
     val title = MutableLiveData<String>()
     val content = MutableLiveData<String>()
     val date = MutableLiveData<String>()
-    var startTime = MutableLiveData<Long>()
-    var dueTime = MutableLiveData<Long>()
+    val startTime = MutableLiveData<Long>()
+    val dueTime = MutableLiveData<Long>()
     val prize = MutableLiveData<String>()
+    val attachment = MutableLiveData<List<MultipartBody.Part>>()
 
     val isSuccess = MutableLiveData<String>()
-    val isFailure: MutableLiveData<String> = MutableLiveData()
+    val isFailure = MutableLiveData<String>()
 
     fun createContest(prizeList: List<Prize>) {
         startLoading()
-
-        val contestRequest = ContestRequest(
-            title.value!!,
-            content.value!!,
-            startTime.value!!.getDateAsString(SECOND),
-            dueTime.value!!.getDateAsString(SECOND),
-            prizeList
+        val params = mapOf(
+            "title" to title.value!!.getRequestBody(),
+            "content" to content.value!!.getRequestBody(),
+            "startdate" to startTime.value!!.getDateAsString(SECOND).getRequestBody(),
+            "duedate" to dueTime.value!!.getDateAsString(SECOND).getRequestBody()
         )
 
-        addDisposable(repository.postCreateContest(contestRequest), {
+        addDisposable(repository.postCreateContest(attachment.value?: listOf(), params, prizeList.map { it.getMultipartBody() }), {
             isSuccess.postValue(it as String)
             stopLoading()
         }, {

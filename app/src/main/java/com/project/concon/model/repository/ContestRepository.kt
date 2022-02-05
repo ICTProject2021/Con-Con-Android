@@ -2,12 +2,8 @@ package com.project.concon.model.repository
 
 import com.project.concon.model.remote.BaseRemote
 import com.project.concon.model.remote.dao.ContestService
-import com.project.concon.model.remote.dto.request.ContestRequest
 import com.project.concon.model.remote.dto.request.WinnerRequest
-import com.project.concon.model.remote.dto.response.Contest
-import com.project.concon.model.remote.dto.response.ContestDetail
-import com.project.concon.model.remote.dto.response.Participant
-import com.project.concon.model.remote.dto.response.Winner
+import com.project.concon.model.remote.dto.response.*
 import io.reactivex.rxjava3.core.Single
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
@@ -22,8 +18,12 @@ class ContestRepository(
     fun getContestDetail(id: Int): Single<ContestDetail> =
         service.getContestDetail(id).map(getResponse())
 
-    fun postCreateContest(contestRequest: ContestRequest): Single<String> =
-        service.postCreateContest(contestRequest).map(getMessage())
+    fun postCreateContest(
+        attachment: List<MultipartBody.Part>,
+        params: Map<String, RequestBody>,
+        prizeList: List<MultipartBody.Part>
+    ): Single<String> =
+        service.postCreateContest(attachment, params, prizeList).map(getMessage())
 
     fun getParticipantList(id: Int): Single<List<Participant>> =
         service.getParticipantList(id).map(getResponse())

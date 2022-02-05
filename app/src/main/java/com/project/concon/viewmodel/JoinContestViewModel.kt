@@ -1,6 +1,7 @@
 package com.project.concon.viewmodel
 
 import android.content.ContentResolver
+import android.content.Context
 import android.net.Uri
 import androidx.lifecycle.MutableLiveData
 import com.project.concon.base.BaseViewModel
@@ -57,12 +58,12 @@ class JoinContestViewModel (
         })
     }
 
-    fun participate(id: Int, contentResolver: ContentResolver) {
-        val content = this.content.value!!.getRequestBody()
+    fun participate(id: Int, context: Context) {
+        val content = content.value!!.getRequestBody()
         val list = mutableListOf<MultipartBody.Part>()
 
         fileList.value!!.forEach {
-            list.add(it.getImageBody("attachment", contentResolver))
+            list.add(it.getImageBody("attachment", context))
         }
 
         addDisposable(contestRepository.postParticipate(id, content, list), {

@@ -89,7 +89,7 @@ class JoinContestFragment : BaseFragment<FragmentJoinContestBinding, JoinContest
             }
 
             onSelectPhotoEvent.observe(this@JoinContestFragment) {
-                participate(navArgs.id, requireContext().contentResolver)
+                participate(navArgs.id, requireContext())
             }
 
             isSuccessGetParticipantInfo.observe(viewLifecycleOwner) {

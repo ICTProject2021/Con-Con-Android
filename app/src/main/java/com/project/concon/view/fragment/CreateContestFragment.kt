@@ -17,6 +17,7 @@ import com.project.concon.widget.extension.showProgress
 import com.project.concon.widget.recyclerview.adapter.RecyclerViewImageAdapter
 import com.project.concon.widget.utils.ImagePicker
 import com.project.concon.widget.utils.MessageUtils
+import com.project.concon.widget.utils.getImageBody
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 
 class CreateContestFragment : BaseFragment<FragmentCreateContestBinding, CreateContestViewModel>() {
@@ -90,10 +91,12 @@ class CreateContestFragment : BaseFragment<FragmentCreateContestBinding, CreateC
             }
 
             isFailure.observe(viewLifecycleOwner) {
+                MessageUtils.showFailDialog(requireActivity(), it.toString())
             }
 
             ImagePicker.imageList.observe(viewLifecycleOwner) {
                 imageAdapter.setList(it)
+                attachment.value = it.map { uri -> uri.getImageBody("attachment", requireContext()) }
             }
         }
     }

@@ -7,6 +7,7 @@ import com.project.concon.widget.utils.PreferenceUtils
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.Response
+import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava3.RxJava3CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
@@ -17,7 +18,10 @@ object RetrofitInstance {
     private val gson = Gson().newBuilder().setLenient().create()
 
     private val okHttpClient: OkHttpClient =
-        OkHttpClient().newBuilder().addInterceptor(TokenInterceptor()).build()
+        OkHttpClient().newBuilder()
+            .addInterceptor(TokenInterceptor())
+            .addInterceptor(HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY))
+            .build()
 
     private val retrofit by lazy {
         Retrofit.Builder()

@@ -1,7 +1,6 @@
 package com.project.concon.model.remote.dao
 
 import com.project.concon.model.remote.dto.Res
-import com.project.concon.model.remote.dto.request.ContestRequest
 import com.project.concon.model.remote.dto.request.WinnerRequest
 import com.project.concon.model.remote.dto.response.*
 import io.reactivex.rxjava3.core.Single
@@ -22,13 +21,11 @@ interface ContestService {
     /* 대회 생성 */
     @Multipart
     @POST("/contest")
+    @JvmSuppressWildcards
     fun postCreateContest(
         @Part attachment: List<MultipartBody.Part>,
-        @Part("title") title: RequestBody,
-        @Part("content") content: RequestBody,
-        @Part("startdate") startDate: RequestBody,
-        @Part("duedate") dueDate: RequestBody,
-        @Part("prize") prizeList: List<Prize>
+        @PartMap params: Map<String, RequestBody>,
+        @Part prize: List<MultipartBody.Part>
     ): Single<Response<Res<Any>>>
 
     /* 대회 참여자 조회 */
