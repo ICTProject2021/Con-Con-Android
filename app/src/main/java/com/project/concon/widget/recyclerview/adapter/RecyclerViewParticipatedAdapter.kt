@@ -37,10 +37,10 @@ class RecyclerViewParticipatedAdapter :
     }
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        val title: TextView = view.findViewById(R.id.item_contest_title)
-        val dueLine: TextView = view.findViewById(R.id.item_Deadline)
-        val profile: ImageView = view.findViewById(R.id.item_profile)
-        val user: TextView = view.findViewById(R.id.item_user)
+        val title: TextView = view.findViewById(R.id.tv_title)
+        val dueLine: TextView = view.findViewById(R.id.tv_deadline)
+        val profile: ImageView = view.findViewById(R.id.iv_profile)
+        val user: TextView = view.findViewById(R.id.tv_user)
 
         fun bind(data: Contest) {
             title.text = data.title
@@ -71,7 +71,7 @@ class RecyclerViewParticipatedAdapter :
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_main, parent, false)
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_home, parent, false)
 
         return ViewHolder(view)
     }

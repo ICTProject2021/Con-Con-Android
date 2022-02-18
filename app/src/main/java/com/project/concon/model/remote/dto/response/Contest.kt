@@ -1,7 +1,7 @@
 package com.project.concon.model.remote.dto.response
 
 data class Contest(
-    val ID: Int?,
+    val ID: Int,
     val title: String?,
     val content: String?,
     val startdate: String?,

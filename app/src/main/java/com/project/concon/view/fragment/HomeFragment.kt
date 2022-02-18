@@ -37,7 +37,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>() {
             }
 
             isSuccess.observe(viewLifecycleOwner) {
-                adapter.setData(it)
+                adapter.setList(it)
             }
 
             isFailure.observe(viewLifecycleOwner) {

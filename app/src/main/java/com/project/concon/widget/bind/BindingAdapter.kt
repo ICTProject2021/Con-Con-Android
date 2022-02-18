@@ -52,7 +52,7 @@ fun TextInputLayout.setError(errorMsg: String?) {
 //}
 
 @BindingAdapter("loadUri")
-fun ImageView.setImage(uri: String) {
+fun ImageView.setImage(uri: String?) {
     Glide.with(this.context)
         .load((RetrofitInstance.BASE_URL + uri).toUri())
         .placeholder(R.drawable.vec_ic_profile)

@@ -69,7 +69,6 @@
 
                     <ImageView
                         android:id="@+id/iv_profile_img_contest_detail"
-                        loadUri="@{vm.isSuccess().profile}"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         tools:src="@tools:sample/avatars" />

@@ -1,86 +1,82 @@
 package com.project.concon.widget.recyclerview.adapter
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.project.concon.R
-import com.project.concon.widget.bind.setImage
+import com.project.concon.databinding.ItemHomeBinding
+import com.project.concon.databinding.ItemLoadingBinding
 import com.project.concon.model.remote.dto.response.Contest
+import com.project.concon.widget.bind.setImage
 import java.text.SimpleDateFormat
-import java.util.*
 
-class RecyclerViewMainAdapter : RecyclerView.Adapter<RecyclerViewMainAdapter.ViewHolder>(){
+class RecyclerViewMainAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>(){
 
-    private var dataList = mutableListOf<Contest>()
-    private lateinit var mListener: OnItemClickListener
+    companion object {
+        private const val VIEW_TYPE_ITEM = 0
+        private const val VIEW_TYPE_LOADING = -1
+    }
+
+    private var list = arrayListOf<Contest>()
+    private lateinit var onItemClickListener: OnItemClickListener
 
     interface OnItemClickListener {
         fun onClick(id: Int)
     }
 
     fun setOnItemClickListener(listener: (Int) -> Unit) {
-        mListener = object : OnItemClickListener {
+        onItemClickListener = object : OnItemClickListener {
             override fun onClick(id: Int) {
                 listener(id)
             }
         }
     }
 
-    fun setData(data: List<Contest>) {
-        this.dataList.clear()
-        this.dataList.addAll(data)
-        notifyDataSetChanged()
-    }
-
-    class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        val title: TextView = view.findViewById(R.id.item_contest_title)
-        val dueLine: TextView = view.findViewById(R.id.item_Deadline)
-        val profile: ImageView = view.findViewById(R.id.item_profile)
-        val user: TextView = view.findViewById(R.id.item_user)
-
+    inner class BoardViewHolder(private val binding: ItemHomeBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(data: Contest) {
-            title.text = data.title
-            dueLine.text = data.duedate.toString()
-            user.text = data.host
-            dueLine.text = getDateText(data.duedate)
+            binding.apply {
+                tvTitle.text = data.title
+                tvUser.text = data.host
+                tvDeadline.text = getDeadLineText(data.duedate)
+                ivProfile.setImage(data.profile!!)
 
-            if (data.profile != null)
-                profile.setImage(data.profile)
-        }
-
-        private fun getDateText(dueDate: String?): String {
-            Log.d("getDateText", dueDate.toString())
-            return "마감 " + if (dueDate != null) {
-                val today = Date(System.currentTimeMillis())
-                val lastDate = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.sss'Z'", Locale.getDefault()).parse(dueDate)
-
-                val dif = (lastDate.time - today.time) / (24*60*60*1000)
-
-                dif.toString() + "일 전"
-            } else {
-                ""
+                itemView.setOnClickListener {
+                    onItemClickListener.onClick(data.ID)
+                }
             }
         }
-    }
 
-    override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): ViewHolder {
-        val view = LayoutInflater.from(viewGroup.context)
-            .inflate(R.layout.item_main, viewGroup, false)
+        private fun getDeadLineText(dueDate: String?): String {
+            val dateFormat = SimpleDateFormat("yyyyMMdd")
+            val today = dateFormat.parse(System.currentTimeMillis().toString()).time
+            val lastDate = dateFormat.parse(dueDate).time
 
-        return ViewHolder(view)
-    }
-
-    override fun onBindViewHolder(viewHolder: ViewHolder, position: Int) {
-        viewHolder.bind(dataList[position])
-        viewHolder.itemView.setOnClickListener {
-            mListener.onClick(dataList[position].ID!!)
+            return "마감 ${(lastDate-today) / (24*60*60*1000)}일 전"
         }
     }
 
-    override fun getItemCount() = dataList.size
+    inner class LoadingViewHolder(binding: ItemLoadingBinding) : RecyclerView.ViewHolder(binding.root)
 
+    override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): RecyclerView.ViewHolder =
+        when (viewType) {
+            VIEW_TYPE_ITEM -> BoardViewHolder(ItemHomeBinding.inflate(LayoutInflater.from(viewGroup.context)))
+            else -> LoadingViewHolder(ItemLoadingBinding.inflate(LayoutInflater.from(viewGroup.context)))
+        }
+
+    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
+        if (holder is BoardViewHolder) holder.bind(list[position])
+        else (holder is LoadingViewHolder)
+    }
+
+    override fun getItemViewType(position: Int): Int =
+        if (null != list[position].content) VIEW_TYPE_ITEM
+        else VIEW_TYPE_LOADING
+
+    override fun getItemCount() = list.size
+
+    fun setList(list: List<Contest>) {
+        this.list.clear()
+        this.list.addAll(list)
+        notifyDataSetChanged()
+    }
 }
