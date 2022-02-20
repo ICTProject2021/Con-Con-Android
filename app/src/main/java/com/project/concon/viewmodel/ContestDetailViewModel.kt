@@ -1,23 +1,23 @@
 package com.project.concon.viewmodel
 
-import android.util.Log
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-import com.project.concon.network.`object`.RetrofitInstance
-import com.project.concon.network.dto.response.ContestDetail
-import com.project.concon.network.dto.response.Prize
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
+import com.project.concon.base.BaseViewModel
+import com.project.concon.model.remote.dto.response.ContestDetail
+import com.project.concon.model.remote.dto.response.Prize
+import com.project.concon.model.repository.ContestRepository
+import com.project.concon.widget.livedata.SingleLiveEvent
+import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
+import io.reactivex.rxjava3.observers.DisposableSingleObserver
+import io.reactivex.rxjava3.schedulers.Schedulers
 import java.text.NumberFormat
 import java.util.*
+import javax.inject.Inject
 
-class ContestDetailViewModel : ViewModel() {
-
-    private val contestService by lazy { RetrofitInstance.contestService }
-
-    val getContestDetailRes = MutableLiveData<ContestDetail?>()
-    val isLoading = MutableLiveData(false)
+class ContestDetailViewModel (
+    private val repository: ContestRepository
+) : BaseViewModel() {
+    val isSuccess = MutableLiveData<ContestDetail>()
+    val isFailure = MutableLiveData<String>()
 
     fun toDate(date: String): String {
         return if (date.isNotEmpty()) {
@@ -27,9 +27,9 @@ class ContestDetailViewModel : ViewModel() {
         }
     }
 
-    fun getAllPriceSum(list: List<Prize>): String {
+    fun getAllPriceSum(): String {
         var price = 0
-        list.forEach {
+        isSuccess.value?.prize?.forEach {
             price += it.price
         }
         val numberFormat = NumberFormat.getCurrencyInstance(Locale.getDefault())
@@ -38,28 +38,14 @@ class ContestDetailViewModel : ViewModel() {
     }
 
     fun getContestDetail(id: Int) {
-        isLoading.value = true
-
-        contestService.getContestDetail(id).enqueue(
-            object : Callback<ContestDetail> {
-                override fun onResponse(call: Call<ContestDetail>, response: Response<ContestDetail>) {
-                    Log.d("getContestDetail", "${response.code()}-${response.message()}: ${response.body()}")
-                    Log.d("getContestDetail", response.raw().toString())
-
-                    if (response.isSuccessful)
-                        getContestDetailRes.postValue(response.body())
-
-                    isLoading.value = false
-                }
-
-                override fun onFailure(call: Call<ContestDetail>, t: Throwable) {
-                    Log.d("getContestDetail", t.message.toString())
-                    getContestDetailRes.postValue(null)
-                    isLoading.value = false
-                }
-            }
-        )
+        startLoading()
+        addDisposable(repository.getContestDetail(id), {
+            isSuccess.postValue(it as ContestDetail)
+            stopLoading()
+        }, {
+            isFailure.postValue(it.message)
+            stopLoading()
+        })
     }
-
 }
 

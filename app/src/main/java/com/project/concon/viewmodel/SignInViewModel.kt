@@ -1,55 +1,29 @@
 package com.project.concon.viewmodel
 
-import android.util.Log
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-import com.project.concon.network.`object`.RetrofitInstance
-import com.project.concon.network.dao.AccountService
-import com.project.concon.network.dto.request.SignInRequest
-import com.project.concon.network.dto.response.Msg
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
+import com.project.concon.base.BaseViewModel
+import com.project.concon.model.remote.dto.request.SignInRequest
+import com.project.concon.model.repository.AccountRepository
 
-class SignInViewModel : ViewModel() {
-
+class SignInViewModel (
+    private val repository: AccountRepository
+) : BaseViewModel() {
     val id = MutableLiveData<String?>()
     val pw = MutableLiveData<String?>()
     val idErr = MutableLiveData<String>()
     val pwErr = MutableLiveData<String>()
 
-    private val accountService: AccountService by lazy { RetrofitInstance.accountService }
+    val isSuccess = MutableLiveData<String>()
+    val isFailure = MutableLiveData<String>()
 
-    val postSignInRes = MutableLiveData<Msg?>()
-
-    private val _isLoading = MutableLiveData(false)
-    val isLoading = _isLoading
-
-    fun postSignIn() {
-        _isLoading.value = true
-
-        val req = SignInRequest(id.value!!, pw.value!!)
-
-        accountService.postSignIn(req).enqueue(
-            object : Callback<Msg> {
-                override fun onResponse(call: Call<Msg>, response: Response<Msg>) {
-                    Log.d("postSignIn", "${response.code()}-${response.message()}: ${response.body()}")
-                    Log.d("postSignIn", response.raw().toString())
-
-                    if (response.isSuccessful)
-                        postSignInRes.postValue(response.body()!!)
-
-                    _isLoading.value = false
-                }
-
-                override fun onFailure(call: Call<Msg>, t: Throwable) {
-                    Log.d("postSignIn", t.message.toString())
-                    postSignInRes.postValue(null)
-                    _isLoading.value = false
-                }
-            }
-        )
+    fun signIn() {
+        startLoading()
+        addDisposable(repository.postSignIn(SignInRequest(id.value?:"", pw.value?:"")), {
+            isSuccess.postValue(it as String)
+            stopLoading()
+        }, {
+            isFailure.postValue(it.message)
+            stopLoading()
+        })
     }
-
 }

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@drawable/background_dialog"
+    tools:context=".view.dialog.PrizeDialogFragment">
+    
+    <LinearLayout
+        android:layout_width="@dimen/layout_300dp"
+        android:layout_height="@dimen/layout_157dp"
+        android:orientation="vertical"
+        android:padding="@dimen/space_22dp">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="상금 추가하기" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="@dimen/text_size_15sp"
+        android:layout_marginEnd="@dimen/space_72dp"
+        android:background="@color/gray2" />
+
+    <EditText
+        android:id="@+id/price"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/space_20dp"
+        android:layout_marginEnd="@dimen/space_72dp"
+        android:backgroundTint="@color/gray2"
+        android:hint="@string/price"
+        android:inputType="number"
+        android:textSize="@dimen/text_size_11sp" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/addButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end"
+        android:background="?selectableItemBackground"
+        android:minWidth="0dp"
+        android:minHeight="0dp"
+        android:text="추가"
+        android:textColor="@color/black"
+        android:textSize="@dimen/text_size_15sp"
+        android:textStyle="bold" />
+    </LinearLayout>
+
+</FrameLayout>

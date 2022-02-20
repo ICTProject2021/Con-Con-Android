@@ -3,6 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="../../../../../layout/custom_preview.xml" value="0.325" />
         <entry key="..\:/Github/2021IctProject/app/src/main/res/drawable/background_calendar_today.xml" value="0.119921875" />
         <entry key="..\:/Github/2021IctProject/app/src/main/res/drawable/background_dialog.xml" value="0.20386100386100386" />
         <entry key="..\:/Github/2021IctProject/app/src/main/res/drawable/background_gradient.xml" value="0.119921875" />
@@ -31,30 +32,37 @@
         <entry key="..\:/Github/2021IctProject/app/src/main/res/drawable/selector_text_color_black_to_white.xml" value="0.20625" />
         <entry key="..\:/Github/2021IctProject/app/src/main/res/drawable/selector_text_color_white_to_black.xml" value="0.20625" />
         <entry key="..\:/Github/2021IctProject/app/src/main/res/drawable/sign_background.xml" value="0.17864583333333334" />
-        <entry key="..\:/Github/2021IctProject/app/src/main/res/layout/activity_intro.xml" value="0.25885416666666666" />
+        <entry key="..\:/Github/2021IctProject/app/src/main/res/drawable/vec_ic_check.xml" value="0.11015625" />
+        <entry key="..\:/Github/2021IctProject/app/src/main/res/layout/activity_intro.xml" value="0.1" />
         <entry key="..\:/Github/2021IctProject/app/src/main/res/layout/activity_main.xml" value="0.264" />
+        <entry key="..\:/Github/2021IctProject/app/src/main/res/layout/activity_main2.xml" value="0.15744535519125682" />
         <entry key="..\:/Github/2021IctProject/app/src/main/res/layout/add_contest_fragment.xml" value="0.24427083333333333" />
         <entry key="..\:/Github/2021IctProject/app/src/main/res/layout/calendar_dialog_fragment.xml" value="0.4" />
         <entry key="..\:/Github/2021IctProject/app/src/main/res/layout/charge_cash_finish_fragment.xml" value="0.194140625" />
         <entry key="..\:/Github/2021IctProject/app/src/main/res/layout/charge_cash_fragment.xml" value="0.2" />
         <entry key="..\:/Github/2021IctProject/app/src/main/res/layout/contest_detail_fragment.xml" value="0.4" />
         <entry key="..\:/Github/2021IctProject/app/src/main/res/layout/create_contest_fragment.xml" value="0.2" />
+        <entry key="..\:/Github/2021IctProject/app/src/main/res/layout/fragment_charge_cash.xml" value="0.1" />
         <entry key="..\:/Github/2021IctProject/app/src/main/res/layout/fragment_charge_cash_finish.xml" value="0.16799999999999998" />
+        <entry key="..\:/Github/2021IctProject/app/src/main/res/layout/fragment_create_contest.xml" value="0.1290983606557377" />
         <entry key="..\:/Github/2021IctProject/app/src/main/res/layout/fragment_dialog_default.xml" value="0.4" />
         <entry key="..\:/Github/2021IctProject/app/src/main/res/layout/fragment_dialog_update.xml" value="0.2" />
         <entry key="..\:/Github/2021IctProject/app/src/main/res/layout/fragment_fail_dialog.xml" value="0.2" />
+        <entry key="..\:/Github/2021IctProject/app/src/main/res/layout/fragment_intro.xml" value="0.1" />
         <entry key="..\:/Github/2021IctProject/app/src/main/res/layout/fragment_loading_dialog.xml" value="0.194140625" />
         <entry key="..\:/Github/2021IctProject/app/src/main/res/layout/fragment_participated_contest.xml" value="0.133203125" />
         <entry key="..\:/Github/2021IctProject/app/src/main/res/layout/fragment_prize.xml" value="0.133203125" />
         <entry key="..\:/Github/2021IctProject/app/src/main/res/layout/fragment_prize_dialog.xml" value="0.2" />
         <entry key="..\:/Github/2021IctProject/app/src/main/res/layout/fragment_winner.xml" value="0.133203125" />
         <entry key="..\:/Github/2021IctProject/app/src/main/res/layout/fragment_winner_dialog.xml" value="0.264" />
+        <entry key="..\:/Github/2021IctProject/app/src/main/res/layout/fragment_winner_select.xml" value="0.17281420765027322" />
         <entry key="..\:/Github/2021IctProject/app/src/main/res/layout/intro_fragment.xml" value="0.264" />
         <entry key="..\:/Github/2021IctProject/app/src/main/res/layout/item_main.xml" value="0.264" />
         <entry key="..\:/Github/2021IctProject/app/src/main/res/layout/item_prize.xml" value="0.19296875" />
         <entry key="..\:/Github/2021IctProject/app/src/main/res/layout/item_winner.xml" value="0.264" />
         <entry key="..\:/Github/2021IctProject/app/src/main/res/layout/join_contest_fragment.xml" value="0.264" />
         <entry key="..\:/Github/2021IctProject/app/src/main/res/layout/layout_dialog_fail.xml" value="0.264" />
+        <entry key="..\:/Github/2021IctProject/app/src/main/res/layout/layout_dialog_loading.xml" value="0.16905737704918034" />
         <entry key="..\:/Github/2021IctProject/app/src/main/res/layout/layout_loading.xml" value="0.194140625" />
         <entry key="..\:/Github/2021IctProject/app/src/main/res/layout/main_fragment.xml" value="0.2" />
         <entry key="..\:/Github/2021IctProject/app/src/main/res/layout/payment_fragment.xml" value="0.194140625" />
@@ -68,6 +76,42 @@
         <entry key="..\:/Github/2021IctProject/app/src/main/res/menu/bottom_navigation.xml" value="0.25885416666666666" />
         <entry key="..\:/Github/2021IctProject/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.171875" />
         <entry key="..\:/Github/2021IctProject/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.171875" />
+        <entry key="..\:/Users/MinHyukJi/Documents/GitHub/Con-Con-Android/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.524074074074074" />
+        <entry key="..\:/Users/MinHyukJi/Documents/GitHub/Con-Con-Android/app/src/main/res/drawable/ic_index.xml" value="0.524074074074074" />
+        <entry key="..\:/Users/MinHyukJi/Documents/GitHub/Con-Con-Android/app/src/main/res/drawable/ic_like_outline.xml" value="0.524074074074074" />
+        <entry key="..\:/Users/MinHyukJi/Documents/GitHub/Con-Con-Android/app/src/main/res/drawable/ic_list.xml" value="0.524074074074074" />
+        <entry key="..\:/Users/MinHyukJi/Documents/GitHub/Con-Con-Android/app/src/main/res/drawable/item_main_background.xml" value="0.524074074074074" />
+        <entry key="..\:/Users/MinHyukJi/Documents/GitHub/Con-Con-Android/app/src/main/res/layout/activity_intro.xml" value="0.7244791666666667" />
+        <entry key="..\:/Users/MinHyukJi/Documents/GitHub/Con-Con-Android/app/src/main/res/layout/activity_main.xml" value="0.27184466019417475" />
+        <entry key="..\:/Users/MinHyukJi/Documents/GitHub/Con-Con-Android/app/src/main/res/layout/fragment_calendar_dialog.xml" value="0.2506393861892583" />
+        <entry key="..\:/Users/MinHyukJi/Documents/GitHub/Con-Con-Android/app/src/main/res/layout/fragment_charge_cash.xml" value="0.1" />
+        <entry key="..\:/Users/MinHyukJi/Documents/GitHub/Con-Con-Android/app/src/main/res/layout/fragment_charge_cash_finish.xml" value="0.2506393861892583" />
+        <entry key="..\:/Users/MinHyukJi/Documents/GitHub/Con-Con-Android/app/src/main/res/layout/fragment_contest_detail.xml" value="0.3166397415185784" />
+        <entry key="..\:/Users/MinHyukJi/Documents/GitHub/Con-Con-Android/app/src/main/res/layout/fragment_create_contest.xml" value="0.7244791666666667" />
+        <entry key="..\:/Users/MinHyukJi/Documents/GitHub/Con-Con-Android/app/src/main/res/layout/fragment_dialog_default.xml" value="0.4404494382022472" />
+        <entry key="..\:/Users/MinHyukJi/Documents/GitHub/Con-Con-Android/app/src/main/res/layout/fragment_fail_dialog.xml" value="0.3761996161228407" />
+        <entry key="..\:/Users/MinHyukJi/Documents/GitHub/Con-Con-Android/app/src/main/res/layout/fragment_home.xml" value="0.2609853528628495" />
+        <entry key="..\:/Users/MinHyukJi/Documents/GitHub/Con-Con-Android/app/src/main/res/layout/fragment_intro.xml" value="0.40329218106995884" />
+        <entry key="..\:/Users/MinHyukJi/Documents/GitHub/Con-Con-Android/app/src/main/res/layout/fragment_join_contest.xml" value="0.2733612273361227" />
+        <entry key="..\:/Users/MinHyukJi/Documents/GitHub/Con-Con-Android/app/src/main/res/layout/fragment_participated_contest.xml" value="0.1" />
+        <entry key="..\:/Users/MinHyukJi/Documents/GitHub/Con-Con-Android/app/src/main/res/layout/fragment_payment.xml" value="0.27034482758620687" />
+        <entry key="..\:/Users/MinHyukJi/Documents/GitHub/Con-Con-Android/app/src/main/res/layout/fragment_prize.xml" value="0.6722222222222223" />
+        <entry key="..\:/Users/MinHyukJi/Documents/GitHub/Con-Con-Android/app/src/main/res/layout/fragment_prize_dialog.xml" value="0.45265588914549654" />
+        <entry key="..\:/Users/MinHyukJi/Documents/GitHub/Con-Con-Android/app/src/main/res/layout/fragment_profile.xml" value="0.49246231155778897" />
+        <entry key="..\:/Users/MinHyukJi/Documents/GitHub/Con-Con-Android/app/src/main/res/layout/fragment_sign_in.xml" value="0.1" />
+        <entry key="..\:/Users/MinHyukJi/Documents/GitHub/Con-Con-Android/app/src/main/res/layout/fragment_sign_up.xml" value="0.1" />
+        <entry key="..\:/Users/MinHyukJi/Documents/GitHub/Con-Con-Android/app/src/main/res/layout/fragment_winner.xml" value="0.4024640657084189" />
+        <entry key="..\:/Users/MinHyukJi/Documents/GitHub/Con-Con-Android/app/src/main/res/layout/fragment_winner_dialog.xml" value="0.6722222222222223" />
+        <entry key="..\:/Users/MinHyukJi/Documents/GitHub/Con-Con-Android/app/src/main/res/layout/fragment_winner_select.xml" value="0.2938530734632684" />
+        <entry key="..\:/Users/MinHyukJi/Documents/GitHub/Con-Con-Android/app/src/main/res/layout/item_join_contest.xml" value="0.2506393861892583" />
+        <entry key="..\:/Users/MinHyukJi/Documents/GitHub/Con-Con-Android/app/src/main/res/layout/item_join_contest_image.xml" value="0.7244791666666667" />
+        <entry key="..\:/Users/MinHyukJi/Documents/GitHub/Con-Con-Android/app/src/main/res/layout/item_join_contest_photo.xml" value="0.2506393861892583" />
+        <entry key="..\:/Users/MinHyukJi/Documents/GitHub/Con-Con-Android/app/src/main/res/layout/item_main.xml" value="0.6722222222222223" />
+        <entry key="..\:/Users/MinHyukJi/Documents/GitHub/Con-Con-Android/app/src/main/res/layout/item_payment.xml" value="0.27034482758620687" />
+        <entry key="..\:/Users/MinHyukJi/Documents/GitHub/Con-Con-Android/app/src/main/res/layout/item_prize.xml" value="0.7244791666666667" />
+        <entry key="..\:/Users/MinHyukJi/Documents/GitHub/Con-Con-Android/app/src/main/res/layout/item_winner.xml" value="0.7244791666666667" />
+        <entry key="..\:/Users/MinHyukJi/Documents/GitHub/Con-Con-Android/app/src/main/res/layout/item_winner_select.xml" value="0.7244791666666667" />
+        <entry key="..\:/Users/MinHyukJi/Documents/GitHub/Con-Con-Android/app/src/main/res/layout/layout_dialog_loading.xml" value="0.7244791666666667" />
         <entry key="..\:/Users/Minhyuk/Documents/GitHub/2021IctProject/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.3675925925925926" />
         <entry key="..\:/Users/Minhyuk/Documents/GitHub/2021IctProject/app/src/main/res/drawable/backgorund_layout_cash.xml" value="0.278125" />
         <entry key="..\:/Users/Minhyuk/Documents/GitHub/2021IctProject/app/src/main/res/drawable/background_calendar_today.xml" value="0.278125" />
@@ -115,6 +159,34 @@
         <entry key="..\:/Users/Minhyuk/Documents/GitHub/2021IctProject/app/src/main/res/layout/sign_in_fragment.xml" value="0.36822916666666666" />
         <entry key="..\:/Users/Minhyuk/Documents/GitHub/2021IctProject/app/src/main/res/layout/sign_up_fragment.xml" value="0.36822916666666666" />
         <entry key="..\:/Users/Minhyuk/Documents/GitHub/2021IctProject/app/src/main/res/menu/bottom_navigation.xml" value="0.36822916666666666" />
+        <entry key="app/src/main/res/layout/activity_create_contest.xml" value="0.21603260869565216" />
+        <entry key="app/src/main/res/layout/activity_join_contest.xml" value="0.21603260869565216" />
+        <entry key="app/src/main/res/layout/dialog_fragment_default.xml" value="0.14947916666666666" />
+        <entry key="app/src/main/res/layout/dialog_fragment_fail.xml" value="0.14947916666666666" />
+        <entry key="app/src/main/res/layout/dialog_fragment_prize.xml" value="0.47782549921969636" />
+        <entry key="app/src/main/res/layout/fragment_charge_cash.xml" value="0.14947916666666666" />
+        <entry key="app/src/main/res/layout/fragment_charge_cash_finish.xml" value="0.14947916666666666" />
+        <entry key="app/src/main/res/layout/fragment_contest_detail.xml" value="0.1350210970464135" />
+        <entry key="app/src/main/res/layout/fragment_create_contest.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/fragment_dialog_default.xml" value="0.2171875" />
+        <entry key="app/src/main/res/layout/fragment_home.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/fragment_intro.xml" value="0.2171875" />
+        <entry key="app/src/main/res/layout/fragment_join_contest.xml" value="0.2171875" />
+        <entry key="app/src/main/res/layout/fragment_participated_contest.xml" value="0.22871376811594202" />
+        <entry key="app/src/main/res/layout/fragment_payment.xml" value="0.2171875" />
+        <entry key="app/src/main/res/layout/fragment_prize.xml" value="0.1469027042924761" />
+        <entry key="app/src/main/res/layout/fragment_prize_dialog.xml" value="0.2171875" />
+        <entry key="app/src/main/res/layout/fragment_profile.xml" value="0.14947916666666666" />
+        <entry key="app/src/main/res/layout/fragment_sign_in.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/fragment_sign_up.xml" value="0.2463768115942029" />
+        <entry key="app/src/main/res/layout/fragment_winner.xml" value="0.14947916666666666" />
+        <entry key="app/src/main/res/layout/fragment_winner_select.xml" value="0.14947916666666666" />
+        <entry key="app/src/main/res/layout/item_image.xml" value="1.091743119266055" />
+        <entry key="app/src/main/res/layout/item_join_contest.xml" value="0.14947916666666666" />
+        <entry key="app/src/main/res/layout/item_loading.xml" value="0.22826086956521738" />
+        <entry key="app/src/main/res/layout/item_main.xml" value="0.22826086956521738" />
+        <entry key="app/src/main/res/layout/item_payment.xml" value="0.14947916666666666" />
+        <entry key="app/src/main/res/layout/item_prize.xml" value="0.3575236382370352" />
       </map>
     </option>
   </component>

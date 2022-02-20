@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="vm"
+            type="com.project.concon.viewmodel.SignInViewModel" />
+    </data>
+
+    <androidx.constraintlayout.motion.widget.MotionLayout
+        android:id="@+id/motionLayout_sign_in"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layoutDescription="@xml/sign_in_fragment_scene"
+        tools:context=".view.fragment.SignInFragment">
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/et_layout_id_sign_in"
+            style="@style/BaseTextInputLayout"
+            setError="@{vm.idErr}"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/space_32dp"
+            android:layout_marginEnd="@dimen/space_32dp"
+            android:layout_marginBottom="@dimen/space_8dp"
+            android:inputType="textPersonName"
+            android:minHeight="@dimen/layout_48dp"
+            app:layout_constraintBottom_toTopOf="@+id/et_layout_password_sign_in"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_id_sign_in"
+                style="@style/Widget.AppCompat.EditText.BaseEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/id"
+                android:text="@={vm.id, default=``}" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/et_layout_password_sign_in"
+            style="@style/BaseTextInputLayout"
+            setError="@{vm.pwErr}"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/space_32dp"
+            android:layout_marginEnd="@dimen/space_32dp"
+            android:layout_marginBottom="@dimen/space_24dp"
+            app:layout_constraintBottom_toTopOf="@+id/btn_sign_in"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:ignore="SpeakableTextPresentCheck">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_password_sign_in"
+                style="@style/Widget.AppCompat.EditText.BaseEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/password"
+                android:inputType="textPassword"
+                android:minHeight="@dimen/layout_48dp"
+                android:text="@={vm.pw, default=``}" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_sign_in"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/space_32dp"
+            android:layout_marginEnd="@dimen/space_32dp"
+            android:layout_marginBottom="@dimen/space_50dp"
+            android:background="@drawable/background_gradient_btn"
+            android:enabled="@{vm.id.length() != 0 &amp;&amp; vm.pw.length() != 0 ? true : false}"
+            android:onClick="@{() -> vm.signIn()}"
+            android:stateListAnimator="@null"
+            android:text="@string/sign_in"
+            android:textColor="@color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <LinearLayout
+            android:id="@+id/linearLayout"
+            android:layout_width="@dimen/layout_0dp"
+            android:layout_height="@dimen/layout_0dp"
+            android:background="@drawable/background_gradient_sign"
+            android:gravity="center"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toTopOf="@+id/et_layout_id_sign_in"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:src="@tools:sample/backgrounds/scenic">
+
+            <TextView
+                android:id="@+id/textView"
+                style="@style/Base.Widget.AppCompat.TextView.Shadow"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/space_40dp"
+                android:gravity="center"
+                android:text="누구나 쉽게 참여하는\n대회 플랫폼"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_size_25sp"
+                android:textStyle="bold" />
+
+            <ImageView
+                android:id="@+id/imageView2"
+                android:layout_width="@dimen/image_240dp"
+                android:layout_height="@dimen/image_80dp"
+                android:src="@drawable/ic_logo_white" />
+        </LinearLayout>
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fab_close"
+            style="@style/Widget.MaterialComponents.FloatingActionButton.Main"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/space_70dp"
+            android:src="@drawable/vec_ic_close"
+            app:layout_constraintBottom_toTopOf="@+id/et_layout_id_sign_in"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:ignore="SpeakableTextPresentCheck" />
+    </androidx.constraintlayout.motion.widget.MotionLayout>
+</layout>

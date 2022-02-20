@@ -1,56 +1,38 @@
 package com.project.concon.viewmodel
 
-import android.util.Log
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-import com.project.concon.network.`object`.RetrofitInstance
-import com.project.concon.network.dao.ContestService
-import com.project.concon.network.dto.request.WinnerPrizeRequest
-import com.project.concon.network.dto.response.Msg
-import com.project.concon.network.dto.response.Participant
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
+import com.project.concon.base.BaseViewModel
+import com.project.concon.model.remote.dto.request.WinnerRequest
+import com.project.concon.model.remote.dto.response.Participant
+import com.project.concon.model.repository.ContestRepository
+import com.project.concon.widget.livedata.SingleLiveEvent
 
-class WinnerSelectViewModel : ViewModel() {
+class WinnerSelectViewModel (
+    private val repository: ContestRepository
+) : BaseViewModel() {
+    val onSelect = SingleLiveEvent<Unit>()
 
-    val participantList = MutableLiveData<List<Participant>?>()
-    val msg = MutableLiveData<Msg?>()
-    private val contestService: ContestService by lazy { RetrofitInstance.contestService }
+    val isSuccessGetParticipantInfo = MutableLiveData<List<Participant>>()
+    val isSuccessPutContestWinnerSelect = MutableLiveData<String>()
+    val isFailure = MutableLiveData<String>()
 
-    fun callApi(id: Int) {
-        contestService.getParticipantInfo(id).enqueue(object : Callback<List<Participant>> {
-            override fun onResponse(
-                call: Call<List<Participant>>,
-                response: Response<List<Participant>>
-            ) {
-                participantList.postValue(response.body())
-            }
+    fun selectEvent() {
+        onSelect.call()
+    }
 
-            override fun onFailure(call: Call<List<Participant>>, t: Throwable) {
-                participantList.postValue(null)
-            }
+    fun getParticipantInfo(id: Int) {
+        addDisposable(repository.getParticipantList(id), {
+            isSuccessGetParticipantInfo.postValue(it as List<Participant>)
+        }, {
+            isFailure.postValue(it.message)
         })
     }
 
-    fun request(id: Int, winnerPrizeRequest: List<WinnerPrizeRequest>) {
-        contestService.winnerPrizeSelect(id, winnerPrizeRequest).enqueue(object : Callback<Msg> {
-            override fun onResponse(call: Call<Msg>, response: Response<Msg>) {
-                if (response.isSuccessful) {
-                    Log.d("request", "${response.code()}-${response.message()}: ${response.body()}")
-                    Log.d("request", response.raw().toString())
-                    msg.postValue(response.body())
-                } else {
-                    Log.d("request", "${response.code()}-${response.message()}: ${response.body()}")
-                    Log.d("request", response.raw().toString())
-                    msg.postValue(null)
-                }
-            }
-
-            override fun onFailure(call: Call<Msg>, t: Throwable) {
-                msg.postValue(null)
-            }
+    fun putContestWinnerSelect(id: Int, winnerList: List<WinnerRequest>) {
+        addDisposable(repository.putContestWinnerSelect(id, winnerList), {
+            isSuccessPutContestWinnerSelect.postValue(it as String)
+        }, {
+            isFailure.postValue(it.message)
         })
     }
-
 }

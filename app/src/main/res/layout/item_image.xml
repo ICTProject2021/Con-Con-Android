@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="uri"
+            type="android.net.Uri" />
+    </data>
+
+    <FrameLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardView6"
+            android:layout_width="@dimen/layout_65dp"
+            android:layout_height="@dimen/layout_65dp"
+            android:layout_marginEnd="@dimen/space_8dp"
+            app:cardCornerRadius="@dimen/radius_25dp"
+            app:cardElevation="@dimen/elevation_0dp">
+
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop"
+                tools:srcCompat="@tools:sample/avatars" />
+        </androidx.cardview.widget.CardView>
+
+        <FrameLayout
+            android:id="@+id/layout_remove"
+            android:layout_width="@dimen/layout_48dp"
+            android:layout_height="@dimen/layout_48dp"
+            android:layout_gravity="center"
+            android:layout_marginEnd="@dimen/space_4dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:padding="@dimen/space_8dp"
+            tools:ignore="SpeakableTextPresentCheck">
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cv_close_rv_item_join_contest"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="@drawable/background_transparent"
+                app:cardCornerRadius="@dimen/radius_30dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/cardView6"
+                app:layout_constraintStart_toStartOf="@+id/cardView6"
+                app:layout_constraintTop_toTopOf="@+id/cardView6">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:alpha="0.7"
+                    android:background="@color/black"
+                    android:padding="@dimen/space_10dp" />
+
+            </androidx.cardview.widget.CardView>
+
+            <ImageView
+                android:id="@+id/imageButton"
+                android:layout_width="@dimen/layout_8dp"
+                android:layout_height="@dimen/layout_8dp"
+                android:layout_gravity="center"
+                android:adjustViewBounds="true"
+                android:background="@drawable/vec_ic_close"
+                android:backgroundTint="@color/white"
+                android:elevation="@dimen/elevation_15dp"
+                app:layout_constraintBottom_toBottomOf="@+id/cardView6"
+                app:layout_constraintEnd_toEndOf="@+id/cardView6"
+                app:layout_constraintStart_toStartOf="@+id/cardView6"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </FrameLayout>
+
+    </FrameLayout>
+</layout>

@@ -1,63 +1,65 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".fragment.WinnerFragment">
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/winnerLayout"
+    xmlns:tools="http://schemas.android.com/tools">
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        tools:context=".view.fragment.WinnerFragment">
 
-        <ImageButton
-            android:id="@+id/btn_close_create_contest"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="24dp"
-            android:background="@android:color/transparent"
-            android:src="@drawable/ic_close"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:ignore="SpeakableTextPresentCheck" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/winnerLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
-<!--        <com.airbnb.lottie.LottieAnimationView-->
-<!--            android:id="@+id/winnerImg"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_marginTop="70dp"-->
-<!--            android:background="@color/black"-->
-<!--            app:lottie_rawRes="@raw/trophy_animation"-->
-<!--            app:lottie_autoPlay="true"-->
-<!--            app:layout_constraintEnd_toEndOf="parent"-->
-<!--            app:layout_constraintStart_toStartOf="parent"-->
-<!--            app:layout_constraintTop_toTopOf="parent" />-->
+            <ImageButton
+                android:id="@+id/btn_close"
+                android:layout_width="@dimen/button_size_50dp"
+                android:layout_height="@dimen/button_size_50dp"
+                android:layout_marginStart="@dimen/space_16dp"
+                android:layout_marginTop="@dimen/space_24dp"
+                android:background="@android:color/transparent"
+                android:src="@drawable/vec_ic_close"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="SpeakableTextPresentCheck" />
 
-        <TextView
-            android:id="@+id/winnerMsg"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="100dp"
-            android:textColor="@color/black"
-            android:textSize="23sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            android:gravity="center"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:text="대회 우승을 축하합니다!" />
+    <!--        <com.airbnb.lottie.LottieAnimationView-->
+    <!--            android:id="@+id/winnerImg"-->
+    <!--            android:layout_width="wrap_content"-->
+    <!--            android:layout_height="wrap_content"-->
+    <!--            android:layout_marginTop="70dp"-->
+    <!--            android:background="@color/black"-->
+    <!--            app:lottie_rawRes="@raw/trophy_animation"-->
+    <!--            app:lottie_autoPlay="true"-->
+    <!--            app:layout_constraintEnd_toEndOf="parent"-->
+    <!--            app:layout_constraintStart_toStartOf="parent"-->
+    <!--            app:layout_constraintTop_toTopOf="parent" />-->
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/winnerList"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="45dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/winnerMsg"
-            tools:listitem="@layout/item_winner" />
+            <TextView
+                android:id="@+id/winnerMsg"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/space_100dp"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_size_25sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                android:gravity="center"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="대회 우승을 축하합니다!" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/winnerList"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/space_45dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/winnerMsg"
+                tools:listitem="@layout/item_winner" />
 
-</FrameLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </FrameLayout>
+</layout>

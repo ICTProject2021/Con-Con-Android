@@ -7,14 +7,11 @@
 
     <fragment
         android:id="@+id/mainFragment"
-        android:name="com.project.concon.fragment.MainFragment"
+        android:name="com.project.concon.view.fragment.HomeFragment"
         android:label="main_fragment"
-        tools:layout="@layout/main_fragment" >
+        tools:layout="@layout/fragment_home" >
         <action
-            android:id="@+id/action_mainFragment_to_createContestFragment"
-            app:destination="@id/createContestFragment" />
-        <action
-            android:id="@+id/action_mainFragment_to_contestDetailFragment"
+            android:id="@+id/to_contestDetailFragment"
             app:destination="@id/contestDetailFragment" />
         <action
             android:id="@+id/action_mainFragment_to_profileFragment"
@@ -22,34 +19,16 @@
 
     </fragment>
     <fragment
-        android:id="@+id/createContestFragment"
-        android:name="com.project.concon.fragment.CreateContestFragment"
-        android:label="create_contest_fragment"
-        tools:layout="@layout/create_contest_fragment">
-        <action
-            android:id="@+id/action_createContestFragment_to_mainFragment"
-            app:destination="@id/mainFragment" />
-        <action
-            android:id="@+id/action_createContestFragment_to_profileFragment"
-            app:destination="@id/profileFragment" />
-        <action
-            android:id="@+id/action_createContestFragment_to_prizeFragment"
-            app:destination="@id/prizeFragment" />
-    </fragment>
-    <fragment
         android:id="@+id/profileFragment"
-        android:name="com.project.concon.fragment.ProfileFragment"
+        android:name="com.project.concon.view.fragment.ProfileFragment"
         android:label="profile_fragment"
-        tools:layout="@layout/profile_fragment" >
+        tools:layout="@layout/fragment_profile" >
         <action
             android:id="@+id/action_profileFragment_to_chargeCashFragment"
             app:destination="@id/chargeCashFragment" />
         <action
             android:id="@+id/action_profileFragment_to_mainFragment"
             app:destination="@id/mainFragment" />
-        <action
-            android:id="@+id/action_profileFragment_to_createContestFragment"
-            app:destination="@id/createContestFragment" />
         <action
             android:id="@+id/action_profileFragment_to_participatedContestFragment"
             app:destination="@id/participatedContestFragment" />
@@ -59,9 +38,9 @@
     </fragment>
     <fragment
         android:id="@+id/chargeCashFragment"
-        android:name="com.project.concon.fragment.ChargeCashFragment"
+        android:name="com.project.concon.view.fragment.ChargeCashFragment"
         android:label="charge_cash_fragment"
-        tools:layout="@layout/charge_cash_fragment" >
+        tools:layout="@layout/fragment_charge_cash" >
         <action
             android:id="@+id/action_chargeCashFragment_to_profileFragment"
             app:destination="@id/profileFragment" />
@@ -71,11 +50,11 @@
     </fragment>
     <fragment
         android:id="@+id/joinContestFragment"
-        android:name="com.project.concon.fragment.JoinContestFragment"
+        android:name="com.project.concon.view.fragment.JoinContestFragment"
         android:label="join_contest_fragment"
-        tools:layout="@layout/join_contest_fragment">
+        tools:layout="@layout/fragment_join_contest">
         <action
-            android:id="@+id/action_joinContestFragment_to_contestDetailFragment"
+            android:id="@+id/to_contestDetailFragment"
             app:destination="@id/contestDetailFragment" />
         <argument
             android:name="id"
@@ -84,30 +63,30 @@
     </fragment>
     <fragment
         android:id="@+id/contestDetailFragment"
-        android:name="com.project.concon.fragment.ContestDetailFragment"
+        android:name="com.project.concon.view.fragment.ContestDetailFragment"
         android:label="contest_detail_fragment"
-        tools:layout="@layout/contest_detail_fragment" >
+        tools:layout="@layout/fragment_contest_detail" >
         <action
-            android:id="@+id/action_contestDetailFragment_to_mainFragment"
+            android:id="@+id/to_mainFragment"
             app:destination="@id/mainFragment" />
         <action
-            android:id="@+id/action_contestDetailFragment_to_joinContestFragment"
+            android:id="@+id/to_joinContestFragment"
             app:destination="@id/joinContestFragment" />
+        <action
+            android:id="@+id/to_winnerFragment"
+            app:destination="@id/winnerFragment" />
+        <action
+            android:id="@+id/to_winnerSelectFragment"
+            app:destination="@id/winnerSelectFragment" />
         <argument
             android:name="id"
             app:argType="integer" />
-        <action
-            android:id="@+id/action_contestDetailFragment_to_winnerFragment"
-            app:destination="@id/winnerFragment" />
-        <action
-            android:id="@+id/action_contestDetailFragment_to_winnerSelectFragment"
-            app:destination="@id/winnerSelectFragment" />
     </fragment>
     <fragment
         android:id="@+id/chargeCashFinishFragment"
-        android:name="com.project.concon.fragment.ChargeCashFinishFragment"
+        android:name="com.project.concon.view.fragment.ChargeCashFinishFragment"
         android:label="fragment_charge_cash_finish"
-        tools:layout="@layout/charge_cash_finish_fragment" >
+        tools:layout="@layout/fragment_charge_cash_finish" >
         <action
             android:id="@+id/action_chargeCashFinishFragment_to_chargeCashFragment"
             app:destination="@id/chargeCashFragment" />
@@ -117,37 +96,33 @@
     </fragment>
     <fragment
         android:id="@+id/prizeFragment"
-        android:name="com.project.concon.fragment.PrizeFragment"
+        android:name="com.project.concon.view.fragment.PrizeFragment"
         android:label="fragment_prize"
-        tools:layout="@layout/fragment_prize" >
-        <action
-            android:id="@+id/action_prizeFragment_to_createContestFragment"
-            app:destination="@id/createContestFragment" />
-    </fragment>
+        tools:layout="@layout/fragment_prize" />
     <fragment
         android:id="@+id/participatedContestFragment"
-        android:name="com.project.concon.fragment.ParticipatedContestFragment"
+        android:name="com.project.concon.view.fragment.ParticipatedContestFragment"
         android:label="fragment_participated_contest"
         tools:layout="@layout/fragment_participated_contest" >
         <action
-            android:id="@+id/action_participatedContestFragment_to_profileFragment"
+            android:id="@+id/to_profileFragment"
             app:destination="@id/profileFragment" />
         <action
-            android:id="@+id/action_participatedContestFragment_to_contestDetailFragment"
+            android:id="@+id/to_contestDetailFragment"
             app:destination="@id/contestDetailFragment" />
     </fragment>
     <fragment
         android:id="@+id/paymentFragment"
-        android:name="com.project.concon.fragment.PaymentFragment"
+        android:name="com.project.concon.view.fragment.PaymentFragment"
         android:label="PaymentFragment"
-        tools:layout="@layout/payment_fragment">
+        tools:layout="@layout/fragment_payment">
         <action
             android:id="@+id/action_paymentFragment_to_profileFragment"
             app:destination="@id/profileFragment" />
     </fragment>
     <fragment
         android:id="@+id/winnerFragment"
-        android:name="com.project.concon.fragment.WinnerFragment"
+        android:name="com.project.concon.view.fragment.WinnerFragment"
         android:label="fragment_winner"
         tools:layout="@layout/fragment_winner" >
         <argument
@@ -159,7 +134,7 @@
     </fragment>
     <fragment
         android:id="@+id/winnerSelectFragment"
-        android:name="com.project.concon.fragment.WinnerSelectFragment"
+        android:name="com.project.concon.view.fragment.WinnerSelectFragment"
         android:label="fragment_winner_select"
         tools:layout="@layout/fragment_winner_select" >
         <argument

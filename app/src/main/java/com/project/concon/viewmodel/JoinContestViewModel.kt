@@ -1,116 +1,83 @@
 package com.project.concon.viewmodel
 
 import android.content.ContentResolver
+import android.content.Context
 import android.net.Uri
-import android.util.Log
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-import com.project.concon.network.`object`.RetrofitInstance
-import com.project.concon.network.dto.response.Msg
-import com.project.concon.network.dto.response.Participant
-import com.project.concon.utils.getImageBody
-import com.project.concon.utils.getRequestBody
+import com.project.concon.base.BaseViewModel
+import com.project.concon.model.remote.dto.response.Participant
+import com.project.concon.model.repository.ContestRepository
+import com.project.concon.widget.livedata.SingleLiveEvent
+import com.project.concon.widget.utils.getImageBody
+import com.project.concon.widget.utils.getRequestBody
+import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
+import io.reactivex.rxjava3.observers.DisposableSingleObserver
+import io.reactivex.rxjava3.schedulers.Schedulers
 import okhttp3.MultipartBody
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
+import javax.inject.Inject
 
-class JoinContestViewModel : ViewModel() {
+class JoinContestViewModel (
+    private val contestRepository: ContestRepository
+) : BaseViewModel() {
     val content = MutableLiveData("")
     val fileList = MutableLiveData<List<Uri>>(listOf())
 
-    private val service by lazy { RetrofitInstance.contestService }
+    val onBackEvent = SingleLiveEvent<Unit>()
+    val onSendEvent = SingleLiveEvent<Unit>()
+    val onSelectPhotoEvent = SingleLiveEvent<Unit>()
 
-    val getParticipantInfoRes = MutableLiveData<List<Participant>?>()
-    val postParticipantRes = MutableLiveData<String?>()
-    val isSuccessPutLikes = MutableLiveData<String?>()
+    val isSuccessGetParticipantInfo = MutableLiveData<List<Participant>>()
+    val isSuccessPostParticipate = MutableLiveData<String>()
+    val isSuccessPutLikes = MutableLiveData<String>()
+    val isFailure = MutableLiveData<String>()
 
-    val isLoading = MutableLiveData(false)
+    fun backEvent() {
+        onBackEvent.call()
+    }
+
+    fun sendEvent() {
+        onSendEvent.call()
+    }
+
+    fun selectPhotoEvent() {
+        onSelectPhotoEvent.call()
+    }
+
+    fun deleteAllPhotoEvent() {
+        fileList.value = listOf()
+    }
 
     fun getParticipantInfo(id: Int) {
-        isLoading.value = true
-
-        val tag = "getParticipantInfo"
-
-        service.getParticipantInfo(id).enqueue(
-            object : Callback<List<Participant>> {
-                override fun onResponse(
-                    call: Call<List<Participant>>,
-                    response: Response<List<Participant>>
-                ) {
-                    Log.d(tag, response.raw().toString())
-                    Log.d(tag, response.body().toString())
-                    if (response.isSuccessful)
-                        getParticipantInfoRes.postValue(response.body())
-
-                    isLoading.value = false
-                }
-
-                override fun onFailure(call: Call<List<Participant>>, t: Throwable) {
-                    Log.d(tag, t.message.toString())
-                    getParticipantInfoRes.postValue(null)
-                    isLoading.value = false
-                }
-            }
-        )
+        startLoading()
+        addDisposable(contestRepository.getParticipantList(id), {
+            isSuccessGetParticipantInfo.postValue(it as List<Participant>)
+            stopLoading()
+        }, {
+            isFailure.postValue(it.message)
+            stopLoading()
+        })
     }
 
-    fun postParticipant(id: Int, contentResolver: ContentResolver) {
-        isLoading.value = true
-
-        val tag = "postParticipant"
-
-        if (content.value.isNullOrBlank()) {
-            return
-        }
-        
-        val content = this.content.value!!.getRequestBody()
-
+    fun participate(id: Int, context: Context) {
+        val content = content.value!!.getRequestBody()
         val list = mutableListOf<MultipartBody.Part>()
-        Log.d("list-size", fileList.value!!.size.toString())
+
         fileList.value!!.forEach {
-            list.add(it.getImageBody("attachment", contentResolver))
+            list.add(it.getImageBody("attachment", context))
         }
 
-        service.postParticipant(id, content, list).enqueue(
-            object : Callback<Msg> {
-                override fun onResponse(call: Call<Msg>, response: Response<Msg>) {
-                    Log.d(tag, "${response.raw()}\n${response.body()}")
-                    if (response.isSuccessful) {
-                        if (response.body()!!.msg == "success")
-                            postParticipantRes.postValue(response.body()!!.msg)
-                    }
-
-                    isLoading.value = false
-                }
-
-                override fun onFailure(call: Call<Msg>, t: Throwable) {
-                    Log.d(tag, t.message.toString())
-                    postParticipantRes.postValue(null)
-                    isLoading.value = false
-                }
-            }
-        )
+        addDisposable(contestRepository.postParticipate(id, content, list), {
+            isSuccessPostParticipate.postValue(it as String)
+        }, {
+            isFailure.postValue(it.message)
+        })
     }
 
-    fun putLikes(contId: Int, partId: Int) {
-        val tag = "putLikes"
-
-        service.putLikes(contId, partId).enqueue(
-            object : Callback<Msg> {
-                override fun onResponse(call: Call<Msg>, response: Response<Msg>) {
-                    Log.d(tag, "${response.raw()}\n${response.body()}")
-                    if (response.isSuccessful) {
-                        val it = response.body()?.msg
-                        if (it == "success")
-                            isSuccessPutLikes.postValue(it)
-                    }
-                }
-
-                override fun onFailure(call: Call<Msg>, t: Throwable) {
-                    Log.e(tag, t.message.toString())
-                }
-            }
-        )
+    fun like(contId: Int, partId: Int) {
+        addDisposable(contestRepository.putLike(contId, partId), {
+            isSuccessPutLikes.postValue(it as String)
+        }, {
+            isFailure.postValue(it.message)
+        })
     }
 }

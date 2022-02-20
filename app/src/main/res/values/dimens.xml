@@ -1,11 +1,97 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="layout_margin">32dp</dimen>
-    <dimen name="sign_btn_margin_bottom">50dp</dimen>
-    <dimen name="back_btn_margin_start">24dp</dimen>
-    <dimen name="back_btn_margin_top">32dp</dimen>
-    <dimen name="sign_logo_width">240dp</dimen>
-    <dimen name="sign_logo_height">80dp</dimen>
-    <dimen name="join_contest_profile">70dp</dimen>
-    <dimen name="join_contest_image_size">65dp</dimen>
+
+    <!--=====Text=====-->
+    <dimen name="text_size_11sp">11sp</dimen>
+    <dimen name="text_size_13sp">13sp</dimen>
+    <dimen name="text_size_15sp">15sp</dimen>
+    <dimen name="text_size_17sp">17sp</dimen>
+    <dimen name="text_size_18sp">18sp</dimen>
+    <dimen name="text_size_20sp">20sp</dimen>
+    <dimen name="text_size_25sp">25sp</dimen>
+    <dimen name="text_size_35sp">35sp</dimen>
+
+    <!--=====button=====-->
+    <dimen name="button_size_32dp">32dp</dimen>
+    <dimen name="button_size_48dp">48dp</dimen>
+    <dimen name="button_size_50dp">50dp</dimen>
+    <dimen name="button_size_min">48dp</dimen>
+
+
+    <!--=====Image=====-->
+    <dimen name="image_0dp">0dp</dimen>
+    <dimen name="image_5dp">5dp</dimen>
+    <dimen name="image_20dp">20dp</dimen>
+    <dimen name="image_34dp">34dp</dimen>
+    <dimen name="image_40dp">40dp</dimen>
+    <dimen name="image_45dp">45dp</dimen>
+    <dimen name="image_50dp">50dp</dimen>
+    <dimen name="image_65dp">65dp</dimen>
+    <dimen name="image_80dp">80dp</dimen>
+    <dimen name="image_90dp">90dp</dimen>
+    <dimen name="Image_200dp">200dp</dimen>
+    <dimen name="image_240dp">240dp</dimen>
+
+    <!--=====Layout=====-->
+    <dimen name="layout_0dp">0dp</dimen>
+    <dimen name="layout_1dp">1dp</dimen>
+    <dimen name="layout_4dp">4dp</dimen>
+    <dimen name="layout_8dp">8dp</dimen>
+    <dimen name="layout_10dp">10dp</dimen>
+    <dimen name="layout_20dp">20dp</dimen>
+    <dimen name="layout_27dp">27dp</dimen>
+    <dimen name="layout_40dp">40dp</dimen>
+    <dimen name="layout_48dp">48dp</dimen>
+    <dimen name="layout_50dp">50dp</dimen>
+    <dimen name="layout_65dp">65dp</dimen>
+    <dimen name="layout_70dp">70dp</dimen>
+    <dimen name="layout_100dp">100dp</dimen>
+    <dimen name="layout_150dp">150dp</dimen>
+    <dimen name="layout_157dp">157dp</dimen>
+    <dimen name="layout_200dp">200dp</dimen>
+    <dimen name="layout_290dp">290dp</dimen>
+    <dimen name="layout_300dp">300dp</dimen>
+    <dimen name="layout_400dp">400dp</dimen>
+
+    <!--radius-->
+    <dimen name="radius_10dp">10dp</dimen>
+    <dimen name="radius_25dp">25dp</dimen>
+    <dimen name="radius_30dp">30dp</dimen>
+    <dimen name="radius_50dp">50dp</dimen>
+    <dimen name="radius_100dp">100dp</dimen>
+
+    <!--=====elevation=====-->
+    <dimen name="elevation_0dp">0dp</dimen>
+    <dimen name="elevation_5dp">5dp</dimen>
+    <dimen name="elevation_15dp">15dp</dimen>
+
+    <!--=====margin, padding=====-->
+    <dimen name="space_0dp">0dp</dimen>
+    <dimen name="space_3dp">3dp</dimen>
+    <dimen name="space_4dp">4dp</dimen>
+    <dimen name="space_5dp">5dp</dimen>
+    <dimen name="space_8dp">8dp</dimen>
+    <dimen name="space_10dp">10dp</dimen>
+    <dimen name="space_15dp">15dp</dimen>
+    <dimen name="space_16dp">16dp</dimen>
+    <dimen name="space_18dp">18dp</dimen>
+    <dimen name="space_20dp">20dp</dimen>
+    <dimen name="space_22dp">22dp</dimen>
+    <dimen name="space_24dp">24dp</dimen>
+    <dimen name="space_30dp">30dp</dimen>
+    <dimen name="space_32dp">32dp</dimen>
+    <dimen name="space_40dp">40dp</dimen>
+    <dimen name="space_50dp">50dp</dimen>
+    <dimen name="space_64dp">64dp</dimen>
+    <dimen name="space_70dp">70dp</dimen>
+    <dimen name="space_72dp">72dp</dimen>
+    <dimen name="space_80dp">80dp</dimen>
+    <dimen name="space_90dp">90dp</dimen>
+    <dimen name="space_45dp">45dp</dimen>
+    <dimen name="space_100dp">100dp</dimen>
+
+
+    <dimen name="join_contest_edit_text_height">120dp</dimen>
+    <dimen name="join_contest_edit_text_padding_top">40dp</dimen>
+
 </resources>

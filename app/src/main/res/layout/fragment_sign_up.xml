@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="vm"
+            type="com.project.concon.viewmodel.SignUpViewModel" />
+    </data>
+
+
+    <androidx.constraintlayout.motion.widget.MotionLayout
+        android:id="@+id/motionLayout_sign_up"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layoutDescription="@xml/sign_up_fragment_scene">
+
+        <LinearLayout
+            android:id="@+id/linearLayout"
+            android:layout_width="@dimen/layout_0dp"
+            android:layout_height="@dimen/layout_0dp"
+            android:layout_marginBottom="@dimen/space_90dp"
+            android:background="@drawable/background_gradient_sign"
+            android:gravity="center"
+            app:layout_constraintBottom_toTopOf="@+id/et_layout_id_sign_up"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="1.0">
+
+            <ImageView
+                android:id="@+id/btn_favorites"
+                android:layout_width="@dimen/image_240dp"
+                android:layout_height="@dimen/image_80dp"
+                app:srcCompat="@drawable/ic_logo_white" />
+        </LinearLayout>
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fab_close"
+            style="@style/Widget.MaterialComponents.FloatingActionButton.Main"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="@{()->vm.closeEvent()}"
+            android:src="@drawable/vec_ic_close"
+            app:layout_constraintBottom_toBottomOf="@+id/linearLayout"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/linearLayout"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+            tools:ignore="SpeakableTextPresentCheck" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_id_duplicate_check_sign_up"
+            setVisible="@{!vm.idCheck, default=true}"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/space_22dp"
+            android:layout_weight="1"
+            android:background="@android:color/transparent"
+            android:elevation="1dp"
+            android:enabled="@{vm.id.length() != 0}"
+            android:onClick="@{() -> vm.postCheckId()}"
+            android:text="@string/duplicate_check"
+            android:textColor="@drawable/selector_text_color_black_to_white"
+            android:textSize="@dimen/text_size_13sp"
+            app:layout_constraintBottom_toBottomOf="@+id/et_layout_id_sign_up"
+            app:layout_constraintEnd_toEndOf="@+id/et_layout_id_sign_up"
+            app:layout_constraintTop_toTopOf="@+id/et_layout_id_sign_up" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/et_layout_id_sign_up"
+            style="@style/BaseTextInputLayout"
+            setError="@{vm.idErr}"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/space_32dp"
+            android:layout_marginEnd="@dimen/space_32dp"
+            android:layout_marginBottom="@dimen/space_8dp"
+            android:focusable="true"
+            app:layout_constraintBottom_toTopOf="@+id/et_layout_password_sign_up"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_id_sign_up"
+                style="@style/Widget.AppCompat.EditText.BaseEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/id"
+                android:includeFontPadding="true"
+                android:paddingEnd="@dimen/space_100dp"
+                android:text="@={vm.id, default=``}"
+                tools:ignore="SpeakableTextPresentCheck" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/et_layout_nickname_sign_up"
+            style="@style/BaseTextInputLayout"
+            setError="@{vm.nicknameErr}"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/space_32dp"
+            android:layout_marginEnd="@dimen/space_32dp"
+            android:layout_marginBottom="@dimen/space_24dp"
+            app:layout_constraintBottom_toTopOf="@+id/btn_sign_up"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_nickname_sign_up"
+                style="@style/Widget.AppCompat.EditText.BaseEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/nickname"
+                android:text="@={vm.nickname, default=``}"
+                tools:ignore="SpeakableTextPresentCheck" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/et_layout_phone_number_sign_up"
+            style="@style/BaseTextInputLayout"
+            setError="@{vm.phoneErr}"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/space_32dp"
+            android:layout_marginEnd="@dimen/space_32dp"
+            android:layout_marginBottom="@dimen/space_8dp"
+            app:layout_constraintBottom_toTopOf="@+id/et_layout_nickname_sign_up"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_phone_number_sign_up"
+                style="@style/Widget.AppCompat.EditText.BaseEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/phone_number"
+                android:inputType="number"
+                android:maxLength="11"
+                android:text="@={vm.phoneNumber, default=``}"
+                tools:ignore="SpeakableTextPresentCheck" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/et_layout_password_sign_up"
+            style="@style/BaseTextInputLayout"
+            setError="@{vm.pwErr}"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/space_32dp"
+            android:layout_marginEnd="@dimen/space_32dp"
+            android:layout_marginBottom="@dimen/space_8dp"
+            app:layout_constraintBottom_toTopOf="@+id/et_layout_phone_number_sign_up"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_password_sign_up"
+                style="@style/Widget.AppCompat.EditText.BaseEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/password"
+                android:inputType="textPassword"
+                android:text="@={vm.password, default=``}"
+                tools:ignore="SpeakableTextPresentCheck" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_sign_up"
+            android:stateListAnimator="@null"
+            android:background="@drawable/background_gradient_btn"
+            android:textColor="@color/white"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/space_32dp"
+            android:layout_marginEnd="@dimen/space_32dp"
+            android:layout_marginBottom="@dimen/radius_50dp"
+            android:enabled="@{vm.btnEnabled}"
+            android:onClick="@{() -> vm.signUp()}"
+            android:text="@string/sign_up"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+    </androidx.constraintlayout.motion.widget.MotionLayout>
+</layout>

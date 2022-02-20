@@ -1,38 +1,35 @@
 package com.project.concon.viewmodel
 
-import android.util.Log
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-import com.project.concon.network.`object`.RetrofitInstance
-import com.project.concon.network.dao.AccountService
-import com.project.concon.network.dto.response.ParticipatedContest
-import retrofit2.Call
-import retrofit2.Response
+import com.project.concon.base.BaseViewModel
+import com.project.concon.model.remote.dto.response.Contest
+import com.project.concon.model.repository.ContestRepository
+import com.project.concon.widget.livedata.SingleLiveEvent
+import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
+import io.reactivex.rxjava3.observers.DisposableSingleObserver
+import io.reactivex.rxjava3.schedulers.Schedulers
+import javax.inject.Inject
 
-class ParticipatedContestViewModel: ViewModel() {
-    private val participatedLiveData: MutableLiveData<List<ParticipatedContest>> = MutableLiveData()
-    private val accountService : AccountService by lazy { RetrofitInstance.accountService }
+class ParticipatedContestViewModel (
+    private val contestRepository: ContestRepository
+): BaseViewModel() {
+    val onBackEvent = SingleLiveEvent<Unit>()
 
-    fun getObserver() : MutableLiveData<List<ParticipatedContest>> {
-        return participatedLiveData
+    val isSuccess = MutableLiveData<List<Contest>>()
+    val isFailure = MutableLiveData<String>()
+
+    fun backEvent() {
+        onBackEvent.call()
     }
 
-    fun callApi() {
-        accountService.getMyContest().enqueue(object : retrofit2.Callback<List<ParticipatedContest>> {
-            override fun onResponse(
-                call: Call<List<ParticipatedContest>>,
-                response: Response<List<ParticipatedContest>>,
-            ) {
-                Log.d("getMyContest", "${response.code()}-${response.message()}: ${response.body()}")
-                if (response.isSuccessful) {
-                    participatedLiveData.postValue(response.body())
-                }
-            }
-
-            override fun onFailure(call: Call<List<ParticipatedContest>>, t: Throwable) {
-                Log.d("getMyContest", t.message.toString())
-                participatedLiveData.postValue(null)
-            }
+    fun getMyParticipatedContestList() {
+        startLoading()
+        addDisposable(contestRepository.getMyParticipatedContest(), {
+            isSuccess.postValue(it as List<Contest>)
+            stopLoading()
+        }, {
+            isFailure.postValue(it.message)
+            stopLoading()
         })
     }
 }

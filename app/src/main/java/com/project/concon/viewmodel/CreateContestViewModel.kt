@@ -1,55 +1,44 @@
 package com.project.concon.viewmodel
 
-import android.util.Log
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-import com.project.concon.network.`object`.RetrofitInstance
-import com.project.concon.network.dto.request.ContestRequest
-import com.project.concon.network.dto.response.Msg
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
-import java.text.SimpleDateFormat
+import com.project.concon.base.BaseViewModel
+import com.project.concon.model.remote.dto.response.Prize
+import com.project.concon.model.repository.ContestRepository
+import com.project.concon.widget.extension.SECOND
+import com.project.concon.widget.extension.getDateAsString
+import com.project.concon.widget.utils.getMultipartBody
+import com.project.concon.widget.utils.getRequestBody
+import okhttp3.MultipartBody
 
-class CreateContestViewModel : ViewModel() {
-
+class CreateContestViewModel (
+    private val repository: ContestRepository
+) : BaseViewModel() {
     val title = MutableLiveData<String>()
     val content = MutableLiveData<String>()
     val date = MutableLiveData<String>()
+    val startTime = MutableLiveData<Long>()
+    val dueTime = MutableLiveData<Long>()
     val prize = MutableLiveData<String>()
-    var startTime = MutableLiveData<Long>()
-    var dueTime = MutableLiveData<Long>()
+    val attachment = MutableLiveData<List<MultipartBody.Part>>()
 
-    private val contestService by lazy { RetrofitInstance.contestService }
+    val isSuccess = MutableLiveData<String>()
+    val isFailure = MutableLiveData<String>()
 
-    val postCreateContestRes = MutableLiveData<Msg?>()
-
-    val isLoading = MutableLiveData(false)
-
-    fun getDateAsString(time: Long): String =
-        SimpleDateFormat("yyyy-MM-dd").format(time)
-
-    fun getDateAsString(time: Long?): String =
-        SimpleDateFormat("yyyy-MM-dd HH:mm:ss.sss").format(time)
-
-    fun postCreateContest(contestRequest: ContestRequest) {
-        isLoading.value = true
-
-        contestService.postCreateContest(contestRequest).enqueue(
-            object : Callback<Msg> {
-                override fun onResponse(call: Call<Msg>, response: Response<Msg>) {
-                    Log.d("createContest", "${response.code()}: ${response.body()}")
-                    Log.d("createContest", response.raw().toString())
-                    postCreateContestRes.postValue(response.body())
-                    isLoading.value = false
-                }
-
-                override fun onFailure(call: Call<Msg>, t: Throwable) {
-                    Log.d("postCreateContest", t.message.toString())
-                    postCreateContestRes.postValue(null)
-                    isLoading.value = false
-                }
-            }
+    fun createContest(prizeList: List<Prize>) {
+        startLoading()
+        val params = mapOf(
+            "title" to title.value!!.getRequestBody(),
+            "content" to content.value!!.getRequestBody(),
+            "startdate" to startTime.value!!.getDateAsString(SECOND).getRequestBody(),
+            "duedate" to dueTime.value!!.getDateAsString(SECOND).getRequestBody()
         )
+
+        addDisposable(repository.postCreateContest(attachment.value?: listOf(), params, prizeList.map { it.getMultipartBody() }), {
+            isSuccess.postValue(it as String)
+            stopLoading()
+        }, {
+            isFailure.postValue(it.message)
+            stopLoading()
+        })
     }
 }

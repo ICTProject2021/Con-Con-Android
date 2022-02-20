@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <import type="androidx.databinding.ObservableArrayList" />
+        <import type="com.project.concon.model.remote.dto.response.Participant" />
+
+        <variable
+            name="participantList"
+            type="ObservableArrayList&lt;Participant&gt;" />
+        <variable
+            name="vm"
+            type="com.project.concon.viewmodel.JoinContestViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".view.fragment.JoinContestFragment">
+
+        <ImageButton
+            android:id="@+id/btn_back_join_contest"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/space_16dp"
+            android:layout_marginTop="@dimen/space_16dp"
+            android:background="@android:color/transparent"
+            android:minWidth="@dimen/button_size_32dp"
+            android:minHeight="@dimen/button_size_32dp"
+            android:onClick="@{() -> vm.backEvent()}"
+            android:src="@drawable/vec_ic_back"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="SpeakableTextPresentCheck,SpeakableTextPresentCheck" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_participant_join_contest"
+            submitList="@{participantList}"
+            android:overScrollMode="never"
+            android:layout_width="@dimen/layout_0dp"
+            android:layout_height="@dimen/layout_0dp"
+            android:layout_marginTop="@dimen/space_32dp"
+            android:orientation="vertical"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintBottom_toTopOf="@+id/linearLayout3"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btn_back_join_contest"
+            app:layout_constraintVertical_bias="1.0"
+            tools:listitem="@layout/item_join_contest">
+
+        </androidx.recyclerview.widget.RecyclerView>
+
+        <View
+            android:id="@+id/view"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/layout_1dp"
+            android:background="@color/grey1"
+            app:layout_constraintBottom_toTopOf="@+id/textInputLayout"/>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textInputLayout"
+            app:boxBackgroundColor="@color/white"
+            android:layout_width="@dimen/layout_0dp"
+            android:layout_height="wrap_content"
+            app:hintEnabled="false"
+            app:errorEnabled="false"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/join_contest_edit_text_height"
+                android:hint="@string/join_contest"
+                android:text="@={vm.content}"
+                android:paddingTop="@dimen/join_contest_edit_text_padding_top"
+                tools:ignore="SpeakableTextPresentCheck" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <LinearLayout
+            android:id="@+id/linearLayout3"
+            setGone="@{vm.fileList.size() == 0}"
+            android:layout_width="@dimen/layout_0dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@color/white"
+            app:layout_constraintBottom_toTopOf="@+id/view"
+            app:layout_constraintEnd_toEndOf="@+id/textInputLayout"
+            app:layout_constraintStart_toStartOf="@+id/textInputLayout">
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/layout_1dp"
+                android:background="@color/grey1"/>
+
+            <ImageButton
+                android:id="@+id/btn_delete_join_contest"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:onClick="@{() -> vm.deleteAllPhotoEvent()}"
+                android:background="@android:color/transparent"
+                android:minWidth="@dimen/button_size_48dp"
+                android:minHeight="@dimen/button_size_48dp"
+                app:srcCompat="@drawable/vec_ic_close" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_img_join_contest"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:overScrollMode="never"
+                submitList="@{vm.fileList}"
+                android:orientation="horizontal"
+                android:paddingStart="@dimen/space_10dp"
+                android:paddingVertical="@dimen/space_10dp"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                tools:ignore="SpeakableTextPresentCheck"
+                tools:listitem="@layout/item_image" />
+        </LinearLayout>
+
+        <ImageButton
+            android:id="@+id/btn_photo_join_contest"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/space_4dp"
+            android:layout_marginTop="@dimen/space_4dp"
+            android:background="@android:color/transparent"
+            android:minWidth="@dimen/button_size_48dp"
+            android:minHeight="@dimen/button_size_48dp"
+            android:onClick="@{() -> vm.selectPhotoEvent()}"
+            app:layout_constraintStart_toStartOf="@+id/textInputLayout"
+            app:layout_constraintTop_toTopOf="@+id/textInputLayout"
+            app:srcCompat="@drawable/vec_ic_photo" />
+
+        <ImageButton
+            android:id="@+id/btn_send_join_contest"
+            android:onClick="@{() -> vm.sendEvent()}"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/space_4dp"
+            android:layout_marginEnd="@dimen/space_4dp"
+            android:background="@android:color/transparent"
+            android:minWidth="@dimen/button_size_48dp"
+            android:minHeight="@dimen/button_size_48dp"
+            app:layout_constraintEnd_toEndOf="@+id/textInputLayout"
+            app:layout_constraintTop_toTopOf="@+id/textInputLayout"
+            app:srcCompat="@drawable/vec_ic_send" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
