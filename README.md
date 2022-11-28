@@ -6,5 +6,3 @@
 - Okhttp3
 - Navigation
 - Glide
-
-#### 현재 리팩토링 중 (2021.12.21 ~)
